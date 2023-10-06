@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+    <link rel="stylesheet" href="style/login.css">
+    <link rel="shortcut icon" href="img/favicon.png" type="image/x-icon">
+</head>
+
+<body>
+
+    <div class="home">
+        <img src="img/Basic_Elements__161_-removebg-preview.png" style="height: 5vh; width: auto;">
+        <label style="cursor: pointer; user-select: none;">INÍCIO</label>
+    </div>
+
+    <div class="main">
+        <div class="frame">
+            <div class="content-logo">
+                <img src="img/logo.png" alt="logo tech apulus">
+            </div>
+            <div class="fields">
+                <div class="selector-field">
+                    <div class="cadastroLogin" onclick="cadastro()">Cadastrar</div>
+                </div>
+                <h1 class="title">LOGIN</h1>
+                <input type="text" id="inputEmail" class="campo_email" placeholder="E-mail">
+                <input type="password" id="inputSenha" class="campo_senha" placeholder="Senha">
+                <p style="margin: 0; font-size: 10pt;" id="forget">esqueceu a senha?</p>
+                <button class="button" onclick="login()">Entrar</button>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>
+
+<script src="scripts/scripts.js"></script>
