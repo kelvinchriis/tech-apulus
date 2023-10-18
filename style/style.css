@@ -141,6 +141,7 @@
   
   .header .container {
     display: flex;
+    width: 85%;
     justify-content: space-between;
     align-items: center;
   }
