@@ -8,33 +8,56 @@
     <link rel="stylesheet" href="style/login.css">
     <link rel="shortcut icon" href="img/favicon.png" type="image/x-icon">
 </head>
+</head>
 
 <body>
 
     <div class="home">
-        <img src="img/Basic_Elements__161_-removebg-preview.png" style="height: 5vh; width: auto;">
+        <a href="index.html" style="all: unset;">
+        <img src="img/home.png" style="height: 3vh; width: auto;">
         <label style="cursor: pointer; user-select: none;">INÍCIO</label>
+        </a>
     </div>
 
     <div class="main">
         <div class="frame">
             <div class="content-logo">
-                <img src="img/logo.png" alt="logo tech apulus">
+                <img src="img/logo_login.png" alt="logo tech apulus">
             </div>
             <div class="fields">
                 <div class="selector-field">
-                    <div class="cadastroLogin" onclick="cadastro()">Cadastrar</div>
+                    <div class="cadastroLogin" onclick="changeOption()">Cadastrar</div>
                 </div>
                 <h1 class="title">LOGIN</h1>
-                <input type="text" id="inputEmail" class="campo_email" placeholder="E-mail">
-                <input type="password" id="inputSenha" class="campo_senha" placeholder="Senha">
-                <p style="margin: 0; font-size: 10pt;" id="forget">esqueceu a senha?</p>
-                <button class="button" onclick="login()">Entrar</button>
+                <div>
+                    <div id="campos_login">   
+                        <input type="text" id="inputEmailLogin" class="campos campo-space-login" placeholder="E-mail">
+                        <input type="password" id="inputSenhaLogin" class="campos" placeholder="Senha">
+                        <p style="margin: 0; font-size: 10pt;" id="forget">esqueceu a senha?</p> 
+                        <button class="button" onclick="login()">Entrar</button>
+                    </div>
+                    <div id="campos_cadastro">
+                        <input type="text" id="inputEmpresa" class="campos campo-space-cadastro" placeholder="Empresa">
+                        <input type="text" id="inputCNPJ" class="campos campo-space-cadastro" placeholder="CNPJ">
+                        <input type="text" id="inputEmailCadastro" class="campos campo-space-cadastro" placeholder="E-mail">
+                        <input type="password" id="inputSenhaCadastro" class="campos" placeholder="Senha"><br>
+                        <button class="button button-cadastro" onclick="cadastro()">Avançar</button><br>
+                    </div>
+                    <div id="campos_endereco" style="display: none;">
+                        <input type="text" id="inputLogradouro" class="campos campo-space-cadastro" placeholder="Logradouro">
+                        <input type="text" id="inputCidade" class="campos campo-space-cadastro" placeholder="Cidade">
+                        <input type="text" id="inputEstado" class="campos campo-space-cadastro" placeholder="Estado">
+                        <input type="password" id="inputCEP" class="campos" placeholder="CEP"><br>
+                        <button class="button button-cadastro" onclick="cadastroEndereco()">Cadastrar</button><br>
+                    </div>
+                    <div id="pointer">
+                        <div class="point" id="point1"></div>
+                        <div class="point" id="point2"></div>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
+    <script src="scripts/scripts.js"></script>
 </body>
-
 </html>
-
-<script src="scripts/scripts.js"></script>
