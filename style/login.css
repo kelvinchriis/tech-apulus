@@ -41,8 +41,8 @@ body {
 
 .frame {
     display: flex;
-    width: 30%;
-    height: 50%;
+    width: 40%;
+    height: 60%;
     min-width: 500px;
     min-height: 350px;
     border: 3px solid rgba(241, 189, 158, 0.4);
@@ -61,7 +61,7 @@ body {
 }
 
 img {
-    width: 70%;
+    width: 75%;
 }
 
 .fields {
@@ -75,7 +75,7 @@ img {
     font-family: 'Roboto', sans-serif;
 }
 
-.main .frame .fields .selector-field {
+.selector-field {
     display: flex; 
     justify-content: left; 
     width: 100%;
@@ -83,7 +83,7 @@ img {
     margin-top: 5%;
 }
 
-.main .frame .fields .selector-field .cadastroLogin {
+.cadastroLogin {
     display: flex;
     align-items: center;
     justify-content: right;
@@ -103,11 +103,11 @@ img {
 
 }
 
-h1 {
-    margin: 3% 0 7% 0;
+.title {
+    margin: 0 0 15% 0;
 }
 
-.campo_email {
+.campos {
     width: 60%;
     padding: 3px 20px 3px 20px;
     height: 35px; 
@@ -116,23 +116,19 @@ h1 {
     font-weight: 500;
     border-radius: 30px;
     font-size: 16px;
-    margin: 0 0 12% 0;
 }
 
-.campo_senha {
-    width: 60%;
-    padding: 3px 20px 3px 20px;
-    height: 35px; 
-    border: 2px solid black;
-    background-color: rgba(255,255,255,0.8);
-    font-weight: 500;
-    border-radius: 30px;
-    font-size: 16px;
+.campo-space-login {
+    margin: 0 0 15% 0;
+}
+
+.campo-space-cadastro {
+    margin: 0 0 8% 0;
 }
 
 .button {
     padding: 10px 20px;
-    margin-top: 10%;
+    margin-top: 8%;
     background-color: rgba(241, 189, 158, 0.726);
     color: #ffffff;
     border: none;
@@ -145,3 +141,28 @@ h1 {
 .button:hover {
     background-color: rgba(241, 189, 158, 0.9);
 }
+
+.button-cadastro {
+    background-color: rgba(102, 157, 158, 0.6);
+}
+
+.button-cadastro:hover {
+    background-color: rgba(102, 157, 158, 0.8);
+}
+
+#pointer {
+    display: flex; 
+    width: 100%;
+    justify-content: center;
+}
+
+.point {
+    margin: 15px 3px 0 3px;
+    width: 10px;
+    height: 10px;
+    border-radius: 50px;
+    border-radius: 1px solid white;
+/*    background-color: white;*/
+    border: 1px solid white;
+}
+
