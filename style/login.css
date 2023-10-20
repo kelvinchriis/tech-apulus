@@ -1,0 +1,170 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@500&display=swap');
+
+body {
+    margin: 0;
+    user-select: none;
+}
+
+.home {
+    display: flex;
+    position: fixed;
+    align-items: baseline;
+    justify-content: center;
+    padding: 5px 0 5px 0;
+    width: 90px;
+    margin: 10px 0 0 0;
+    background-color: rgba(158, 103, 59, 0.5);
+    color: white;
+    border-radius: 0 15px 15px 0;
+    font-family: 'Roboto', sans-serif;
+    font-size: 10pt;
+    cursor: pointer;
+    user-select: none;
+    transition: 0.2s;
+}
+
+.home:hover {
+    width: 100px;
+    background-color: rgba(158, 103, 59, 0.8);
+}
+
+.main {
+    display: flex;
+    align-items: center; 
+    justify-content: center;
+    width: 100%;
+    height: 82vh;
+    background-color: rgb(250, 226, 196);
+/*    background: linear-gradient(rgba(0, 0, 0, 0.527), rgba(0, 0, 0, 0.8)), url(../img/tech.jpg);*/
+    background-position: center center;
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+
+.frame {
+    display: flex;
+    width: 70%;
+    height: 530px;
+    min-width: 600px;
+    box-shadow: 3px 3px 20px rgba(0, 0, 0, 0.5);
+    background: linear-gradient(rgba(158, 103, 59, 0.5), rgba(158, 103, 59, 0.6));
+/*    border: 3px solid rgba(241, 189, 158, 0.4);*/
+/*    background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.9));*/
+    border-radius: 60px;
+}
+
+.content-image {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: rgba(241, 200, 158, 1);
+    background-image: url('../img/login.png');
+    background-size: cover;
+    background-position: center center;
+    border-radius: 60px 0 0 60px;
+    width: 55%;
+    height: 100%;
+}
+
+.content-logo-active {
+    background-image: url('../img/cadastro.png');
+}
+/* 
+img {
+    width: 150%;
+} */
+
+.fields {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 45%;
+    height: 100%;
+    text-align: center;
+    color: rgba(255,255,255,0.9);
+    font-family: 'Roboto', sans-serif;
+}
+
+.selector-field {
+    display: flex; 
+    justify-content: left; 
+    width: 100%;
+    height: 30px; 
+    margin-top: 5%;
+}
+
+.cadastro-login {
+    display: flex;
+    align-items: center;
+    justify-content: right;
+    padding-right: 2%;
+    font-size: 10pt;
+    width: 19%; 
+    height: 100%; 
+    background-color: white; 
+    border-radius: 0 20px 20px 0; 
+    background-color: rgba(241, 200, 158, 1); 
+    cursor: pointer;
+    transition: 0.2s;
+}
+
+.cadastro-login:hover {
+    width: 22%;
+}
+
+#title {
+    margin: 0 0 15% 0;
+}
+
+.campos {
+    width: 60%;
+    padding: 3px 20px 3px 20px;
+    height: 35px; 
+    border: 2px solid grey;
+    background-color: rgba(255,255,255,0.8);
+    font-weight: 500;
+    border-radius: 30px;
+    font-size: 16px;
+}
+
+.campo-space-login {
+    margin: 0 0 15% 0;
+}
+
+.campo-space-cadastro {
+    margin: 0 0 8% 0;
+}
+
+.button {
+    padding: 10px 20px;
+    margin-top: 8%;
+    background-color: rgba(158, 103, 59, 0.5);
+
+    color: #ffffff;
+    border: 1px solid white;
+    border-radius: 30px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: 0.2s;
+}
+
+.button:hover {
+    background-color: rgba(158, 103, 59, 0.8);
+    box-shadow: 1px 1px 10px white;
+}
+
+#pointer {
+    display: flex; 
+    width: 100%;
+    justify-content: center;
+}
+
+.point {
+    margin: 15px 3px 0 3px;
+    width: 10px;
+    height: 10px;
+    border-radius: 50px;
+    border-radius: 1px solid white;
+    border: 1px solid white;
+}
+
