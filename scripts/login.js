@@ -4,6 +4,7 @@ var selector_field_position = document.querySelector(".selector-field");
 var selector_field = document.querySelector(".cadastro-login");
 var content_image_active = document.querySelector(".content-logo")
 var fields = document.querySelector(".fields")
+var campos = document.querySelector(".campos")
 
 pointer.style.display = "none"
 
@@ -38,6 +39,10 @@ function avancarCadEnd() {
 
 function avancarCadCont() {
     telaCont()
+}
+
+function avancarCadFazenda() {
+    telaFazendas()
 }
 
 function finalCad() {
@@ -102,7 +107,7 @@ function telaCad() {
     fields.style.width = "45%"
     //alterando título
     title.innerHTML = "Cadastro"
-    title.style.margin = "0 0 4% 0"
+    title.style.margin = "0 0 3% 0"
     //alterar para campos do cadastro
     frameClear()
     pointerClear()
@@ -140,6 +145,7 @@ function telaEnd() {
     title.innerHTML = "Endereço"
     campos_endereco.style.display = "block"
     selector_field.innerHTML = "Voltar"
+    spaceField()
 }
 
 function telaCont() {
@@ -152,8 +158,18 @@ function telaCont() {
     frameClear()
     // mostra a tela de contato
     title.innerHTML = "Contato"
-    campos_endereco.style.display = "none"
     campos_contato.style.display = "block"
+    selector_field.innerHTML = "Voltar"
+}
+
+function telaFazendas() {
+    // muda o status na barra de navegarção e limpa tela
+    pointerClear()
+    point4.style.backgroundColor = "white"
+    frameClear()
+    // mostra a tela de contato
+    title.innerHTML = "Armazéns"
+    campos_fazenda.style.display = "block"
     selector_field.innerHTML = "Voltar"
 }
 
@@ -161,6 +177,8 @@ function pointerClear() {
     point1.style.backgroundColor = ""
     point2.style.backgroundColor = ""
     point3.style.backgroundColor = ""
+    point4.style.backgroundColor = ""
+    
 }
 
 function frameClear() {
@@ -168,4 +186,14 @@ function frameClear() {
     campos_cadastro.style.display = "none"
     campos_endereco.style.display = "none"
     campos_contato.style.display = "none"
+    campos_fazenda.style.display = "none"
+}
+
+function spaceField() {
+    inputLogradouro.style.width = "40%"
+    inputCidade.style.width = "40%"
+    inputEstado.style.width = "40%"
+    inputCEP.style.width = "40%"
+    inputBairro.style.width = "40%"
+    inputNum.style.width = "40%"
 }

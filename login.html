@@ -19,13 +19,9 @@
             <img src="img/logo.png" width="250px" alt="hero image">
             <div style="display: flex; align-items: center;">
                 <li class="navbar-item">
-                    <a href="index.html" class="navbar-link" data-nav-toggler>Home</a>
+                    <a href="index.html" class="header-action-btn login-btn" data-nav-toggler>Home</a>
                 </li>
 
-                
-                <li class="navbar-item">
-                    <a href="login.html" class="header-action-btn login-btn">Cadastro/Login</a>
-                </li>
             </div>
         </div>
     </header>
@@ -45,7 +41,7 @@
 
                 <h1 id="title">LOGIN</h1>
 
-                <div style="width: 90%; display: flex; flex-direction: column; justify-content: center;">
+                <div style="width: 100%; display: flex; flex-direction: column; justify-content: center;">
 
                     <!-- tela login -->
                     <div id="campos_login">
@@ -57,47 +53,58 @@
 
                     <!-- tela cadastro -->
                     <div id="campos_cadastro" style="display: none">
-                        <input type="text" id="inputEmpresa" class="campos campo-space-cadastro" placeholder="Empresa">
+                        <input type="text" id="inputEmpresa" class="campos campo-space-cadastro" placeholder="Empresa"> 
                         <input type="text" id="inputCNPJ" class="campos campo-space-cadastro" placeholder="CNPJ">
                         <input type="text" id="inputEmailCadastro" class="campos campo-space-cadastro"
                             placeholder="E-mail">
                         <input type="password" id="inputSenhaCadastro" class="campos" placeholder="Senha"><br>
                         <button class="button" onclick="avancarCadEnd()">Avançar</button><br>
+                
                     </div>
 
                     <!-- tela endereço -->
-                    <div id="campos_endereco" style="display: none; width: 100%; justify-content: space-between;">
-                        <div style="display: flex;">
+                    <div id="campos_endereco" style="display: none; width: 100%;">
+                        <div class="inline_campos">
                             <input type="text" id="inputLogradouro" class="campos campo-space-cadastro"
                                 placeholder="Logradouro">
-                            <input type="text" id="inputCidade" class="campos campo-space-cadastro" placeholder="Cidade">
+                            <input type="text" id="inputCidade" class="campos" placeholder="Cidade">
                         </div>
-                        <div style="display: flex;">
+                        <div class="inline_campos">
                             <input type="text" id="inputEstado" class="campos campo-space-cadastro" placeholder="Estado">
                             <input type="password" id="inputCEP" class="campos" placeholder="CEP">
                         </div>
-                        <div style="display: flex;">
-                            <input type="text" id="inputEstado" class="campos" placeholder="Bairro">
-                            <input type="password" id="inputCEP" class="campos" placeholder="Número">
+                        <div class="inline_campos">
+                            <input type="text" id="inputBairro" class="campos" placeholder="Bairro">
+                            <input type="password" id="inputNum" class="campos" placeholder="Número">
                         </div><br>
-                        <button class="button" onclick="avancarCadCont()">Cadastrar</button><br>
+                        <button class="button" onclick="avancarCadCont()">Avançar</button><br>
                     </div>
-
+                    
                     <!-- tela contato -->
                     <div id="campos_contato" style="display: none;">
-                        <input type="text" id="inputLogradouro" class="campos campo-space-cadastro"
+                        <input type="text" id="inputTelP" class="campos campo-space-cadastro"
                             placeholder="Telefone Principal">
-                        <input type="text" id="inputCidade" class="campos campo-space-cadastro" placeholder="Telefone Secundário">
-                        <input type="text" id="inputEstado" class="campos campo-space-cadastro" placeholder="E-mail Principal">
-                        <input type="password" id="inputCEP" class="campos" placeholder="E-mail Secúdario"><br>
-                        <button class="button" onclick="finalCad()">Cadastrar</button><br>
+                        <input type="text" id="inputTelS" class="campos campo-space-cadastro" placeholder="Telefone Secundário">
+                        <input type="text" id="inputEmailP" class="campos campo-space-cadastro" placeholder="E-mail Principal">
+                        <input type="password" id="inputEmailS" class="campos" placeholder="E-mail Secúdario"><br>
+                        <button class="button" onclick="avancarCadFazenda()">Avançar</button><br>
                     </div>
 
+                    <!-- tabela fazenda/armazem -->
+                    <div id="campos_fazenda" style="display: none;">
+                        <input type="number" id="inputQtdFazenda" class="campos campo-space-cadastro" placeholder="Quantidade de fazendas">
+                        <input type="number" id="inputQtdArmazem" class="campos campo-space-cadastro"
+                         placeholder="Quantidade de Armazém">
+                        <input type="password" id="inputTamanho" class="campos" placeholder="Tamanho Fazenda"><br>
+                        <button class="button" onclick="finalCad()">Cadastrar</button><br>
+                    </div>
+                   
                     <!-- barra status cadastro -->
                     <div id="pointer">
                         <div class="point" id="point1"></div>
                         <div class="point" id="point2"></div>
                         <div class="point" id="point3"></div>
+                        <div class="point" id="point4"></div>
                     </div>
                 </div>
             </div>
