@@ -1,7 +1,7 @@
 var frame = document.querySelector(".frame");
 var content_image = document.querySelector(".content-image");
 var selector_field_position = document.querySelector(".selector-field");
-var cadastro_login = document.querySelector(".cadastro-login");
+var selector_field = document.querySelector(".cadastro-login");
 var content_image_active = document.querySelector(".content-logo")
 var fields = document.querySelector(".fields")
 
@@ -19,7 +19,7 @@ var senha_login;
 
 
 function changeOption() {
-    var valorcampo = cadastro_login.innerHTML;
+    var valorcampo = selector_field.innerHTML;
     if (valorcampo == "Cadastrar" || valorcampo == "Voltar") {
         telaCad()
     } else if(valorcampo == "Login") {
@@ -67,60 +67,24 @@ function verifyLogin() {
 
 }
 
-function cadastroEndereco() {    
-    cadastro_login.innerHTML = "Login"
-    cadastro_login.style.display = "flex"
-    campos_endereco.style.display = "none"
-    point1.style.backgroundColor = ""
-    point2.style.backgroundColor = ""
-    point3.style.backgroundColor = "white"
-    campos_contato.style.display = "block"
-    title.innerHTML = "Contato" 
-}
-
-
-function telaCad() {
-    //alterar para campos do cadastro
-    frameClear()
-    campos_cadastro.style.display = "block"
-    //invertendo horizontalmente para tela de cadastro
-    frame.style.flexDirection = "row-reverse"
-    //invertendo borda do bloco image
-    content_image.style.borderRadius = "0 60px 60px 0"
-    //invertento posição do seletor para a direita
-    selector_field_position.style.justifyContent = "right"
-    //alterando de "cadastrar" para "login" o seletor e mudando a direção da borda
-    cadastro_login.innerHTML = "Login"
-    cadastro_login.style.borderRadius = "20px 0 0 20px"
-    cadastro_login.style.justifyContent = "left"
-    cadastro_login.style.paddingLeft = "4%"
-    //mostrando barra de status cadastro
-    pointer.style.display = "flex"
-    point1.style.backgroundColor = "white"
-    //alterando imagem do fundo
-    content_image_active.classList.add("content-logo-active")
-    //excluindo o esqueceu a senha e alterando titulo
-    forget.style.display = "none"
-    //alterando título
-    title.innerHTML = "Cadastro"
-    title.style.margin = "3% 0 5% 0"
-}
-
 function telaLog() {
     //alterar para campos do login
     frameClear()
     campos_login.style.display = "block"
     //invertendo horizontalmente para tela de login
     frame.style.flexDirection = ""
+    //alterando título
+    title.innerHTML = "Login"
+    title.style.margin = "0 0 15% 0"
     //invertendo borda do bloco image
     content_image.style.borderRadius = "60px 0 0 60px"
     //invertento posição do seletor para a esquerda
     selector_field_position.style.justifyContent = "left"
     //alterando de "login" para "cadastrar" o seletor e mudando a direção da borda
-    cadastro_login.innerHTML = "Cadastrar"
-    cadastro_login.style.borderRadius = "0 20px 20px 0"
-    cadastro_login.style.justifyContent = "right"
-    cadastro_login.style.paddingRight = "3%"
+    selector_field.innerHTML = "Cadastrar"
+    selector_field.style.borderRadius = "0 20px 20px 0"
+    selector_field.style.justifyContent = "right"
+    selector_field.style.paddingRight = "3%"
     //escondendo barra de status cadastro
     pointer.style.display = "none"
     //alterando imagem do fundo
@@ -130,6 +94,38 @@ function telaLog() {
     title.innerHTML = "Login"
     title.style.margin = "3% 0 15% 0"
     campos_contato.style.display = "none"
+}
+
+function telaCad() {
+    // diminuindo visualização no cadastro
+    content_image.style.width = "55%"
+    fields.style.width = "45%"
+    //alterando título
+    title.innerHTML = "Cadastro"
+    title.style.margin = "0 0 4% 0"
+    //alterar para campos do cadastro
+    frameClear()
+    pointerClear()
+    campos_cadastro.style.display = "block"
+    //invertendo horizontalmente para tela de cadastro
+    frame.style.flexDirection = "row-reverse"
+    //invertendo borda do bloco image
+    content_image.style.borderRadius = "0 60px 60px 0"
+    //invertento posição do seletor para a direita
+    selector_field_position.style.justifyContent = "right"
+    //alterando de "cadastrar" para "login" o seletor e mudando a direção da borda
+    selector_field.innerHTML = "Login"
+    selector_field.style.borderRadius = "20px 0 0 20px"
+    selector_field.style.justifyContent = "left"
+    selector_field.style.paddingLeft = "4%"
+    //mostrando barra de status cadastro
+    pointer.style.display = "flex"
+    point1.style.backgroundColor = "white"
+    //alterando imagem do fundo
+    content_image_active.classList.add("content-logo-active")
+    //excluindo o esqueceu a senha e alterando titulo
+    forget.style.display = "none"
+    //margem do botao
 }
 
 function telaEnd() {
@@ -143,7 +139,7 @@ function telaEnd() {
     // mostra a tela de endereço
     title.innerHTML = "Endereço"
     campos_endereco.style.display = "block"
-    cadastro_login.innerHTML = "Voltar"
+    selector_field.innerHTML = "Voltar"
 }
 
 function telaCont() {
@@ -158,7 +154,7 @@ function telaCont() {
     title.innerHTML = "Contato"
     campos_endereco.style.display = "none"
     campos_contato.style.display = "block"
-    cadastro_login.innerHTML = "Voltar"
+    selector_field.innerHTML = "Voltar"
 }
 
 function pointerClear() {
