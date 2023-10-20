@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Dashboard</title>
+  <link rel="shortcut icon" href="img/logo.png" type="image/svg+xml">
+  <link rel="stylesheet" href="style/dashboard.css">
+
+  <link href="https://fonts.googleapis.com/css2?family=Urbanist:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+</head>
+
+<body>
+  <div class="menu">
+    <div class="content-items">
+      <div class="button-menu" onclick="menuClick()">
+        <div class="bar-menu"></div>
+        <div class="bar-menu"></div>
+        <div class="bar-menu"></div>
+      </div>
+      <div class="dash"></div>
+      <div class="dash"></div>
+      <div class="dash"></div>
+      <div class="dash"></div>
+      <div class="dash"></div>
+      <div class="dash"></div>
+      <div class="dash"></div>
+    </div>
+  </div>
+  <div style="overflow: hidden;">
+    <div class="header"></div>
+    <div class="mid-header"></div>
+
+    <div class="content-dash">
+      <div>
+        <div class="grafics">
+          <div class="grafic">
+            <canvas id="temperatura"></canvas>
+          </div>
+          <div class="grafic">
+            <canvas id="umidade"></canvas>
+          </div>
+        </div>
+        <div class="grafic grafPizza">
+          <canvas id="armazens"></canvas>
+        </div>
+      </div>
+      
+      <br> <br> <br>
+
+      <div class="divTabelas">
+        <table class="tabelaKPI" border="3px">
+          <tr>
+            <td style="background-color: rgb(107, 64, 35); color: white;">Status do Sensor</td>
+            <td style="background-color: rgb(107, 64, 35); color: white;">Sensor</td>
+            <td style="background-color: rgb(107, 64, 35); color: white;">Armazém</td>
+          </tr>
+          <tr>
+            <td style="background-color: rgb(173, 116, 78);">Ativo</td>
+            <td style="background-color: rgb(173, 116, 78)">1</td>
+            <td style="background-color: rgb(173, 116, 78)">1000</td>
+          </tr>
+          <tr>
+            <td style="background-color: rgb(173, 116, 78)">Inativo</td>
+            <td style="background-color: rgb(173, 116, 78)">2</td>
+            <td style="background-color: rgb(173, 116, 78)">1002</td>
+          </tr>
+          <tr>
+            <td style="background-color: rgb(173, 116, 78)">Manutenção</td>
+            <td style="background-color: rgb(173, 116, 78)">3</td>
+            <td style="background-color: rgb(173, 116, 78)">1003</td>
+          </tr>
+        </table>
+
+        <table class="tabelaKPI" border="3px">
+          <tr>
+            <td style="background-color: rgb(107, 64, 35); color: white;">Armazém</td>
+            <td style="background-color: rgb(107, 64, 35); color: white;">Perdas</td>
+          </tr>
+          <tr>
+            <td style="background-color: rgb(173, 116, 78)">1000</td>
+            <td style="background-color: rgb(173, 116, 78)">22%</td>
+          </tr>
+          <tr>
+            <td style="background-color: rgb(173, 116, 78)">1001</td>
+            <td style="background-color: rgb(173, 116, 78)">25%</td>
+          </tr>
+          <tr>
+            <td style="background-color: rgb(173, 116, 78)">1003</td>
+            <td style="background-color: rgb(173, 116, 78)">13%</td>
+          </tr>
+        </table>
+
+        <table class="tabelaKPI" border="3px">
+          <tr>
+            <td style="background-color: rgb(107, 64, 35); color: white;">Armazém com maior perda</td>
+          </tr>
+          <tr>
+            <td style="background-color: rgb(173, 116, 78)">1° 1001</td>
+          </tr>
+          <tr>
+            <td style="background-color: rgb(173, 116, 78)">2° 1002</td>
+          </tr>
+          <tr>
+            <td style="background-color: rgb(173, 116, 78)">3° 1003</td>
+          </tr>
+        </table>
+      </div>
+      <br> <br> <br>
+      <div class="divTabelas">
+        <table class="tabelaKPI" border="3px">
+          <tr>
+            <td style="background-color: rgb(107, 64, 35); color: white;">Armazém com menor perda</td>
+          </tr>
+          <tr>
+            <td style="background-color: rgb(173, 116, 78)">1° 1000</td>
+          </tr>
+          <tr>
+            <td style="background-color: rgb(173, 116, 78)">2° 1002</td>
+          </tr>
+          <tr>
+            <td style="background-color: rgb(173, 116, 78)">3° 1001</td>
+          </tr>
+        </table>
+        
+        <table class="tabelaKPI" border="3px">
+          <tr>
+            <td style="background-color: rgb(107, 64, 35); color: white;">Maiores Armazéns</td>
+          </tr>
+          <tr>
+            <td style="background-color: rgb(173, 116, 78)">1° 1002</td>
+          </tr>
+          <tr>
+            <td style="background-color: rgb(173, 116, 78)">2° 1000</td>
+          </tr>
+          <tr>
+            <td style="background-color: rgb(173, 116, 78)">3° 1001</td>
+          </tr>
+        </table>
+        
+        <table class="tabelaKPI" border="3px">
+          <tr>
+            <td style="background-color: rgb(107, 64, 35); color: white;">Menores Armazéns</td>
+          </tr>
+          <tr>
+            <td style="background-color: rgb(173, 116, 78)">1° 1001</td>
+          </tr>
+          <tr>
+            <td style="background-color: rgb(173, 116, 78)">2° 1000</td>
+          </tr>
+          <tr>
+            <td style="background-color: rgb(173, 116, 78)">3° 1002</td>
+          </tr>
+        </table>
+      </div>
+
+        <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+      <script>
+        const temperatura = document.getElementById('temperatura');
+
+        new Chart(temperatura, {
+          type: 'line',
+          data: {
+            labels: ['12:00', '12:07', '12:14', '12:21', '12:28', '12:35'],
+            datasets: [{
+              label: 'Variação de temperatura',
+              data: [29, 30, 30, 31, 32, 32],
+              borderWidth: 1,
+              backgroundColor: '#d06a17',
+              borderColor: '#d06a17',
+              color: 'white'
+            }]
+          },
+          options: {
+            scales: {
+              y: {
+                beginAtZero: true
+              }
+            }
+          },
+          options: {
+            scales: {
+              y: {
+                beginAtZero: true,
+                plugins: {
+                  title: {
+                    display: true,
+                    text: 'Custom Chart Title',
+                    font: {
+                      //fontSize: '30pt'
+                    }
+                  }
+                }
+              }
+            }
+          }
+        });
+        const umidade = document.getElementById('umidade');
+
+        new Chart(umidade, {
+          type: 'line',
+          data: {
+            labels: ['12:00', '12:07', '12:14', '12:21', '12:28', '12:35'],
+            datasets: [{
+              label: 'Variação de umidade',
+              data: [58, 59, 60, 60, 58, 61],
+              borderWidth: 3,
+              backgroundColor: '#d06a17',
+              borderColor: '#d06a17',
+              color: 'white'
+            }]
+          },
+          options: {
+            scales: {
+              y: {
+                beginAtZero: true
+              }
+            }
+          }
+        });
+        
+    const armazens = document.getElementById('armazens');
+
+    new Chart(armazens, {
+        type: 'doughnut',
+        data: {
+            labels: [
+                'Armazém 1',
+                'Armazém 2',
+                'Armazém 3',
+                'Armazém 4',
+                'Armazém 5',
+            ],
+            datasets: [{
+                label: 'My First Dataset',
+                data: [7, 18, 11, 19, 45],
+                backgroundColor: [
+                    'rgb(255, 99, 132)',
+                    'rgb(54, 162, 235)',
+                    'rgb(255, 205, 86)',
+                    'rgb(231, 100, 82)',
+                    'rgb(54, 200, 20)',
+                ],
+                hoverOffset: 4
+            }]
+        }
+    });
+      </script>
+
+    </div>
+  </div>
+
+</body>
+
+</html>
+<script type="text/javascript" src="scripts/dashboard.js"></script>
