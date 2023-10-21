@@ -5,10 +5,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Login</title>
-    <link rel="shortcut icon" href="../img/logo.png" type="image/svg+xml">
     <link rel="stylesheet" href="style/login.css">
     <link rel="stylesheet" href="style/style.css">
-    <link rel="shortcut icon" href="favicon.png" type="image/x-icon">
+    <link rel="shortcut icon" href="img/favicon.png" type="image/x-icon">
     <link href="https://fonts.googleapis.com/css2?family=Urbanist:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 </head>
 </head>
@@ -27,28 +26,28 @@
     </header>
     <div style="height: 18vh;"></div>
     <div class="main">
-        <div class="frame">
+        <div class="frame" id="frame">
 
 
             <div class="content-image"></div>
 
-            <div class="fields">
+            <div class="fields" id="fields">
 
                 <!-- botão alterar login <-> cadastro e seu alinhamento -->
-                <div class="selector-field">
-                    <div class="cadastro-login" onclick="changeOption()">Cadastrar</div>
+                <div class="selector-field-position" id="selector_field_position">
+                    <div class="selector-field" id="selector_field" onclick="changeTela()">Cadastrar</div>
                 </div>
 
-                <h1 id="title">LOGIN</h1>
+                <h1 class="title" id="title">LOGIN</h1>
 
-                <div style="width: 100%; display: flex; flex-direction: column; justify-content: center;">
+                <div class="frame-campos">
 
                     <!-- tela login -->
                     <div id="campos_login">
                         <input type="text" id="inputEmailLogin" class="campos campo-space-login" placeholder="E-mail">
                         <input type="password" id="inputSenhaLogin" class="campos" placeholder="Senha">
-                        <p style="margin: 0; font-size: 10pt;" id="forget">esqueceu a senha?</p>
-                        <button class="button" onclick="verifyLogin()">Entrar</button>
+                        <p id="forget">esqueceu a senha?</p>
+                        <button class="button" id="botao_log" onclick="verifyLogin()">Entrar</button>
                     </div>
 
                     <!-- tela cadastro -->
@@ -58,8 +57,7 @@
                         <input type="text" id="inputEmailCadastro" class="campos campo-space-cadastro"
                             placeholder="E-mail">
                         <input type="password" id="inputSenhaCadastro" class="campos" placeholder="Senha"><br>
-                        <button class="button" onclick="avancarCadEnd()">Avançar</button><br>
-                
+                        <button class="button" id="botao_cad" onclick="avancarCadEnd()">Avançar</button><br>
                     </div>
 
                     <!-- tela endereço -->
@@ -67,17 +65,17 @@
                         <div class="inline_campos">
                             <input type="text" id="inputLogradouro" class="campos campo-space-cadastro"
                                 placeholder="Logradouro">
+                            <input type="password" id="inputNum" class="campos" placeholder="Número">
+                        </div>
+                        <div class="inline_campos">
+                            <input type="text" id="inputBairro" class="campos campo-space-cadastro" placeholder="Bairro">
                             <input type="text" id="inputCidade" class="campos" placeholder="Cidade">
                         </div>
                         <div class="inline_campos">
-                            <input type="text" id="inputEstado" class="campos campo-space-cadastro" placeholder="Estado">
+                            <input type="text" id="inputEstado" class="campos" placeholder="Estado">
                             <input type="password" id="inputCEP" class="campos" placeholder="CEP">
-                        </div>
-                        <div class="inline_campos">
-                            <input type="text" id="inputBairro" class="campos" placeholder="Bairro">
-                            <input type="password" id="inputNum" class="campos" placeholder="Número">
                         </div><br>
-                        <button class="button" onclick="avancarCadCont()">Avançar</button><br>
+                        <button class="button" id="botao_end" onclick="avancarCadCont()">Avançar</button><br>
                     </div>
                     
                     <!-- tela contato -->
@@ -87,7 +85,7 @@
                         <input type="text" id="inputTelS" class="campos campo-space-cadastro" placeholder="Telefone Secundário">
                         <input type="text" id="inputEmailP" class="campos campo-space-cadastro" placeholder="E-mail Principal">
                         <input type="password" id="inputEmailS" class="campos" placeholder="E-mail Secúdario"><br>
-                        <button class="button" onclick="avancarCadFazenda()">Avançar</button><br>
+                        <button class="button" id="botao_cont" onclick="avancarCadFazenda()">Avançar</button><br>
                     </div>
 
                     <!-- tabela fazenda/armazem -->
@@ -96,11 +94,11 @@
                         <input type="number" id="inputQtdArmazem" class="campos campo-space-cadastro"
                          placeholder="Quantidade de Armazém">
                         <input type="password" id="inputTamanho" class="campos" placeholder="Tamanho Fazenda"><br>
-                        <button class="button" onclick="finalCad()">Cadastrar</button><br>
+                        <button class="button" id="botao_faz" onclick="finalCad()">Cadastrar</button><br>
                     </div>
                    
                     <!-- barra status cadastro -->
-                    <div id="pointer">
+                    <div class="pointer" id="pointer" style="display: none;">
                         <div class="point" id="point1"></div>
                         <div class="point" id="point2"></div>
                         <div class="point" id="point3"></div>
@@ -256,15 +254,6 @@
 <a href="#top" class="back-top-btn" aria-label="Back to top" data-back-top-btn>
     <ion-icon name="arrow-up"></ion-icon>
   </a>
-  
-  
-  
-  
-  
-  <!-- 
-      - custom js link
-    -->
-  <script src="./assets/js/scriptHome.js" defer></script>
   
   <!-- 
       - ionicon link
