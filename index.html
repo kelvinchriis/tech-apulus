@@ -11,6 +11,8 @@
 
   <link rel="shortcut icon" href="img/logo.png" type="image/svg+xml">
   <link rel="stylesheet" href="style/style.css">
+  <link rel="stylesheet" href="style/select.css">
+
 
   <link href="https://fonts.googleapis.com/css2?family=Urbanist:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 
@@ -36,11 +38,23 @@
       <li class="navbar-item">
         <a href="#event" class="navbar-link" data-nav-toggler>Produção</a>
       </li>
+
+      <li class="navbar-item">
+        <a href="#equip" class="navbar-link" data-nav-toggler>Equipe</a>
+      </li>
+
       <a href="login.html" class="header-action-btn login-btn">Cadastro/Login</a>
     </div>
 
   </div>
 </header>
+
+<div vw class="enabled">
+  <div vw-access-button class="active"></div>
+  <div vw-plugin-wrapper>
+    <div class="vw-plugin-top-wrapper"></div>
+  </div>
+</div>
 
 <section class="hero" id="home">
   <div class="container">
@@ -55,7 +69,7 @@
         Oferecemos soluções de monitoramento de temperatura e umidade para armazéns de café, garantindo a qualidade dos
         grãos.
         <br> <br>
-        <a href="calculadora.html" class="btn btn-primary">
+        <a href="calculadora.html" class="btn btn-primary" id="about">
           <span class="span">Simulador:</span>
 
           <ion-icon name="arrow-forward-outline" aria-hidden="true"></ion-icon>
@@ -63,7 +77,7 @@
 
     </div>
 
-    <figure class="hero-banner">
+    <figure class="hero-banner" >
 
       <img src="img/logo.png">
 
@@ -71,6 +85,131 @@
 
   </div>
 </section>
+
+<section class="section category" aria-label="category">
+  <div class="container">
+
+    <p class="section-subtitle">Valores e Ética da empresa:</p>
+
+    <h2 class="h2 section-title">TechApulus</h2>
+
+    <ul class="grid-list">
+
+      <li>
+        <div class="category-card">
+
+          <div class="card-icon">
+            <ion-icon name="file-tray-full-outline"></ion-icon>
+          </div>
+
+          <div>
+            <h3 class="h2 card-title">
+              <a href="#">Excelência:</a>
+            </h3><br>
+
+            <span class="card-meta">Comprometemo-nos a alcançar a excelência em todos os aspectos de nossos serviços de monitoramento, garantindo a mais alta qualidade e precisão.</span>
+          </div>
+
+        </div>
+      </li>
+
+      <li>
+        <div class="category-card">
+
+          <div class="card-icon">
+            <ion-icon name="briefcase-outline"></ion-icon>
+          </div>
+
+          <div>
+            <h3 class="h2 card-title">
+              <a href="#">Inovação Sustentável:</a>
+            </h3> <br>
+
+            <span class="card-meta">Abraçamos a inovação contínua para desenvolver soluções mais eficazes e sustentáveis, que beneficiem tanto nossos clientes como o meio ambiente.</span>
+          </div>
+
+        </div>
+      </li>
+
+      <li>
+        <div class="category-card">
+
+          <div class="card-icon">
+            <ion-icon name="thumbs-up-outline"></ion-icon>
+          </div>
+
+          <div>
+            <h3 class="h2 card-title">
+              <a href="#">Parceria de Confiança:</a>
+            </h3><br>
+
+            <span class="card-meta">Construímos parcerias sólidas e confiáveis com nossos clientes, baseadas na comunicação aberta e na compreensão de suas necessidades específicas.</span>
+          </div>
+
+        </div>
+      </li>
+
+      <li>
+        <div class="category-card">
+
+          <div class="card-icon">
+            <ion-icon name="layers-outline"></ion-icon>
+          </div>
+
+          <div>
+            <h3 class="h2 card-title">
+              <a href="#">Integridade e Transparência:</a>
+            </h3><br>
+
+            <span class="card-meta">Agimos com integridade, transparência e honestidade em todas as nossas operações, desde a coleta de dados até a prestação de serviços.</span>
+          </div>
+
+        </div>
+      </li>
+
+      <li>
+        <div class="category-card">
+
+          <div class="card-icon">
+            <ion-icon name="laptop-outline"></ion-icon>
+          </div>
+
+          <div>
+            <h3 class="h2 card-title">
+              <a href="#">Privacidade e Segurança dos Dados:</a>
+            </h3><br>
+
+            <span class="card-meta">Garantimos a máxima proteção da privacidade dos dados de nossos clientes, aderindo a rigorosos padrões de segurança e privacidade.</span>
+          </div>
+
+        </div>
+      </li>
+
+      <li>
+        <div class="category-card">
+
+          <div class="card-icon">
+            <ion-icon name="color-palette-outline"></ion-icon>
+          </div>
+
+          <div>
+            <h3 class="h2 card-title">
+              <a href="#">Responsabilidade Ambiental:</a>
+            </h3><br>
+
+            <span class="card-meta">Demonstramos um compromisso firme com práticas sustentáveis e responsáveis, minimizando nosso impacto ambiental e promovendo a preservação do meio ambiente.</span>
+          </div>
+
+        </div>
+      </li>
+
+    </ul>
+
+  </div>
+</section>
+<br><br><br>
+
+
 
 <section class="section category" aria-label="category">
   <div class="container">
@@ -197,7 +336,7 @@
 
 
 
-<section class="section about" id="about" aria-label="about">
+<section class="section about" aria-label="about">
   <div class="container">
 
 
@@ -247,7 +386,7 @@
       </ul>
 
       <a href="#" class="btn btn-primary">
-        <span class="span">Voltar</span>
+        <span class="span" id="courses">Voltar</span>
 
         <ion-icon name="arrow-forward-outline" aria-hidden="true"></ion-icon>
       </a>
@@ -266,7 +405,7 @@
         - #COURSE
       -->
 
-<section class="section course" id="courses" aria-label="course"
+<section class="section course" aria-label="course"
   style="background-image: url('./assets/images/course-bg.jpg')">
   <div class="container">
 
@@ -416,7 +555,7 @@
       </ul>
 
       <a href="#" class="btn btn-primary">
-        <span class="span">Voltar</span>
+        <span class="span" id="event">Voltar</span>
 
         <ion-icon name="arrow-forward-outline" aria-hidden="true"></ion-icon>
       </a>
@@ -431,7 +570,7 @@
         - #EVENT
       -->
 
-<section class="section event" id="event" aria-label="event">
+<section class="section event" aria-label="event">
   <div class="container">
 
     <p class="section-subtitle">Como somos introduzidos</p>
@@ -542,23 +681,85 @@
               alt="Innovation & Technological Entrepreneurship Team" class="img-cover">
           </figure>
 
-          <time class="badge" datetime="2022-12-04">Cliente recebe os dados dos sensores em tempo real</time>
+          <time class="badge" datetime="2022-12-04" id="equip">Cliente recebe os dados dos sensores em tempo real</time>
       </li>
     </ul>
     <br><br><br>
   </div>
 </section>
-
-
-
-
-
-
-
 </article>
 </main>
 
+<section class="section event"  aria-label="event" >
+  <div class="container">
 
+    <p class="section-subtitle">Nossa Equipe</p>
+
+    <h2 class="h2 section-title">Pogramadores:</h2>
+
+<div class="cards">
+  <div class="card2">
+    <div class="imgBx">
+      <img src="img/maria.png" alt="">
+    </div>
+    <div class="contentBx">
+      <h2 class="price"><small>Maria</small></h2>
+      <a href="index.html" class="buy">Programador(a)</a>
+    </div>
+  </div>
+
+
+  <div class="card2">
+    <div class="imgBx">
+      <img src="img/gustavo.png" alt="">
+    </div>
+    <div class="contentBx">
+      <h2 class="price"><small>Gustavo Alves Maciel</small></h2>
+      <a href="https://github.com/GustavoAlvesMaciel" class="buy">Programador(a)</a>
+    </div>
+  </div>
+
+    <div class="card2">
+      <div class="imgBx">
+        <img src="img/kelvin.png" alt="">
+      </div>
+      <div class="contentBx">
+        <h2 class="price"><small>Kelvin Christian Rodrigues dos Santos</small></h2>
+        <a href="https://github.com/kelvinchriis" class="buy">Programador(a)</a>
+      </div>
+    </div>
+    <br><br>
+
+    <div class="card2">
+      <div class="imgBx">
+        <img src="img/matheus.png" alt="">
+      </div>
+      <div class="contentBx">
+        <h2 class="price"><small>Matheus Souza Santos</small></h2>
+        <a href="entrar.php" class="buy">Programador(a)</a>
+      </div>
+    </div>
+    <div class="card2">
+      <div class="imgBx">
+        <img src="img/juliaCampioto.png" alt="">
+      </div>
+      <div class="contentBx">
+        <h2 class="price"><small>Júlia Gonçalves Campioto</small></h2>
+        <a href="https://github.com/juliaacampioto" class="buy">Programador(a)</a>
+      </div>
+    </div>
+    <div class="card2">
+      <div class="imgBx">
+        <img src="img/juliaInada.png" alt="">
+      </div>
+      <div class="contentBx">
+        <h2 class="price"><small>Julia Inada de Freitas</small></h2>
+        <a href="https://github.com/JuliaIFreitas" class="buy">Programador(a)</a>
+      </div>
+    </div>
+  </div>
+</div>
+</section>
 
 
 
@@ -732,7 +933,10 @@
   -->
 <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
 <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
-
+<script src="https://vlibras.gov.br/app/vlibras-plugin.js"></script>
+<script>
+  new window.VLibras.Widget('https://vlibras.gov.br/app');
+</script>
 </body>
 
 </html>

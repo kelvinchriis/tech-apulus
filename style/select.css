@@ -1,0 +1,154 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;900&family=Josefin+Sans:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;1,100;1,200;1,300;1,400;1,500;1,600;1,700&family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap');
+
+* {
+    font-family: 'Poppins', sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+.cards {
+    padding: 200px;
+    flex-wrap: wrap;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    padding: 50px;
+}
+
+/* Resto do seu CSS anterior */
+
+.card,
+.card2,
+.card3 {
+    position: relative;
+    width: 320px;
+    height: 420px;
+    background: #aa7549;
+    border-radius: 20px;
+    overflow: hidden;
+    margin: auto;
+    margin-bottom: 20px; /* Adiciona margem inferior de 20px */
+}
+
+/* Resto do seu CSS anterior */
+
+
+.card:before,
+.card2:before,
+.card3:before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    width: 100%;
+    height: 100%;
+    background: #f3d7b4bd;
+    transform: skewY(345deg);
+    transition: 0.5s;
+}
+
+.card:hover::before,
+.card2:hover::before,
+.card3:hover::before {
+    transform: skewY(390deg);
+    top: -70%;
+}
+
+.card::after,
+.card2::after,
+.card3::after {
+    content: 'TechApulus';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    font-weight: 460;
+    font-size: 3.5em;
+    color: #f3d7b4bd;
+}
+
+.card .imgBx,
+.card2 .imgBx,
+.card3 .imgBx {
+    position: relative;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding-top: 20px;
+    z-index: 1;
+}
+
+.card .imgBx img,
+.card2 .imgBx img,
+.card3 .imgBx img {
+    max-width: 100%;
+    max-height: 200px;
+    transition: 0.5s;
+    border: 5px solid #f3d7b4;
+    border-radius: 10px;
+}
+
+.card:hover .imgBx img,
+.card2:hover .imgBx img,
+.card3:hover .imgBx img {
+    max-width: 40%;
+}
+
+.card .contentBx,
+.card2 .contentBx,
+.card3 .contentBx {
+    position: relative;
+    padding: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    z-index: 1;
+}
+
+.card .contentBx h3,
+.card2 .contentBx h3,
+.card3 .contentBx h3 {
+    font-size: 18px;
+    color: #f3d7b4;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.card .contentBx .price,
+.card2 .contentBx .price,
+.card3 .contentBx .price {
+    font-size: 24px;
+    color: #f3d7b4;
+    font-weight: 500;
+    letter-spacing: 1px;
+}
+
+.card .contentBx .buy,
+.card2 .contentBx .buy,
+.card3 .contentBx .buy {
+    position: relative;
+    top: 200px;
+    opacity: 0;
+    padding: 10px 30px;
+    margin-top: 15px;
+    color: #aa7549;
+    text-decoration: none;
+    background: #f3d7b4;
+    border-radius: 30px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    transition: 0.5s;
+}
+
+.card:hover .contentBx .buy,
+.card2:hover .contentBx .buy,
+.card3:hover .contentBx .buy {
+    top: 0px;
+    opacity: 1;
+}
+
+.price {
+    text-align: center;
+}
