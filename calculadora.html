@@ -5,8 +5,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Simulador financeiro</title>
-    <link rel="stylesheet" href="style/calculadora.css">
-    <link rel="stylesheet" href="style/style.css">
+    <link rel="stylesheet" href="css/calculadora.css">
+    <link rel="stylesheet" href="css/style.css">
 </head>
 
 <body>
@@ -19,11 +19,11 @@
                 <a href="index.html" class="navbar-link" data-nav-toggler>Home</a>
               </li>
     
-              <a href="login.html" class="header-action-btn login-btn">Cadastro/Login</a>
+              <a href="login/login.html" class="header-action-btn login-btn">Cadastro/Login</a>
             </div>
         </div>
       </header>
-      <br><br><br><br>
+      <br><br><br><br><br><br><br>
 
 
       <div class="box">
@@ -58,13 +58,23 @@
 
             </form>
         </div>
-        <div class="img-box"> <h3 class="result">Resultado:<div id="div_calculadora">
-           <br>Você, atualmente está perdendo cerca de 0% da sua produção. Equivalente a R$0,00
-           <br><br>Com serviço de controle de temperatura e umidade você irá conseguir aumentar o lucro em R$ 0,00
-           <br><br>Entre em contato com a TechApulus agora mesmo, pelos nossos canais. 
-        </div></h3><br> 
-        </div>
-        
+        <div class="img-box"> <div class="form-box">
+          <h2  class="h1 hero-title">Resultado:</h2>
+          <h4 class="result"><div id="div_calculadora">
+           Você, atualmente está perdendo cerca de 0% da sua produção. Equivalente a <h2>R$ 0,00</h2>
+           <br>Com serviço de controle de temperatura e umidade você irá conseguir aumentar o lucro em <h2>R$ 0,00</h2>
+        </div></h4><br> 
+        </div> 
+      </div>
+    </div>
+
+      <br>
+      <div class="box">
+        <div class="form-box">
+        <h1 class="h2 hero-title">Entre em contato com a TechApulus agora mesmo!</h1>
+        <a href="login/login.html" class="header-action-btn login-btn">Cadastro/Login</a>
+
+      </div>
     </div>
   <br>
   <br>
@@ -257,8 +267,8 @@
         var lucro = sacasTechApulus * valorSaca;
 
         div_calculadora.innerHTML = `
-           <br>Você, atualmente está perdendo cerca de 15% da sua produção. Equivalente a R$${valorSacasPerdidas.toFixed()}
-           <br><br>Com serviço de controle de temperatura e umidade você irá conseguir aumentar o lucro em R$${lucro}
+           <br>Você, atualmente está perdendo cerca de 15% da sua produção. Equivalente a <h2>R$${valorSacasPerdidas.toFixed()}</h2>
+           <br><br>Com serviço de controle de temperatura e umidade você irá conseguir aumentar o lucro em <h2>R$${lucro}</h2>
            <br><br>Entre em contato com a TechApulus agora mesmo, pelos nossos canais. 
         `;
     }

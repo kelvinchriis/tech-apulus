@@ -7,6 +7,7 @@
     <title>Login</title>
     <link rel="stylesheet" href="style/login.css">
     <link rel="stylesheet" href="style/style.css">
+
     <link rel="shortcut icon" href="img/favicon.png" type="image/x-icon">
     <link href="https://fonts.googleapis.com/css2?family=Urbanist:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 </head>
@@ -38,25 +39,28 @@
                     <div class="selector-field" id="selector_field" onclick="changeTela()">Cadastrar</div>
                 </div>
 
-                <h1 class="title" id="title">LOGIN</h1>
+                <h1 class="titulo" id="title">LOGIN</h1>
 
                 <div class="frame-campos">
 
                     <!-- tela login -->
                     <div id="campos_login">
-                        <input type="text" id="inputEmailLogin" class="campos campo-space-login" placeholder="E-mail">
-                        <input type="password" id="inputSenhaLogin" class="campos" placeholder="Senha">
-                        <p id="forget">esqueceu a senha?</p>
+                        <input type="email" id="inputEmailLogin" class="campos campo-space-login" placeholder="E-mail" required>
+                        <input type="password" id="inputSenhaLogin" class="campos" placeholder="Senha" required>
+                        <br><br>
+                      
+
+                        <p id="forget" class="forgot-password">Esqueci minha senha?</p>
                         <button class="button" id="botao_log" onclick="verifyLogin()">Entrar</button>
                     </div>
 
                     <!-- tela cadastro -->
                     <div id="campos_cadastro" style="display: none">
-                        <input type="text" id="inputEmpresa" class="campos campo-space-cadastro" placeholder="Empresa"> 
-                        <input type="text" id="inputCNPJ" class="campos campo-space-cadastro" placeholder="CNPJ">
-                        <input type="text" id="inputEmailCadastro" class="campos campo-space-cadastro"
-                            placeholder="E-mail">
-                        <input type="password" id="inputSenhaCadastro" class="campos" placeholder="Senha"><br>
+                        <input type="text" id="inputEmpresa" class="campos campo-space-cadastro" placeholder="Empresa" required> 
+                        <input type="number" id="inputCNPJ" class="campos campo-space-cadastro" placeholder="CNPJ" required>
+                        <input type="email" id="inputEmailCadastro" class="campos campo-space-cadastro"
+                            placeholder="E-mail" required>
+                        <input type="password" id="inputSenhaCadastro" class="campos" placeholder="Senha" required><br>
                         <button class="button" id="botao_cad" onclick="avancarCadEnd()">Avançar</button><br>
                     </div>
 
@@ -65,26 +69,26 @@
                         <div class="inline_campos">
                             <input type="text" id="inputLogradouro" class="campos campo-space-cadastro"
                                 placeholder="Logradouro">
-                            <input type="password" id="inputNum" class="campos" placeholder="Número">
+                            <input type="number" id="inputNum" class="campos" placeholder="Número">
                         </div>
                         <div class="inline_campos">
-                            <input type="text" id="inputBairro" class="campos campo-space-cadastro" placeholder="Bairro">
-                            <input type="text" id="inputCidade" class="campos" placeholder="Cidade">
+                            <input type="text" id="inputBairro" class="campos campo-space-cadastro" placeholder="Bairro" required>
+                            <input type="text" id="inputCidade" class="campos" placeholder="Cidade" required>
                         </div>
                         <div class="inline_campos">
-                            <input type="text" id="inputEstado" class="campos" placeholder="Estado">
-                            <input type="password" id="inputCEP" class="campos" placeholder="CEP">
+                            <input type="text" id="inputEstado" class="campos" placeholder="Estado" required>
+                            <input type="number" id="inputCEP" class="campos" placeholder="CEP" required>
                         </div><br>
                         <button class="button" id="botao_end" onclick="avancarCadCont()">Avançar</button><br>
                     </div>
                     
                     <!-- tela contato -->
                     <div id="campos_contato" style="display: none;">
-                        <input type="text" id="inputTelP" class="campos campo-space-cadastro"
-                            placeholder="Telefone Principal">
-                        <input type="text" id="inputTelS" class="campos campo-space-cadastro" placeholder="Telefone Secundário">
-                        <input type="text" id="inputEmailP" class="campos campo-space-cadastro" placeholder="E-mail Principal">
-                        <input type="password" id="inputEmailS" class="campos" placeholder="E-mail Secúdario"><br>
+                        <input type="number" id="inputTelP" class="campos campo-space-cadastro"
+                            placeholder="Telefone Principal" required>
+                        <input type="number" id="inputTelS" class="campos campo-space-cadastro" placeholder="Telefone Secundário"required>
+                        <input type="email" id="inputEmailP" class="campos campo-space-cadastro" placeholder="E-mail Principal"required>
+                        <input type="email" id="inputEmailS" class="campos" placeholder="E-mail Secúdario"required><br>
                         <button class="button" id="botao_cont" onclick="avancarCadFazenda()">Avançar</button><br>
                     </div>
 
@@ -93,7 +97,7 @@
                         <input type="number" id="inputQtdFazenda" class="campos campo-space-cadastro" placeholder="Quantidade de fazendas">
                         <input type="number" id="inputQtdArmazem" class="campos campo-space-cadastro"
                          placeholder="Quantidade de Armazém">
-                        <input type="password" id="inputTamanho" class="campos" placeholder="Tamanho Fazenda"><br>
+                        <input type="number" id="inputTamanho" class="campos" placeholder="Tamanho Fazenda"><br>
                         <button class="button" id="botao_faz" onclick="finalCad()">Cadastrar</button><br>
                     </div>
                    

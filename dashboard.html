@@ -7,6 +7,8 @@
   <title>Dashboard</title>
   <link rel="shortcut icon" href="img/logo.png" type="image/svg+xml">
   <link rel="stylesheet" href="style/dashboard.css">
+  <link rel="stylesheet" href="style/style.css">
+
 
   <link href="https://fonts.googleapis.com/css2?family=Urbanist:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 </head>
@@ -19,157 +21,258 @@
         <div class="bar-menu"></div>
         <div class="bar-menu"></div>
       </div>
-      <div class="dash"></div>
-      <div class="dash"></div>
-      <div class="dash"></div>
-      <div class="dash"></div>
-      <div class="dash"></div>
-      <div class="dash"></div>
-      <div class="dash"></div>
+      <a href="index.html"  class="dash"><ion-icon name="home-outline"></ion-icon></a>
+      <a href="#"  class="dash"><ion-icon name="home-outline"></ion-icon></a>
+      <a href="#" class="dash"><ion-icon name="person-outline"></ion-icon></a>
     </div>
   </div>
   <div style="overflow: hidden;">
-    <div class="header"></div>
-    <div class="mid-header"></div>
+
+    <br> <br> <br>
+
+
 
     <div class="content-dash">
       <div>
         <div class="grafics">
           <div class="grafic">
-            <canvas id="temperatura"></canvas>
+            <canvas id="temperaturaARM1"></canvas>
+            <a class="header-action-btn login-btn" id="btnArm1" onclick="document.getElementById('arm1').style.display='block'">Ver Detalhes</a>
+
           </div>
           <div class="grafic">
-            <canvas id="umidade"></canvas>
+            <canvas id="temperaturaARM2"></canvas>
+            <a class="header-action-btn login-btn">Ver Detalhes</a>
+          </div>
+          <div class="grafic">
+            <canvas id="temperaturaARM3"></canvas>
+            <a class="header-action-btn login-btn">Ver Detalhes</a>
+          </div>
+        </div>
+        <div class="grafics">
+          <div class="grafic">
+            <canvas id="temperaturaARM4"></canvas>
+            <button>Ver Detalhes</button>
+          </div>
+          <div class="grafic">
+            <canvas id="temperaturaARM5"></canvas>
+            <button>Ver Detalhes</button>
           </div>
         </div>
         <div class="grafic grafPizza">
           <canvas id="armazens"></canvas>
         </div>
       </div>
-      
-      <br> <br> <br>
 
-      <div class="divTabelas">
-        <table class="tabelaKPI" border="3px">
-          <tr>
-            <td style="background-color: rgb(107, 64, 35); color: white;">Status do Sensor</td>
-            <td style="background-color: rgb(107, 64, 35); color: white;">Sensor</td>
-            <td style="background-color: rgb(107, 64, 35); color: white;">Armazém</td>
-          </tr>
-          <tr>
-            <td style="background-color: rgb(173, 116, 78);">Ativo</td>
-            <td style="background-color: rgb(173, 116, 78)">1</td>
-            <td style="background-color: rgb(173, 116, 78)">1000</td>
-          </tr>
-          <tr>
-            <td style="background-color: rgb(173, 116, 78)">Inativo</td>
-            <td style="background-color: rgb(173, 116, 78)">2</td>
-            <td style="background-color: rgb(173, 116, 78)">1002</td>
-          </tr>
-          <tr>
-            <td style="background-color: rgb(173, 116, 78)">Manutenção</td>
-            <td style="background-color: rgb(173, 116, 78)">3</td>
-            <td style="background-color: rgb(173, 116, 78)">1003</td>
-          </tr>
-        </table>
+      <div class="armazensDetalhes">
+        <div id="arm1" class="armazem1">
+          <div class="cardz">
+            <div class="cardIndividual">
+              Temperatura Adequada: <br>
+              26
+            </div>
+            <div class="cardIndividual">
+              Temperatura Média: <br>
+              29
+            </div>
+            <div class="cardIndividual">
+              Temperatura Máxima: <br>
+              33
+            </div>
+          </div>
+          <div class="grafics">
+            <div class="grafic">
+              <canvas id="temperaturaARM1"></canvas>
+            </div>
+            <div class="grafic">
+              <canvas id="umidade"></canvas>
+            </div>
+          </div>
+          <br>
+          <a href="dashboard.html" class="header-action-btn login-btn">Voltar</a>
 
-        <table class="tabelaKPI" border="3px">
-          <tr>
-            <td style="background-color: rgb(107, 64, 35); color: white;">Armazém</td>
-            <td style="background-color: rgb(107, 64, 35); color: white;">Perdas</td>
-          </tr>
-          <tr>
-            <td style="background-color: rgb(173, 116, 78)">1000</td>
-            <td style="background-color: rgb(173, 116, 78)">22%</td>
-          </tr>
-          <tr>
-            <td style="background-color: rgb(173, 116, 78)">1001</td>
-            <td style="background-color: rgb(173, 116, 78)">25%</td>
-          </tr>
-          <tr>
-            <td style="background-color: rgb(173, 116, 78)">1003</td>
-            <td style="background-color: rgb(173, 116, 78)">13%</td>
-          </tr>
-        </table>
-
-        <table class="tabelaKPI" border="3px">
-          <tr>
-            <td style="background-color: rgb(107, 64, 35); color: white;">Armazém com maior perda</td>
-          </tr>
-          <tr>
-            <td style="background-color: rgb(173, 116, 78)">1° 1001</td>
-          </tr>
-          <tr>
-            <td style="background-color: rgb(173, 116, 78)">2° 1002</td>
-          </tr>
-          <tr>
-            <td style="background-color: rgb(173, 116, 78)">3° 1003</td>
-          </tr>
-        </table>
-      </div>
-      <br> <br> <br>
-      <div class="divTabelas">
-        <table class="tabelaKPI" border="3px">
-          <tr>
-            <td style="background-color: rgb(107, 64, 35); color: white;">Armazém com menor perda</td>
-          </tr>
-          <tr>
-            <td style="background-color: rgb(173, 116, 78)">1° 1000</td>
-          </tr>
-          <tr>
-            <td style="background-color: rgb(173, 116, 78)">2° 1002</td>
-          </tr>
-          <tr>
-            <td style="background-color: rgb(173, 116, 78)">3° 1001</td>
-          </tr>
-        </table>
-        
-        <table class="tabelaKPI" border="3px">
-          <tr>
-            <td style="background-color: rgb(107, 64, 35); color: white;">Maiores Armazéns</td>
-          </tr>
-          <tr>
-            <td style="background-color: rgb(173, 116, 78)">1° 1002</td>
-          </tr>
-          <tr>
-            <td style="background-color: rgb(173, 116, 78)">2° 1000</td>
-          </tr>
-          <tr>
-            <td style="background-color: rgb(173, 116, 78)">3° 1001</td>
-          </tr>
-        </table>
-        
-        <table class="tabelaKPI" border="3px">
-          <tr>
-            <td style="background-color: rgb(107, 64, 35); color: white;">Menores Armazéns</td>
-          </tr>
-          <tr>
-            <td style="background-color: rgb(173, 116, 78)">1° 1001</td>
-          </tr>
-          <tr>
-            <td style="background-color: rgb(173, 116, 78)">2° 1000</td>
-          </tr>
-          <tr>
-            <td style="background-color: rgb(173, 116, 78)">3° 1002</td>
-          </tr>
-        </table>
+        </div>
       </div>
 
-        <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+      <br> <br> <br>
+      <!-- <div>
+        <div>
+          <h1>Visão geral dos Armazéns</h1>
+        </div>
+        <div class="divTabelas">
+          <table class="tabelaKPI" border="3px">
+            <tr>
+              <td style="background-color: #9c6b43; color: white;">Status do Sensor</td>
+              <td style="background-color: #9c6b43; color: white;">Sensor</td>
+              <td style="background-color: #9c6b43; color: white;">Armazém</td>
+            </tr>
+            <tr>
+              <td style="background-color: rgb(173, 116, 78);">Ativo</td>
+              <td style="background-color: rgb(173, 116, 78)">1</td>
+              <td style="background-color: rgb(173, 116, 78)">1000</td>
+            </tr>
+            <tr>
+              <td style="background-color: rgb(173, 116, 78)">Inativo</td>
+              <td style="background-color: rgb(173, 116, 78)">2</td>
+              <td style="background-color: rgb(173, 116, 78)">1002</td>
+            </tr>
+            <tr>
+              <td style="background-color: rgb(173, 116, 78)">Manutenção</td>
+              <td style="background-color: rgb(173, 116, 78)">3</td>
+              <td style="background-color: rgb(173, 116, 78)">1003</td>
+            </tr>
+          </table>
+
+          <table class="tabelaKPI" border="3px">
+            <tr>
+              <td style="background-color: rgb(107, 64, 35); color: white;">Armazém</td>
+              <td style="background-color: rgb(107, 64, 35); color: white;">Perdas</td>
+            </tr>
+            <tr>
+              <td style="background-color: rgb(173, 116, 78)">1000</td>
+              <td style="background-color: rgb(173, 116, 78)">22%</td>
+            </tr>
+            <tr>
+              <td style="background-color: rgb(173, 116, 78)">1001</td>
+              <td style="background-color: rgb(173, 116, 78)">25%</td>
+            </tr>
+            <tr>
+              <td style="background-color: rgb(173, 116, 78)">1003</td>
+              <td style="background-color: rgb(173, 116, 78)">13%</td>
+            </tr>
+          </table>
+
+          <table class="tabelaKPI" border="3px">
+            <tr>
+              <td style="background-color: rgb(107, 64, 35); color: white;">Armazém com maior perda</td>
+            </tr>
+            <tr>
+              <td style="background-color: rgb(173, 116, 78)">1° 1001</td>
+            </tr>
+            <tr>
+              <td style="background-color: rgb(173, 116, 78)">2° 1002</td>
+            </tr>
+            <tr>
+              <td style="background-color: rgb(173, 116, 78)">3° 1003</td>
+            </tr>
+          </table>
+        </div>
+        <br> <br> <br>
+        <div class="divTabelas">
+          <table class="tabelaKPI" border="3px">
+            <tr>
+              <td style="background-color: rgb(107, 64, 35); color: white;">Armazém com menor perda</td>
+            </tr>
+            <tr>
+              <td style="background-color: rgb(173, 116, 78)">1° 1000</td>
+            </tr>
+            <tr>
+              <td style="background-color: rgb(173, 116, 78)">2° 1002</td>
+            </tr>
+            <tr>
+              <td style="background-color: rgb(173, 116, 78)">3° 1001</td>
+            </tr>
+          </table>
+
+          <table class="tabelaKPI" border="3px">
+            <tr>
+              <td style="background-color: rgb(107, 64, 35); color: white;">Maiores Armazéns</td>
+            </tr>
+            <tr>
+              <td style="background-color: rgb(173, 116, 78)">1° 1002</td>
+            </tr>
+            <tr>
+              <td style="background-color: rgb(173, 116, 78)">2° 1000</td>
+            </tr>
+            <tr>
+              <td style="background-color: rgb(173, 116, 78)">3° 1001</td>
+            </tr>
+          </table>
+
+          <table class="tabelaKPI" border="3px">
+            <tr>
+              <td style="background-color: rgb(107, 64, 35); color: white;">Menores Armazéns</td>
+            </tr>
+            <tr>
+              <td style="background-color: rgb(173, 116, 78)">1° 1001</td>
+            </tr>
+            <tr>
+              <td style="background-color: rgb(173, 116, 78)">2° 1000</td>
+            </tr>
+            <tr>
+              <td style="background-color: rgb(173, 116, 78)">3° 1002</td>
+            </tr>
+          </table>
+        </div>
+      </div> -->
+      <br> <br> <br>
+
+      <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
       <script>
-        const temperatura = document.getElementById('temperatura');
+        const umidade = document.getElementById('umidade');
 
-        new Chart(temperatura, {
+        new Chart(umidade, {
           type: 'line',
           data: {
             labels: ['12:00', '12:07', '12:14', '12:21', '12:28', '12:35'],
             datasets: [{
-              label: 'Variação de temperatura',
-              data: [29, 30, 30, 31, 32, 32],
-              borderWidth: 1,
-              backgroundColor: '#d06a17',
-              borderColor: '#d06a17',
+              label: 'Variação de umidade Armazém 1',
+              data: [58, 59, 60, 60, 58, 61],
+              borderWidth: 3,
+              backgroundColor: '#9c6b43',
+              borderColor: '#9c6b43',
+              color: 'white'
+            }]
+          },
+          options: {
+            scales: {
+              y: {
+                beginAtZero: true
+              }
+            }
+          }
+        });
+
+        const armazens = document.getElementById('armazens');
+
+        new Chart(armazens, {
+          type: 'doughnut',
+          data: {
+            labels: [
+              'Armazém 1',
+              'Armazém 2',
+              'Armazém 3',
+              'Armazém 4',
+              'Armazém 5',
+            ],
+            datasets: [{
+              label: 'Perdas em %',
+              data: [7, 18, 11, 19, 45],
+              backgroundColor: [
+                'rgb(255, 99, 132)',
+                'rgb(54, 162, 235)',
+                'rgb(255, 205, 86)',
+                'rgb(231, 100, 82)',
+                'rgb(54, 200, 20)',
+              ],
+              hoverOffset: 4
+            }]
+          }
+        });
+
+        const temperaturaARM1 = document.getElementById('temperaturaARM1');
+
+        new Chart(temperaturaARM1, {
+          type: 'line',
+          data: {
+            labels: ['12:00', '12:07', '12:14', '12:21', '12:28', '12:35'],
+            datasets: [{
+              label: 'Variação de temperatura Armazém 1',
+              data: [28, 26, 29, 30, 31, 30],
+              borderWidth: 3,
+              backgroundColor: '#9c6b43',
+              borderColor: '#9c6b43',
               color: 'white'
             }]
           },
@@ -197,18 +300,19 @@
             }
           }
         });
-        const umidade = document.getElementById('umidade');
 
-        new Chart(umidade, {
+        const temperaturaARM2 = document.getElementById('temperaturaARM2');
+
+        new Chart(temperaturaARM2, {
           type: 'line',
           data: {
             labels: ['12:00', '12:07', '12:14', '12:21', '12:28', '12:35'],
             datasets: [{
-              label: 'Variação de umidade',
-              data: [58, 59, 60, 60, 58, 61],
+              label: 'Variação de temperatura Armazém 2',
+              data: [34, 30, 29, 28, 31, 32],
               borderWidth: 3,
-              backgroundColor: '#d06a17',
-              borderColor: '#d06a17',
+              backgroundColor: '#9c6b43',
+              borderColor: '#9c6b43',
               color: 'white'
             }]
           },
@@ -218,41 +322,153 @@
                 beginAtZero: true
               }
             }
+          },
+          options: {
+            scales: {
+              y: {
+                beginAtZero: true,
+                plugins: {
+                  title: {
+                    display: true,
+                    text: 'Custom Chart Title',
+                    font: {
+                      //fontSize: '30pt'
+                    }
+                  }
+                }
+              }
+            }
           }
         });
-        
-    const armazens = document.getElementById('armazens');
 
-    new Chart(armazens, {
-        type: 'doughnut',
-        data: {
-            labels: [
-                'Armazém 1',
-                'Armazém 2',
-                'Armazém 3',
-                'Armazém 4',
-                'Armazém 5',
-            ],
+        const temperaturaARM3 = document.getElementById('temperaturaARM3');
+
+        new Chart(temperaturaARM3, {
+          type: 'line',
+          data: {
+            labels: ['12:00', '12:07', '12:14', '12:21', '12:28', '12:35'],
             datasets: [{
-                label: 'My First Dataset',
-                data: [7, 18, 11, 19, 45],
-                backgroundColor: [
-                    'rgb(255, 99, 132)',
-                    'rgb(54, 162, 235)',
-                    'rgb(255, 205, 86)',
-                    'rgb(231, 100, 82)',
-                    'rgb(54, 200, 20)',
-                ],
-                hoverOffset: 4
+              label: 'Variação de temperatura Armazém 3',
+              data: [29, 30, 30, 31, 32, 32],
+              borderWidth: 3,
+              backgroundColor: '#9c6b43',
+              borderColor: '#9c6b43',
+              color: 'white'
             }]
-        }
-    });
+          },
+          options: {
+            scales: {
+              y: {
+                beginAtZero: true
+              }
+            }
+          },
+          options: {
+            scales: {
+              y: {
+                beginAtZero: true,
+                plugins: {
+                  title: {
+                    display: true,
+                    text: 'Custom Chart Title',
+                    font: {
+                      //fontSize: '30pt'
+                    }
+                  }
+                }
+              }
+            }
+          }
+        });
+        const temperaturaARM4 = document.getElementById('temperaturaARM4');
+
+        new Chart(temperaturaARM4, {
+          type: 'line',
+          data: {
+            labels: ['12:00', '12:07', '12:14', '12:21', '12:28', '12:35'],
+            datasets: [{
+              label: 'Variação de temperatura Armazém 3',
+              data: [27, 29, 30, 31, 30, 28],
+              borderWidth: 3,
+              backgroundColor: '#9c6b43',
+              borderColor: '#9c6b43',
+              color: 'white'
+            }]
+          },
+          options: {
+            scales: {
+              y: {
+                beginAtZero: true
+              }
+            }
+          },
+          options: {
+            scales: {
+              y: {
+                beginAtZero: true,
+                plugins: {
+                  title: {
+                    display: true,
+                    text: 'Custom Chart Title',
+                    font: {
+                      //fontSize: '30pt'
+                    }
+                  }
+                }
+              }
+            }
+          }
+        });
+        const temperaturaARM5 = document.getElementById('temperaturaARM5');
+
+        new Chart(temperaturaARM5, {
+          type: 'line',
+          data: {
+            labels: ['12:00', '12:07', '12:14', '12:21', '12:28', '12:35'],
+            datasets: [{
+              label: 'Variação de temperatura Armazém 3',
+              data: [28, 31, 29, 29, 30, 32],
+              borderWidth: 3,
+              backgroundColor: '#9c6b43',
+              borderColor: '#9c6b43',
+              color: 'white'
+            }]
+          },
+          options: {
+            scales: {
+              y: {
+                beginAtZero: true
+              }
+            }
+          },
+          options: {
+            scales: {
+              y: {
+                beginAtZero: true,
+                plugins: {
+                  title: {
+                    display: true,
+                    text: 'Custom Chart Title',
+                    font: {
+                      //fontSize: '30pt'
+                    }
+                  }
+                }
+              }
+            }
+          }
+        });
+
       </script>
 
     </div>
   </div>
-
 </body>
 
 </html>
 <script type="text/javascript" src="scripts/dashboard.js"></script>
+<!-- 
+    - ionicon link
+  -->
+<script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+<script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>

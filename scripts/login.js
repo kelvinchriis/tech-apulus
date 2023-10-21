@@ -185,7 +185,7 @@ function telaLog() {
     content_image.classList.remove("content-logo-active")
     //adcionando o esqueceu a senha e alterando titulo
     forget.style.display = "block"
-    title.innerHTML = "Login"
+    title.innerHTML = "LOGIN"
     //atualizando posicao tela
     tela_status = 0
 }
@@ -199,7 +199,7 @@ function telaCad() {
     content_image.style.width = "55%"
     fields.style.width = "45%"
     //alterando título
-    title.innerHTML = "Cadastro"
+    title.innerHTML = "CADASTRO"
     title.style.margin = "0 0 7% 0"
     //alterar para campos do cadastro
     frameClear()
@@ -212,7 +212,7 @@ function telaCad() {
     //invertento posição do seletor para a direita
     selector_field_position.style.justifyContent = "right"
     //alterando de "cadastrar" para "login" o seletor e mudando a direção da borda
-    selector_field.innerHTML = "Login"
+    selector_field.innerHTML = "LOGIN"
     selector_field.style.borderRadius = "20px 0 0 20px"
     selector_field.style.justifyContent = "left"
     selector_field.style.paddingLeft = "4%"
