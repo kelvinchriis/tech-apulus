@@ -16,16 +16,3 @@ function menuClick() {
 		status_menu = 0;
 	}
 }
-
-var status_card = 0
-var cardP = document.querySelector('.armazem1')
-function mostrarDetalhes(){
-	if (status_card == 0){
-		cardP.classList.add('armazem-active');
-		status_card = 1;
-	}
-	else{
-		cardP.classList.remove('armazem-active');
-		status_card = 0;
-	}
-}

@@ -21,9 +21,9 @@
         <div class="bar-menu"></div>
         <div class="bar-menu"></div>
       </div>
-      <a href="index.html" class="dash"><ion-icon name="home-outline" class="ionicons"></ion-icon></a>
-      <a href="#" class="dash"><ion-icon name="home-outline" class="ionicons"></ion-icon></a>
-      <a href="#" class="dash"><ion-icon name="person-outline" class="ionicons"></ion-icon></a>
+        <a href="index.html" class="dash"><ion-icon name="home-outline" class="ionicons"></ion-icon></a>
+        <a href="#" class="dash"><ion-icon name="document-outline" class="ionicons"></ion-icon></a>
+        <a href="#" class="dash"><ion-icon name="person-outline" class="ionicons"></ion-icon></a>
     </div>
   </div>
   <div style="overflow: hidden;">
@@ -94,14 +94,22 @@
           <div class="grafics">
             <div class="grafic">
               <canvas id="temperaturaARM1dt"></canvas>
-            </div>
-            <div class="grafic">
+            </div> <br>
+            <div class="grafic" style="margin-left: 30%;">
               <canvas id="umidadeARM1dt"></canvas>
             </div>
-          </div>
           <br>
-          <a onclick="document.getElementById('arm1').style.display='none'"
-            class="header-action-btn login-btn">Voltar</a>
+          </div> <br>
+          <a onclick="document.getElementById('arm1').style.display='none'" class="header-action-btn login-btn">Voltar</a>
+          <div class="avisoArmazem">
+            <a href="#"><ion-icon name="eye" class="ionicons"></ion-icon></a>
+            <span>Status do Armazém:</span>
+            <a href="#"><ion-icon name="eye" class="ionicons"></ion-icon></a> <br>
+            <span>
+              Temperatura <span style="color: orange;">acima da Média</span> <br>
+              Mais atenção recomendada!
+            </span>
+          </div>
         </div>
 
         <div id="arm2" class="armazem">
@@ -131,6 +139,15 @@
           <br>
           <a onclick="document.getElementById('arm2').style.display='none'"
             class="header-action-btn login-btn">Voltar</a>
+            <div class="avisoArmazem">
+              <a href="#"><ion-icon name="warning" class="ionicons"></ion-icon></a>
+              <span>Status do Armazém:</span>
+              <a href="#"><ion-icon name="warning" class="ionicons"></ion-icon></a> <br>
+              <span>
+                Temperatura <span style="color: red;">CRÍTICA</span>!!<br>
+                Requer ação imediata!!
+              </span>
+            </div>
         </div>
 
         <div id="arm3" class="armazem">
@@ -160,6 +177,15 @@
           <br>
           <a onclick="document.getElementById('arm3').style.display='none'"
             class="header-action-btn login-btn">Voltar</a>
+            <div class="avisoArmazem">
+              <a href="#"><ion-icon name="eye" class="ionicons"></ion-icon></a>
+              <span>Status do Armazém:</span>
+              <a href="#"><ion-icon name="eye" class="ionicons"></ion-icon></a> <br>
+              <span>
+                Temperatura <span style="color: orange;">acima da Média</span> <br>
+                Mais atenção recomendada!
+              </span>
+            </div>
         </div>
 
         <div id="arm4" class="armazem">
@@ -189,6 +215,15 @@
           <br>
           <a onclick="document.getElementById('arm4').style.display='none'"
             class="header-action-btn login-btn">Voltar</a>
+            <div class="avisoArmazem">
+              <a href="#"><ion-icon name="sparkles" class="ionicons"></ion-icon></a>
+              <span>Status do Armazém:</span>
+              <a href="#"><ion-icon name="sparkles" class="ionicons"></ion-icon></a> <br>
+              <span>
+                Temperatura <span style="color: lime;">Aceitável</span> <br>
+                Grãos estáveis!
+              </span>
+            </div>
         </div>
 
         <div id="arm5" class="armazem">
@@ -218,6 +253,15 @@
           <br>
           <a onclick="document.getElementById('arm5').style.display='none'"
             class="header-action-btn login-btn">Voltar</a>
+            <div class="avisoArmazem">
+              <a href="#"><ion-icon name="checkmark-circle" class="ionicons"></ion-icon></a>
+              <span>Status do Armazém:</span>
+              <a href="#"><ion-icon name="eye" class="ionicons"></ion-icon></a> <br>
+              <span>
+                Temperatura <span style="color: blue;">Abaixo do Adequado</span> <br>
+                Requer mais atenção!
+              </span>
+            </div>
         </div>
 
         <br> <br> <br>
@@ -380,7 +424,7 @@
                 labels: ['12:00', '12:07', '12:14', '12:21', '12:28', '12:35'],
                 datasets: [{
                   label: 'Variação de temperatura Armazém 4',
-                  data: [27, 29, 30, 31, 30, 28],
+                  data: [24, 25, 24, 26, 25, 27],
                   borderWidth: 3,
                   backgroundColor: '#9c6b43',
                   borderColor: '#9c6b43',
@@ -419,7 +463,7 @@
                 labels: ['12:00', '12:07', '12:14', '12:21', '12:28', '12:35'],
                 datasets: [{
                   label: 'Variação de temperatura Armazém 5',
-                  data: [28, 31, 29, 29, 30, 32],
+                  data: [20, 22, 24, 25, 26, 24],
                   borderWidth: 3,
                   backgroundColor: '#9c6b43',
                   borderColor: '#9c6b43',
@@ -656,7 +700,7 @@
                 labels: ['12:00', '12:07', '12:14', '12:21', '12:28', '12:35'],
                 datasets: [{
                   label: 'Variação de temperatura Armazém 4',
-                  data: [27, 29, 30, 31, 30, 28],
+                  data: [24, 25, 24, 26, 25, 27],
                   borderWidth: 3,
                   backgroundColor: '#9c6b43',
                   borderColor: '#9c6b43',
@@ -720,7 +764,7 @@
                 labels: ['12:00', '12:07', '12:14', '12:21', '12:28', '12:35'],
                 datasets: [{
                   label: 'Variação de temperatura Armazém 5',
-                  data: [28, 31, 29, 29, 30, 32],
+                  data: [20, 22, 24, 25, 26, 24],
                   borderWidth: 3,
                   backgroundColor: '#9c6b43',
                   borderColor: '#9c6b43',
