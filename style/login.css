@@ -124,10 +124,15 @@ img {
     padding: 3px 20px 3px 20px;
     height: 40px; 
     border: 2px solid #a5744c;
+    border-color: ;
     background-color: #f3d7b4;
     font-weight: 500;
     border-radius: 30px;
     font-size: 16px;
+}
+
+.campos:focus {
+    outline: none;
 }
 
 .inline_campos {
@@ -143,17 +148,10 @@ img {
     margin: 0 0 8% 0;
 }
 
-#forget {
-    margin: 0; 
-    font-size: 10pt; 
-    cursor: pointer; 
-    width: 26%;
-    margin: 0 37% 0 37%;
-}
 
 .button {
     padding: 10px 20px; 
-    margin-top: 15%;
+    margin-top: 13%;
     background-color: #2c241e; 
     color: #f3d7b4;
     border: none; 
@@ -173,8 +171,13 @@ img {
 }
 
 .forgot-password {
+    margin: 0; 
+    font-size: 10pt; 
+    cursor: pointer; 
+    width: 30%;
+    margin: 0 35% 0 35%;
     text-align: center; 
-    font-size: 20px; 
+    font-size: 12px; 
     color: #f3d7b4; 
     cursor: pointer; 
     text-decoration: underline; 

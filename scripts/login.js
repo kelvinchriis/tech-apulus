@@ -9,15 +9,29 @@ var content_image = document.querySelector(".content-image");
 
 var tela_status = 0
 
+// variáveis tela login
+var email_login;
+var senha_login;
+
 // variáveis tela cadastro
 var empresa_cadastro;
 var cnpj_cadastro;
 var email_cadastro;
 var senha_cadastro;
 
-// variáveis tela login
-var email_login;
-var senha_login;
+// variáveis tela endereço
+var logradouro_endereco;
+var numero_endereco;
+var bairro_endereco;
+var cidade_endereco;
+var estado_endereco;
+var cep_endereco;
+
+// variáveis tela contato
+var telefonep_contato;
+var telefones_contato;
+var emailp_contato;
+var emails_contato;
 
 
 function changeTela() {
@@ -43,14 +57,26 @@ function avancarCadEnd() {
     email_cadastro = inputEmailCadastro.value
     senha_cadastro = inputSenhaCadastro.value
     inputEmailCadastro.placeholder = "E-mail"
-    inputEmailCadastro.style.border = "2px solid grey"
-
+    clearBorder()
 
     // Define uma expressão regular para validar endereços de e-mail
-    var regex = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/;
+    var regex = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,9}$/;
 
     // Verifica se o email inserido corresponde à expressão regular
-    if (regex.test(email_cadastro)) {
+    if (empresa_cadastro==""||cnpj_cadastro==""||senha_cadastro==""||email_cadastro=="") {
+        executarFuncTemporal(move, 8, 30)
+        if (empresa_cadastro=="") inputEmpresa.style.border = "2px solid #ffbf00"
+        if (cnpj_cadastro=="") {inputCNPJ.style.border = "2px solid #ffbf00"}
+        if (senha_cadastro=="") {inputSenhaCadastro.style.border = "2px solid #ffbf00"}
+        if (email_cadastro=="") {
+            inputEmailCadastro.style.border = "2px solid #ffbf00"
+        } else if (!regex.test(email_cadastro)) {
+            // Email é inválido
+            inputEmailCadastro.value = ""
+            inputEmailCadastro.placeholder = "E-mail inválido"
+            inputEmailCadastro.style.border = "2px solid red"
+        }
+    } else if (regex.test(email_cadastro)) {
         // Email é válido
         telaEnd()
     } else {
@@ -58,73 +84,50 @@ function avancarCadEnd() {
         executarFuncTemporal(move, 8, 30)
         inputEmailCadastro.value = ""
         inputEmailCadastro.placeholder = "E-mail inválido"
-        executarFuncTemporal(colorImputErrorCad, 10, 200)
+        inputEmailCadastro.style.border = "2px solid red"
     }
 
-}
-
-
-function executarFuncTemporal(funcao, vezes, intervalo) {
-    var contador = 0;
-
-    function executar() {
-        if (contador < vezes) {
-            funcao();
-            contador++;
-            setTimeout(executar, intervalo)
-        } else {
-            frame.style.marginLeft = `0px`;
-            inputEmailCadastro.style.border = "2px solid grey"
-            inputEmailLogin.style.border = "2px solid grey"
-            color_vez = "grey"
-        }
-    }
-
-    executar();
-    
-}
-
-function move() {
-    if (pixel_left == 0) {
-        pixel_left += 5;
-        frame.style.marginLeft = `${pixel_left}px`;
-    } else if (pixel_left == 5) {
-        pixel_left -= 10;
-        frame.style.marginLeft = `${pixel_left}px`;
-    } else if (pixel_left == -5) {
-        pixel_left += 10;
-        frame.style.marginLeft = `${pixel_left}px`;
-    }
-}
-
-var color_vez = "grey"
-
-function colorImputErrorLog() {
-    if (color_vez == "grey") {
-        inputEmailLogin.style.border = "3px solid red"
-        color_vez = "red"
-    } else if (color_vez == "red"){
-        inputEmailLogin.style.border = "3px solid grey"
-        color_vez = "grey"
-    } 
-}
-
-function colorImputErrorCad() {
-    if (color_vez == "grey") {
-        inputEmailCadastro.style.border = "3px solid red"
-        color_vez = "red"
-    } else if (color_vez == "red"){
-        inputEmailCadastro.style.border = "3px solid grey"
-        color_vez = "grey"
-    }
 }
 
 function avancarCadCont() {
-    telaCont()
+    logradouro_endereco = inputLogradouro.value
+    numero_endereco = inputNum.value
+    bairro_endereco = inputBairro.value
+    cidade_endereco = inputCidade.value
+    estado_endereco = inputEstado.value
+    cep_endereco = inputCEP.value
+    clearBorder()
+    if (logradouro_endereco==""||numero_endereco==""||bairro_endereco==""||cidade_endereco==""||estado_endereco==""||cep_endereco=="") {
+        executarFuncTemporal(move, 8, 30)
+        if (logradouro_endereco=="") inputLogradouro.style.border = "2px solid #ffbf00"
+        if (numero_endereco=="") {inputNum.style.border = "2px solid #ffbf00"}
+        if (bairro_endereco=="") {inputBairro.style.border = "2px solid #ffbf00"}
+        if (cidade_endereco=="") {inputCidade.style.border = "2px solid #ffbf00"}
+        if (estado_endereco=="") {inputEstado.style.border = "2px solid #ffbf00"}
+        if (cep_endereco=="") {inputCEP.style.border = "2px solid #ffbf00"}
+    } else {
+        telaCont()
+        clearBorder()
+    }
 }
 
 function avancarCadFazenda() {
-    telaFazendas()
+    telefonep_contato = inputTelP.value;
+    telefones_contato = inputTelS.value;
+    emailp_contato = inputEmailP.value;
+    emails_contato = inputEmailS.value;
+    
+    clearBorder()
+    if (telefonep_contato==""||telefones_contato==""||emailp_contato==""||emails_contato=="") {
+        executarFuncTemporal(move, 8, 30)
+        if (telefonep_contato=="") inputTelP.style.border = "2px solid #ffbf00"
+        if (telefones_contato=="") {inputTelS.style.border = "2px solid #ffbf00"}
+        if (emailp_contato=="") {inputEmailP.style.border = "2px solid #ffbf00"}
+        if (emails_contato=="") {inputEmailS.style.border = "2px solid #ffbf00"}
+    } else {
+        telaFazendas()
+        clearBorder()
+    }
 }
 
 function finalCad() {
@@ -136,7 +139,7 @@ function verifyLogin() {
     senha_login = inputSenhaLogin.value;
 
     // Define uma expressão regular para validar endereços de e-mail
-    var regex = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/;
+    var regex = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,9}$/;
 
     // Verifica se o email inserido corresponde à expressão regular
     if (regex.test(email_login)) {
@@ -147,11 +150,10 @@ function verifyLogin() {
             alert("Cadastro não encontrado")
         }
     } else {
+        executarFuncTemporal(move, 8, 30)
         inputEmailLogin.value = ""
         inputEmailLogin.placeholder = "E-mail inválido"
-        executarFuncTemporal(move, 8, 30)
-        executarFuncTemporal(colorImputErrorLog, 10, 200)
-
+        inputEmailLogin.style.border = "2px solid red"
     }
 
 }
@@ -161,7 +163,7 @@ function telaLog() {
     frameClear()
     campos_login.style.display = "block"
     //margem botao
-    botao_log.style.margin = "15% 0 0 0"
+    botao_log.style.margin = "13% 0 0 0"
     // diminuindo visualização no cadastro
     content_image.style.width = "55%"
     fields.style.width = "45%"
@@ -184,8 +186,9 @@ function telaLog() {
     //alterando imagem do fundo
     content_image.classList.remove("content-logo-active")
     //adcionando o esqueceu a senha e alterando titulo
-    forget.style.display = "block"
     title.innerHTML = "LOGIN"
+    // limpar campos e borda do cadatro 
+    clearCamposCadatro()
     //atualizando posicao tela
     tela_status = 0
 }
@@ -194,13 +197,13 @@ function telaCad() {
     //alterando imagem do fundo
     content_image.classList.add("content-logo-active")
     //margem botao
-    botao_cad.style.margin = "9% 0 0 0"
+    botao_cad.style.margin = "8% 0 0 0"
     // diminuindo visualização no cadastro
     content_image.style.width = "55%"
     fields.style.width = "45%"
     //alterando título
     title.innerHTML = "CADASTRO"
-    title.style.margin = "0 0 7% 0"
+    title.style.margin = "0 0 5% 0"
     //alterar para campos do cadastro
     frameClear()
     pointerClear()
@@ -219,8 +222,8 @@ function telaCad() {
     //mostrando barra de status cadastro
     pointer.style.display = "flex"
     point1.style.backgroundColor = "white"
-    //excluindo o esqueceu a senha e alterando titulo
-    forget.style.display = "none"
+    //limpando campos login
+    cleaCamposLogin()
     //atualizando posicao tela
     tela_status = 1
 }
@@ -237,8 +240,8 @@ function telaEnd() {
     title.innerHTML = "Endereço"
     campos_endereco.style.display = "block"
     selector_field.innerHTML = "Voltar"
-    title.style.margin = "0 0 10% 0"
-    botao_end.style.margin = "6% 0 0 0"
+    title.style.margin = "0 0 9% 0"
+    botao_end.style.margin = "5% 0 0 0"
     spaceFieldEnd()
     //atualizando posicao tela
     tela_status = 2
@@ -256,8 +259,8 @@ function telaCont() {
     title.innerHTML = "Contato"
     campos_contato.style.display = "block"
     selector_field.innerHTML = "Voltar"
-    title.style.margin = "0 0 7% 0"
-    botao_cont.style.margin = "9% 0 0 0"
+    title.style.margin = "0 0 5% 0"
+    botao_cont.style.margin = "8% 0 0 0"
     //atualizando posicao tela
     tela_status = 3
 }
@@ -271,12 +274,53 @@ function telaFazendas() {
     title.innerHTML = "Armazéns"
     campos_fazenda.style.display = "block"
     selector_field.innerHTML = "Voltar"
-    title.style.margin = "0 0 11% 0"
-    botao_faz.style.margin = "13% 0 0 0"
+    title.style.margin = "0 0 9% 0"
+    botao_faz.style.margin = "12% 0 0 0"
     inputQtdFazenda.style.margin = "0 0 12% 0"
     inputQtdArmazem.style.margin = "0 0 12% 0"
     //atualizando posicao tela
     tela_status = 4
+}
+
+function spaceFieldEnd() {
+    inputLogradouro.style.width = "48%"
+    inputNum.style.width = "48%"
+    inputBairro.style.width = "48%"
+    inputCidade.style.width = "48%"
+    inputEstado.style.width = "48%"
+    inputCEP.style.width = "48%"
+
+    inputLogradouro.style.margin = "0 0 9% 0"
+    inputBairro.style.margin = "0 0 9% 0"
+}
+
+// funções de limpeza de tela
+
+function clearCamposCadatro() {
+    inputEmpresa.value = ""
+    inputCNPJ.value = ""
+    inputEmailCadastro.value = ""
+    inputSenhaCadastro.value = ""
+    inputLogradouro.value = ""
+    inputNum.value = ""
+    inputBairro.value = ""
+    inputCidade.value = ""
+    inputEstado.value = ""
+    inputCEP.value = ""
+
+    inputTelP.value = ""
+    inputTelS.value = ""
+    inputEmailP.value = ""
+    inputEmailS.value = ""
+    inputEmailCadastro.value = ""
+    clearBorder()
+}
+
+function cleaCamposLogin() {
+    inputEmailLogin.value = ""
+    inputSenhaLogin.value = ""
+    inputEmailLogin.placeholder = "E-mail"
+    clearBorder()
 }
 
 function pointerClear() {
@@ -294,14 +338,57 @@ function frameClear() {
     campos_fazenda.style.display = "none"
 }
 
-function spaceFieldEnd() {
-    inputLogradouro.style.width = "48%"
-    inputNum.style.width = "48%"
-    inputBairro.style.width = "48%"
-    inputCidade.style.width = "48%"
-    inputEstado.style.width = "48%"
-    inputCEP.style.width = "48%"
+function clearBorder() {
+    inputEmpresa.style.border = "#a5744c"
+    inputCNPJ.style.border = "#a5744c"
+    inputSenhaCadastro.style.border = "#a5744c"
+    inputEmailCadastro.style.border = "#a5744c"
 
-    inputLogradouro.style.margin = "0 0 9% 0"
-    inputBairro.style.margin = "0 0 9% 0"
+    inputEmailLogin.style.border = "#a5744c"
+    inputSenhaLogin.style.border = "#a5744c"
+
+    inputLogradouro.style.border = "#a5744c"
+    inputNum.style.border = "#a5744c"
+    inputBairro.style.border = "#a5744c"
+    inputCidade.style.border = "#a5744c"
+    inputEstado.style.border = "#a5744c"
+    inputCEP.style.border = "#a5744c"
+
+    inputTelP.style.border = "#a5744c"
+    inputTelS.style.border = "#a5744c"
+    inputEmailP.style.border = "#a5744c"
+    inputEmailS.style.border = "#a5744c"
+}
+
+// função de repetição de outras funções
+
+function executarFuncTemporal(funcao, vezes, intervalo) {
+    var contador = 0;
+
+    function executar() {
+        if (contador < vezes) {
+            funcao();
+            contador++;
+            setTimeout(executar, intervalo)
+        } else {
+        }
+    }
+
+    executar();
+    
+}
+
+// função mover frame ao errar algo
+
+function move() {
+    if (pixel_left == 0) {
+        pixel_left += 5;
+        frame.style.marginLeft = `${pixel_left}px`;
+    } else if (pixel_left == 5) {
+        pixel_left -= 10;
+        frame.style.marginLeft = `${pixel_left}px`;
+    } else if (pixel_left == -5) {
+        pixel_left += 10;
+        frame.style.marginLeft = `${pixel_left}px`;
+    }
 }
