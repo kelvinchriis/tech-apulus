@@ -57,17 +57,27 @@ function avancarCadEnd() {
     email_cadastro = inputEmailCadastro.value
     senha_cadastro = inputSenhaCadastro.value
     inputEmailCadastro.placeholder = "E-mail"
+    inputSenhaCadastro.placeholder = "Senha"
+    inputCNPJ.placeholder = "CNPJ"
     clearBorder()
 
     // Define uma expressão regular para validar endereços de e-mail
     var regex = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,9}$/;
+
+
 
     // Verifica se o email inserido corresponde à expressão regular
     if (empresa_cadastro==""||cnpj_cadastro==""||senha_cadastro==""||email_cadastro=="") {
         executarFuncTemporal(move, 8, 30)
         if (empresa_cadastro=="") inputEmpresa.style.border = "2px solid #ffbf00"
         if (cnpj_cadastro=="") {inputCNPJ.style.border = "2px solid #ffbf00"}
-        if (senha_cadastro=="") {inputSenhaCadastro.style.border = "2px solid #ffbf00"}
+        if (senha_cadastro=="") {
+            inputSenhaCadastro.style.border = "2px solid #ffbf00"
+        } else if(!validarSenha(senha_cadastro)) {
+            inputSenhaCadastro.style.border = "2px solid red"
+            inputSenhaCadastro.value = ""
+            inputSenhaCadastro.placeholder = "Senha inválida"
+        }
         if (email_cadastro=="") {
             inputEmailCadastro.style.border = "2px solid #ffbf00"
         } else if (!regex.test(email_cadastro)) {
@@ -86,7 +96,7 @@ function avancarCadEnd() {
         inputEmailCadastro.placeholder = "E-mail inválido"
         inputEmailCadastro.style.border = "2px solid red"
     }
-
+    
 }
 
 function avancarCadCont() {
@@ -137,23 +147,28 @@ function finalCad() {
 function verifyLogin() {
     email_login = inputEmailLogin.value;
     senha_login = inputSenhaLogin.value;
+    clearBorder()
 
     // Define uma expressão regular para validar endereços de e-mail
     var regex = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,9}$/;
 
     // Verifica se o email inserido corresponde à expressão regular
-    if (regex.test(email_login)) {
-        // Email é válido
-        if (email_login == email_cadastro && senha_login == senha_cadastro) {
-            window.location.href = 'dashboard.html';
-        } else {
-            alert("Cadastro não encontrado")
-        }
+    if (email_login==""||senha_login=="") {
+        executarFuncTemporal(move, 8, 30)
+        if(email_login=="") {inputEmailLogin.style.border = "2px solid #ffbf00"}
+            else if (!regex.test(email_login)){
+                inputEmailLogin.style.border = "2px solid red"
+                inputEmailLogin.placeholder = "E-mail inválido"
+                inputEmailLogin.value = ""
+            }
+        if(senha_login=="") {inputSenhaLogin.style.border = "2px solid #ffbf00"}
+
+    } else if (email_login == email_cadastro && senha_login == senha_cadastro) {
+        window.location.href = 'dashboard.html';
     } else {
         executarFuncTemporal(move, 8, 30)
-        inputEmailLogin.value = ""
-        inputEmailLogin.placeholder = "E-mail inválido"
         inputEmailLogin.style.border = "2px solid red"
+        inputSenhaLogin.style.border = "2px solid red"
     }
 
 }
@@ -313,6 +328,8 @@ function clearCamposCadatro() {
     inputEmailP.value = ""
     inputEmailS.value = ""
     inputEmailCadastro.value = ""
+    inputSenhaCadastro.placeholder = "Senha"
+    inputEmailCadastro.placeholder = "E-mail"
     clearBorder()
 }
 
@@ -391,4 +408,24 @@ function move() {
         pixel_left += 10;
         frame.style.marginLeft = `${pixel_left}px`;
     }
+}
+
+function validarSenha(senha) {
+  // Verifica se a senha tem pelo menos 8 caracteres
+  if (senha.length < 8) {
+    return false;
+  }
+
+  // Verifica se a senha contém pelo menos uma letra maiúscula
+  if (!/[A-Z]/.test(senha)) {
+    return false;
+  }
+
+  // Verifica se a senha contém pelo menos um caractere especial (pode ser personalizado)
+  if (!/[$&+,:;=?@#|'<>.^*()%!-_]/.test(senha)) {
+    return false;
+  }
+
+  // Se todas as condições forem atendidas, a senha é válida
+  return true;
 }
