@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Fazendas</title>
+  <link rel="shortcut icon" href="img/logo.png" type="image/svg+xml">
+  <link rel="stylesheet" href="style/dashboard.css">
+  <link rel="stylesheet" href="style/style.css">
+  <link rel="stylesheet" type="text/css" href="style/calculadora.css">
+  <link rel="stylesheet" type="text/css" href="style/relatorio.css">
+
+
+  <link href="https://fonts.googleapis.com/css2?family=Urbanist:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+</head>
+
+<body>
+  <div class="menu menu-perdas">
+    <div class="content-items">
+      <div class="button-menu" onclick="menuClick()">
+        <div class="bar-menu"></div>
+        <div class="bar-menu"></div>
+        <div class="bar-menu"></div>
+      </div>
+        <a href="dashboard.html" class="dash"><ion-icon name="home-outline" class="ionicons"></ion-icon></a>
+        <a href="relatorio.html" class="dash"><ion-icon name="document-outline" class="ionicons"></ion-icon></a>
+        <a href="#" class="dash"><ion-icon name="person-outline" class="ionicons"></ion-icon></a>
+        <a href="fazendas.html" class="dash"><ion-icon name="home-outline" class="ionicons"></ion-icon></a>
+    </div>
+  </div>
+  <div class="box box-perdas" id="fazenda" style="flex-direction: column; align-items: center;">
+        <div class="form-box" style="padding: 30px 60px;">
+            <h2  class="h1 hero-title title-perdas">Adicionar fazenda</h2>
+            <form action="#">
+                <div class="input-group">
+                    <label>Nome da fazenda:</label>
+                    <div class="inline-fields">
+                      <input style="font-size: 12pt;" type="text" id="input_qntSacas">
+                  </div>
+                </div>
+                <div class="input-group">
+                    <label>Quantidade de armazéns:</label>
+                    <div class="inline-fields">
+                      <input style="font-size: 12pt;" type="text" id="inputArmazens">
+                      <div class="inline-fields">
+                        <div style="display: flex;">
+                        <button onclick="confirmar()" class="button-calc" style="width: 100px;">Confirmar</button>
+                      </div>
+                      </div>
+                  </div>
+                </div>
+                <div id="campos_armazens"></div>
+                <!-- <div class="input-group">
+                    <label>Soma das áreas dos armazéns:</label>
+                    <div class="inline-fields">
+                      <input style="font-size: 12pt;" type="text" id="input_qntSacas" required>
+                      <div class="inline-fields">
+                        <div style="display: flex;">
+                        <button onclick="aumentarV()" class="button-calc">+</button>
+                        <button onclick="diminuirV()" class="button-calc">-</button>
+                      </div>
+                      </div>
+                  </div>
+                </div> -->
+                
+                
+                <div class="input-group" id="botao_confirmar" style="display: none;">
+                    <button id="calculate" class="botao" onclick="avancar()">Avancar</button>
+                </div>
+            </form>
+        </div>
+        </div> 
+      </div>
+    </div>
+
+
+    <div class="box box-perdas" id="endereco" style="display: none; flex-direction: column; align-items: center;">
+      <div style="display:flex; width: 100%; height: 40px; justify-content: right;">
+          <button id="calculate" class="botao" onclick="voltar()">Voltar</button>
+        </div>
+        <div class="form-box" style="padding: 30px 60px;">
+            <h2  class="h1 hero-title title-perdas">Adicionar fazenda</h2>
+            <form action="#">
+                <div class="input-group">
+                    <div style="display: flex; width: 92%; justify-content: space-between;">
+                      <label>Lougradouro</label>
+                      <label>Número</label>
+                    </div>
+                    <div class="inline-fields" style="width: 100%; justify-content: space-between;">
+                      <input style="font-size: 12pt; width: 70%;" type="text" id="input_qntSacas" required>
+                      <input style="font-size: 12pt; width: 25%;" type="text" id="input_qntSacas" required>
+                  </div>
+                </div>
+                <div class="input-group">
+                    <label>Bairro:</label>
+                    <div class="inline-fields">
+                      <input style="font-size: 12pt;" type="text" id="input_qntSacas" required>
+                      <div class="inline-fields">
+                        <div style="display: flex;">
+                      </div>
+                      </div>
+                  </div>
+                </div>
+                <div class="input-group">
+                    <label>Cidade:</label>
+                    <div class="inline-fields">
+                      <input style="font-size: 12pt;" type="text" id="input_qntSacas" required>
+                      <div class="inline-fields">
+                        <div style="display: flex;">
+                      </div>
+                      </div>
+                  </div>
+                </div>
+                <div class="input-group">
+                    <label>Estado:</label>
+                    <div class="inline-fields">
+                      <input style="font-size: 12pt;" type="text" id="input_qntSacas" required>
+                      <div class="inline-fields">
+                        <div style="display: flex;">
+                      </div>
+                      </div>
+                  </div>
+                </div>
+                <div class="input-group">
+                    <label>CEP:</label>
+                    <div class="inline-fields">
+                      <input style="font-size: 12pt;" type="text" id="input_qntSacas" required>
+                      <div class="inline-fields">
+                        <div style="display: flex;">
+                      </div>
+                      </div>
+                  </div>
+                </div>
+                
+                <div class="input-group">
+                    <button id="calculate" class="botao" onclick="calcular()">Adicionar</button>
+                </div>
+            </form>
+        </div>
+        </div> 
+      </div>
+    </div>
+    <script type="text/javascript">
+      
+
+      function avancar() {
+        fazenda.style.display = "none"
+        endereco.style.display = "flex"
+      }
+      function voltar() {
+        fazenda.style.display = "flex"
+        endereco.style.display = "none"
+      }
+      function confirmar() {
+        campos_armazens.innerHTML = ``;
+        qtd_armazens = inputArmazens.value;
+        var contador = 1;
+        while (contador <= qtd_armazens) {
+          campos_armazens.innerHTML += `
+          <div class="input-group">
+            <label>Área Armazem ${contador}:</label>
+            <div class="inline-fields">
+              <input style="font-size: 12pt;" type="text" id="input_qntSacas">
+            </div>
+          </div>
+          `
+          contador++;
+        }
+        botao_confirmar.style.display = "block"
+      }
+    </script>
+
+</body>
+
+</html>
+<script type="text/javascript" src="scripts/dashboard.js"></script>
+<!-- 
+    - ionicon link
+  -->
+<script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+<script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
+<script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+<script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
+<script src="https://vlibras.gov.br/app/vlibras-plugin.js"></script>
+<script>
+  new window.VLibras.Widget('https://vlibras.gov.br/app');
+</script>

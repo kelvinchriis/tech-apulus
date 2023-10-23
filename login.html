@@ -61,6 +61,7 @@
                     <div id="campos_cadastro" style="display: none">
                         <input type="text" id="inputEmpresa" class="campos campo-space-cadastro" placeholder="Empresa" required> 
                         <input type="text" id="inputCNPJ" class="campos campo-space-cadastro" placeholder="CNPJ (números)" required>
+                        <input type="text" id="inputQtdFazenda" class="campos campo-space-cadastro" placeholder="Quantidade da fazenda">
                         <input type="email" id="inputEmailCadastro" class="campos campo-space-cadastro"
                             placeholder="E-mail" required>
                         <input type="password" id="inputSenhaCadastro" class="campos" placeholder="Senha" required><br>
@@ -92,16 +93,7 @@
                         <input type="number" id="inputTelS" class="campos campo-space-cadastro" placeholder="Telefone Secundário"required>
                         <input type="email" id="inputEmailP" class="campos campo-space-cadastro" placeholder="E-mail Principal"required>
                         <input type="email" id="inputEmailS" class="campos" placeholder="E-mail Secúdario"required><br>
-                        <button class="button" id="botao_cont" onclick="avancarCadFazenda()">Avançar</button><br>
-                    </div>
-
-                    <!-- tabela fazenda/armazem -->
-                    <div id="campos_fazenda" style="display: none;">
-                        <input type="number" id="inputQtdFazenda" class="campos campo-space-cadastro" placeholder="Quantidade de fazendas">
-                        <input type="number" id="inputQtdArmazem" class="campos campo-space-cadastro"
-                         placeholder="Quantidade de Armazém">
-                        <input type="number" id="inputTamanho" class="campos" placeholder="Tamanho Fazenda"><br>
-                        <button class="button" id="botao_faz" onclick="finalCad()">Cadastrar</button><br>
+                        <button class="button" id="botao_cont" onclick="finalizarCad()">Avançar</button><br>
                     </div>
                    
                     <!-- barra status cadastro -->
@@ -109,7 +101,6 @@
                         <div class="point" id="point1"></div>
                         <div class="point" id="point2"></div>
                         <div class="point" id="point3"></div>
-                        <div class="point" id="point4"></div>
                     </div>
                 </div>
             </div>

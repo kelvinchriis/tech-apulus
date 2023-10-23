@@ -43,8 +43,6 @@ function changeTela() {
         telaCad()
     } else if (tela_status == 3) {
         telaEnd() 
-    } else if (tela_status == 4) {
-        telaCont() 
     }
 }
 
@@ -121,7 +119,7 @@ function avancarCadCont() {
     }
 }
 
-function avancarCadFazenda() {
+function finalizarCad() {
     telefonep_contato = inputTelP.value;
     telefones_contato = inputTelS.value;
     emailp_contato = inputEmailP.value;
@@ -135,7 +133,7 @@ function avancarCadFazenda() {
         if (emailp_contato=="") {inputEmailP.style.border = "2px solid #ffbf00"}
         if (emails_contato=="") {inputEmailS.style.border = "2px solid #ffbf00"}
     } else {
-        telaFazendas()
+        telaLog()
         clearBorder()
     }
 }
@@ -278,23 +276,7 @@ function telaCont() {
     botao_cont.style.margin = "8% 0 0 0"
     //atualizando posicao tela
     tela_status = 3
-}
-
-function telaFazendas() {
-    // muda o status na barra de navegarção e limpa tela
-    pointerClear()
-    point4.style.backgroundColor = "white"
-    frameClear()
-    // mostra a tela de contato
-    title.innerHTML = "Armazéns"
-    campos_fazenda.style.display = "block"
-    selector_field.innerHTML = "Voltar"
-    title.style.margin = "0 0 9% 0"
-    botao_faz.style.margin = "12% 0 0 0"
-    inputQtdFazenda.style.margin = "0 0 12% 0"
-    inputQtdArmazem.style.margin = "0 0 12% 0"
-    //atualizando posicao tela
-    tela_status = 4
+    telaCont()
 }
 
 function spaceFieldEnd() {
@@ -344,7 +326,7 @@ function pointerClear() {
     point1.style.backgroundColor = ""
     point2.style.backgroundColor = ""
     point3.style.backgroundColor = ""
-    point4.style.backgroundColor = ""
+    
 }
 
 function frameClear() {
@@ -352,8 +334,7 @@ function frameClear() {
     campos_cadastro.style.display = "none"
     campos_endereco.style.display = "none"
     campos_contato.style.display = "none"
-    campos_fazenda.style.display = "none"
-}
+    }
 
 function clearBorder() {
     inputEmpresa.style.border = "#a5744c"
