@@ -14,17 +14,29 @@
 </head>
 
 <body>
-  <div class="menu">
+  <div class="menu menu-perdas">
     <div class="button-menu" onclick="menuClick()">
       <div class="bar-menu"></div>
       <div class="bar-menu"></div>
       <div class="bar-menu"></div>
     </div>
     <span class="content-items">
-        <a href="dashboard.html" class="dash"><ion-icon name="home-outline" class="ionicons"></ion-icon></a>
+      <div class="blocoTextoMenu">
+        <span class="textoMenu">Dashboard</span>
+        <a href="dashboard.html" class="dash"><ion-icon name="stats-chart" class="ionicons" style="color: rgb(63, 46, 34);"></ion-icon></a>
+      </div>
+      <div class="blocoTextoMenu">
+        <span class="textoMenu" style="width: 75px; margin-right: 0;">Perdas</span>
         <a href="relatorio.html" class="dash"><ion-icon name="document-outline" class="ionicons"></ion-icon></a>
-        <a href="#" class="dash"><ion-icon name="person-outline" class="ionicons"></ion-icon></a>
+      </div>
+      <div class="blocoTextoMenu">
+        <span class="textoMenu" style="width: 75px; margin-right: 0;">Fazendas</span>
         <a href="fazendas.html" class="dash"><ion-icon name="home-outline" class="ionicons"></ion-icon></a>
+      </div>
+      <div class="blocoTextoMenu">
+        <span class="textoMenu" style="width: 75px; margin-right: 0;">Sair</span>
+        <a href="login.html" class="dash"><ion-icon name="exit-outline" class="ionicons"></ion-icon></ion-icon></a>
+      </div>
     </span>
   </div>
   <div style="overflow: hidden;">
@@ -40,7 +52,7 @@
 
     <div class="content-dash">
       <div>
-        <span class="tituloGraficos"><b>Visão Geral da Temperatura dos Armazéns</b></span>
+        <span class="tituloGraficos"><b style="width: 60%; margin: 0 0 0 24%;">Visão Geral da Temperatura por Armazém</b></span>
         <div class="grafics">
           <div class="grafic">
             <canvas id="temperaturaARM1"></canvas> <br>
@@ -80,7 +92,7 @@
               Detalhes</a>
             </div>
           </div>
-          <br><br><br><span class="tituloGraficos"><b>Visão Geral das perdas dos Armazéns</b></span>
+          <br><br><br><span class="tituloGraficos"><b style="width: 60%; margin: 0 0 0 29%;">Visão Geral das perdas por Armazém</b></span>
         <div class="grafic grafPizza">
           <canvas id="armazens"></canvas>
         </div>
@@ -299,11 +311,11 @@
                   label: 'Perdas em %',
                   data: [7, 18, 11, 19, 45],
                   backgroundColor: [
-                    'rgb(255, 99, 132)',
-                    'rgb(54, 162, 235)',
-                    'rgb(255, 205, 86)',
-                    'rgb(231, 100, 82)',
-                    'rgb(54, 200, 20)',
+                    '#86562e',
+                    '#523f31',
+                    '#e78f50',
+                    '#be9579',
+                    '#884b22',
                   ],
                   hoverOffset: 4
                 }]

@@ -6,7 +6,7 @@ var botao_menu = document.querySelector(".button-menu")
 function menuClick() {
 	if (status_menu == 0) {
 		menu.classList.add("menu-active");
-		items_menu.style.marginWidth = "20px"
+		items_menu.style.marginWidth = "10px"
 		botao_menu.style.backgroundColor = "transparent"
 		status_menu = 1;
 	} else {

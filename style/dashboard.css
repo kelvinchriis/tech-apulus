@@ -127,6 +127,9 @@ body {
 }
 
 .menu {
+	position: relative;
+  	display: inline-block;
+  	cursor: pointer;
 	display: flex;
 	flex-direction: column;
 	align-items: end;
@@ -137,9 +140,8 @@ body {
 	transition: 0.1s;
 	overflow: hidden;
 }
-
 .menu-active {
-	width: 250px;
+	width: 150px;
 }
 
 .button-menu {
@@ -169,7 +171,7 @@ body {
 	justify-content: center;
 	align-items: center;
 	margin-right: 7px;
-	width: 41px;
+	width: 80px;
 	margin-top: 40px;
 	transition: 0.4;
 }
@@ -181,9 +183,25 @@ body {
 
 .dash {
 	height: 25px;
-	margin: 20px 0 0 0;
+	margin: 20px 9px 0 5px;
 	border-radius: 7px;
 	cursor: pointer;
+}
+
+.textoMenu {
+	color: white;
+	display: flex; 
+	align-items: center;
+	height: 100%; 
+	margin-top: 30px;
+}
+
+.blocoTextoMenu{
+	display: flex;
+	align-items: center;
+	height: 50px;
+	justify-content: right;
+	width: 175px;
 }
 
 .content-dash .grafics .grafic3 {
