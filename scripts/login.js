@@ -1,5 +1,5 @@
 var content_image = document.querySelector(".content-image");
-var campos = document.querySelector(".campos")
+
 
 //ver em qual tela tá 
 //login = 0
@@ -410,4 +410,28 @@ function validarSenha(senha) {
 
   // Se todas as condições forem atendidas, a senha é válida
   return true;
+}
+
+function cepapi() {
+    const cep = inputCEP.value;
+
+    
+    const url = `https://viacep.com.br/ws/${cep}/json/`;
+
+    fetch(url)
+        .then(response => response.json())
+        .then(data => {
+            if (data.erro) {
+                return false
+            } else {
+                inputCidade.value = data.localidade
+                inputBairro.value = data.bairro
+                inputLogradouro.value = data.logradouro
+                inputEstado.value = data.uf
+            }
+        })
+        .catch(error => {
+            resultadoCEP.innerHTML = "Erro na consulta do CEP.";
+            console.error(error);
+        });
 }
