@@ -78,7 +78,7 @@ body {
 	border-color: #9c6b43;
 	border-radius: 25px;
 	background-color: #ffd5b3;
-	box-shadow: 0 5px 8px 0 rgba(0,0,0,0.2),0 6px 10px 1000px rgba(0, 0, 0, 0.491);
+	box-shadow: 0 5px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 10px 1000px rgba(0, 0, 0, 0.491);
 	animation-name: deslizar;
 	animation-duration: 0.4s
 }
@@ -100,7 +100,7 @@ body {
 	border-color: #9c6b43;
 }
 
-.avisoArmazem{
+.avisoArmazem {
 	font-size: large;
 	margin: -15% 0 0 27%;
 	position: fixed;
@@ -145,7 +145,9 @@ body {
 }
 
 .content-items {
-	display: flex;
+	display: none;
+	position: absolute;
+	/* display: flex; */
 	flex-direction: column;
 	justify-content: center;
 	align-items: center;
@@ -155,14 +157,25 @@ body {
 	transition: 0.4;
 }
 
-.ionicons{
+.content-items a {
+	padding-top: 50px;
+	text-decoration: none;
+	display: block;
+}
+
+.menu:hover .content-items {
+	display: block;
+	animation-name: deslizar;
+	animation-duration: 0.4;
+}
+
+.ionicons {
 	width: 42px;
+	height: 30px;
 }
 
 .dash {
-	width: 41px;
-	height: 40px;
-	background-color: #fae2c4;
+	height: 25px;
 	margin: 20px 0 0 0;
 	border-radius: 7px;
 	cursor: pointer;
@@ -181,6 +194,13 @@ body {
 }
 
 @keyframes deslizar {
-  from {top: -300px; opacity: 0}
-  to {top: 0; opacity: 1}
+	from {
+		top: -300px;
+		opacity: 0
+	}
+
+	to {
+		top: 0;
+		opacity: 1
+	}
 }
