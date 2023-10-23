@@ -166,7 +166,7 @@
       }
       function confirmar() {
         campos_armazens.innerHTML = ``;
-        qtd_armazens = inputArmazens.value;
+        qtd_armazens = Number(inputArmazens.value);
         var contador = 1;
         while (contador <= qtd_armazens) {
           campos_armazens.innerHTML += `

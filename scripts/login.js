@@ -1,4 +1,5 @@
 var content_image = document.querySelector(".content-image");
+var campos = document.querySelector(".campos")
 
 //ver em qual tela tá 
 //login = 0
@@ -210,13 +211,13 @@ function telaCad() {
     //alterando imagem do fundo
     content_image.classList.add("content-logo-active")
     //margem botao
-    botao_cad.style.margin = "8% 0 0 0"
+    botao_cad.style.margin = "3% 0 0 0"
     // diminuindo visualização no cadastro
     content_image.style.width = "55%"
     fields.style.width = "45%"
     //alterando título
     title.innerHTML = "CADASTRO"
-    title.style.margin = "0 0 5% 0"
+    title.style.margin = "0 0 2% 0"
     //alterar para campos do cadastro
     frameClear()
     pointerClear()

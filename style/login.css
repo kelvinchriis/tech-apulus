@@ -124,7 +124,6 @@ img {
     padding: 3px 20px 3px 20px;
     height: 40px; 
     border: 2px solid #a5744c;
-    border-color: ;
     background-color: #f3d7b4;
     font-weight: 500;
     border-radius: 30px;
@@ -145,7 +144,7 @@ img {
 }
 
 .campo-space-cadastro {
-    margin: 0 0 8% 0;
+    margin: 0 0 7% 0;
 }
 
 
