@@ -19,7 +19,7 @@
       <div class="bar-menu"></div>
       <div class="bar-menu"></div>
       <div class="bar-menu"></div>
-    </div> <br>
+    </div>
     <span class="content-items">
         <a href="dashboard.html" class="dash"><ion-icon name="home-outline" class="ionicons"></ion-icon></a>
         <a href="relatorio.html" class="dash"><ion-icon name="document-outline" class="ionicons"></ion-icon></a>
@@ -40,6 +40,7 @@
 
     <div class="content-dash">
       <div>
+        <span class="tituloGraficos"><b>Visão Geral da Temperatura dos Armazéns</b></span>
         <div class="grafics">
           <div class="grafic">
             <canvas id="temperaturaARM1"></canvas> <br>
@@ -64,12 +65,22 @@
             <a class="header-action-btn login-btn" onclick="document.getElementById('arm4').style.display='block'">Ver
               Detalhes</a>
           </div>
+          <div class="visãoGeral">
+            <a href="#"><ion-icon name="eye" class="ionicons"></ion-icon></a>
+            <span>Status Geral dos Armazéns:</span>
+            <a href="#"><ion-icon name="eye" class="ionicons"></ion-icon></a> <br>
+            <span>
+              Temperatura <span style="color: orange;">acima da Média</span> <br>
+              Mais atenção recomendada!
+            </span>
+          </div>
           <div class="grafic">
             <canvas id="temperaturaARM5"></canvas> <br>
             <a class="header-action-btn login-btn" onclick="document.getElementById('arm5').style.display='block'">Ver
               Detalhes</a>
+            </div>
           </div>
-        </div>
+          <br><br><br><span class="tituloGraficos"><b>Visão Geral das perdas dos Armazéns</b></span>
         <div class="grafic grafPizza">
           <canvas id="armazens"></canvas>
         </div>
