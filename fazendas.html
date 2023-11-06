@@ -10,7 +10,7 @@
   <link rel="stylesheet" href="style/style.css">
   <link rel="stylesheet" type="text/css" href="style/calculadora.css">
   <link rel="stylesheet" type="text/css" href="style/relatorio.css">
-
+  <script src="scripts/login.js"></script>
 
   <link href="https://fonts.googleapis.com/css2?family=Urbanist:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 </head>
@@ -137,7 +137,7 @@
                 <div class="input-group">
                     <label>CEP:</label>
                     <div class="inline-fields">
-                      <input style="font-size: 12pt;" type="text" id="input_qntSacas" required>
+                      <input oninput="cepapi()" style="font-size: 12pt;" type="text" id="inputCEP" required>
                       <div class="inline-fields">
                         <div style="display: flex;">
                       </div>
@@ -181,6 +181,29 @@
         }
         botao_confirmar.style.display = "block"
       }
+      function cepapi(){
+      const cep = inputCEP.value;
+
+    
+    const url = `https://viacep.com.br/ws/${cep}/json/`;
+
+    fetch(url)
+        .then(response => response.json())
+        .then(data => {
+            if (data.erro) {
+                return false
+            } else {
+                inputCidade.value = data.localidade
+                inputBairro.value = data.bairro
+                inputLogradouro.value = data.logradouro
+                inputEstado.value = data.uf
+            }
+        })
+        .catch(error => {
+            resultadoCEP.innerHTML = "Erro na consulta do CEP.";
+            console.error(error);
+        });}
+
     </script>
 
 </body>

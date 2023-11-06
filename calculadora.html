@@ -38,7 +38,7 @@
                 <div class="input-group">
                     <label>Digite a quantidade de sacas em média que você produz por safra:</label>
                     <div class="inline-fields">
-                      <input type="number" id="input_qntSacas" required>
+                      <input id="input_qntSacas" required>
                       <div class="inline-fields">
                       <button onclick="aumentarQ()" class="button-calc">+</button>
                       <button onclick="diminuirQ()" class="button-calc">-</button>
@@ -49,7 +49,7 @@
                 <div class="input-group">
                     <label>Digite o valor de venda de cada saca:</label>
                     <div style="display: flex;">
-                      <input type="number" id="input_valor_saca" required>
+                      <input id="input_valor_saca" required>
                       <div style="display: flex;">
                         <button onclick="aumentarV()" class="button-calc">+</button>
                         <button onclick="diminuirV()" class="button-calc">-</button>
@@ -66,8 +66,8 @@
         <div class="img-box"> <div class="form-box">
           <h2  class="h1 hero-title">Resultado:</h2>
           <h4 class="result"><div id="div_calculadora">
-           Você, atualmente está perdendo cerca de 0% da sua produção. Equivalente a <h2>R$ 0,00</h2>
-           <br>Com serviço de controle de temperatura e umidade você irá conseguir aumentar o lucro em <h2>R$ 0,00</h2>
+           Você, atualmente está perdendo cerca de 0% da sua produção. Equivalente a: <h2>R$ 0,00</h2>
+           <br>Com o serviço de controle de temperatura e umidade você terá como lucro total: <h2>R$ 0,00</h2>
         </div></h4><br> 
         </div> 
       </div>
@@ -255,8 +255,8 @@
 <script>
     var qntSacas = 0;
     function calcular() {
-        var qntSacas = input_qntSacas.value;
-        var valorSaca = input_valor_saca.value;
+        var qntSacas = Number(input_qntSacas.value);
+        var valorSaca = Number(input_valor_saca.value);
 
         var vendaTotal = valorSaca * qntSacas;
 
@@ -272,8 +272,8 @@
         var lucro = sacasTechApulus * valorSaca;
 
         div_calculadora.innerHTML = `
-           <br>Você, atualmente está perdendo cerca de 15% da sua produção. Equivalente a <h2>R$${valorSacasPerdidas.toFixed()}</h2>
-           <br><br>Com serviço de controle de temperatura e umidade você irá conseguir aumentar o lucro em <h2>R$${lucro}</h2>
+           <br>Você, atualmente está perdendo cerca de 15% da sua produção. Equivalente a <h2>R$${valorSacasPerdidas.toLocaleString('pt-BR')}</h2>
+           <br><br>Com o serviço de controle de temperatura e umidade você terá como lucro total: <h2>R$${lucro.toLocaleString('pt-BR')}</h2>
            <br><br>Entre em contato com a TechApulus agora mesmo, pelos nossos canais. 
         `;
     }

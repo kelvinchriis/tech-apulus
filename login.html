@@ -71,26 +71,26 @@
                     <!-- tela endereço -->
                     <div id="campos_endereco" style="display: none; width: 100%;">
                         <div class="inline_campos">
+                            <input  oninput="cepapi()" id="inputCEP" class="campos" placeholder="CEP" required>
                             <input type="text" id="inputLogradouro" class="campos campo-space-cadastro"
                                 placeholder="Logradouro">
-                            <input type="number" id="inputNum" class="campos" placeholder="Número">
                         </div>
                         <div class="inline_campos">
+                            <input id="inputNum" class="campos" placeholder="Número">
                             <input type="text" id="inputBairro" class="campos campo-space-cadastro" placeholder="Bairro" required>
-                            <input type="text" id="inputCidade" class="campos" placeholder="Cidade" required>
                         </div>
                         <div class="inline_campos">
+                            <input type="text" id="inputCidade" class="campos" placeholder="Cidade" required>
                             <input type="text" id="inputEstado" class="campos" placeholder="Estado" required>
-                            <input type="number" oninput="cepapi()" id="inputCEP" class="campos" placeholder="CEP" required>
                         </div><br>
                         <button class="button" id="botao_end" onclick="avancarCadCont()">Avançar</button><br>
                     </div>
                     
                     <!-- tela contato -->
                     <div id="campos_contato" style="display: none;">
-                        <input type="number" id="inputTelP" class="campos campo-space-cadastro"
+                        <input id="inputTelP" class="campos campo-space-cadastro"
                             placeholder="Telefone Principal" required>
-                        <input type="number" id="inputTelS" class="campos campo-space-cadastro" placeholder="Telefone Secundário"required>
+                        <input id="inputTelS" class="campos campo-space-cadastro" placeholder="Telefone Secundário"required>
                         <input type="email" id="inputEmailP" class="campos campo-space-cadastro" placeholder="E-mail Principal"required>
                         <input type="email" id="inputEmailS" class="campos" placeholder="E-mail Secúdario"required><br>
                         <button class="button" id="botao_cont" onclick="finalizarCad()">Avançar</button><br>
