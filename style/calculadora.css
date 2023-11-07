@@ -69,10 +69,10 @@ form .input-group input:focus{
     border-color: #a5744c;
 }
 
-form .input-group button{
+.input-group button{
     width: 100%;
     height: 47px;
-    background: #ffddc4f1;
+    background: #9c6b43;
     border-radius: 20px;
     outline: none;
     border: none;

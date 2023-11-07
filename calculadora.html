@@ -57,12 +57,12 @@
                     </div>
                 </div>
 
-                <div class="input-group">
-                    <button id="calculate" class="botao" onclick="calcular()">SIMULAR LUCRO</button>
-                </div>
-
+                
             </form>
-        </div>
+            <div class="input-group">
+                <button id="calculate" class="botao" onclick="calcular()">SIMULAR LUCRO</button>
+            </div>
+          </div>
         <div class="img-box"> <div class="form-box">
           <h2  class="h1 hero-title">Resultado:</h2>
           <h4 class="result"><div id="div_calculadora">
@@ -255,7 +255,7 @@
 <script>
     var qntSacas = 0;
     function calcular() {
-        var qntSacas = Number(input_qntSacas.value);
+        qntSacas = Number(input_qntSacas.value);
         var valorSaca = Number(input_valor_saca.value);
 
         var vendaTotal = valorSaca * qntSacas;
