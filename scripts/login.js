@@ -48,6 +48,8 @@ function changeTela() {
         telaLog()
     } else if (tela_status == 5) {
         cadastroFuncionario()
+    } else if (tela_status == 6) {
+        telaLog()
     }
 }
 
@@ -230,6 +232,8 @@ function telaOpcoes() {
     //limpando campos login
     cleaCamposLogin()
     //atualizando posicao tela
+    tela_status = 6
+    
 }
 
 function telaLog() {
