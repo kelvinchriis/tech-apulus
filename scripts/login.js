@@ -37,14 +37,38 @@ var emails_contato;
 
 function changeTela() {
     if (tela_status == 0) {
-        telaCad()
+        telaOpcoes()
     } else if (tela_status == 1) {
         telaLog()
     } else if (tela_status == 2) {
         telaCad()
     } else if (tela_status == 3) {
         telaEnd() 
+    } else if (tela_status == 4){
+        telaLog()
+    } else if (tela_status == 5) {
+        cadastroFuncionario()
     }
+}
+
+function cadastroEmpresa() {
+    frameClear()
+    telaCad()
+}
+
+function cadastroFuncionario() {
+    frameClear()
+    campos_cadastro_funcionario.style.display = "block"
+    botao_cad_funcionario.style.marginTop = "20px"
+    selector_field.innerHTML = "LOGIN"
+    tela_status = 4
+}
+
+function avancarChave() {
+    frameClear()
+    campo_chave.style.display = "block"
+    selector_field.innerHTML = "Voltar"
+    tela_status = 5
 }
 
 var pixel_left = 0;
@@ -170,6 +194,42 @@ function verifyLogin() {
         inputSenhaLogin.style.border = "2px solid red"
     }
 
+}
+
+function telaOpcoes() {
+    frameClear()
+    //alterando imagem do fundo
+    content_image.classList.add("content-logo-active")
+    //margem botao
+    botao_cad.style.margin = "3% 0 0 0"
+    // diminuindo visualização no cadastro
+    content_image.style.width = "55%"
+    fields.style.width = "45%"
+    //alterando título
+    title.innerHTML = "CADASTRO"
+    title.style.margin = "0 0 2% 0"
+    //alterar para campos do cadastro
+    frameClear()
+    pointerClear()
+    campos_cad.style.display = "block"
+    campos_cad.style.marginTop = "80px"
+    //invertendo horizontalmente para tela de cadastro
+    frame.style.flexDirection = "row-reverse"
+    //invertendo borda do bloco image
+    content_image.style.borderRadius = "0 60px 60px 0"
+    //invertento posição do seletor para a direita
+    selector_field_position.style.justifyContent = "right"
+    //alterando de "cadastrar" para "login" o seletor e mudando a direção da borda
+    selector_field.innerHTML = "LOGIN"
+    selector_field.style.borderRadius = "20px 0 0 20px"
+    selector_field.style.justifyContent = "left"
+    selector_field.style.paddingLeft = "4%"
+    //mostrando barra de status cadastro
+    // pointer.style.display = "flex"
+    // point1.style.backgroundColor = "white"
+    //limpando campos login
+    cleaCamposLogin()
+    //atualizando posicao tela
 }
 
 function telaLog() {
@@ -335,7 +395,10 @@ function frameClear() {
     campos_cadastro.style.display = "none"
     campos_endereco.style.display = "none"
     campos_contato.style.display = "none"
-    }
+    campos_cad.style.display = "none"
+    campos_cadastro_funcionario.style.display = "none"
+    campo_chave.style.display = "none"
+}
 
 function clearBorder() {
     inputEmpresa.style.border = "#a5744c"
