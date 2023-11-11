@@ -57,7 +57,14 @@
                         <button class="button" id="botao_log" onclick="verifyLogin()">Entrar</button>
                     </div>
 
-                    <!-- tela cadastro -->
+                    <div id="campos_cad" style="display: none;">
+                        <h1>Selecione opção</h1>
+                        <button class="button" id="botao_opcao" onclick="cadastroEmpresa()">Empresa</button>
+                        <button class="button" id="botao_opcao" onclick="cadastroFuncionario()">Funcionário</button>
+                    </div>
+
+
+                    <!-- tela cadastro empresa -->
                     <div id="campos_cadastro" style="display: none">
                         <input type="text" id="inputEmpresa" class="campos campo-space-cadastro" placeholder="Empresa" required> 
                         <input type="text" id="inputCNPJ" class="campos campo-space-cadastro" placeholder="CNPJ (números)" required>
@@ -68,7 +75,7 @@
                         <button class="button" id="botao_cad" onclick="avancarCadEnd()">Avançar</button><br>
                     </div>
 
-                    <!-- tela endereço -->
+                    <!-- tela endereço empresa-->
                     <div id="campos_endereco" style="display: none; width: 100%;">
                         <div class="inline_campos">
                             <input  oninput="cepapi()" id="inputCEP" class="campos" placeholder="CEP" required>
@@ -86,7 +93,7 @@
                         <button class="button" id="botao_end" onclick="avancarCadCont()">Avançar</button><br>
                     </div>
                     
-                    <!-- tela contato -->
+                    <!-- tela contato empresa-->
                     <div id="campos_contato" style="display: none;">
                         <input id="inputTelP" class="campos campo-space-cadastro"
                             placeholder="Telefone Principal" required>
@@ -96,12 +103,35 @@
                         <button class="button" id="botao_cont" onclick="finalizarCad()">Avançar</button><br>
                     </div>
                    
-                    <!-- barra status cadastro -->
+                    <!-- barra status cadastro empresa -->
                     <div class="pointer" id="pointer" style="display: none;">
                         <div class="point" id="point1"></div>
                         <div class="point" id="point2"></div>
                         <div class="point" id="point3"></div>
                     </div>
+
+                    <!-- tela cadastro funcionario -->
+                    <div id="campos_cadastro_funcionario" style="display: none">
+                        <input type="text" id="inputNome" class="campos campo-space-cadastro" placeholder="Nome" required> 
+                        <input type="text" id="inputCPF" class="campos campo-space-cadastro" placeholder="CPF (números)" required>
+                        <input type="email" id="inputEmailCadastroFunc" class="campos campo-space-cadastro"
+                            placeholder="E-mail" required>
+                        <input type="password" id="inputSenhaCadastroFunc" class="campos campo-space-cadastro" placeholder="Senha" required><br>
+                        <input type="password" id="inputChave" class="campos" placeholder="Chave de acesso" required><br>
+                        <button class="button" id="botao_cad_funcionario" onclick="avancarChave()">Avançar</button><br>
+                    </div>
+
+                    <!-- tela chave funcionario -->
+                    <div id="campo_chave" style="display: none">
+                        <select name="" class="campos campo-space-cadastro" id="" style="margin: 70px 0 50px 0;">
+                            <option class="opcao" value="">NAS</option>
+                            <option class="opcao" value="">NAS</option>
+                            <option class="opcao" value="">NAS</option>
+                        </select><br>
+                        <input type="password" id="inputChave" class="campos" placeholder="Chave de acesso" required><br>
+                        <button class="button" id="botao_cad_chave" onclick="avancarCadEnd()">Avançar</button><br>
+                    </div>
+
                 </div>
             </div>
         </div>
