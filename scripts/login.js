@@ -29,10 +29,10 @@ var estado_endereco;
 var cep_endereco;
 
 // variáveis tela contato
-var telefonep_contato;
-var telefones_contato;
-var emailp_contato;
-var emails_contato;
+// var telefonep_contato;
+// var telefones_contato;
+// var emailp_contato;
+// var emails_contato;
 
 
 function changeTela() {
@@ -146,24 +146,6 @@ function avancarCadCont() {
     }
 }
 
-function finalizarCad() {
-    telefonep_contato = inputTelP.value;
-    telefones_contato = inputTelS.value;
-    emailp_contato = inputEmailP.value;
-    emails_contato = inputEmailS.value;
-    
-    clearBorder()
-    if (telefonep_contato==""||telefones_contato==""||emailp_contato==""||emails_contato=="") {
-        executarFuncTemporal(move, 8, 30)
-        if (telefonep_contato=="") inputTelP.style.border = "2px solid #ffbf00"
-        if (telefones_contato=="") {inputTelS.style.border = "2px solid #ffbf00"}
-        if (emailp_contato=="") {inputEmailP.style.border = "2px solid #ffbf00"}
-        if (emails_contato=="") {inputEmailS.style.border = "2px solid #ffbf00"}
-    } else {
-        telaLog()
-        clearBorder()
-    }
-}
 
 function finalCad() {
     telaLog()
