@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./style/dashboard.css">
+    <link rel="shortcut icon" href="img/logo.png" type="image/svg+xml">
+    <link rel="stylesheet" href="./style/style.css">
+    <link rel="stylesheet" href="./style/telaUsuario.css">
+    <title>Usuário</title>
+</head>
+
+<body>
+    <div class="menu menu-perdas">
+        <div class="button-menu" onclick="menuClick()">
+            <div class="bar-menu"></div>
+            <div class="bar-menu"></div>
+            <div class="bar-menu"></div>
+        </div>
+        <span class="content-items">
+            <div class="blocoTextoMenu">
+                <span class="textoMenu">Dashboard</span>
+                <a href="dashboard.html" class="dash"><ion-icon name="stats-chart" class="ionicons"></ion-icon></a>
+            </div>
+            <div class="blocoTextoMenu">
+                <span class="textoMenu" style="width: 75px; margin-right: 0;">Perdas</span>
+                <a href="relatorio.html" class="dash"><ion-icon name="document-outline" class="ionicons"></ion-icon></a>
+            </div>
+            <div class="blocoTextoMenu">
+                <span class="textoMenu" style="width: 75px; margin-right: 0;">Fazendas</span>
+                <a href="fazendas.html" class="dash"><ion-icon name="home-outline" class="ionicons"></ion-icon></a>
+            </div>
+            <div class="blocoTextoMenu">
+                <span class="textoMenu" style="width: 75px; margin-right: 0;">Perfil</span>
+                <a href="telaUsuario.html" class="dash"><ion-icon name="person-circle-outline" class="ionicons" style="color: rgb(63, 46, 34);"></ion-icon></a>
+              </div>
+            <div class="blocoTextoMenu">
+                <span class="textoMenu" style="width: 75px; margin-right: 0;">Sair</span>
+                <a href="login.html" class="dash"><ion-icon name="exit-outline"class="ionicons"></ion-icon></ion-icon></a>
+            </div>
+        </span>
+    </div>
+    <div style="overflow: hidden;">
+        <br> <br> <br>
+        
+        <div vw class="enabled">
+            <div vw-access-button class="active"></div>
+            <div vw-plugin-wrapper>
+                <div class="vw-plugin-top-wrapper"></div>
+            </div>
+        </div>
+    </div>
+
+    <div class="main">
+        <header class="headerUser">
+            <p>Bem Vindo(a) <b><span id="nome-user">Usuário</span></b>!</p>
+            <p>Chave de Acesso: <b><span id="chave-user">XXX-XXX</span></b></p>
+            <p>Empresa: <b><span id="empresa-user">TechApulus</span></b></p>
+        </header>
+        
+        <h1>Métricas</h1>
+
+        <div class="metricas">
+            <div class="campo">
+                <p>Temperatura</p>
+                <p>Umidade</p>
+            </div>
+            <div class="campo">
+                <p>14°C</p>
+                <p>55%</p>
+            </div>
+            <div class="campo">
+                <p>17°C</p>
+                <p>58%</p>
+            </div>
+            <div class="campo">
+                <p>20°C</p>
+                <p>60%</p>
+            </div>
+            <div class="campo">
+                <p>23°C</p>
+                <p>65%</p>
+            </div>
+            <div class="campo">
+                <p>24°C</p>
+                <p>67%</p>
+            </div>
+            <div class="campo">
+                <p>26°C</p>
+                <p>69%</p>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>
+
+<script type="text/javascript" src="scripts/dashboard.js"></script>
+<!-- 
+    - ionicon link
+  -->
+<script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+<script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
+<script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+<script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
+<script src="https://vlibras.gov.br/app/vlibras-plugin.js"></script>
+<script>
+    new window.VLibras.Widget('https://vlibras.gov.br/app');
+</script>

@@ -1,0 +1,38 @@
+.main h1{
+    margin-top: 2%;
+    display: flex;
+    justify-content : center;
+}
+
+.headerUser {
+    justify-content: space-evenly;
+    overflow-x: hidden;
+    display: flex;
+    z-index: 4;
+    width: 225vh;
+    height: 18vh;
+    background-color: #382e27f1;
+    font-size: 2.5rem;
+    color: white;
+}
+
+.headerUser p{
+    margin: 2% 5%;
+}
+
+.metricas{
+    margin-top: 5%;
+    justify-content: center;
+    display: flex;
+    flex-direction: row;
+}
+
+.metricas .campo {
+    border: solid 3px rgb(158, 103, 59);
+    /* border-radius: 10px; */
+}
+
+.metricas p {
+    font-size: 2rem;
+    padding: 6px;
+}
