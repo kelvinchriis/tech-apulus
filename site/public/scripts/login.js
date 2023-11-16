@@ -43,8 +43,8 @@ function changeTela() {
     } else if (tela_status == 2) {
         telaCad()
     } else if (tela_status == 3) {
-        telaEnd() 
-    } else if (tela_status == 4){
+        telaEnd()
+    } else if (tela_status == 4) {
         telaLog()
     } else if (tela_status == 5) {
         cadastroFuncionario()
@@ -92,18 +92,18 @@ function avancarCadEnd() {
 
 
     // Verifica se o email inserido corresponde à expressão regular
-    if (empresa_cadastro==""||cnpj_cadastro==""||senha_cadastro==""||email_cadastro=="") {
+    if (empresa_cadastro == "" || cnpj_cadastro == "" || senha_cadastro == "" || email_cadastro == "") {
         executarFuncTemporal(move, 8, 30)
-        if (empresa_cadastro=="") inputEmpresa.style.border = "2px solid #ffbf00"
-        if (cnpj_cadastro=="") {inputCNPJ.style.border = "2px solid #ffbf00"}
-        if (senha_cadastro=="") {
+        if (empresa_cadastro == "") inputEmpresa.style.border = "2px solid #ffbf00"
+        if (cnpj_cadastro == "") { inputCNPJ.style.border = "2px solid #ffbf00" }
+        if (senha_cadastro == "") {
             inputSenhaCadastro.style.border = "2px solid #ffbf00"
-        } else if(!validarSenha(senha_cadastro)) {
+        } else if (!validarSenha(senha_cadastro)) {
             inputSenhaCadastro.style.border = "2px solid red"
             inputSenhaCadastro.value = ""
             inputSenhaCadastro.placeholder = "Senha inválida"
         }
-        if (email_cadastro=="") {
+        if (email_cadastro == "") {
             inputEmailCadastro.style.border = "2px solid #ffbf00"
         } else if (!regex.test(email_cadastro)) {
             // Email é inválido
@@ -113,7 +113,39 @@ function avancarCadEnd() {
         }
     } else if (regex.test(email_cadastro)) {
         // Email é válido
-        telaEnd()
+
+        // Enviando o valor da nova input
+        fetch("/usuarios/cadastrar", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+            },
+            body: JSON.stringify({
+                // crie um atributo que recebe o valor recuperado aqui
+                // Agora vá para o arquivo routes/usuario.js
+                nomeServer: empresa_cadastro,
+                emailServer: email_cadastro,
+                senhaServer: senha_cadastro,
+                cnpjServer: cnpj_cadastro
+            }),
+        })
+            .then(function (resposta) {
+                console.log("resposta: ", resposta);
+
+                if (resposta.ok) {
+                    setTimeout(() => {
+                        telaLog();
+                    }, "2000");
+
+                } else {
+                    throw "Houve um erro ao tentar realizar o cadastro!";
+                }
+            })
+            .catch(function (resposta) {
+                console.log(`#ERRO: ${resposta}`);
+            });
+
+        return false;
     } else {
         // Email é inválido
         executarFuncTemporal(move, 8, 30)
@@ -121,7 +153,7 @@ function avancarCadEnd() {
         inputEmailCadastro.placeholder = "E-mail inválido"
         inputEmailCadastro.style.border = "2px solid red"
     }
-    
+
 }
 
 function avancarCadCont() {
@@ -132,14 +164,14 @@ function avancarCadCont() {
     estado_endereco = inputEstado.value
     cep_endereco = inputCEP.value
     clearBorder()
-    if (logradouro_endereco==""||numero_endereco==""||bairro_endereco==""||cidade_endereco==""||estado_endereco==""||cep_endereco=="") {
+    if (logradouro_endereco == "" || numero_endereco == "" || bairro_endereco == "" || cidade_endereco == "" || estado_endereco == "" || cep_endereco == "") {
         executarFuncTemporal(move, 8, 30)
-        if (logradouro_endereco=="") inputLogradouro.style.border = "2px solid #ffbf00"
-        if (numero_endereco=="") {inputNum.style.border = "2px solid #ffbf00"}
-        if (bairro_endereco=="") {inputBairro.style.border = "2px solid #ffbf00"}
-        if (cidade_endereco=="") {inputCidade.style.border = "2px solid #ffbf00"}
-        if (estado_endereco=="") {inputEstado.style.border = "2px solid #ffbf00"}
-        if (cep_endereco=="") {inputCEP.style.border = "2px solid #ffbf00"}
+        if (logradouro_endereco == "") inputLogradouro.style.border = "2px solid #ffbf00"
+        if (numero_endereco == "") { inputNum.style.border = "2px solid #ffbf00" }
+        if (bairro_endereco == "") { inputBairro.style.border = "2px solid #ffbf00" }
+        if (cidade_endereco == "") { inputCidade.style.border = "2px solid #ffbf00" }
+        if (estado_endereco == "") { inputEstado.style.border = "2px solid #ffbf00" }
+        if (cep_endereco == "") { inputCEP.style.border = "2px solid #ffbf00" }
     } else {
         telaCont()
         clearBorder()
@@ -160,15 +192,15 @@ function verifyLogin() {
     var regex = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,9}$/;
 
     // Verifica se o email inserido corresponde à expressão regular
-    if (email_login==""||senha_login=="") {
+    if (email_login == "" || senha_login == "") {
         executarFuncTemporal(move, 8, 30)
-        if(email_login=="") {inputEmailLogin.style.border = "2px solid #ffbf00"}
-            else if (!regex.test(email_login)){
-                inputEmailLogin.style.border = "2px solid red"
-                inputEmailLogin.placeholder = "E-mail inválido"
-                inputEmailLogin.value = ""
-            }
-        if(senha_login=="") {inputSenhaLogin.style.border = "2px solid #ffbf00"}
+        if (email_login == "") { inputEmailLogin.style.border = "2px solid #ffbf00" }
+        else if (!regex.test(email_login)) {
+            inputEmailLogin.style.border = "2px solid red"
+            inputEmailLogin.placeholder = "E-mail inválido"
+            inputEmailLogin.value = ""
+        }
+        if (senha_login == "") { inputSenhaLogin.style.border = "2px solid #ffbf00" }
 
     } else if (email_login == email_cadastro && senha_login == senha_cadastro) {
         window.location.href = 'dashboard.html';
@@ -215,7 +247,7 @@ function telaOpcoes() {
     cleaCamposLogin()
     //atualizando posicao tela
     tela_status = 6
-    
+
 }
 
 function telaLog() {
@@ -373,7 +405,7 @@ function pointerClear() {
     point1.style.backgroundColor = ""
     point2.style.backgroundColor = ""
     point3.style.backgroundColor = ""
-    
+
 }
 
 function frameClear() {
@@ -423,7 +455,7 @@ function executarFuncTemporal(funcao, vezes, intervalo) {
     }
 
     executar();
-    
+
 }
 
 // função mover frame ao errar algo
@@ -442,29 +474,29 @@ function move() {
 }
 
 function validarSenha(senha) {
-  // Verifica se a senha tem pelo menos 8 caracteres
-  if (senha.length < 8) {
-    return false;
-  }
+    // Verifica se a senha tem pelo menos 8 caracteres
+    if (senha.length < 8) {
+        return false;
+    }
 
-  // Verifica se a senha contém pelo menos uma letra maiúscula
-  if (!/[A-Z]/.test(senha)) {
-    return false;
-  }
+    // Verifica se a senha contém pelo menos uma letra maiúscula
+    if (!/[A-Z]/.test(senha)) {
+        return false;
+    }
 
-  // Verifica se a senha contém pelo menos um caractere especial (pode ser personalizado)
-  if (!/[$&+,:;=?@#|'<>.^*()%!-_]/.test(senha)) {
-    return false;
-  }
+    // Verifica se a senha contém pelo menos um caractere especial (pode ser personalizado)
+    if (!/[$&+,:;=?@#|'<>.^*()%!-_]/.test(senha)) {
+        return false;
+    }
 
-  // Se todas as condições forem atendidas, a senha é válida
-  return true;
+    // Se todas as condições forem atendidas, a senha é válida
+    return true;
 }
 
 function cepapi() {
     const cep = inputCEP.value;
 
-    
+
     const url = `https://viacep.com.br/ws/${cep}/json/`;
 
     fetch(url)
