@@ -112,40 +112,7 @@ function avancarCadEnd() {
             inputEmailCadastro.style.border = "2px solid red"
         }
     } else if (regex.test(email_cadastro)) {
-        // Email é válido
-
-        // Enviando o valor da nova input
-        fetch("/usuarios/cadastrar", {
-            method: "POST",
-            headers: {
-                "Content-Type": "application/json",
-            },
-            body: JSON.stringify({
-                // crie um atributo que recebe o valor recuperado aqui
-                // Agora vá para o arquivo routes/usuario.js
-                nomeServer: empresa_cadastro,
-                emailServer: email_cadastro,
-                senhaServer: senha_cadastro,
-                cnpjServer: cnpj_cadastro
-            }),
-        })
-            .then(function (resposta) {
-                console.log("resposta: ", resposta);
-
-                if (resposta.ok) {
-                    setTimeout(() => {
-                        telaLog();
-                    }, "2000");
-
-                } else {
-                    throw "Houve um erro ao tentar realizar o cadastro!";
-                }
-            })
-            .catch(function (resposta) {
-                console.log(`#ERRO: ${resposta}`);
-            });
-
-        return false;
+        telaEnd()
     } else {
         // Email é inválido
         executarFuncTemporal(move, 8, 30)
@@ -178,10 +145,6 @@ function avancarCadCont() {
     }
 }
 
-
-function finalCad() {
-    telaLog()
-}
 
 function verifyLogin() {
     email_login = inputEmailLogin.value;
@@ -435,9 +398,7 @@ function clearBorder() {
     inputCEP.style.border = "#a5744c"
 
     inputTelP.style.border = "#a5744c"
-    inputTelS.style.border = "#a5744c"
     inputEmailP.style.border = "#a5744c"
-    inputEmailS.style.border = "#a5744c"
 }
 
 // função de repetição de outras funções

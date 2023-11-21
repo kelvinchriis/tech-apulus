@@ -108,7 +108,7 @@
                             placeholder="E-mail Principal" required>
                         <input type="email" id="inputEmailS" class="campos" placeholder="E-mail Secúdario" required><br>
                         <button class="button" id="botao_finalizar_empresa"
-                            onclick="cadastrarFinalEmpresa()">Finalizar</button><br>
+                            onclick="finalCadEmpresa()">Finalizar</button><br>
                     </div>
 
                     <!-- barra status cadastro empresa -->
@@ -142,7 +142,7 @@
                         <input type="password" id="inputChave" class="campos" placeholder="Chave de acesso"
                             required><br>
                         <button class="button" id="botao_finalizar_funcionario"
-                            onclick="cadatrarFinalFuncionario()">Finalizar</button><br>
+                            onclick="finalCadFunc">Finalizar</button><br>
                     </div>
 
                 </div>
@@ -309,6 +309,7 @@
     <script>
         new window.VLibras.Widget('https://vlibras.gov.br/app');
     </script>
+    <script src="scripts/cadastro.js"></script>
 </body>
 
 </html>
@@ -377,7 +378,7 @@
             .then(function (resposta) {
                 resposta.json().then((empresas) => {
                     empresas.forEach((empresa) => {
-                        listaEmpresas.innerHTML += `<option value='${empresa.id}'>${empresa.cnpj}</option>`;
+                        empresa_selecao.innerHTML += `<option value='${empresa.id}'>${empresa.cnpj}</option>`;
                     });
                 });
             })

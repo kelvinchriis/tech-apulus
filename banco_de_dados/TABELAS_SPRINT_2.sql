@@ -2,14 +2,34 @@ create database TechApulus_sprint2;
 
 use TechApulus_sprint2;
 
-create table Endereço(
+create table Empresa(
+idEmpresa int primary key auto_increment,
+empresa varchar(45) not null,
+email varchar(45) not null unique,
+senha varchar(45) not null,
+cnpj char(14) not null unique,
+) auto_increment = 100;
+
+select * from Endereço;
+
+insert into Empresa values 
+	(null, 'Melitta', 'melitta@sptech.com', '1234', '09782457899124'),
+    (null, 'Pilão', 'pilao@sptech.com', '5678', '38901325678092'),
+    (null, 'Pelé', 'pele@sptech.com', 'pele123', '90275849301245'),
+    (null, 'Três Corações', 'tres@sptech.com', 'tres123', '32457890124637');
+    
+    select * from Usuário;
+
+create table Endereco(
 idEndereco int primary key auto_increment,
 cep char(8),
 logradouro varchar(45),
 numero varchar(7),
 bairro varchar(45),
 cidade varchar(45),
-estado char(2));
+estado varchar(15)
+fkEnderecoEmpresa int,
+constraint fkEnderecoEmpresa foreign key (fkEnderecoEmpresa) references Empresa(idEmpresa)) auto_increment = 100;
 
 insert into Endereço values
 	(null, '02315783', 'Rua Miguel Sanchez', '4555', 'Vila Clementina', 'São Paulo', 'SP'),
@@ -17,34 +37,14 @@ insert into Endereço values
     (null, '39105738', 'Av. Engenheiro Líbano', '87', 'Tremembé', 'São Paulo', 'SP'),
     (null, '02348913', 'Rua Dr. Otávio', '145', 'Jardim São Paulo', 'São Paulo', 'SP');
 
-create table Usuário(
-idUsuario int primary key auto_increment,
-empresa varchar(45) not null,
-email varchar(45) not null unique,
-senha varchar(45) not null,
-cnpj char(14) not null unique,
-qtdFazendas int not null,
-fkEndereco int,
-constraint fkEnd foreign key (fkEndereco) references Endereço(idEndereco)) auto_increment = 100;
-
-select * from Endereço;
-
-insert into Usuário values 
-	(null, 'Melitta', 'melitta@sptech.com', '1234', '09782457899124', 2, 2),
-    (null, 'Pilão', 'pilao@sptech.com', '5678', '38901325678092', 1, 1),
-    (null, 'Pelé', 'pele@sptech.com', 'pele123', '90275849301245', 2, 3),
-    (null, 'Três Corações', 'tres@sptech.com', 'tres123', '32457890124637', 1, 4);
-    
-    select * from Usuário;
-
 create table Contato(
 idContato int primary key auto_increment,
 telefonePrincipal char(11) not null,
 telefoneSecundario char(11),
 emailPrincipal varchar(45) not null,
 emailSecundario varchar(45),
-fkUsuario int,
-constraint fkUsu foreign key (fkUsuario) references Usuário(idUsuario)) auto_increment = 200;
+fkContatoEmpresa int,
+constraint fkContatoEmpresa foreign key (fkContatoEmpresa) references Empresa(idEmpresa)) auto_increment = 100;
 
 insert into Contato values
 	(null, '11983627182', null, 'pelé@sptech.com', null, 102),
