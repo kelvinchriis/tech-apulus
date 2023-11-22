@@ -58,21 +58,6 @@ function cadastroEmpresa() {
     telaCad()
 }
 
-function cadastroFuncionario() {
-    frameClear()
-    campos_cadastro_funcionario.style.display = "block"
-    botao_cad_funcionario.style.marginTop = "20px"
-    selector_field.innerHTML = "LOGIN"
-    tela_status = 4
-}
-
-function avancarChave() {
-    frameClear()
-    campo_chave.style.display = "block"
-    selector_field.innerHTML = "Voltar"
-    tela_status = 5
-}
-
 var pixel_left = 0;
 
 function avancarCadEnd() {
@@ -382,6 +367,7 @@ function frameClear() {
 }
 
 function clearBorder() {
+    //empresa
     inputEmpresa.style.border = "#a5744c"
     inputCNPJ.style.border = "#a5744c"
     inputSenhaCadastro.style.border = "#a5744c"
@@ -399,6 +385,15 @@ function clearBorder() {
 
     inputTelP.style.border = "#a5744c"
     inputEmailP.style.border = "#a5744c"
+
+    //funcionario
+    inputNome.style.border = "#a5744c"
+    inputCPF.style.border = "#a5744c"
+    inputEmailCadastroFunc.style.border = "#a5744c"
+    inputSenhaCadastroFunc.style.border = "#a5744c"
+
+    inputChave.style.border = "#a5744c"
+    empresa_selecao.style.border = "#a5744c"
 }
 
 // função de repetição de outras funções

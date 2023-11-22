@@ -8,9 +8,8 @@ empresa varchar(45) not null,
 email varchar(45) not null unique,
 senha varchar(45) not null,
 cnpj char(14) not null unique,
+chave_acesso int not null unique,
 ) auto_increment = 100;
-
-select * from Endereço;
 
 insert into Empresa values 
 	(null, 'Melitta', 'melitta@sptech.com', '1234', '09782457899124'),
@@ -18,7 +17,24 @@ insert into Empresa values
     (null, 'Pelé', 'pele@sptech.com', 'pele123', '90275849301245'),
     (null, 'Três Corações', 'tres@sptech.com', 'tres123', '32457890124637');
     
-    select * from Usuário;
+    select * from Empresa;
+
+create table Funcionario(
+idFuncionario int primary key auto_increment,
+nome varchar(45) not null,
+email varchar(45) not null unique,
+senha varchar(45) not null,
+cpf char(14) not null unique,
+fkEmpresaFuncionario int,
+constraint fkEmpresaFuncionario foreign key (fkEmpresaFuncionario) references Empresa(idEmpresa)) auto_increment = 100;
+
+insert into Empresa values 
+	(null, 'Melitta', 'melitta@sptech.com', '1234', '09782457899124'),
+    (null, 'Pilão', 'pilao@sptech.com', '5678', '38901325678092'),
+    (null, 'Pelé', 'pele@sptech.com', 'pele123', '90275849301245'),
+    (null, 'Três Corações', 'tres@sptech.com', 'tres123', '32457890124637');
+    
+    select * from Empresa;
 
 create table Endereco(
 idEndereco int primary key auto_increment,
@@ -27,15 +43,17 @@ logradouro varchar(45),
 numero varchar(7),
 bairro varchar(45),
 cidade varchar(45),
-estado varchar(15)
+estado varchar(15),
 fkEnderecoEmpresa int,
 constraint fkEnderecoEmpresa foreign key (fkEnderecoEmpresa) references Empresa(idEmpresa)) auto_increment = 100;
 
-insert into Endereço values
+insert into Endereco values
 	(null, '02315783', 'Rua Miguel Sanchez', '4555', 'Vila Clementina', 'São Paulo', 'SP'),
     (null, '37482010', 'Rua Coronel Antônio', '901', 'Vila Formosa', 'São Paulo', 'SP'),
     (null, '39105738', 'Av. Engenheiro Líbano', '87', 'Tremembé', 'São Paulo', 'SP'),
     (null, '02348913', 'Rua Dr. Otávio', '145', 'Jardim São Paulo', 'São Paulo', 'SP');
+
+    select * from Endereço;
 
 create table Contato(
 idContato int primary key auto_increment,
@@ -52,7 +70,7 @@ insert into Contato values
     (null, '11906375839', '11974738202', 'corações@sptech.com', null, 103),
     (null, '11905637583', '11904673812', 'pelé@sptech.com', 'café@sptech.com', 101);
     
-    select * from contato;
+    select * from Contato;
 
 create table Fazenda(
 idFazendas int primary key auto_increment,
@@ -63,7 +81,7 @@ fkUsuario int,
 constraint fkEndFaz foreign key(fkEndFazenda) references Endereço(idEndereco),
 constraint fkUsuarFaz foreign key (fkUsuario) references Usuário(idUsuario)) auto_increment = 300;
 
-select * from Usuário;
+select * from Fazenda;
 
 insert into Fazenda values 
 	(null, 'Fazenda Feliz', 2, 1, 101),

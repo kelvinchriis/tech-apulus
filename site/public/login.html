@@ -14,7 +14,7 @@
 </head>
 </head>
 
-<body>
+<body onload="listar()">
     <header class="header meu-cabecalho" data-header>
         <div class="container">
             <img src="img/logo.png" width="250px" alt="hero image">
@@ -120,29 +120,27 @@
 
                     <!-- tela cadastro funcionario -->
                     <div id="campos_cadastro_funcionario" style="display: none">
-                        <input type="text" id="inputNome" class="campos campo-space-cadastro" placeholder="Nome"
+                        <input type="text" id="inputNome" class="campos campo-space-cadastro" style="margin-top: 30px;" placeholder="Nome"
                             required>
                         <input type="text" id="inputCPF" class="campos campo-space-cadastro" placeholder="CPF (números)"
                             required>
                         <input type="email" id="inputEmailCadastroFunc" class="campos campo-space-cadastro"
                             placeholder="E-mail" required>
-                        <input type="password" id="inputSenhaCadastroFunc" class="campos campo-space-cadastro"
+                        <input type="password" id="inputSenhaCadastroFunc" class="campos"
                             placeholder="Senha" required><br>
-                        <button class="button" id="botao_cad_funcionario" onclick="avancarChave()">Avançar</button><br>
+                        <button class="button" id="botao_cad_funcionario" style="margin-top: 40px;" onclick="avancarChave()">Avançar</button><br>
                     </div>
 
                     <!-- tela chave funcionario -->
                     <div id="campo_chave" style="display: none">
                         <select name="" class="campos campo-space-cadastro" id="empresa_selecao"
-                            style="margin: 70px 0 50px 0;">
-                            <option class="opcao" value="nada">nada</option>
-                            <option class="opcao" value="">isso</option>
-                            <option class="opcao" value="">aquilo</option>
+                            style="margin: 70px 0 80px 0;">
+                            <option selected>Selecione uma empresa</option>
                         </select><br>
                         <input type="password" id="inputChave" class="campos" placeholder="Chave de acesso"
                             required><br>
                         <button class="button" id="botao_finalizar_funcionario"
-                            onclick="finalCadFunc">Finalizar</button><br>
+                            onclick="finalCadFunc()">Finalizar</button><br>
                     </div>
 
                 </div>
