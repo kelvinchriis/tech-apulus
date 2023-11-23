@@ -54,56 +54,9 @@
         <div class="input-group">
           <label>Nome da fazenda:</label>
           <div class="inline-fields">
-            <input style="font-size: 12pt;" type="text" id="input_qntSacas">
+            <input style="font-size: 12pt;" type="text" id="input_nome">
           </div>
         </div>
-        <div class="input-group">
-          <label>Quantidade de armazéns:</label>
-          <div class="inline-fields">
-            <input style="font-size: 12pt;" type="text" id="inputArmazens">
-          </div>
-        </div>
-      </form>
-      <div class="input-group">
-        <div class="inline-fields">
-        <div style="display: flex;">
-          <button onclick="confirmar()" class="button-calc" style="width: 100px;">Confirmar</button>
-        </div>
-      </div>
-      </div>
-      <form action="#">
-        <div id="campos_armazens"></div>
-        <!-- <div class="input-group">
-                    <label>Soma das áreas dos armazéns:</label>
-                    <div class="inline-fields">
-                      <input style="font-size: 12pt;" type="text" id="input_qntSacas" required>
-                      <div class="inline-fields">
-                        <div style="display: flex;">
-                        <button onclick="aumentarV()" class="button-calc">+</button>
-                        <button onclick="diminuirV()" class="button-calc">-</button>
-                      </div>
-                      </div>
-                  </div>
-                </div> -->
-
-
-        <div class="input-group" id="botao_confirmar" style="display: none;">
-          <button id="calculate" class="botao" onclick="avancar()">Avancar</button>
-        </div>
-      </form>
-    </div>
-  </div>
-  </div>
-  </div>
-
-
-  <div class="box box-perdas" id="endereco" style="display: none; flex-direction: column; align-items: center;">
-    <div style="display:flex; width: 100%; height: 40px; justify-content: right;">
-      <button id="calculate" class="botao" onclick="voltar()">Voltar</button>
-    </div>
-    <div class="form-box" style="padding: 30px 60px;">
-      <h2 class="h1 hero-title title-perdas">Adicionar fazenda</h2>
-      <form action="#">
         <div class="input-group">
           <label>CEP:</label>
           <div class="inline-fields">
@@ -151,45 +104,18 @@
           </div>
           <div class="inline-fields" style="width: 100%; justify-content: space-between;">
             <input style="font-size: 12pt; width: 70%;" type="text" id="inputLogradouro" required>
-            <input style="font-size: 12pt; width: 25%;" type="text" id="input_qntSacas" required>
+            <input style="font-size: 12pt; width: 25%;" type="text" id="input_numero" required>
           </div>
         </div>
         <div class="input-group">
-          <button id="calculate" class="botao" onclick="calcular()">Adicionar</button>
+          <button id="calculate" class="botao" onclick="cadastrar()">Adicionar</button>
         </div>
       </form>
     </div>
   </div>
-  </div>
-  </div>
+
   <script type="text/javascript">
 
-
-    function avancar() {
-      fazenda.style.display = "none"
-      endereco.style.display = "flex"
-    }
-    function voltar() {
-      fazenda.style.display = "flex"
-      endereco.style.display = "none"
-    }
-    function confirmar() {
-      campos_armazens.innerHTML = ``;
-      qtd_armazens = Number(inputArmazens.value);
-      var contador = 1;
-      while (contador <= qtd_armazens) {
-        campos_armazens.innerHTML += `
-          <div class="input-group">
-            <label>Área Armazem ${contador}:</label>
-            <div class="inline-fields">
-              <input style="font-size: 12pt;" type="text" id="input_qntSacas">
-            </div>
-          </div>
-          `
-        contador++;
-      }
-      botao_confirmar.style.display = "block"
-    }
     function cepapi() {
       const cep = inputCEP.value;
 
@@ -230,4 +156,49 @@
 <script src="https://vlibras.gov.br/app/vlibras-plugin.js"></script>
 <script>
   new window.VLibras.Widget('https://vlibras.gov.br/app');
+</script>
+
+<script>
+  function cadastrar() {
+    var nome = input_nome.value
+    var cep = inputCEP.value
+    var bairro = inputBairro.value
+    var cidade = inputCidade.value
+    var estado = inputEstado.value
+    var logradouro = inputLogradouro.value
+    var numero = input_numero.value
+
+    fetch("/fazendas/cadastrar", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+            },
+            body: JSON.stringify({
+                nomeServer: nome,
+                cepServer: cep,
+                bairroServer: bairro,
+                cidadeServer: cidade,
+                estadoVar: estado,
+                logradouroVar: logradouro,
+                numeroVar: numero
+            }),
+        })
+            .then(function (resposta) {
+                console.log("resposta: ", resposta);
+
+                if (resposta.ok) {
+                    
+                    alert("deucerto")
+
+
+                } else {
+                    throw "Houve um erro ao tentar realizar o cadastro!";
+                }
+            })
+            .catch(function (resposta) {
+                console.log(`#ERRO: ${resposta}`);
+            });
+
+        return false;
+  }
 </script>

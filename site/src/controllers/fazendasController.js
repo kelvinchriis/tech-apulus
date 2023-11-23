@@ -1,4 +1,4 @@
-var aquarioModel = require("../models/aquarioModel");
+var fazendasModel = require("../models/fazendasModel");
 
 function buscarAquariosPorEmpresa(req, res) {
   var idUsuario = req.params.idUsuario;
@@ -18,17 +18,32 @@ function buscarAquariosPorEmpresa(req, res) {
 
 
 function cadastrar(req, res) {
-  var descricao = req.body.descricao;
-  var idUsuario = req.body.idUsuario;
+  var nome = req.body.nomeServer
+  var cep = req.body.cepServer
+  var bairro = req.body.bairroServer
+  var cidade = req.body.cidadeServer
+  var estado = req.body.estadoVar
+  var logradouro = req.body.logradouroVar
+  var numero = req.body.numeroVar
 
-  if (descricao == undefined) {
+  if (nome == undefined) {
     res.status(400).send("descricao está undefined!");
-  } else if (idUsuario == undefined) {
+  } else if (cep == undefined) {
+    res.status(400).send("idUsuario está undefined!");
+  } else if (bairro == undefined) {
+    res.status(400).send("idUsuario está undefined!");
+  } else if (cidade == undefined) {
+    res.status(400).send("idUsuario está undefined!");
+  } else if (estado == undefined) {
+    res.status(400).send("idUsuario está undefined!");
+  } else if (logradouro == undefined) {
+    res.status(400).send("idUsuario está undefined!");
+  } else if (numero == undefined) {
     res.status(400).send("idUsuario está undefined!");
   } else {
 
 
-    aquarioModel.cadastrar(descricao, idUsuario)
+    fazendasModel.cadastrar(nome, cep, bairro, cidade, estado, logradouro, numero)
       .then((resultado) => {
         res.status(201).json(resultado);
       }

@@ -124,7 +124,6 @@ function finalCadFunc() {
     }
 }
 
-
 function finalCadEmpresa() {
 
     empresa_cadastro = inputEmpresa.value
@@ -169,6 +168,8 @@ function finalCadEmpresa() {
                 console.log("resposta: ", resposta);
 
                 if (resposta.ok) {
+                    empresa_selecao.innerHTML = ""
+                    listar()
                     buscarIdEmpresa()
                 } else {
                     throw "Houve um erro ao tentar realizar o cadastro!";
@@ -283,7 +284,7 @@ function listar() {
         return response.json();
       })
       .then(function (empresas) {
-        console.log(empresas); // Adicione este console.log para verificar a estrutura dos dados recebidos
+        console.log(empresas);
   
         const empresaSelecao = document.getElementById('empresa_selecao');
   
@@ -302,6 +303,6 @@ function listar() {
       .catch(function (error) {
         console.error(`#ERRO: ${error}`);
       });
-  }
+}
   
   

@@ -8,6 +8,73 @@ empresa varchar(45) not null,
 email varchar(45) not null unique,
 senha varchar(45) not null,
 cnpj char(14) not null unique,
+chave_acesso int not null unique
+) auto_increment = 100;
+
+
+    select * from Empresa;
+
+
+create table Funcionario(
+idFuncionario int primary key auto_increment,
+nome varchar(45) not null,
+email varchar(45) not null unique,
+senha varchar(45) not null,
+cpf char(14) not null unique,
+fkEmpresaFuncionario int,
+constraint fkEmpresaFuncionario foreign key (fkEmpresaFuncionario) references Empresa(idEmpresa)) auto_increment = 100;
+
+
+    select * from Funcionario;
+    
+	select f.idFuncionario, f.nome, f.email, f.cpf, e.idEmpresa, e.empresa 
+    from Funcionario as f 
+		join Empresa as e 
+			on f.fkEmpresaFuncionario = e.idEmpresa 
+				where f.email = "${}" and f.senha = "{}";
+
+
+create table Endereco(
+idEndereco int primary key auto_increment,
+cep char(8),
+logradouro varchar(45),
+numero varchar(7),
+bairro varchar(45),
+cidade varchar(45),
+estado varchar(15),
+fkEnderecoEmpresa int,
+constraint fkEnderecoEmpresa foreign key (fkEnderecoEmpresa) references Empresa(idEmpresa)) auto_increment = 100;
+
+
+    select * from Endereço;
+
+
+create table Contato(
+idContato int primary key auto_increment,
+telefonePrincipal char(11) not null,
+telefoneSecundario char(11),
+emailPrincipal varchar(45) not null,
+emailSecundario varchar(45),
+fkContatoEmpresa int,
+constraint fkContatoEmpresa foreign key (fkContatoEmpresa) references Empresa(idEmpresa)) auto_increment = 100;
+
+
+    select * from Contato;
+
+-----------------------------------------------------------------------------------------------------------------
+-----------------------------------------------------------------------------------------------------------------
+-----------------------------------------------------------------------------------------------------------------
+
+create database TechApulus_sprint2;
+
+use TechApulus_sprint2;
+
+create table Empresa(
+idEmpresa int primary key auto_increment,
+empresa varchar(45) not null,
+email varchar(45) not null unique,
+senha varchar(45) not null,
+cnpj char(14) not null unique,
 chave_acesso int not null unique,
 ) auto_increment = 100;
 
@@ -75,11 +142,10 @@ insert into Contato values
 create table Fazenda(
 idFazendas int primary key auto_increment,
 nome varchar(45),
-qtdArmazem int,
 fkEndFazenda int,
-fkUsuario int,
+fkEmpresa int,
 constraint fkEndFaz foreign key(fkEndFazenda) references Endereço(idEndereco),
-constraint fkUsuarFaz foreign key (fkUsuario) references Usuário(idUsuario)) auto_increment = 300;
+constraint fkEmpresaFaz foreign key (fkEmpresa) references Empresa(idEmpresa)) auto_increment = 300;
 
 select * from Fazenda;
 

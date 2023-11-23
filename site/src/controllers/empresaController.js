@@ -50,7 +50,6 @@ function cadastrar(req, res) {
 
 }
 
-
 function cadastrarendereco(req, res) {
   var logradouro = req.body.logradouroServer
   var numero = req.body.numeroServer

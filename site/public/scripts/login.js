@@ -131,41 +131,11 @@ function avancarCadCont() {
 }
 
 
-function verifyLogin() {
-    email_login = inputEmailLogin.value;
-    senha_login = inputSenhaLogin.value;
-    clearBorder()
-
-    // Define uma expressão regular para validar endereços de e-mail
-    var regex = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,9}$/;
-
-    // Verifica se o email inserido corresponde à expressão regular
-    if (email_login == "" || senha_login == "") {
-        executarFuncTemporal(move, 8, 30)
-        if (email_login == "") { inputEmailLogin.style.border = "2px solid #ffbf00" }
-        else if (!regex.test(email_login)) {
-            inputEmailLogin.style.border = "2px solid red"
-            inputEmailLogin.placeholder = "E-mail inválido"
-            inputEmailLogin.value = ""
-        }
-        if (senha_login == "") { inputSenhaLogin.style.border = "2px solid #ffbf00" }
-
-    } else if (email_login == email_cadastro && senha_login == senha_cadastro) {
-        window.location.href = 'dashboard.html';
-    } else {
-        executarFuncTemporal(move, 8, 30)
-        inputEmailLogin.style.border = "2px solid red"
-        inputSenhaLogin.style.border = "2px solid red"
-    }
-
-}
-
 function telaOpcoes() {
     frameClear()
     //alterando imagem do fundo
     content_image.classList.add("content-logo-active")
     //margem botao
-    botao_cad.style.margin = "3% 0 0 0"
     // diminuindo visualização no cadastro
     content_image.style.width = "55%"
     fields.style.width = "45%"
@@ -201,9 +171,7 @@ function telaOpcoes() {
 function telaLog() {
     //alterar para campos do login
     frameClear()
-    campos_login.style.display = "block"
-    //margem botao
-    botao_log.style.margin = "13% 0 0 0"
+    campos_login_funcionario.style.display = "block"
     // diminuindo visualização no cadastro
     content_image.style.width = "55%"
     fields.style.width = "45%"
@@ -237,13 +205,12 @@ function telaCad() {
     //alterando imagem do fundo
     content_image.classList.add("content-logo-active")
     //margem botao
-    botao_cad.style.margin = "3% 0 0 0"
     // diminuindo visualização no cadastro
     content_image.style.width = "55%"
     fields.style.width = "45%"
     //alterando título
     title.innerHTML = "CADASTRO"
-    title.style.margin = "0 0 2% 0"
+    title.style.margin = "0 0 8% 0"
     //alterar para campos do cadastro
     frameClear()
     pointerClear()
@@ -343,9 +310,9 @@ function clearCamposCadatro() {
 }
 
 function cleaCamposLogin() {
-    inputEmailLogin.value = ""
-    inputSenhaLogin.value = ""
-    inputEmailLogin.placeholder = "E-mail"
+    inputEmailLoginFunc.value = ""
+    inputSenhaLoginFunc.value = ""
+    inputEmailLoginFunc.placeholder = "E-mail"
     clearBorder()
 }
 
@@ -357,7 +324,7 @@ function pointerClear() {
 }
 
 function frameClear() {
-    campos_login.style.display = "none"
+    campos_login_funcionario.style.display = "none"
     campos_cadastro.style.display = "none"
     campos_endereco.style.display = "none"
     campos_contato.style.display = "none"
@@ -373,8 +340,8 @@ function clearBorder() {
     inputSenhaCadastro.style.border = "#a5744c"
     inputEmailCadastro.style.border = "#a5744c"
 
-    inputEmailLogin.style.border = "#a5744c"
-    inputSenhaLogin.style.border = "#a5744c"
+    inputEmailLoginFunc.style.border = "#a5744c"
+    inputSenhaLoginFunc.style.border = "#a5744c"
 
     inputLogradouro.style.border = "#a5744c"
     inputNum.style.border = "#a5744c"
