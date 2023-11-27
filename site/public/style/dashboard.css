@@ -130,8 +130,8 @@ body {
 
 .menu {
 	position: relative;
-  	display: inline-block;
-  	cursor: pointer;
+	display: inline-block;
+	cursor: pointer;
 	display: flex;
 	flex-direction: column;
 	align-items: end;
@@ -143,6 +143,7 @@ body {
 	overflow: hidden;
 	margin-left: -96%;
 }
+
 .menu-active {
 	width: 250px;
 }
@@ -193,13 +194,13 @@ body {
 
 .textoMenu {
 	color: white;
-	display: flex; 
+	display: flex;
 	align-items: center;
-	height: 100%; 
+	height: 100%;
 	margin-top: 30px;
 }
 
-.blocoTextoMenu{
+.blocoTextoMenu {
 	display: flex;
 	align-items: center;
 	height: 50px;
@@ -217,6 +218,23 @@ body {
 	flex: 1;
 	--ionicon-stroke-width: 50px;
 	width: 40px;
+}
+
+.cardAlerta {
+	display: flex;
+	flex-direction: row;
+	font-size: 2rem;
+	padding: 47px;
+	margin-top: 10%;
+	color: #fff;
+	border-radius: 20px;
+	position: fixed;
+	align-items: center;
+	background: #9c6b43;
+	justify-content: center;
+	border: solid 5px #463d37;
+	height: auto;
+	width: auto;
 }
 
 @keyframes deslizar {
