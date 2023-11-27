@@ -33,17 +33,19 @@
             </div>
             <div class="blocoTextoMenu">
                 <span class="textoMenu" style="width: 75px; margin-right: 0;">Perfil</span>
-                <a href="telaUsuario.html" class="dash"><ion-icon name="person-circle-outline" class="ionicons" style="color: rgb(63, 46, 34);"></ion-icon></a>
-              </div>
+                <a href="telaUsuario.html" class="dash"><ion-icon name="person-circle-outline" class="ionicons"
+                        style="color: rgb(63, 46, 34);"></ion-icon></a>
+            </div>
             <div class="blocoTextoMenu">
                 <span class="textoMenu" style="width: 75px; margin-right: 0;">Sair</span>
-                <a href="login.html" class="dash"><ion-icon name="exit-outline"class="ionicons"></ion-icon></ion-icon></a>
+                <a href="login.html" class="dash"><ion-icon name="exit-outline"
+                        class="ionicons"></ion-icon></ion-icon></a>
             </div>
         </span>
     </div>
     <div style="overflow: hidden;">
         <br> <br> <br>
-        
+
         <div vw class="enabled">
             <div vw-access-button class="active"></div>
             <div vw-plugin-wrapper>
@@ -58,38 +60,139 @@
             <p>Chave de Acesso: <b><span id="chave-user">XXX-XXX</span></b></p>
             <p>Empresa: <b><span id="empresa-user">TechApulus</span></b></p>
         </header>
-        
-        <h1>Métricas</h1>
 
+        <h1>Métricas</h1>
         <div class="metricas">
-            <div class="campo">
-                <p>Temperatura</p>
-                <p>Umidade</p>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Unidade de Medida</th>
+                        <th style="color: blue;">Minimo</th>
+                        <th style="color: dodgerblue;">Média</th>
+                        <th style="color: limegreen;">Ideal</th>
+                        <th style="color: limegreen;">Ideal</th>
+                        <th style="color: orangered;">Média</th>
+                        <th style="color: red;">Máxima</th>
+                    </tr>
+                </thead>
+
+                <tbody>
+                    <tr>
+                        <th>Temperatura</th>
+                        <td style="color: blue;">14°C</td>
+                        <td style="color: dodgerblue;">17°C</td>
+                        <td style="color: limegreen;">17°C</td>
+                        <td style="color: limegreen;">20°C</td>
+                        <td style="color: orangered;">23°C</td>
+                        <td style="color: red;">26°C</td>
+                    </tr>
+                    <tr>
+                        <th>Umidade</th>
+                        <td style="color: blue;">55%</td>
+                        <td style="color: dodgerblue;">58%</td>
+                        <td style="color: limegreen;">60%</td>
+                        <td style="color: limegreen;">65%</td>
+                        <td style="color: orangered;">67%</td>
+                        <td style="color: red;">69%</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <h1>Visão Geral dos Gráficos Das Fazendas</h1>
+        <div class="graficosGerais" id="graficosGerais">
+            <div class="graficos">
+                <canvas id="chartTemp"></canvas>
             </div>
-            <div class="campo">
-                <p>14°C</p>
-                <p>55%</p>
+
+            <div class="graficos">
+                <canvas id="chartUmid"></canvas>
             </div>
-            <div class="campo">
-                <p>17°C</p>
-                <p>58%</p>
-            </div>
-            <div class="campo">
-                <p>20°C</p>
-                <p>60%</p>
-            </div>
-            <div class="campo">
-                <p>23°C</p>
-                <p>65%</p>
-            </div>
-            <div class="campo">
-                <p>24°C</p>
-                <p>67%</p>
-            </div>
-            <div class="campo">
-                <p>26°C</p>
-                <p>69%</p>
-            </div>
+
+            <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+            <script>
+                // const armazensGerais = document.getElementById('graficosGerais');
+
+                const chartTemp = document.getElementById('chartTemp');
+
+                new Chart(chartTemp, {
+                    type: 'bar',
+                    data: {
+                        labels: ['Armazém 1', 'Armazém 2', 'Armazém 3', 'Armazém 4'],
+                        datasets: [{
+                            label: 'Temperatura Geral dos Armazéns',
+                            data: [14, 20, 16, 26],
+                            borderWidth: 2,
+                            backgroundColor: '#9c6b43',
+                            borderColor: '#9c6b43',
+                            color: 'white'
+                        }]
+                    },
+                    options: {
+                        scales: {
+                            y: {
+                                beginAtZero: true
+                            }
+                        }
+                    },
+                    options: {
+                        scales: {
+                            y: {
+                                beginAtZero: true,
+                                plugins: {
+                                    title: {
+                                        display: true,
+                                        text: 'Custom Chart Title',
+                                        font: {
+                                            //fontSize: '30pt'
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                });
+
+                const chartUmid = document.getElementById('chartUmid');
+
+                new Chart(chartUmid, {
+                    type: 'bar',
+                    data: {
+                        labels: ['Armazém 1', 'Armazém 2', 'Armazém 3', 'Armazém 4'],
+                        datasets: [{
+                            label: 'Temperatura Geral dos Armazéns',
+                            data: [55, 60, 66, 69],
+                            borderWidth: 2,
+                            backgroundColor: '#9c6b43',
+                            borderColor: '#9c6b43',
+                            color: 'white'
+                        }]
+                    },
+                    options: {
+                        scales: {
+                            y: {
+                                beginAtZero: true
+                            }
+                        }
+                    },
+                    options: {
+                        scales: {
+                            y: {
+                                beginAtZero: true,
+                                plugins: {
+                                    title: {
+                                        display: true,
+                                        text: 'Custom Chart Title',
+                                        font: {
+                                            //fontSize: '30pt'
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                });
+            </script>
         </div>
     </div>
 </body>
