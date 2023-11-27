@@ -12,6 +12,7 @@ router.post("/cadastrarendereco", function (req, res) {
   empresaController.cadastrarendereco(req, res);
 })
 
+
 router.post("/cadastrarcontato", function (req, res) {
   empresaController.cadastrarcontato(req, res);
 })

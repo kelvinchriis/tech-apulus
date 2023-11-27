@@ -20,14 +20,6 @@ function autenticar(req, res) {
                     if (resultadoAutenticar.length == 1) {
                         console.log(resultadoAutenticar);
                         res.status(200).json(resultadoAutenticar)
-                        // res.json({
-                        //     id_funcionario: resultadoAutenticar[0].idFuncionario,
-                        //     email: resultadoAutenticar[0].email,
-                        //     nome: resultadoAutenticar[0].nome,
-                        //     cpf: resultadoAutenticar[0].cpf,
-                        //     id_empresa: resultadoAutenticar[0].idEmpresa,
-                        //     empresa: resultadoAutenticar[0].empresa
-                        // });
                     } else if (resultadoAutenticar.length == 0) {
                         res.status(403).send("Email e/ou senha inválido(s)");
                     } else {
@@ -70,37 +62,37 @@ function cadastrar(req, res) {
     } else {
 
         empresaModel.buscarPorChaveEmpresa(id_empresa)
-         .then((chaveempresa) => {
-            if (chaveempresa.length > 0) {
-                var chave_empresa = chaveempresa[0].chave_acesso;
+            .then((chaveempresa) => {
+                if (chaveempresa.length > 0) {
+                    var chave_empresa = chaveempresa[0].chave_acesso;
 
-                if (Number(chave) == Number(chave_empresa)) {
-                    // Passe os valores como parâmetro e vá para o arquivo usuarioModel.js
-                    funcionariosModel.cadastrar(nome, email, senha, cpf, id_empresa)
-                        .then(
-                            function (resultado) {
-                                res.json(resultado);
-                            }
-                        ).catch(
-                            function (erro) {
-                                console.log(erro);
-                                console.log(
-                                    "\nHouve um erro ao realizar o cadastro! Erro: ",
-                                    erro.sqlMessage
-                                );
-                                res.status(500).json(erro.sqlMessage);
-                            }
-                        );
+                    if (Number(chave) == Number(chave_empresa)) {
+                        // Passe os valores como parâmetro e vá para o arquivo usuarioModel.js
+                        funcionariosModel.cadastrar(nome, email, senha, cpf, id_empresa)
+                            .then(
+                                function (resultado) {
+                                    res.json(resultado);
+                                }
+                            ).catch(
+                                function (erro) {
+                                    console.log(erro);
+                                    console.log(
+                                        "\nHouve um erro ao realizar o cadastro! Erro: ",
+                                        erro.sqlMessage
+                                    );
+                                    res.status(500).json(erro.sqlMessage);
+                                }
+                            );
+                    } else {
+                        res.json({
+                            chave: "false"
+                        });
+                    }
+
                 } else {
-                    res.json({
-                        chave: "false" 
-                    });
+                    res.status(204).json({ aquarios: [] });
                 }
-
-            } else {
-                res.status(204).json({ aquarios: [] });
-            }
-        })
+            })
 
 
 

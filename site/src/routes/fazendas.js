@@ -11,4 +11,12 @@ router.post("/cadastrar", function (req, res) {
   fazendasController.cadastrar(req, res);
 })
 
+router.post("/cadastrarenderecofazenda", function (req, res) {
+  fazendasController.cadastrarendfazenda(req, res);
+})
+
+router.post("/buscarid", function (req, res) {
+  fazendasController.buscarid(req, res);
+})
+
 module.exports = router;

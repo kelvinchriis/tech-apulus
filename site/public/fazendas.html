@@ -160,6 +160,104 @@
 
 <script>
   function cadastrar() {
+    var empresa = input_nome.value
+    
+
+
+    fetch("/fazendas/cadastrar", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        empresaServer: empresa,
+      }),
+    })
+      .then(function (resposta) {
+        console.log("resposta: ", resposta);
+
+        if (resposta.ok) {
+
+          fetch("/fazendas/cadastrarenderecofazenda", {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json",
+            },
+            body: JSON.stringify({
+              cepServer: cep,
+              bairroServer: bairro,
+              cidadeServer: cidade,
+              estadoServer: estado,
+              logradouroServer: logradouro,
+              numeroServer: numero
+            }),
+          })
+            .then(function (resposta) {
+              console.log("resposta: ", resposta);
+
+              if (resposta.ok) {
+
+                buscarIdEndFazenda(logradouro, numero, cep)
+
+              } else {
+                throw "Houve um erro ao tentar realizar o cadastro!";
+              }
+            })
+            .catch(function (resposta) {
+              console.log(`#ERRO: ${resposta}`);
+            });
+
+
+        } else {
+          throw "Houve um erro ao tentar realizar o cadastro!";
+        }
+      })
+      .catch(function (resposta) {
+        console.log(`#ERRO: ${resposta}`);
+      });
+
+    return false;
+
+  }
+
+  function buscarIdEndFazenda(logradouro, numero, cep) {
+    fetch("/fazendas/buscarid", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        // crie um atributo que recebe o valor recuperado aqui
+        // Agora vá para o arquivo routes/usuario.js
+        logradouroServer: logradouro,
+        numeroServer: numero,
+        cepServer: cep
+      }),
+    })
+      .then(function (response) {
+        if (!response.ok) {
+          throw new Error('Erro ao carregar os dados');
+        }
+        return response.json();
+      })
+      .then(function (resposta) {
+        console.log(resposta);
+
+        if (resposta.length == 0) {
+          console.log("erros")
+        } else {
+          var idEnd = resposta0[0].idEndereco
+          alert("dedesd")
+        }
+      })
+      .catch(function (error) {
+        console.error('Erro:', error);
+      });
+
+  }
+
+
+  function cadastrarEnderecoFazenda() {
     var nome = input_nome.value
     var cep = inputCEP.value
     var bairro = inputBairro.value
@@ -168,37 +266,64 @@
     var logradouro = inputLogradouro.value
     var numero = input_numero.value
 
-    fetch("/fazendas/cadastrar", {
+    fetch("/fazendas/cadastrarenderecofazenda", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        cepServer: cep,
+        bairroServer: bairro,
+        cidadeServer: cidade,
+        estadoServer: estado,
+        logradouroServer: logradouro,
+        numeroServer: numero
+      }),
+    })
+      .then(function (resposta) {
+        console.log("resposta: ", resposta);
+
+        if (resposta.ok) {
+
+          fetch("/fazendas/cadastrarenderecofazenda", {
             method: "POST",
             headers: {
-                "Content-Type": "application/json",
+              "Content-Type": "application/json",
             },
             body: JSON.stringify({
-                nomeServer: nome,
-                cepServer: cep,
-                bairroServer: bairro,
-                cidadeServer: cidade,
-                estadoVar: estado,
-                logradouroVar: logradouro,
-                numeroVar: numero
+              cepServer: cep,
+              bairroServer: bairro,
+              cidadeServer: cidade,
+              estadoServer: estado,
+              logradouroServer: logradouro,
+              numeroServer: numero
             }),
-        })
+          })
             .then(function (resposta) {
-                console.log("resposta: ", resposta);
+              console.log("resposta: ", resposta);
 
-                if (resposta.ok) {
-                    
-                    alert("deucerto")
+              if (resposta.ok) {
 
+                buscarIdEndFazenda(logradouro, numero, cep)
 
-                } else {
-                    throw "Houve um erro ao tentar realizar o cadastro!";
-                }
+              } else {
+                throw "Houve um erro ao tentar realizar o cadastro!";
+              }
             })
             .catch(function (resposta) {
-                console.log(`#ERRO: ${resposta}`);
+              console.log(`#ERRO: ${resposta}`);
             });
 
-        return false;
+
+        } else {
+          throw "Houve um erro ao tentar realizar o cadastro!";
+        }
+      })
+      .catch(function (resposta) {
+        console.log(`#ERRO: ${resposta}`);
+      });
+
+    return false;
   }
+
 </script>

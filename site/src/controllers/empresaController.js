@@ -12,7 +12,7 @@ function buscarPorCnpj(req, res) {
     } else {
       res.status(403).send("perfil não existe)");
     }
-    
+
   });
 }
 
@@ -50,30 +50,6 @@ function cadastrar(req, res) {
 
 }
 
-function cadastrarendereco(req, res) {
-  var logradouro = req.body.logradouroServer
-  var numero = req.body.numeroServer
-  var bairro = req.body.bairroServer
-  var cidade = req.body.cidadeServer
-  var estado = req.body.estadoServer
-  var cep = req.body.cepServer
-  var fkEmpresa = req.body.fkEmpresa
-
-  empresaModel.cadastrarendereco(logradouro, numero, bairro, cidade, estado, cep, fkEmpresa)
-      .then((resultado) => {
-        res.status(201).json(resultado);
-      }
-      ).catch((erro) => {
-        console.log(erro);
-        console.log(
-          "\nHouve um erro ao realizar o cadastro! Erro: ",
-          erro.sqlMessage
-        );
-        res.status(500).json(erro.sqlMessage);
-      });
-}
-
-
 function cadastrarcontato(req, res) {
   var telefonP = req.body.telefonePrincipal
   var telefoneS = req.body.telefoneSecundario
@@ -82,23 +58,22 @@ function cadastrarcontato(req, res) {
   var fkEmpresa = req.body.fkEmpresa
 
   empresaModel.cadastrarcontato(telefonP, telefoneS, emailP, emailS, fkEmpresa)
-      .then((resultado) => {
-        res.status(201).json(resultado);
-      }
-      ).catch((erro) => {
-        console.log(erro);
-        console.log(
-          "\nHouve um erro ao realizar o cadastro! Erro: ",
-          erro.sqlMessage
-        );
-        res.status(500).json(erro.sqlMessage);
-      });
+    .then((resultado) => {
+      res.status(201).json(resultado);
+    }
+    ).catch((erro) => {
+      console.log(erro);
+      console.log(
+        "\nHouve um erro ao realizar o cadastro! Erro: ",
+        erro.sqlMessage
+      );
+      res.status(500).json(erro.sqlMessage);
+    });
 }
 
 module.exports = {
   buscarPorCnpj,
   cadastrar,
   listar,
-  cadastrarendereco,
   cadastrarcontato
 };

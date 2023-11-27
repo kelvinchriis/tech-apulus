@@ -16,8 +16,22 @@ function cadastrar(nome, cep, bairro, cidade, estado, logradouro, numero) {
   return database.executar(instrucaoSql);
 }
 
+function cadastrarendfazenda(logradouro, numero, bairro, cidade, estado, cep) {
+  var query = `insert into Endereco values (null, '${cep}', '${logradouro}', '${numero}', '${bairro}', '${cidade}', '${estado}', null)`;
+  console.log(query)
+  return database.executar(query);
+}
+
+function buscarid(logradouro, numero, cep) {
+  var query = `select idEndereco from endereco where cep = ${cep} and logradouro = '${logradouro}' and numero = '${numero}'`;
+  console.log(query)
+  return database.executar(query);
+}
+
 
 module.exports = {
   buscarAquariosPorEmpresa,
-  cadastrar
+  cadastrar,
+  cadastrarendfazenda,
+  buscarid
 }
