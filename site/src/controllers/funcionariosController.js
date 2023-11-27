@@ -19,28 +19,15 @@ function autenticar(req, res) {
 
                     if (resultadoAutenticar.length == 1) {
                         console.log(resultadoAutenticar);
-                        res.json({
-                            id_funcionario: resultadoAutenticar[0].idFuncionario,
-                            email: resultadoAutenticar[0].email,
-                            nome: resultadoAutenticar[0].nome,
-                            cpf: resultadoAutenticar[0].cpf,
-                            id_empresa: resultadoAutenticar[0].idEmpresa,
-                            empresa: resultadoAutenticar[0].empresa
-                        });
-                        // funcionariosModel.buscarAquariosPorEmpresa(resultadoAutenticar[0].empresaId)
-                        //     .then((resultadoAquarios) => {
-                        //         if (resultadoAquarios.length > 0) {
-                        //             res.json({
-                        //                 id: resultadoAutenticar[0].id,
-                        //                 email: resultadoAutenticar[0].email,
-                        //                 nome: resultadoAutenticar[0].nome,
-                        //                 senha: resultadoAutenticar[0].senha,
-                        //                 aquarios: resultadoAquarios
-                        //             });
-                        //         } else {
-                        //             res.status(204).json({ aquarios: [] });
-                        //         }
-                        //     })
+                        res.status(200).json(resultadoAutenticar)
+                        // res.json({
+                        //     id_funcionario: resultadoAutenticar[0].idFuncionario,
+                        //     email: resultadoAutenticar[0].email,
+                        //     nome: resultadoAutenticar[0].nome,
+                        //     cpf: resultadoAutenticar[0].cpf,
+                        //     id_empresa: resultadoAutenticar[0].idEmpresa,
+                        //     empresa: resultadoAutenticar[0].empresa
+                        // });
                     } else if (resultadoAutenticar.length == 0) {
                         res.status(403).send("Email e/ou senha inválido(s)");
                     } else {

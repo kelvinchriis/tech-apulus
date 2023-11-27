@@ -18,13 +18,15 @@ function verifyLogin() {
         }
         if (senha_login == "") { inputSenhaLoginFunc.style.border = "2px solid #ffbf00" }
 
-    } else if (autenticar(email_login, senha_login)) {
-        window.location = "dashboard.html"
     } else {
-        executarFuncTemporal(move, 8, 30)
-        inputEmailLoginFunc.style.border = "2px solid red"
-        inputSenhaLoginFunc.style.border = "2px solid red"
+        autenticar(email_login, senha_login)
     }
+}
+
+function balancar() {
+    executarFuncTemporal(move, 8, 30)
+    inputEmailLoginFunc.style.border = "2px solid red"
+    inputSenhaLoginFunc.style.border = "2px solid red"
 }
 
 function autenticar(email_login, senha_login) {
@@ -40,28 +42,31 @@ function autenticar(email_login, senha_login) {
             senhaServer: senha_login
         }),
     })
-        .then(function (resposta) {
-            console.log("resposta: ", resposta);
-            
-            if(resposta.status === 403) {
-                return false;
-            } else if (resposta.ok) {
-                resposta.json().then(json => {
-                    sessionStorage.CHAVE = json.chave
-                    sessionStorage.ID_FUNCIONARIO = json.id_funcionario
-                    sessionStorage.EMAIL = json.email
-                    sessionStorage.NOME = json.nome
-                    sessionStorage.CPF = json.cpf
-                    sessionStorage.ID_EMPRESA = json.id_empresa
-                    sessionStorage.EMPRESA = json.empresa
-                });
-                return true;
+    .then(function (response) {
+        if (!response.ok) {
+            balancar()
+            throw new Error('Erro ao carregar os dados');
+            }
+            return response.json();
+        })
+        .then(function (perfil) {
+            console.log(perfil);
+
+            if (perfil.length == 0) {
+                balancar()
             } else {
-                return false;
+                sessionStorage.ID_FUNCIONARIO = perfil[0].idFuncionario
+                sessionStorage.EMAIL = perfil[0].email
+                sessionStorage.NOME = perfil[0].nome
+                sessionStorage.CPF = perfil[0].cpf
+                sessionStorage.ID_EMPRESA = perfil[0].id_empresa
+                sessionStorage.EMPRESA = perfil[0].empresa
+                sessionStorage.SENHA = perfil[0].senha
+                window.location = "dashboard.html" 
             }
         })
-        .catch(function (resposta) {
-            console.log(`#ERRO: ${resposta}`);
+        .catch(function (error) {
+            console.error('Erro:', error);
         });
-   
+
 }
