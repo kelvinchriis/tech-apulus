@@ -220,21 +220,72 @@ body {
 	width: 40px;
 }
 
-.cardAlerta {
+.alertasArmazens {
 	display: flex;
+	justify-content: space-around;
 	flex-direction: row;
-	font-size: 2rem;
-	padding: 47px;
-	margin-top: 10%;
-	color: #fff;
-	border-radius: 20px;
-	position: fixed;
+	gap: 15px;
+}
+
+.alertas {
+	flex-direction: column;
+	display: flex;
 	align-items: center;
-	background: #9c6b43;
 	justify-content: center;
+}
+
+.cardAlertaTemp {
 	border: solid 5px #463d37;
+	border-radius: 25px;
+	background: #9c6b43;
+	font-size: 2rem;
+	color: #fff;
+	padding: 30px;
+	width: 35%;
+	height: auto;
+}
+
+.cardAlertaUmid {
+	border: solid 5px #463d37;
+	border-radius: 25px;
+	background: #9c6b43;
+	font-size: 2rem;
+	color: #fff;
+	padding: 30px;
+	width: 35%;
+	height: autox;
+}
+
+.telaMetricas {
+	border: 10px solid #9c6b43;
+	border-radius: 25px;
+	justify-content: center;
+	align-items: center;
+	display: flex;
+	position: fixed;
+	flex-direction: column;
+	padding: 30px;
 	height: auto;
 	width: auto;
+	background: #ffd5b3;
+	box-shadow: 0 5px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 10px 1000px rgba(0, 0, 0, 0.491);
+    margin-top: 5%;
+}
+
+.metricas{
+    justify-content: center;
+    display: flex;
+    /* flex-direction: column; */
+}
+
+table, th, td {
+    text-align: center;
+    border: 3px solid rgb(158, 103, 59);
+    font-size: 20px
+}
+
+th, td {
+    padding: 3px;
 }
 
 @keyframes deslizar {
@@ -246,5 +297,53 @@ body {
 	to {
 		top: 0;
 		opacity: 1
+	}
+}
+
+.piscarBlue {
+	animation: blinkBlue 1s steps(1, end) infinite;
+	transition: 0.25s;
+}
+
+.piscarRed {
+	animation: blinkRed 1s steps(1, end) infinite;
+	transition: 0.25s;
+}
+
+@keyframes blinkBlue {
+	0% {
+		box-shadow: 0 0 15px blue;
+		/* transition: 0.25s; */
+	}
+
+	50% {
+		box-shadow:0 0 0 blue;
+		/* opacity: 0; */
+		/* transition: 0.25s; */
+	}
+
+	100% {
+		box-shadow: 0 0 15px blue;
+		/* opacity: 1; */
+		/* transition: 0.25s; */
+	}
+}
+
+@keyframes blinkRed {
+	0% {
+		box-shadow: 0 0 15px red;
+		/* transition: 0.25s; */
+	}
+
+	50% {
+		box-shadow:0 0 0 red;
+		/* opacity: 0; */
+		/* transition: 0.25s; */
+	}
+
+	100% {
+		box-shadow: 0 0 15px red;
+		/* opacity: 1; */
+		/* transition: 0.25s; */
 	}
 }

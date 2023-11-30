@@ -14,11 +14,6 @@
 </head>
 
 <body onload="alertas()">
-  <div id="cardAlerta" class="cardAlerta">
-    <div id="msgAlertaTemp" class="msgAlerta msgAlertaTemp"></div>
-    <div id="msgAlertaUmid" class="msgAlerta msgAlertaUmid"></div>
-  </div>
-
   <div class="menu menu-perdas">
     <div class="button-menu" onclick="menuClick()">
       <div class="bar-menu"></div>
@@ -60,6 +55,65 @@
 
   <div class="content-dash">
     <div>
+      <div class="alertas">
+        <h1>Situações dos Armazéns</h1>
+        <div class="alertasArmazens">
+          <div id="cardAlertaTemp" class="cardAlertaTemp">
+            <div id="msgAlertaTemp" class="msgAlerta msgAlertaTemp"></div>
+          </div>
+
+          <div id="cardAlertaUmid" class="cardAlertaUmid">
+            <div id="msgAlertaUmid" class="msgAlerta msgAlertaUmid"></div>
+          </div>
+        </div>
+
+        <a class="header-action-btn login-btn">Ver Métricas</a>
+
+        <div class="telaMetricas">
+          <h1>Métricas</h1>
+          <div class="metricas">
+            <table>
+              <thead>
+                <tr>
+                  <th>Unidade de Medida</th>
+                  <th style="color: blue;">Minimo</th>
+                  <th style="color: dodgerblue;">Média</th>
+                  <th style="color: limegreen;">Ideal</th>
+                  <th style="color: limegreen;">Ideal</th>
+                  <th style="color: orangered;">Média</th>
+                  <th style="color: red;">Máxima</th>
+                </tr>
+              </thead>
+
+              <tbody>
+                <tr>
+                  <th>Temperatura</th>
+                  <td style="color: blue;">14°C</td>
+                  <td style="color: dodgerblue;">17°C</td>
+                  <td style="color: limegreen;">20°C</td>
+                  <td style="color: limegreen;">23°C</td>
+                  <td style="color: orangered;">24°C</td>
+                  <td style="color: red;">26°C</td>
+                </tr>
+                <tr>
+                  <th>Umidade</th>
+                  <td style="color: blue;">55%</td>
+                  <td style="color: dodgerblue;">58%</td>
+                  <td style="color: limegreen;">60%</td>
+                  <td style="color: limegreen;">65%</td>
+                  <td style="color: orangered;">67%</td>
+                  <td style="color: red;">69%</td>
+                </tr>
+              </tbody>
+              <tfoot></tfoot>
+            </table>
+          </div>
+        </div>
+
+      </div>
+
+      <br>
+
       <span id="name_user"></span>
       <span class="tituloGraficos"><b style="width: 60%; margin: 0 0 0 24%;">Visão Geral da Temperatura por
           Armazém</b></span>
