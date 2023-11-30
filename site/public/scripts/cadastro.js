@@ -192,7 +192,7 @@ function buscarIdEmpresa(cnpj_cadastro){
                     console.log(JSON.stringify(json));
                     sessionStorage.ID_EMPRESA = json.id_empresa;
                 });
-                cadastrarEndereco()
+                setTimeout(cadastrarEndereco, 1000)
             } else{
                 throw new Error('Erro ao consultar o ID');
             }

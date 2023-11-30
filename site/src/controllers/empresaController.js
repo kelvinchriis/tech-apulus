@@ -47,7 +47,6 @@ function buscarPorCnpj(req, res) {
 // listar empresas no select do cadastro do funcionario
 function listar(req, res) {
   empresaModel.listar().then((resultado) => {
-    console.log(resultado)
     res.status(200).json(resultado);
   });
 }

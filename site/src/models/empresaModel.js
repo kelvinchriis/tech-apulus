@@ -42,7 +42,7 @@ function cadastrarEndereco(logradouro, numero, bairro, cidade, estado, cep, fkEm
       insert into Endereco values (null, '${cep}', '${logradouro}', '${numero}', '${bairro}', '${cidade}', '${estado}', ${fkEmpresa}, null)
     `;
 
-  console.log("Executando a instrução SQL: \n" + instrucao);
+  console.log("Executando a instrução SQL: " + instrucao);
   return database.executar(instrucao);
 }
 

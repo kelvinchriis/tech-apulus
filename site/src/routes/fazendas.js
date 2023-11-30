@@ -3,7 +3,7 @@ var router = express.Router();
 
 var fazendasController = require("../controllers/fazendasController");
 
-router.get("/:empresaId", function (req, res) {
+router.get("/:idEmpresa", function (req, res) {
   fazendasController.buscarFazendasPorEmpresa(req, res);
 });
 

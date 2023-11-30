@@ -15,8 +15,9 @@ chave_acesso int not null unique
     select * from Empresa;
 
 create table Fazenda(
-idFazendas int primary key auto_increment,
+idFazenda int primary key auto_increment,
 nome varchar(45),
+identificador int,
 fkEmpresa int,
 constraint fkEmpresaFaz foreign key (fkEmpresa) references Empresa(idEmpresa)) auto_increment = 300;
     
@@ -46,7 +47,7 @@ cidade varchar(45),
 estado varchar(15),
 fkEnderecoEmpresa int,
 fkEnderocoFazenda int,
-constraint fkEnderecoEmpresa foreign key (fkEnderecoEmpresa) references Empresa(idEmpresa)
+constraint fkEnderecoEmpresa foreign key (fkEnderecoEmpresa) references Empresa(idEmpresa),
 constraint fkEnderocoFazenda foreign key (fkEnderocoFazenda) references Fazenda(idFazenda)) auto_increment = 100;
 
 
@@ -64,6 +65,11 @@ constraint fkContatoEmpresa foreign key (fkContatoEmpresa) references Empresa(id
 
 
     select * from Contato;
+
+
+
+-------------------- FEITO ATÉ AQUI ------------------
+
 
 
 create table Armazém(
