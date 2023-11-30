@@ -112,770 +112,25 @@
 
       </div>
 
-      <br>
+      <br> <br>
 
+      <!-- Começo dos Gráficos -->
       <span id="name_user"></span>
-      <span class="tituloGraficos"><b style="width: 60%; margin: 0 0 0 24%;">Visão Geral da Temperatura por
-          Armazém</b></span>
-      <div class="grafics">
-        <div class="grafic">
-          <canvas id="temperaturaARM1"></canvas> <br>
-          <a class="login-btn" id="btnArm1" onclick="document.getElementById('arm1').style.display='block'">Ver
-            Detalhes</a>
+      <div class="mainGraficos">
+        <h1>Visão Geral das Fazendas</h1>
 
-        </div>
-        <div class="grafic">
-          <canvas id="temperaturaARM2"></canvas> <br>
-          <a class="login-btn" onclick="document.getElementById('arm2').style.display='block'">Ver
-            Detalhes</a>
-        </div>
-        <div class="grafic">
-          <canvas id="temperaturaARM3"></canvas> <br>
-          <a class="login-btn" onclick="document.getElementById('arm3').style.display='block'">Ver
-            Detalhes</a>
-        </div>
-      </div>
-      <div class="grafics">
-        <div class="grafic">
-          <canvas id="temperaturaARM4"></canvas> <br>
-          <a class="login-btn" onclick="document.getElementById('arm4').style.display='block'">Ver
-            Detalhes</a>
-        </div>
-        <div class="visãoGeral">
-          <a><ion-icon name="eye" class="ionicons"></ion-icon></a>
-          <span>Status Geral dos Armazéns:</span>
-          <a><ion-icon name="eye" class="ionicons"></ion-icon></a> <br>
-          <span>
-            Temperatura <span style="color: orange;">acima da Média</span> <br>
-            Mais atenção recomendada!
-          </span>
-        </div>
-        <div class="grafic">
-          <canvas id="temperaturaARM5"></canvas> <br>
-          <a class="login-btn" onclick="document.getElementById('arm5').style.display='block'">Ver
-            Detalhes</a>
-        </div>
-      </div>
-      <br><br><br>
-    </div>
 
-    <div class="armazensDetalhes">
-      <div id="arm1" class="armazem">
-        <h1>Visão Geral do Armazém 1:</h1>
-        <div class="cardz">
-          <div class="cardIndividual">
-            Temperatura Mínima: <br>
-            22
-          </div>
-          <div class="cardIndividual">
-            Temperatura Adequada: <br>
-            27
-          </div>
-          <div class="cardIndividual">
-            Temperatura Máxima: <br>
-            33
-          </div>
-        </div>
-        <div class="grafics">
-          <div class="grafic">
-            <canvas id="temperaturaARM1dt"></canvas>
-          </div> <br>
-          <div class="grafic" style="margin-left: 30%;">
-            <canvas id="umidadeARM1dt"></canvas>
-          </div>
-          <br>
-        </div> <br>
-        <a onclick="document.getElementById('arm1').style.display='none'" class="login-btn">Voltar</a>
-        <div class="avisoArmazem">
-          <a><ion-icon name="eye" class="ionicons"></ion-icon></a>
-          <span>Status do Armazém:</span>
-          <a><ion-icon name="eye" class="ionicons"></ion-icon></a> <br>
-          <span>
-            Temperatura <span style="color: orange;">acima da Média</span> <br>
-            Mais atenção recomendada!
-          </span>
+        <a id="btnAddGraf" class="login-btn">Adicionar Gráfico</a>
+        <div class="grafFazendas">
         </div>
       </div>
-
-      <div id="arm2" class="armazem">
-        <h1>Visão Geral do Armazém 2:</h1>
-        <div class="cardz">
-          <div class="cardIndividual">
-            Temperatura Mínima: <br>
-            23
-          </div>
-          <div class="cardIndividual">
-            Temperatura Adequada: <br>
-            26
-          </div>
-          <div class="cardIndividual">
-            Temperatura Máxima: <br>
-            31
-          </div>
-        </div>
-        <div class="grafics">
-          <div class="grafic">
-            <canvas id="temperaturaARM2dt"></canvas>
-          </div>
-          <div class="grafic">
-            <canvas id="umidadeARM2dt"></canvas>
-          </div>
-        </div>
-        <br>
-        <a onclick="document.getElementById('arm2').style.display='none'" class="login-btn">Voltar</a>
-        <div class="avisoArmazem">
-          <a><ion-icon name="warning" class="ionicons"></ion-icon></a>
-          <span>Status do Armazém:</span>
-          <a><ion-icon name="warning" class="ionicons"></ion-icon></a> <br>
-          <span>
-            Temperatura <span style="color: red;">CRÍTICA</span>!!<br>
-            Requer ação imediata!!
-          </span>
-        </div>
-      </div>
-
-      <div id="arm3" class="armazem">
-        <h1>Visão Geral do Armazém 3:</h1>
-        <div class="cardz">
-          <div class="cardIndividual">
-            Temperatura Mínima: <br>
-            24
-          </div>
-          <div class="cardIndividual">
-            Temperatura Adequada: <br>
-            26
-          </div>
-          <div class="cardIndividual">
-            Temperatura Máxima: <br>
-            34
-          </div>
-        </div>
-        <div class="grafics">
-          <div class="grafic">
-            <canvas id="temperaturaARM3dt"></canvas>
-          </div>
-          <div class="grafic">
-            <canvas id="umidadeARM3dt"></canvas>
-          </div>
-        </div>
-        <br>
-        <a onclick="document.getElementById('arm3').style.display='none'" class="login-btn">Voltar</a>
-        <div class="avisoArmazem">
-          <a><ion-icon name="eye" class="ionicons"></ion-icon></a>
-          <span>Status do Armazém:</span>
-          <a><ion-icon name="eye" class="ionicons"></ion-icon></a> <br>
-          <span>
-            Temperatura <span style="color: orange;">acima da Média</span> <br>
-            Mais atenção recomendada!
-          </span>
-        </div>
-      </div>
-
-      <div id="arm4" class="armazem">
-        <h1>Visão Geral do Armazém 4:</h1>
-        <div class="cardz">
-          <div class="cardIndividual">
-            Temperatura Mínima: <br>
-            21
-          </div>
-          <div class="cardIndividual">
-            Temperatura Adequada: <br>
-            26
-          </div>
-          <div class="cardIndividual">
-            Temperatura Máxima: <br>
-            32
-          </div>
-        </div>
-        <div class="grafics">
-          <div class="grafic">
-            <canvas id="temperaturaARM4dt"></canvas>
-          </div>
-          <div class="grafic">
-            <canvas id="umidadeARM4dt"></canvas>
-          </div>
-        </div>
-        <br>
-        <a onclick="document.getElementById('arm4').style.display='none'" class="login-btn">Voltar</a>
-        <div class="avisoArmazem">
-          <a><ion-icon name="sparkles" class="ionicons"></ion-icon></a>
-          <span>Status do Armazém:</span>
-          <a><ion-icon name="sparkles" class="ionicons"></ion-icon></a> <br>
-          <span>
-            Temperatura <span style="color: lime;">Aceitável</span> <br>
-            Grãos estáveis!
-          </span>
-        </div>
-      </div>
-
-      <div id="arm5" class="armazem">
-        <h1>Visão Geral do Armazém 5:</h1>
-        <div class="cardz">
-          <div class="cardIndividual">
-            Temperatura Mínima: <br>
-            25
-          </div>
-          <div class="cardIndividual">
-            Temperatura Adequada: <br>
-            28
-          </div>
-          <div class="cardIndividual">
-            Temperatura Máxima: <br>
-            33
-          </div>
-        </div>
-        <div class="grafics">
-          <div class="grafic">
-            <canvas id="temperaturaARM5dt"></canvas>
-          </div>
-          <div class="grafic">
-            <canvas id="umidadeARM5dt"></canvas>
-          </div>
-        </div>
-        <br>
-        <a onclick="document.getElementById('arm5').style.display='none'" class="login-btn">Voltar</a>
-        <div class="avisoArmazem">
-          <a><ion-icon name="eye" class="ionicons"></ion-icon></a>
-          <span>Status do Armazém:</span>
-          <a><ion-icon name="eye" class="ionicons"></ion-icon></a> <br>
-          <span>
-            Temperatura <span style="color: blue;">Abaixo do Adequado</span> <br>
-            Requer mais atenção!
-          </span>
-        </div>
-      </div>
+      <!-- Fim dos Gráficos -->
 
       <br> <br> <br>
 
-      <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-      <span class="graficosGerais">
+      <!-- Começo Script -->
 
-        <script>
-          const armazens = document.getElementById('armazens');
-
-          const temperaturaARM1 = document.getElementById('temperaturaARM1');
-
-          new Chart(temperaturaARM1, {
-            type: 'line',
-            data: {
-              labels: ['12:00', '12:07', '12:14', '12:21', '12:28', '12:35'],
-              datasets: [{
-                label: 'Variação de temperatura Armazém 1',
-                data: [28, 26, 29, 30, 31, 30],
-                borderWidth: 3,
-                backgroundColor: '#9c6b43',
-                borderColor: '#9c6b43',
-                color: 'white'
-              }]
-            },
-            options: {
-              scales: {
-                y: {
-                  beginAtZero: true
-                }
-              }
-            },
-            options: {
-              scales: {
-                y: {
-                  beginAtZero: true,
-                  plugins: {
-                    title: {
-                      display: true,
-                      text: 'Custom Chart Title',
-                      font: {
-                        //fontSize: '30pt'
-                      }
-                    }
-                  }
-                }
-              }
-            }
-          });
-
-          const temperaturaARM2 = document.getElementById('temperaturaARM2');
-
-          new Chart(temperaturaARM2, {
-            type: 'line',
-            data: {
-              labels: ['12:00', '12:07', '12:14', '12:21', '12:28', '12:35'],
-              datasets: [{
-                label: 'Variação de temperatura Armazém 2',
-                data: [34, 30, 29, 28, 31, 32],
-                borderWidth: 3,
-                backgroundColor: '#9c6b43',
-                borderColor: '#9c6b43',
-                color: 'white'
-              }]
-            },
-            options: {
-              scales: {
-                y: {
-                  beginAtZero: true
-                }
-              }
-            },
-            options: {
-              scales: {
-                y: {
-                  beginAtZero: true,
-                  plugins: {
-                    title: {
-                      display: true,
-                      text: 'Custom Chart Title',
-                      font: {
-                        //fontSize: '30pt'
-                      }
-                    }
-                  }
-                }
-              }
-            }
-          });
-
-          const temperaturaARM3 = document.getElementById('temperaturaARM3');
-
-          new Chart(temperaturaARM3, {
-            type: 'line',
-            data: {
-              labels: ['12:00', '12:07', '12:14', '12:21', '12:28', '12:35'],
-              datasets: [{
-                label: 'Variação de temperatura Armazém 3',
-                data: [29, 30, 30, 31, 32, 32],
-                borderWidth: 3,
-                backgroundColor: '#9c6b43',
-                borderColor: '#9c6b43',
-                color: 'white'
-              }]
-            },
-            options: {
-              scales: {
-                y: {
-                  beginAtZero: true
-                }
-              }
-            },
-            options: {
-              scales: {
-                y: {
-                  beginAtZero: true,
-                  plugins: {
-                    title: {
-                      display: true,
-                      text: 'Custom Chart Title',
-                      font: {
-                        //fontSize: '30pt'
-                      }
-                    }
-                  }
-                }
-              }
-            }
-          });
-          const temperaturaARM4 = document.getElementById('temperaturaARM4');
-
-          new Chart(temperaturaARM4, {
-            type: 'line',
-            data: {
-              labels: ['12:00', '12:07', '12:14', '12:21', '12:28', '12:35'],
-              datasets: [{
-                label: 'Variação de temperatura Armazém 4',
-                data: [24, 25, 24, 26, 25, 27],
-                borderWidth: 3,
-                backgroundColor: '#9c6b43',
-                borderColor: '#9c6b43',
-                color: 'white'
-              }]
-            },
-            options: {
-              scales: {
-                y: {
-                  beginAtZero: true
-                }
-              }
-            },
-            options: {
-              scales: {
-                y: {
-                  beginAtZero: true,
-                  plugins: {
-                    title: {
-                      display: true,
-                      text: 'Custom Chart Title',
-                      font: {
-                        //fontSize: '30pt'
-                      }
-                    }
-                  }
-                }
-              }
-            }
-          });
-          const temperaturaARM5 = document.getElementById('temperaturaARM5');
-
-          new Chart(temperaturaARM5, {
-            type: 'line',
-            data: {
-              labels: ['12:00', '12:07', '12:14', '12:21', '12:28', '12:35'],
-              datasets: [{
-                label: 'Variação de temperatura Armazém 5',
-                data: [20, 22, 24, 25, 26, 24],
-                borderWidth: 3,
-                backgroundColor: '#9c6b43',
-                borderColor: '#9c6b43',
-                color: 'white'
-              }]
-            },
-            options: {
-              scales: {
-                y: {
-                  beginAtZero: true
-                }
-              }
-            },
-            options: {
-              scales: {
-                y: {
-                  beginAtZero: true,
-                  plugins: {
-                    title: {
-                      display: true,
-                      text: 'Custom Chart Title',
-                      font: {
-                        //fontSize: '30pt'
-                      }
-                    }
-                  }
-                }
-              }
-            }
-          });
-
-        </script>
-      </span>
-
-      <span class="graficosDetalhados">
-        <script>
-          const temperaturaARM1dt = document.getElementById('temperaturaARM1dt');
-
-          new Chart(temperaturaARM1dt, {
-            type: 'line',
-            data: {
-              labels: ['12:00', '12:07', '12:14', '12:21', '12:28', '12:35'],
-              datasets: [{
-                label: 'Variação de temperatura Armazém 1',
-                data: [28, 26, 29, 30, 31, 30],
-                borderWidth: 3,
-                backgroundColor: '#9c6b43',
-                borderColor: '#9c6b43',
-                color: 'white'
-              }]
-            },
-            options: {
-              scales: {
-                y: {
-                  beginAtZero: true
-                }
-              }
-            },
-            options: {
-              scales: {
-                y: {
-                  beginAtZero: true,
-                  plugins: {
-                    title: {
-                      display: true,
-                      text: 'Custom Chart Title',
-                      font: {
-                        //fontSize: '30pt'
-                      }
-                    }
-                  }
-                }
-              }
-            }
-          });
-
-          const umidadeARM1dt = document.getElementById('umidadeARM1dt');
-
-          new Chart(umidadeARM1dt, {
-            type: 'line',
-            data: {
-              labels: ['12:00', '12:07', '12:14', '12:21', '12:28', '12:35'],
-              datasets: [{
-                label: 'Variação de umidade Armazém 1',
-                data: [58, 59, 60, 60, 58, 61],
-                borderWidth: 3,
-                backgroundColor: '#9c6b43',
-                borderColor: '#9c6b43',
-                color: 'white'
-              }]
-            },
-            options: {
-              scales: {
-                y: {
-                  beginAtZero: true
-                }
-              }
-            }
-          });
-
-          const temperaturaARM2dt = document.getElementById('temperaturaARM2dt');
-
-          new Chart(temperaturaARM2dt, {
-            type: 'line',
-            data: {
-              labels: ['12:00', '12:07', '12:14', '12:21', '12:28', '12:35'],
-              datasets: [{
-                label: 'Variação de temperatura Armazém 2',
-                data: [34, 30, 29, 28, 31, 32],
-                borderWidth: 3,
-                backgroundColor: '#9c6b43',
-                borderColor: '#9c6b43',
-                color: 'white'
-              }]
-            },
-            options: {
-              scales: {
-                y: {
-                  beginAtZero: true
-                }
-              }
-            },
-            options: {
-              scales: {
-                y: {
-                  beginAtZero: true,
-                  plugins: {
-                    title: {
-                      display: true,
-                      text: 'Custom Chart Title',
-                      font: {
-                        //fontSize: '30pt'
-                      }
-                    }
-                  }
-                }
-              }
-            }
-          });
-
-          const umidadeARM2dt = document.getElementById('umidadeARM2dt');
-
-          new Chart(umidadeARM2dt, {
-            type: 'line',
-            data: {
-              labels: ['12:00', '12:07', '12:14', '12:21', '12:28', '12:35'],
-              datasets: [{
-                label: 'Variação de umidade Armazém 2',
-                data: [60, 56, 58, 58, 60, 63],
-                borderWidth: 3,
-                backgroundColor: '#9c6b43',
-                borderColor: '#9c6b43',
-                color: 'white'
-              }]
-            },
-            options: {
-              scales: {
-                y: {
-                  beginAtZero: true
-                }
-              }
-            }
-          });
-
-          const temperaturaARM3dt = document.getElementById('temperaturaARM3dt');
-
-          new Chart(temperaturaARM3dt, {
-            type: 'line',
-            data: {
-              labels: ['12:00', '12:07', '12:14', '12:21', '12:28', '12:35'],
-              datasets: [{
-                label: 'Variação de temperatura Armazém 3',
-                data: [29, 30, 30, 31, 32, 32],
-                borderWidth: 3,
-                backgroundColor: '#9c6b43',
-                borderColor: '#9c6b43',
-                color: 'white'
-              }]
-            },
-            options: {
-              scales: {
-                y: {
-                  beginAtZero: true
-                }
-              }
-            },
-            options: {
-              scales: {
-                y: {
-                  beginAtZero: true,
-                  plugins: {
-                    title: {
-                      display: true,
-                      text: 'Custom Chart Title',
-                      font: {
-                        //fontSize: '30pt'
-                      }
-                    }
-                  }
-                }
-              }
-            }
-          });
-
-          const umidadeARM3dt = document.getElementById('umidadeARM3dt');
-
-          new Chart(umidadeARM3dt, {
-            type: 'line',
-            data: {
-              labels: ['12:00', '12:07', '12:14', '12:21', '12:28', '12:35'],
-              datasets: [{
-                label: 'Variação de umidade Armazém 4',
-                data: [58, 59, 60, 60, 58, 61],
-                borderWidth: 3,
-                backgroundColor: '#9c6b43',
-                borderColor: '#9c6b43',
-                color: 'white'
-              }]
-            },
-            options: {
-              scales: {
-                y: {
-                  beginAtZero: true
-                }
-              }
-            }
-          });
-
-          const temperaturaARM4dt = document.getElementById('temperaturaARM4dt');
-
-          new Chart(temperaturaARM4dt, {
-            type: 'line',
-            data: {
-              labels: ['12:00', '12:07', '12:14', '12:21', '12:28', '12:35'],
-              datasets: [{
-                label: 'Variação de temperatura Armazém 4',
-                data: [24, 25, 24, 26, 25, 27],
-                borderWidth: 3,
-                backgroundColor: '#9c6b43',
-                borderColor: '#9c6b43',
-                color: 'white'
-              }]
-            },
-            options: {
-              scales: {
-                y: {
-                  beginAtZero: true
-                }
-              }
-            },
-            options: {
-              scales: {
-                y: {
-                  beginAtZero: true,
-                  plugins: {
-                    title: {
-                      display: true,
-                      text: 'Custom Chart Title',
-                      font: {
-                        //fontSize: '30pt'
-                      }
-                    }
-                  }
-                }
-              }
-            }
-          });
-
-          const umidadeARM4dt = document.getElementById('umidadeARM4dt');
-
-          new Chart(umidadeARM4dt, {
-            type: 'line',
-            data: {
-              labels: ['12:00', '12:07', '12:14', '12:21', '12:28', '12:35'],
-              datasets: [{
-                label: 'Variação de umidade Armazém 4',
-                data: [58, 59, 60, 60, 58, 61],
-                borderWidth: 3,
-                backgroundColor: '#9c6b43',
-                borderColor: '#9c6b43',
-                color: 'white'
-              }]
-            },
-            options: {
-              scales: {
-                y: {
-                  beginAtZero: true
-                }
-              }
-            }
-          });
-
-          const temperaturaARM5dt = document.getElementById('temperaturaARM5dt');
-
-          new Chart(temperaturaARM5dt, {
-            type: 'line',
-            data: {
-              labels: ['12:00', '12:07', '12:14', '12:21', '12:28', '12:35'],
-              datasets: [{
-                label: 'Variação de temperatura Armazém 5',
-                data: [20, 22, 24, 25, 26, 24],
-                borderWidth: 3,
-                backgroundColor: '#9c6b43',
-                borderColor: '#9c6b43',
-                color: 'white'
-              }]
-            },
-            options: {
-              scales: {
-                y: {
-                  beginAtZero: true
-                }
-              }
-            },
-            options: {
-              scales: {
-                y: {
-                  beginAtZero: true,
-                  plugins: {
-                    title: {
-                      display: true,
-                      text: 'Custom Chart Title',
-                      font: {
-                        //fontSize: '30pt'
-                      }
-                    }
-                  }
-                }
-              }
-            }
-          });
-
-          const umidadeARM5dt = document.getElementById('umidadeARM5dt');
-
-          new Chart(umidadeARM5dt, {
-            type: 'line',
-            data: {
-              labels: ['12:00', '12:07', '12:14', '12:21', '12:28', '12:35'],
-              datasets: [{
-                label: 'Variação de umidade Armazém 5',
-                data: [58, 59, 60, 60, 58, 61],
-                borderWidth: 3,
-                backgroundColor: '#9c6b43',
-                borderColor: '#9c6b43',
-                color: 'white'
-              }]
-            },
-            options: {
-              scales: {
-                y: {
-                  beginAtZero: true
-                }
-              }
-            }
-          });
-        </script>
+      <!-- Fim Script -->
       </span>
     </div>
   </div>
@@ -883,6 +138,7 @@
 
 </html>
 <script type="text/javascript" src="scripts/dashboard.js"></script>
+<script src="./scripts/teste.js"> </script>
 <!-- 
     - ionicon link
   -->
@@ -890,7 +146,206 @@
 <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
 <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
 <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 <script src="https://vlibras.gov.br/app/vlibras-plugin.js"></script>
 <script>
   new window.VLibras.Widget('https://vlibras.gov.br/app');
 </script>
+
+<!-- Por enquanto o script debaixo está dando erro, pois não temos a parte do back dos armazéns ainda, mas quando criarmos, alguns ajustes e os gráficos podem aparecer, a base está no 'teste.js', então só substituir os dados mocados por reais do usuário, e aparentemente pronto :) -->
+
+
+<!-- <script>
+  let atualizarDados;
+
+  window.onload = exibirAquariosDoUsuario();
+
+  function exibirAquariosDoUsuario() {
+    var armazens = JSON.parse(sessionStorage.ARMAZENS);
+    armazens.forEach(item => {
+      document.getElementById("btnAddGraf").innerHTML += `
+            <button class="btn-chart" onclick="exibirArmazem(${item.id})" id="btnAddGraf${item.id}">${item.descricao}</button>
+            `
+
+      document.getElementById("graficos").innerHTML += `
+                <div id="grafico${item.id}" class="display-none">
+                    <h3 class="tituloGraficos">
+                        <span id="tituloAquario${item.id}">${item.descricao}</span>
+                    </h3>
+                    <div class="graph">
+                        <canvas id="myChartCanvas${item.id}"></canvas>
+                    </div>
+                    <div class="label-captura">
+                        <p id="avisoCaptura${item.id}" style="color: white"></p>
+                    </div>
+                </div>
+            `
+
+      obterDadosGrafico(item.id)
+    });
+
+    if (armazens.length > 0) {
+      exibirArmazem(armazens[0].id)
+    }
+  }
+
+  function exibirAquario(idAquario) {
+    let todosOsGraficos = JSON.parse(sessionStorage.AQUARIOS);
+
+    for (i = 0; i < todosOsGraficos.length; i++) {
+      // exibindo - ou não - o gráfico
+      if (todosOsGraficos[i].id != idAquario) {
+        let elementoAtual = document.getElementById(`grafico${todosOsGraficos[i].id}`)
+        if (elementoAtual.classList.contains("display-block")) {
+          elementoAtual.classList.remove("display-block")
+        }
+        elementoAtual.classList.add("display-none")
+
+        // alterando estilo do botão
+        let btnAtual = document.getElementById(`btnAquario${todosOsGraficos[i].id}`)
+        if (btnAtual.classList.contains("btn-pink")) {
+          btnAtual.classList.remove("btn-pink")
+        }
+        btnAtual.classList.add("btn-white")
+      }
+    }
+
+    let graficoExibir = document.getElementById(`grafico${idAquario}`)
+    graficoExibir.classList.remove("display-none")
+    graficoExibir.classList.add("display-block")
+
+    function obterDados() {
+      if (atualizarDados != undefined) {
+        clearTimeout(atualizarDados);
+      }
+
+      fetch(`/medidas/ultimas/${idAquario}`, { cache: 'no-store' }).then(function (response) {
+        if (response.ok) {
+          response.json().then(function (resposta) {
+            console.log(`Dados recebidos: ${JSON.stringfy(resposta)}`);
+            resposta.reverse();
+
+            plotarGraf(resposta, idAquario);
+          });
+        }
+
+        else {
+          console.error('Nenhum dado encontrado');
+        }
+      })
+
+        .catch(function (error) {
+          console.error(`Erros na obtenção dos Gráficos: ${error.message}`);
+        });
+    }
+
+    function plotarGraf(resposta, idAquario) {
+      console.log('Plotando os Gráficos...')
+
+      let labels = [];
+
+      let dados = {
+        labels: labels,
+        datasets: [{
+          labels: 'Umidade',
+          data: [],
+          fill: false,
+          borderColor: '#9c6b43',
+          tension: 0.1
+        },
+        {
+          label: 'Temperatura',
+          data: [],
+          fill: false,
+          borderColor: 'rgb(255, 0, 0)',
+          tension: 0.1
+        }]
+      };
+
+      console.log('----------------------------------------------')
+      console.log('Estes dados foram recebidos pela funcao "obterDadosGrafico" e passados para "plotarGrafico":')
+      console.log(resposta)
+
+      // Inserindo valores recebidos em estrutura para plotar o gráfico
+      for (i = 0; i < resposta.length; i++) {
+        var registro = resposta[i];
+        labels.push(registro.momento_grafico);
+        dados.datasets[0].data.push(registro.umidade);
+        dados.datasets[1].data.push(registro.temperatura);
+      }
+
+      console.log('----------------------------------------------')
+      console.log('O gráfico será plotado com os respectivos valores:')
+      console.log('Labels:')
+      console.log(labels)
+      console.log('Dados:')
+      console.log(dados.datasets)
+      console.log('----------------------------------------------')
+
+      // Criando estrutura para plotar gráfico - config
+      const config = {
+        type: 'line',
+        data: dados,
+      };
+
+      // Adicionando gráfico criado em div na tela
+      let myChart = new Chart(
+        document.getElementById(`myChartCanvas${idAquario}`),
+        config
+      );
+
+      setTimeout(() => atualizarGraf(idAquario, dados, myChart), 2000);
+    }
+
+    function atualizarGraf(idAquario, dados, myChart) {
+      fetch(`/medidas/tempo-real/${idAquario}`, { cache: 'no-store' }).then(function (response) {
+        if (response.ok) {
+          response.json().then(function (registrarNovo) {
+            obterdados(idAquario);
+            // alertar(novoRegistro, idAquario);
+            console.log(`Dados recebidos: ${JSON.stringify(novoRegistro)}`);
+            console.log(`Dados atuais do gráfico:`);
+            console.log(dados);
+
+            let avisoCaptura = document.getElementById(`avisoCaptura${idAquario}`)
+            avisoCaptura.innerHTML = ""
+
+
+            if (novoRegistro[0].momento_grafico == dados.labels[dados.labels.length - 1]) {
+              console.log("---------------------------------------------------------------")
+              console.log("Como não há dados novos para captura, o gráfico não atualizará.")
+              avisoCaptura.innerHTML = "<i class='fa-solid fa-triangle-exclamation'></i> Foi trazido o dado mais atual capturado pelo sensor. <br> Como não há dados novos a exibir, o gráfico não atualizará."
+              console.log("Horário do novo dado capturado:")
+              console.log(novoRegistro[0].momento_grafico)
+              console.log("Horário do último dado capturado:")
+              console.log(dados.labels[dados.labels.length - 1])
+              console.log("---------------------------------------------------------------")
+            } else {
+              // tirando e colocando valores no gráfico
+              dados.labels.shift(); // apagar o primeiro
+              dados.labels.push(novoRegistro[0].momento_grafico); // incluir um novo momento
+
+              dados.datasets[0].data.shift();  // apagar o primeiro de umidade
+              dados.datasets[0].data.push(novoRegistro[0].umidade); // incluir uma nova medida de umidade
+
+              dados.datasets[1].data.shift();  // apagar o primeiro de temperatura
+              dados.datasets[1].data.push(novoRegistro[0].temperatura); // incluir uma nova medida de temperatura
+
+              myChart.update();
+            }
+
+            // Altere aqui o valor em ms se quiser que o gráfico atualize mais rápido ou mais devagar
+            proximaAtualizacao = setTimeout(() => atualizarGraf(idAquario, dados, myChart), 2000);
+          });
+        } else {
+          console.error('Nenhum dado encontrado ou erro na API');
+          // Altere aqui o valor em ms se quiser que o gráfico atualize mais rápido ou mais devagar
+          proximaAtualizacao = setTimeout(() => atualizarGraf(idAquario, dados, myChart), 2000);
+        }
+      })
+        .catch(function (error) {
+          console.error(`Erro na obtenção dos dados p/ gráfico: ${error.message}`);
+        });
+    }
+  }
+</script> -->

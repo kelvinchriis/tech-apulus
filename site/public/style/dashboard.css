@@ -341,3 +341,17 @@ td {
 		box-shadow: 0 0 15px red;
 	}
 }
+
+.mainGraficos {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	flex-direction: column;
+}
+
+.grafFazendas {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	flex-wrap: wrap;
+}
