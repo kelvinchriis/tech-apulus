@@ -1,9 +1,9 @@
 var fazendasModel = require("../models/fazendasModel");
 
-function buscarAquariosPorEmpresa(req, res) {
+function buscarFazendasPorEmpresa(req, res) {
   var idUsuario = req.params.idUsuario;
 
-  aquarioModel.buscarAquariosPorEmpresa(idUsuario).then((resultado) => {
+  aquarioModel.buscarFazendasPorEmpresa(idUsuario).then((resultado) => {
     if (resultado.length > 0) {
       res.status(200).json(resultado);
     } else {
@@ -16,34 +16,16 @@ function buscarAquariosPorEmpresa(req, res) {
   });
 }
 
-
 function cadastrar(req, res) {
-  var nome = req.body.nomeServer
-  var cep = req.body.cepServer
-  var bairro = req.body.bairroServer
-  var cidade = req.body.cidadeServer
-  var estado = req.body.estadoVar
-  var logradouro = req.body.logradouroVar
-  var numero = req.body.numeroVar
+  var nome = req.body.empresaServer
+  var fk_empresa = req.body.idEmpresaServer
 
   if (nome == undefined) {
-    res.status(400).send("descricao está undefined!");
-  } else if (cep == undefined) {
-    res.status(400).send("idUsuario está undefined!");
-  } else if (bairro == undefined) {
-    res.status(400).send("idUsuario está undefined!");
-  } else if (cidade == undefined) {
-    res.status(400).send("idUsuario está undefined!");
-  } else if (estado == undefined) {
-    res.status(400).send("idUsuario está undefined!");
-  } else if (logradouro == undefined) {
-    res.status(400).send("idUsuario está undefined!");
-  } else if (numero == undefined) {
-    res.status(400).send("idUsuario está undefined!");
+    res.status(400).send("nome está undefined!");
+  } else if (fk_empresa == undefined) {
+    res.status(400).send("fk_empresa está undefined!");
   } else {
-
-
-    fazendasModel.cadastrar(nome, cep, bairro, cidade, estado, logradouro, numero)
+    fazendasModel.cadastrar(nome, fk_empresa)
       .then((resultado) => {
         res.status(201).json(resultado);
       }
@@ -58,14 +40,14 @@ function cadastrar(req, res) {
   }
 }
 
-function cadastrarendfazenda(req, res) {
+function cadastrarEndereco(req, res) {
   var logradouro = req.body.logradouroServer
   var numero = req.body.numeroServer
   var bairro = req.body.bairroServer
   var cidade = req.body.cidadeServer
   var estado = req.body.estadoServer
   var cep = req.body.cepServer
-  fazendasModel.cadastrarendfazenda(logradouro, numero, bairro, cidade, estado, cep)
+  fazendasModel.cadastrarEndereco(logradouro, numero, bairro, cidade, estado, cep)
     .then((resultado) => {
       res.status(201).json(resultado);
     }
@@ -79,15 +61,15 @@ function cadastrarendfazenda(req, res) {
     });
 }
 
-function buscarid(req, res) {
-  var logradouro = req.body.logradouroServer
-  var numero = req.body.numeroServer
-  var cep = req.body.cepServer
-  fazendasModel.buscarid(logradouro, numero, cep)
+function buscarId(req, res) {
+  var nome = req.body.empresaServer
+  var fk_empresa = req.body.idEmpresaServer
+
+  fazendasModel.buscarId(nome, fk_empresa)
 
     .then((resultado) => {
       console.log(resultado)
-      res.status(200).json(resultado);
+      res.status(201).json(resultado);
     }
     ).catch((erro) => {
       console.log(erro);
@@ -102,8 +84,8 @@ function buscarid(req, res) {
 
 
 module.exports = {
-  buscarAquariosPorEmpresa,
+  buscarFazendasPorEmpresa,
   cadastrar,
-  cadastrarendfazenda,
-  buscarid
+  cadastrarEndereco,
+  buscarId
 }

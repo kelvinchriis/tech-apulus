@@ -22,6 +22,7 @@ constraint fkEmpresaFaz foreign key (fkEmpresa) references Empresa(idEmpresa)) a
     
     select * from Fazenda;
 
+
 create table Funcionario(
 idFuncionario int primary key auto_increment,
 nome varchar(45) not null,
@@ -33,12 +34,6 @@ constraint fkEmpresaFuncionario foreign key (fkEmpresaFuncionario) references Em
 
 
     select * from Funcionario;
-    
-	select f.idFuncionario, f.nome, f.email, f.cpf, e.idEmpresa, e.empresa 
-    from Funcionario as f 
-		join Empresa as e 
-			on f.fkEmpresaFuncionario = e.idEmpresa 
-				where f.email = "${}" and f.senha = "{}";
 
 
 create table Endereco(

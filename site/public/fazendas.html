@@ -161,9 +161,6 @@
 <script>
   function cadastrar() {
     var empresa = input_nome.value
-    
-
-
     fetch("/fazendas/cadastrar", {
       method: "POST",
       headers: {
@@ -171,6 +168,7 @@
       },
       body: JSON.stringify({
         empresaServer: empresa,
+        idEmpresaServer: sessionStorage.ID_EMPRESA
       }),
     })
       .then(function (resposta) {
@@ -178,35 +176,7 @@
 
         if (resposta.ok) {
 
-          fetch("/fazendas/cadastrarenderecofazenda", {
-            method: "POST",
-            headers: {
-              "Content-Type": "application/json",
-            },
-            body: JSON.stringify({
-              cepServer: cep,
-              bairroServer: bairro,
-              cidadeServer: cidade,
-              estadoServer: estado,
-              logradouroServer: logradouro,
-              numeroServer: numero
-            }),
-          })
-            .then(function (resposta) {
-              console.log("resposta: ", resposta);
-
-              if (resposta.ok) {
-
-                buscarIdEndFazenda(logradouro, numero, cep)
-
-              } else {
-                throw "Houve um erro ao tentar realizar o cadastro!";
-              }
-            })
-            .catch(function (resposta) {
-              console.log(`#ERRO: ${resposta}`);
-            });
-
+          buscarIdFazenda()
 
         } else {
           throw "Houve um erro ao tentar realizar o cadastro!";
@@ -220,18 +190,15 @@
 
   }
 
-  function buscarIdEndFazenda(logradouro, numero, cep) {
+  function buscarIdFazenda() {
     fetch("/fazendas/buscarid", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
       },
       body: JSON.stringify({
-        // crie um atributo que recebe o valor recuperado aqui
-        // Agora vá para o arquivo routes/usuario.js
-        logradouroServer: logradouro,
-        numeroServer: numero,
-        cepServer: cep
+        empresaServer: empresa,
+        idEmpresaServer: sessionStorage.ID_EMPRESA
       }),
     })
       .then(function (response) {
@@ -246,8 +213,9 @@
         if (resposta.length == 0) {
           console.log("erros")
         } else {
-          var idEnd = resposta0[0].idEndereco
-          alert("dedesd")
+          var idFazenda = resposta0[0].idFazenda
+          // cadastrarEnderecoFazenda()
+          alert(idFazenda)
         }
       })
       .catch(function (error) {
@@ -258,7 +226,6 @@
 
 
   function cadastrarEnderecoFazenda() {
-    var nome = input_nome.value
     var cep = inputCEP.value
     var bairro = inputBairro.value
     var cidade = inputCidade.value
@@ -266,7 +233,7 @@
     var logradouro = inputLogradouro.value
     var numero = input_numero.value
 
-    fetch("/fazendas/cadastrarenderecofazenda", {
+    fetch("/fazendas/cadastrar_endereco", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -284,36 +251,7 @@
         console.log("resposta: ", resposta);
 
         if (resposta.ok) {
-
-          fetch("/fazendas/cadastrarenderecofazenda", {
-            method: "POST",
-            headers: {
-              "Content-Type": "application/json",
-            },
-            body: JSON.stringify({
-              cepServer: cep,
-              bairroServer: bairro,
-              cidadeServer: cidade,
-              estadoServer: estado,
-              logradouroServer: logradouro,
-              numeroServer: numero
-            }),
-          })
-            .then(function (resposta) {
-              console.log("resposta: ", resposta);
-
-              if (resposta.ok) {
-
-                buscarIdEndFazenda(logradouro, numero, cep)
-
-              } else {
-                throw "Houve um erro ao tentar realizar o cadastro!";
-              }
-            })
-            .catch(function (resposta) {
-              console.log(`#ERRO: ${resposta}`);
-            });
-
+          alert("deu certo")
 
         } else {
           throw "Houve um erro ao tentar realizar o cadastro!";

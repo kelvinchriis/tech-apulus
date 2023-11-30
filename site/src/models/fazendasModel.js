@@ -1,37 +1,39 @@
 var database = require("../database/config");
 
-function buscarAquariosPorEmpresa(empresaId) {
+function buscarFazendasPorEmpresa(empresaId) {
 
-  instrucaoSql = `select * from aquario a where fk_empresa = ${empresaId}`;
+  instrucao = `select * from Fazenda where fk_empresa = ${empresaId}`;
 
-  console.log("Executando a instrução SQL: \n" + instrucaoSql);
-  return database.executar(instrucaoSql);
+  console.log("Executando a instrução SQL: \n" + instrucao);
+  return database.executar(instrucao);
 }
 
-function cadastrar(nome, cep, bairro, cidade, estado, logradouro, numero) {
+function cadastrar(nome, fk_empresa) {
   
-  instrucaoSql = `insert into Fazenda aquario values (${descricao}, ${empresaId})`;
+  instrucao = `insert into Fazenda values (null, '${nome}', ${fk_empresa})`;
 
-  console.log("Executando a instrução SQL: \n" + instrucaoSql);
-  return database.executar(instrucaoSql);
+  console.log("Executando a instrução SQL: \n" + instrucao);
+  return database.executar(instrucao);
 }
 
-function cadastrarendfazenda(logradouro, numero, bairro, cidade, estado, cep) {
-  var query = `insert into Endereco values (null, '${cep}', '${logradouro}', '${numero}', '${bairro}', '${cidade}', '${estado}', null)`;
-  console.log(query)
-  return database.executar(query);
+function cadastrarEndereco(logradouro, numero, bairro, cidade, estado, cep) {
+  var instrucao = `insert into Endereco values (null, '${cep}', '${logradouro}', '${numero}', '${bairro}', '${cidade}', '${estado}', null)`;
+
+  console.log(instrucao)
+  return database.executar(instrucao);
 }
 
-function buscarid(logradouro, numero, cep) {
-  var query = `select idEndereco from endereco where cep = ${cep} and logradouro = '${logradouro}' and numero = '${numero}'`;
-  console.log(query)
-  return database.executar(query);
+function buscarId(nome, fkEmpresa) {
+  var instrucao = `select idFazenda from Fazenda where nome = '${nome}' and fkEmpresaFaz = ${fkEmpresa}`;
+
+  console.log(instrucao)
+  return database.executar(instrucao);
 }
 
 
 module.exports = {
-  buscarAquariosPorEmpresa,
+  buscarFazendasPorEmpresa,
   cadastrar,
-  cadastrarendfazenda,
-  buscarid
+  cadastrarEndereco,
+  buscarId
 }

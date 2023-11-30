@@ -59,7 +59,7 @@ function autenticar(email_login, senha_login) {
                 sessionStorage.EMAIL = perfil[0].email
                 sessionStorage.NOME = perfil[0].nome
                 sessionStorage.CPF = perfil[0].cpf
-                sessionStorage.ID_EMPRESA = perfil[0].id_empresa
+                sessionStorage.ID_EMPRESA = perfil[0].idEmpresa
                 sessionStorage.EMPRESA = perfil[0].empresa
                 sessionStorage.SENHA = perfil[0].senha
                 window.location = "dashboard.html" 

@@ -170,8 +170,9 @@ function finalCadEmpresa() {
                 if (resposta.ok) {
                     empresa_selecao.innerHTML = ""
                     listar()
-                    buscarIdEmpresa()
+                    buscarIdEmpresa(cnpj_cadastro)
                 } else {
+                    alert('deu merda')
                     throw "Houve um erro ao tentar realizar o cadastro!";
                 }
             })
@@ -183,7 +184,7 @@ function finalCadEmpresa() {
     }
 }
 
-function buscarIdEmpresa(){
+function buscarIdEmpresa(cnpj_cadastro){
     fetch(`/empresas/buscar/${cnpj_cadastro}`)
         .then(response => {
             if (response.ok) {
@@ -191,11 +192,7 @@ function buscarIdEmpresa(){
                     console.log(JSON.stringify(json));
                     sessionStorage.ID_EMPRESA = json.id_empresa;
                 });
-                setTimeout(() => {
-                    // alert("deucerto")
-                    // telaLog()
-                    cadastrarEndereco()
-                }, 2000)             
+                cadastrarEndereco()
             } else{
                 throw new Error('Erro ao consultar o ID');
             }
@@ -207,7 +204,7 @@ function buscarIdEmpresa(){
 }
 
 function cadastrarEndereco() {
-    fetch("/empresas/cadastrarendereco", {
+    fetch("/empresas/cadastrar_endereco", {
         method: "POST",
         headers: {
             "Content-Type": "application/json",
@@ -242,7 +239,7 @@ function cadastrarEndereco() {
 }
 
 function cadastrarContato() {
-    fetch("/empresas/cadastrarcontato", {
+    fetch("/empresas/cadastrar_contato", {
         method: "POST",
         headers: {
             "Content-Type": "application/json",
