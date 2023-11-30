@@ -2,7 +2,7 @@ var database = require("../database/config");
 
 function buscarArmazemPorFazenda(id_fazenda) {
 
-  instrucao = `select * from Armazem fkFazenda = ${id_fazenda}`;
+  instrucao = `select * from Armazem where fkFazenda = ${id_fazenda}`;
 
   console.log("Executando a instrução SQL: \n" + instrucao);
   return database.executar(instrucao);

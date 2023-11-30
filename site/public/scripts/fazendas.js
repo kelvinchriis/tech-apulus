@@ -134,7 +134,7 @@ function listar_fazendas() {
             });
             var boxfazendas = document.querySelectorAll(".box-fazenda")
             for (i = 0; i < boxfazendas.length; i++) {
-                boxfazendas[i].addEventListener('click', selectArmazen)
+                boxfazendas[i].addEventListener('click', selectFazenda)
             }
         })
         .catch(function (error) {

@@ -40,6 +40,9 @@
       flex-wrap: wrap;
       width: 100%; 
     }
+    .h1-faz {
+      font-size: 30pt;
+    }
   </style>
   <link href="https://fonts.googleapis.com/css2?family=Urbanist:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 </head>
@@ -83,7 +86,7 @@
   <!-- botao novo armazen -->
   <div style="position: fixed; width: 94%; justify-content: right; height: 70px; display: none; align-items: center;" id="botao_armazen">
     <button id="calculate" class="botao" onclick="voltar()">Voltar</button>
-    <button id="calculate" class="botao" onclick="adicionarArmzaen()" style="margin-left: 20px;">Adicionar armazem</button>
+    <button id="calculate" class="botao_ar" onclick="adicionarArmazem()" style="margin-left: 20px;">Adicionar armazem</button>
   </div>
   <!-- botao voltar-->
   <div style="display: none; position: fixed; width: 94%; justify-content: right; height: 70px; align-items: center;" id="botao_voltar">
@@ -92,7 +95,7 @@
     <!-- tela mostra fazendas empresa -->
   <div style="width: 60%;" id="fazendas_empresa">
     <div style="width: 100%; padding: 10px 0; text-align: center;">
-      <h2 style="font-size: 30pt;">Suas fazendas</h2> 
+      <h2 class="h1-faz">Suas fazendas</h2> 
      </div>
     <div class="tela_fazendas" id="fazendas">
       <!-- aparece fazendas -->
@@ -100,7 +103,7 @@
   </div>
   <!-- tela armazens de uma fazenda -->
   <div style="width: 80%; display: none;" id="armazens">
-    <div style="width: 100%; padding: 10px 0; text-align: center;"><h2 style="font-size: 30pt;">Armazens da fazenda </h2></div>
+    <div style="width: 100%; padding: 10px 0; text-align: center;"><h2 class="h1-faz">Armazens da fazenda </h2></div>
     <div class="tela_fazendas" id="listar_armazens">
       <!-- aparece armazens -->
     </div>
@@ -186,25 +189,34 @@
     </div>
   </div>
 
-  <div class="box box-perdas" id="cadsatro_armazem" style="flex-direction: column; align-items: center; display: none;">
+  <div class="box box-perdas" id="cadasatro_armazem" style="flex-direction: column; align-items: center; display: none;">
     <div class="form-box" style="display: none; padding: 30px 60px; " id="load_armazem">
       <h2 class="h1 hero-title title-perdas">Adicionando armazem</h2>
       <form>
         <img src="img/load.gif" alt="">
       </form>
     </div>
-    <!-- tela cadastro nova fazenda -->
-    <!-- <div class="form-box" style="padding: 30px 60px;" id="formulario_armazem">
-      <h2 class="h1 hero-title title-perdas">Adicionar fazenda</h2>
+    <!-- tela cadastro novo armazem -->
+    <div class="form-box" style="padding: 30px 60px;" id="formulario_armazem">
+      <h2 class="h1 hero-title title-perdas">Adicionar armazem</h2>
       <form>
         <div class="input-group">
-          <label>Nome da fazenda:</label>
+          <label>Nome da armazem:</label>
           <div class="inline-fields">
-            <input style="font-size: 12pt;" type="text" id="input_nome">
+            <input style="font-size: 12pt;" type="text" id="input_nome_ar">
           </div>
         </div>
+        <div class="input-group">
+          <label>Tamanho(KM2):</label>
+          <div class="inline-fields">
+            <input style="font-size: 12pt;" type="text" id="input_tamanho">
+          </div>
+        </div>
+        <div class="input-group">
+          <button id="calculate" class="botao" onclick="cadastrar_armazem()">Adicionar</button>
+        </div>
       </form>
-    </div> -->
+    </div>
   </div>
   <script type="text/javascript">
 
@@ -253,6 +265,7 @@
 
 <script>
   var posicao_tela = 0
+
   function adicionarFazenda(){
     posicao_tela = 1
     fazendas_empresa.style.display = "none"
@@ -260,6 +273,15 @@
     botao_faz.style.display = "none"
     botao_voltar.style.display = "flex"
   }
+
+  function adicionarArmazem() {
+    posicao_tela = 3
+    var botao = document.querySelector(".botao_ar")
+    cadasatro_armazem.style.display = "flex"
+    armazens.style.display = "none"
+    botao.style.display = "none"
+  }
+
   function voltar(){
     if(posicao_tela == 1) {
       fazendas_empresa.style.display = "block"
@@ -272,7 +294,13 @@
       armazens.style.display = "none"
       botao_faz.style.display = "flex"
       botao_armazen.style.display = "none"
+      posicao_tela = 0
+    } else if (posicao_tela == 3) {
+      var botao = document.querySelector(".botao_ar")
+      cadasatro_armazem.style.display = "none"
+      armazens.style.display = "block"
+      botao.style.display = "block"
+      posicao_tela = 2
     }
-    
   }
 </script>

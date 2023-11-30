@@ -17,9 +17,10 @@ function buscarArmazemPorFazenda(req, res) {
 }
 
 function cadastrar(req, res) {
-  var nome = req.body.empresaServer
-  var area = req.body.idEmpresaServer
-  var fk_fazenda = req.body.identificadorServer
+  var nome = req.body.nomeServer
+  var area = req.body.tamanhoServer
+  var fk_fazenda = req.body.id_fazenda
+  
   if (nome == undefined) {
     res.status(400).send("nome está undefined!");
   } else if (area == undefined) {
