@@ -1,7 +1,11 @@
-var status_menu = 0;
-var menu = document.querySelector(".menu");
-var items_menu = document.querySelector(".content-items")
-var botao_menu = document.querySelector(".button-menu")
+var status_menu = 0,
+	menu = document.querySelector(".menu"),
+	items_menu = document.querySelector(".content-items"),
+	botao_menu = document.querySelector(".button-menu");
+
+const telaMetricas = document.querySelector('.telaMetricas'),
+	btnAbrir = document.querySelector('#btnAbrirMetricas'),
+	btnFechar = document.querySelector('#btnFecharMetricas');
 
 function menuClick() {
 	if (status_menu == 0) {
@@ -91,3 +95,11 @@ function alertas() {
 		cardAlertaUmid.classList.add('piscarRed');
 	}
 }
+
+btnAbrir.addEventListener('click', () => {
+	telaMetricas.style.display = 'flex';
+});
+
+btnFechar.addEventListener('click', () => {
+	telaMetricas.style.display = 'none';
+});

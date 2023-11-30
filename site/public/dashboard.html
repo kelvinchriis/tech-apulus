@@ -67,7 +67,7 @@
           </div>
         </div>
 
-        <a class="header-action-btn login-btn">Ver Métricas</a>
+        <a id="btnAbrirMetricas" class="login-btn">Ver Métricas</a>
 
         <div class="telaMetricas">
           <h1>Métricas</h1>
@@ -105,9 +105,9 @@
                   <td style="color: red;">69%</td>
                 </tr>
               </tbody>
-              <tfoot></tfoot>
             </table>
-          </div>
+          </div> <br>
+          <a id="btnFecharMetricas" class="login-btn">Fechar</a>
         </div>
 
       </div>
@@ -120,25 +120,25 @@
       <div class="grafics">
         <div class="grafic">
           <canvas id="temperaturaARM1"></canvas> <br>
-          <a class="header-action-btn login-btn" id="btnArm1"
-            onclick="document.getElementById('arm1').style.display='block'">Ver Detalhes</a>
+          <a class="login-btn" id="btnArm1" onclick="document.getElementById('arm1').style.display='block'">Ver
+            Detalhes</a>
 
         </div>
         <div class="grafic">
           <canvas id="temperaturaARM2"></canvas> <br>
-          <a class="header-action-btn login-btn" onclick="document.getElementById('arm2').style.display='block'">Ver
+          <a class="login-btn" onclick="document.getElementById('arm2').style.display='block'">Ver
             Detalhes</a>
         </div>
         <div class="grafic">
           <canvas id="temperaturaARM3"></canvas> <br>
-          <a class="header-action-btn login-btn" onclick="document.getElementById('arm3').style.display='block'">Ver
+          <a class="login-btn" onclick="document.getElementById('arm3').style.display='block'">Ver
             Detalhes</a>
         </div>
       </div>
       <div class="grafics">
         <div class="grafic">
           <canvas id="temperaturaARM4"></canvas> <br>
-          <a class="header-action-btn login-btn" onclick="document.getElementById('arm4').style.display='block'">Ver
+          <a class="login-btn" onclick="document.getElementById('arm4').style.display='block'">Ver
             Detalhes</a>
         </div>
         <div class="visãoGeral">
@@ -152,7 +152,7 @@
         </div>
         <div class="grafic">
           <canvas id="temperaturaARM5"></canvas> <br>
-          <a class="header-action-btn login-btn" onclick="document.getElementById('arm5').style.display='block'">Ver
+          <a class="login-btn" onclick="document.getElementById('arm5').style.display='block'">Ver
             Detalhes</a>
         </div>
       </div>
@@ -185,7 +185,7 @@
           </div>
           <br>
         </div> <br>
-        <a onclick="document.getElementById('arm1').style.display='none'" class="header-action-btn login-btn">Voltar</a>
+        <a onclick="document.getElementById('arm1').style.display='none'" class="login-btn">Voltar</a>
         <div class="avisoArmazem">
           <a><ion-icon name="eye" class="ionicons"></ion-icon></a>
           <span>Status do Armazém:</span>
@@ -222,7 +222,7 @@
           </div>
         </div>
         <br>
-        <a onclick="document.getElementById('arm2').style.display='none'" class="header-action-btn login-btn">Voltar</a>
+        <a onclick="document.getElementById('arm2').style.display='none'" class="login-btn">Voltar</a>
         <div class="avisoArmazem">
           <a><ion-icon name="warning" class="ionicons"></ion-icon></a>
           <span>Status do Armazém:</span>
@@ -259,7 +259,7 @@
           </div>
         </div>
         <br>
-        <a onclick="document.getElementById('arm3').style.display='none'" class="header-action-btn login-btn">Voltar</a>
+        <a onclick="document.getElementById('arm3').style.display='none'" class="login-btn">Voltar</a>
         <div class="avisoArmazem">
           <a><ion-icon name="eye" class="ionicons"></ion-icon></a>
           <span>Status do Armazém:</span>
@@ -296,7 +296,7 @@
           </div>
         </div>
         <br>
-        <a onclick="document.getElementById('arm4').style.display='none'" class="header-action-btn login-btn">Voltar</a>
+        <a onclick="document.getElementById('arm4').style.display='none'" class="login-btn">Voltar</a>
         <div class="avisoArmazem">
           <a><ion-icon name="sparkles" class="ionicons"></ion-icon></a>
           <span>Status do Armazém:</span>
@@ -333,7 +333,7 @@
           </div>
         </div>
         <br>
-        <a onclick="document.getElementById('arm5').style.display='none'" class="header-action-btn login-btn">Voltar</a>
+        <a onclick="document.getElementById('arm5').style.display='none'" class="login-btn">Voltar</a>
         <div class="avisoArmazem">
           <a><ion-icon name="eye" class="ionicons"></ion-icon></a>
           <span>Status do Armazém:</span>
