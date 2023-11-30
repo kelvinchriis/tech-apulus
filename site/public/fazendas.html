@@ -116,7 +116,7 @@
     <!-- tela cadastro nova fazenda -->
     <div class="form-box" style="padding: 30px 60px;" id="formulario">
       <h2 class="h1 hero-title title-perdas">Adicionar fazenda</h2>
-      <form>
+      <form action="#">
         <div class="input-group">
           <label>Nome da fazenda:</label>
           <div class="inline-fields">
@@ -180,12 +180,32 @@
           </div>
         </div>
         <div class="input-group">
-          <button id="calculate" class="botao" onclick="cadastrar()">Adicionar</button>
+          <button id="calculate" class="botao" onclick="cadastrar_fazenda()">Adicionar</button>
         </div>
       </form>
     </div>
   </div>
 
+  <div class="box box-perdas" id="cadsatro_armazem" style="flex-direction: column; align-items: center; display: none;">
+    <div class="form-box" style="display: none; padding: 30px 60px; " id="load_armazem">
+      <h2 class="h1 hero-title title-perdas">Adicionando armazem</h2>
+      <form>
+        <img src="img/load.gif" alt="">
+      </form>
+    </div>
+    <!-- tela cadastro nova fazenda -->
+    <!-- <div class="form-box" style="padding: 30px 60px;" id="formulario_armazem">
+      <h2 class="h1 hero-title title-perdas">Adicionar fazenda</h2>
+      <form>
+        <div class="input-group">
+          <label>Nome da fazenda:</label>
+          <div class="inline-fields">
+            <input style="font-size: 12pt;" type="text" id="input_nome">
+          </div>
+        </div>
+      </form>
+    </div> -->
+  </div>
   <script type="text/javascript">
 
     function cepapi() {
@@ -213,7 +233,8 @@
     }
 
   </script>
-
+  <script src="scripts/fazendas.js"></script>
+  <script src="scripts/armazens.js"></script>
 </body>
 
 </html>
@@ -235,7 +256,7 @@
   function adicionarFazenda(){
     posicao_tela = 1
     fazendas_empresa.style.display = "none"
-    cadsatro_fazenda.style.display = "block"
+    cadsatro_fazenda.style.display = "flex"
     botao_faz.style.display = "none"
     botao_voltar.style.display = "flex"
   }
@@ -254,170 +275,4 @@
     }
     
   }
-  function cadastrar() {
-    formulario.style.display = "none"
-    load.style.display = "block"
-    var empresa = input_nome.value
-    var identificador = input_identificador.value
-    fetch("/fazendas/cadastrar", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({
-        empresaServer: empresa,
-        idEmpresaServer: sessionStorage.ID_EMPRESA,
-        identificadorServer: identificador
-      }),
-    })
-      .then(function (resposta) {
-        console.log("resposta: ", resposta);
-
-        if (resposta.ok) {
-
-          buscarIdFazenda(empresa, identificador)
-
-        } else {
-          alert("identificador repetido")
-          throw "Houve um erro ao tentar realizar o cadastro!";
-        }
-      })
-      .catch(function (resposta) {
-        console.log(`#ERRO: ${resposta}`);
-      });
-
-    return false;
-
-  }
-
-  function buscarIdFazenda(empresa_name, identificador) {
-    fetch("/fazendas/buscarid", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({
-        empresaServer: empresa_name,
-        idEmpresaServer: sessionStorage.ID_EMPRESA,
-        identificadorServer: identificador
-      }),
-    })
-      .then(function (response) {
-        if (!response.ok) {
-          throw new Error('Erro ao carregar os dados');
-        }
-        return response.json();
-      })
-      .then(function (resposta) {
-        console.log(resposta);
-
-        if (resposta.length == 0) {
-          console.log("erros")
-        } else {
-          var idFazenda = resposta[0].idFazenda
-          cadastrarEnderecoFazenda(idFazenda)
-        }
-      })
-      .catch(function (error) {
-        console.error('Erro:', error);
-      });
-
-  }
-
-
-  function cadastrarEnderecoFazenda(idFazenda) {
-    var cep = inputCEP.value
-    var bairro = inputBairro.value
-    var cidade = inputCidade.value
-    var estado = inputEstado.value
-    var logradouro = inputLogradouro.value
-    var numero = input_numero.value
-
-    fetch("/fazendas/cadastrar_endereco", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({
-        cepServer: cep,
-        bairroServer: bairro,
-        cidadeServer: cidade,
-        estadoServer: estado,
-        logradouroServer: logradouro,
-        numeroServer: numero,
-        fk_fazenda: idFazenda
-      }),
-    })
-      .then(function (resposta) {
-        console.log("resposta: ", resposta);
-
-        if (resposta.ok) {
-          load.style.display = "none"
-          cadsatro_fazenda.style.display = "none"
-          fazendas_empresa.style.display = "block"
-
-        } else {
-          throw "Houve um erro ao tentar realizar o cadastro!";
-        }
-      })
-      .catch(function (resposta) {
-        console.log(`#ERRO: ${resposta}`);
-      });
-
-    return false;
-  }
-
-</script>
-
-<script>
-  var info_fazendas = null;
-  function listar_fazendas(){
-    fetch(`/fazendas/${sessionStorage.ID_EMPRESA}`, {
-      method: "GET",
-    })
-      .then(function (response) {
-        if (!response.ok) {
-          throw new Error('Erro ao carregar os dados');
-        }
-        return response.json();
-      })
-      .then(function (lista_fazendas) {
-        console.log(lista_fazendas);
-  
-        if (!lista_fazendas || lista_fazendas.length === 0) {
-          console.error('Nenhum dado de fazenda encontrado.');
-          return;
-        }
-        info_fazendas = lista_fazendas
-        lista_fazendas.forEach(function (empresa) {
-          fazendas.innerHTML += `
-            <div class="box-fazenda" onclick="mostrar_armazens()" data-id="${empresa.idFazenda}"><h1>${empresa.nome}</h1></div>
-          `
-        });
-        var boxfazendas = document.querySelectorAll(".box-fazenda")
-        for(i=0; i<boxfazendas.length; i++) {
-          boxfazendas[i].addEventListener('click', selectArmazen)
-        }
-      })
-      .catch(function (error) {
-        console.error(`#ERRO: ${error}`);
-      });
-  }
-
-  function selectArmazen(){
-    listar_armazens.innerHTML = ``
-    posicao_tela = 2
-    botao_armazen.style.display = "flex"
-    botao_faz.style.display = "none"
-    fazendas_empresa.style.display = "none"
-    armazens.style.display = "block"
-    var id = this.getAttribute('data-id')
-    // alert(id)
-    info_fazendas.forEach(function (empresa) {
-        listar_armazens.innerHTML += `
-              <div class="box-armazens" onclick="mostrar_armazens()" data-id="${empresa.idFazenda}"><h1>${empresa.cidade}</h1></div>
-            `
-        });
-  }
-  
 </script>

@@ -67,29 +67,15 @@ constraint fkContatoEmpresa foreign key (fkContatoEmpresa) references Empresa(id
     select * from Contato;
 
 
-
--------------------- FEITO ATÉ AQUI ------------------
-
-
-
-create table Armazém(
+create table Armazem(
 idArmazem int primary key auto_increment,
+nome varchar(45),
 area double,
 fkFazenda int,
-constraint fkFaz foreign key (fkFazenda) references Fazenda(idFazendas)) auto_increment = 400;
+constraint fkFaz foreign key (fkFazenda) references Fazenda(idFazenda)) auto_increment = 100;
+    select * from Armazem;
 
-insert into Armazém values
-	(null, '126', 300),
-    (null, '147', 300),
-    (null, '152', 301),
-    (null, '122', 302),
-    (null, '142', 302),
-    (null, '120', 303),
-    (null, '140', 304),
-    (null, '130', 304),
-    (null, '128', 305);
-    
-    select * from Armazém;
+-------------------- FEITO ATÉ AQUI ------------------
 
 create table Relatório(
 idPerda int primary key auto_increment,

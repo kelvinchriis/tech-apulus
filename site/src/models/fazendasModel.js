@@ -2,7 +2,7 @@ var database = require("../database/config");
 
 function buscarFazendasPorEmpresa(id_empresa) {
 
-  instrucao = `select * from Fazenda join Endereco on idFazenda = fkEnderocoFazenda where fkEmpresa = ${id_empresa}`;
+  instrucao = `select * from Fazenda where fkEmpresa = ${id_empresa}`;
 
   console.log("Executando a instrução SQL: \n" + instrucao);
   return database.executar(instrucao);
