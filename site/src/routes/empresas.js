@@ -23,4 +23,8 @@ router.get("/listar", function (req, res) {
   empresaController.listar(req, res);
 });
 
+router.post("/autenticar", function (req, res) {
+  empresaController.autenticarEmpresa(req, res);
+});
+
 module.exports = router;
