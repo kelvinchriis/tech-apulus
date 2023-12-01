@@ -1,5 +1,17 @@
 var database = require("../database/config");
 
+function autenticar(email, senha) {
+  console.log("ACESSEI O USUARIO MODEL \n \n\t\t >> Se aqui der erro de 'Error: connect ECONNREFUSED',\n \t\t >> verifique suas credenciais de acesso ao banco\n \t\t >> e se o servidor de seu BD está rodando corretamente. \n\n function entrar(): ", email, senha)
+  var instrucao = `
+      select idEmpresa, email, senha, cnpj, chave_acesso, empresa 
+                  where email = "${email}" and senha = "${senha}";
+  `;
+  console.log("Executando a instrução SQL: \n" + instrucao);
+  return database.executar(instrucao);
+}
+
+
+
 // cadastro dados empresa
 function cadastrar(nome, email, senha, cnpj, chave_acesso) {
     var instrucao = `
@@ -10,15 +22,7 @@ function cadastrar(nome, email, senha, cnpj, chave_acesso) {
   return database.executar(instrucao);
 }
 
-// auntentificar empresa
-function autenticar(email, senha) {
-  var instrucao = `
-      select idEmpresa, nome, email, fk_empresa as empresaId FROM usuario WHERE email = '${email}' AND senha = '${senha}';
-  `;
 
-  console.log("Executando a instrução SQL: \n" + instrucao);
-  return database.executar(instrucao);
-}
 
 // listar empresas no select do cadastro do funcionario
 function listar() {

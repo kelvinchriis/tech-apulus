@@ -70,3 +70,50 @@ function autenticar(email_login, senha_login) {
         });
 
 }
+
+
+
+
+function autenticar(email_login, senha_login) {
+    fetch("/empresa/autenticar", {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+            // crie um atributo que recebe o valor recuperado aqui
+            // Agora vá para o arquivo routes/usuario.js
+            emailServer: email_login,
+            senhaServer: senha_login
+        }),
+    })
+    .then(function (response) {
+        if (!response.ok) {
+            balancar()
+            throw new Error('Erro ao carregar os dados');
+            }
+            return response.json();
+        })
+        .then(function (perfil) {
+            console.log(perfil);
+
+            if (perfil.length == 0) {
+                balancar()
+            } else {
+                sessionStorage.ID_FUNCIONARIO = perfil[0].idFuncionario
+                sessionStorage.EMAIL = perfil[0].email
+                sessionStorage.NOME = perfil[0].nome
+                sessionStorage.CPF = perfil[0].cpf
+                sessionStorage.ID_EMPRESA = perfil[0].idEmpresa
+                sessionStorage.EMPRESA = perfil[0].empresa
+                sessionStorage.SENHA = perfil[0].senha
+                window.location = "dashboard.html" 
+            }
+        })
+        .catch(function (error) {
+            console.error('Erro:', error);
+        });
+
+}
+
+
