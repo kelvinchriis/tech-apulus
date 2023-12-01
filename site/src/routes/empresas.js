@@ -24,7 +24,7 @@ router.get("/listar", function (req, res) {
 });
 
 router.post("/autenticar", function (req, res) {
-  empresaController.autenticar(req, res);
+  empresaController.autenticarEmpresa(req, res);
 });
 
 module.exports = router;

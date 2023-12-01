@@ -74,7 +74,7 @@ function autenticar(email_login, senha_login) {
 
 
 
-function autenticar(email_login, senha_login) {
+function autenticarEmpresa(email_login, senha_login) {
     fetch("/empresa/autenticar", {
         method: "POST",
         headers: {
@@ -100,12 +100,10 @@ function autenticar(email_login, senha_login) {
             if (perfil.length == 0) {
                 balancar()
             } else {
-                sessionStorage.ID_FUNCIONARIO = perfil[0].idFuncionario
+                sessionStorage.ID_EMPRESA = perfil[0].idEmpresa
                 sessionStorage.EMAIL = perfil[0].email
                 sessionStorage.NOME = perfil[0].nome
-                sessionStorage.CPF = perfil[0].cpf
-                sessionStorage.ID_EMPRESA = perfil[0].idEmpresa
-                sessionStorage.EMPRESA = perfil[0].empresa
+                sessionStorage.CNPJ = perfil[0].cnpj
                 sessionStorage.SENHA = perfil[0].senha
                 window.location = "dashboard.html" 
             }

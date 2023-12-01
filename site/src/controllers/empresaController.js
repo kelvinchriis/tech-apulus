@@ -1,6 +1,6 @@
 var empresaModel = require("../models/empresaModel");
 
-function autenticar(req, res) {
+function autenticarEmpresa(req, res) {
   var email = req.body.emailServer;
   var senha = req.body.senhaServer;
 
@@ -10,7 +10,7 @@ function autenticar(req, res) {
       res.status(400).send("Sua senha está indefinida!");
   } else {
 
-      empresaModel.autenticar(email, senha)
+      empresaModel.autenticarEmpresa(email, senha)
           .then(
               function (resultadoAutenticar) {
                   console.log(`\nResultados encontrados: ${resultadoAutenticar.length}`);
@@ -140,5 +140,5 @@ module.exports = {
   listar,
   cadastrarContato,
   cadastrarEndereco,
-  autenticar
+  autenticarEmpresa
 };
