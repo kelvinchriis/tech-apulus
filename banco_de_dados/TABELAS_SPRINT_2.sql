@@ -102,7 +102,7 @@ idSensores int primary key auto_increment,
 status_sensores varchar(45),
 tipo varchar(45),
 fkArmazem int,
-constraint fkArm foreign key(fkArmazem) references Armazém(idArmazem)) auto_increment = 600;
+constraint fkArm foreign key(fkArmazem) references Armazem(idArmazem)) auto_increment = 600;
 
 select * from Armazém;
 
