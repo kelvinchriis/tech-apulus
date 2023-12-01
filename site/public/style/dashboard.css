@@ -349,6 +349,15 @@ td {
 	flex-direction: column;
 }
 
+.graficos {
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+	justify-content: space-evenly;
+	width: 100%;
+	/* height: 80vh; */
+}
+
 .grafFazendas {
 	display: flex;
 	align-items: center;
