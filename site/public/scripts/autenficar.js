@@ -1,6 +1,7 @@
 function verifyLogin() {
     var email_login = inputEmailLoginFunc.value
     var senha_login = inputSenhaLoginFunc.value
+
     inputEmailLoginFunc.placeholder = "E-mail"
     clearBorder()
 
@@ -20,6 +21,33 @@ function verifyLogin() {
 
     } else {
         autenticar(email_login, senha_login)
+    }
+
+
+}
+
+function verifyLogin2() {
+    var email_empresa = inputEmailLoginEmpresa.value
+    var senha_empresa = inputSenhaLoginEmpresa.value
+    inputEmailLoginFunc.placeholder = "E-mail"
+    clearBorder()
+
+    // Define uma expressão regular para validar endereços de e-mail
+    var regex = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,9}$/;
+
+    // Verifica se o email inserido corresponde à expressão regular
+    if (email_empresa == "" || senha_empresa == "") {
+        executarFuncTemporal(move, 8, 30)
+        if (email_empresa == "") { inputEmailLogin.style.border = "2px solid #ffbf00" }
+        else if (!regex.test(email_login)) {
+            inputEmailLoginFunc.style.border = "2px solid red"
+            inputEmailLoginFunc.placeholder = "E-mail inválido"
+            inputEmailLoginFunc.value = ""
+        }
+        if (senha_empresa == "") { inputSenhaLoginFunc.style.border = "2px solid #ffbf00" }
+
+    } else {
+        autenticar(email_empresa, senha_empresa)
     }
 }
 
@@ -74,7 +102,7 @@ function autenticar(email_login, senha_login) {
 
 
 
-function autenticarEmpresa(email_login, senha_login) {
+function autenticarEmpresa(email_empresa, senha_empresa) {
     fetch("/empresa/autenticar", {
         method: "POST",
         headers: {
@@ -83,8 +111,8 @@ function autenticarEmpresa(email_login, senha_login) {
         body: JSON.stringify({
             // crie um atributo que recebe o valor recuperado aqui
             // Agora vá para o arquivo routes/usuario.js
-            emailServer: email_login,
-            senhaServer: senha_login
+            emailServer: email_empresa,
+            senhaServer: senha_empresa
         }),
     })
     .then(function (response) {

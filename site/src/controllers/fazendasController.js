@@ -84,8 +84,6 @@ function buscarId(req, res) {
     });
 }
 
-
-
 module.exports = {
   buscarFazendasPorEmpresa,
   cadastrar,
