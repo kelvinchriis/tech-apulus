@@ -22,34 +22,32 @@ function verifyLogin() {
     } else {
         autenticar(email_login, senha_login)
     }
-
-
 }
 
-function verifyLogin2() {
-    var email_empresa = inputEmailLoginEmpresa.value
-    var senha_empresa = inputSenhaLoginEmpresa.value
-    inputEmailLoginFunc.placeholder = "E-mail"
-    clearBorder()
+// function verifyLogin2() {
+//     var email_empresa = inputEmailLoginEmpresa.value
+//     var senha_empresa = inputSenhaLoginEmpresa.value
+//     inputEmailLoginFunc.placeholder = "E-mail"
+//     clearBorder()
 
-    // Define uma expressão regular para validar endereços de e-mail
-    var regex = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,9}$/;
+//     // Define uma expressão regular para validar endereços de e-mail
+//     var regex = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,9}$/;
 
-    // Verifica se o email inserido corresponde à expressão regular
-    if (email_empresa == "" || senha_empresa == "") {
-        executarFuncTemporal(move, 8, 30)
-        if (email_empresa == "") { inputEmailLogin.style.border = "2px solid #ffbf00" }
-        else if (!regex.test(email_login)) {
-            inputEmailLoginFunc.style.border = "2px solid red"
-            inputEmailLoginFunc.placeholder = "E-mail inválido"
-            inputEmailLoginFunc.value = ""
-        }
-        if (senha_empresa == "") { inputSenhaLoginFunc.style.border = "2px solid #ffbf00" }
+//     // Verifica se o email inserido corresponde à expressão regular
+//     if (email_empresa == "" || senha_empresa == "") {
+//         executarFuncTemporal(move, 8, 30)
+//         if (email_empresa == "") { inputEmailLogin.style.border = "2px solid #ffbf00" }
+//         else if (!regex.test(email_login)) {
+//             inputEmailLoginFunc.style.border = "2px solid red"
+//             inputEmailLoginFunc.placeholder = "E-mail inválido"
+//             inputEmailLoginFunc.value = ""
+//         }
+//         if (senha_empresa == "") { inputSenhaLoginFunc.style.border = "2px solid #ffbf00" }
 
-    } else {
-        autenticar(email_empresa, senha_empresa)
-    }
-}
+//     } else {
+//         autenticar(email_empresa, senha_empresa)
+//     }
+// }
 
 function balancar() {
     executarFuncTemporal(move, 8, 30)
@@ -142,4 +140,60 @@ function autenticar(email_login, senha_login) {
 
 // }
 
+function verifyLogin2() {
 
+    var emailVar = inputEmailLoginFunc.value;
+    var senhaVar = inputSenhaLoginFunc.value;
+
+    // if (emailVar === '' || senhaVar === '') {
+    //     div_erro.innerHTML = `Preencha todos os campos!`
+    // }
+
+    console.log("FORM LOGIN: ", emailVar);
+    console.log("FORM SENHA: ", senhaVar);
+
+    fetch("/empresa/autenticar", {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json"
+        },
+        body: JSON.stringify({
+            emailServer: emailVar,
+            senhaServer: senhaVar
+        })
+    }).then(function (resposta) {
+        console.log("ESTOU NO THEN DO entrar()!")
+
+        if (resposta.ok) {
+            console.log(resposta);
+
+            resposta.json().then(json => {
+                console.log(json);
+                console.log(JSON.stringify(json));
+                sessionStorage.EMAIL_USUARIO = json.email;
+                sessionStorage.NOME_USUARIO = json.nome;
+                sessionStorage.ID_USUARIO = json.id;
+
+                // setTimeout(function () {
+                //     window.location = "./dashboard.html";
+                // }, 1000);
+            });
+        }
+
+        // } else {
+
+        //     div_erro.innerHTML = `Insira um e-mail válido`
+
+        //     console.log("Houve um erro ao tentar realizar o login!");
+
+        //     resposta.text().then(texto => {
+        //         console.error(texto);
+        //     });
+        // }
+
+    }).catch(function (erro) {
+        console.log(erro);
+    })
+
+    return false;
+}
