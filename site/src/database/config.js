@@ -2,31 +2,26 @@ var mysql = require("mysql2");
 var sql = require('mssql');
 
 // CONEXÃO DO SQL SERVER - AZURE (NUVEM)
-var sqlServerConfig = {
-    server: "SEU_SERVIDOR",
-    database: "SEU_BANCO_DE_DADOS",
-    user: "SEU_USUARIO",
-    password: "SUA_SENHA",
-    pool: {
-        max: 10,
-        min: 0,
-        idleTimeoutMillis: 30000
-    },
-    options: {
-        encrypt: true, // for azure
-    }
-}
+// var sqlServerConfig = {
+//     server: "SEU_SERVIDOR",
+//     database: "SEU_BANCO_DE_DADOS",
+//     user: "SEU_USUARIO",
+//     password: "SUA_SENHA",
+//     pool: {
+//         max: 10,
+//         min: 0,
+//         idleTimeoutMillis: 30000
+//     },
+//     options: {
+//         encrypt: true, // for azure
+//     }
+// }
 
-// CONEXÃO DO MYSQL WORKBENCH
 var mySqlConfig = {
     host: "localhost",
     database: "TechApulus_sprint2",
     user: "root",
-<<<<<<< HEAD
     password: "#Vanuza23",
-=======
-    password: "EDI40#mand",
->>>>>>> 747ea1ace4d2712ead7c3d2d2bc30b5b7f5c71aa
 };
 
 function executar(instrucao) {

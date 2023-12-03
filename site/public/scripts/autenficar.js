@@ -102,44 +102,44 @@ function autenticar(email_login, senha_login) {
 
 
 
-function autenticarEmpresa(email_empresa, senha_empresa) {
-    fetch("/empresa/autenticar", {
-        method: "POST",
-        headers: {
-            "Content-Type": "application/json",
-        },
-        body: JSON.stringify({
-            // crie um atributo que recebe o valor recuperado aqui
-            // Agora vá para o arquivo routes/usuario.js
-            emailServer: email_empresa,
-            senhaServer: senha_empresa
-        }),
-    })
-    .then(function (response) {
-        if (!response.ok) {
-            balancar()
-            throw new Error('Erro ao carregar os dados');
-            }
-            return response.json();
-        })
-        .then(function (perfil) {
-            console.log(perfil);
+// function autenticarEmpresa(email_empresa, senha_empresa) {
+//     fetch("/empresa/autenticar", {
+//         method: "POST",
+//         headers: {
+//             "Content-Type": "application/json",
+//         },
+//         body: JSON.stringify({
+//             // crie um atributo que recebe o valor recuperado aqui
+//             // Agora vá para o arquivo routes/usuario.js
+//             emailServer: email_empresa,
+//             senhaServer: senha_empresa
+//         }),
+//     })
+//     .then(function (response) {
+//         if (!response.ok) {
+//             balancar()
+//             throw new Error('Erro ao carregar os dados');
+//             }
+//             return response.json();
+//         })
+//         .then(function (perfil) {
+//             console.log(perfil);
 
-            if (perfil.length == 0) {
-                balancar()
-            } else {
-                sessionStorage.ID_EMPRESA = perfil[0].idEmpresa
-                sessionStorage.EMAIL = perfil[0].email
-                sessionStorage.NOME = perfil[0].nome
-                sessionStorage.CNPJ = perfil[0].cnpj
-                sessionStorage.SENHA = perfil[0].senha
-                window.location = "dashboard.html" 
-            }
-        })
-        .catch(function (error) {
-            console.error('Erro:', error);
-        });
+//             if (perfil.length == 0) {
+//                 balancar()
+//             } else {
+//                 sessionStorage.ID_EMPRESA = perfil[0].idEmpresa
+//                 sessionStorage.EMAIL = perfil[0].email
+//                 sessionStorage.NOME = perfil[0].nome
+//                 sessionStorage.CNPJ = perfil[0].cnpj
+//                 sessionStorage.SENHA = perfil[0].senha
+//                 window.location = "dashboard.html" 
+//             }
+//         })
+//         .catch(function (error) {
+//             console.error('Erro:', error);
+//         });
 
-}
+// }
 
 
