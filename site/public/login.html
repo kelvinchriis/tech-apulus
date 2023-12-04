@@ -50,11 +50,12 @@
 
                     <!-- tela login func -->
                     <div id="campos_login_funcionario">
-                        <h1>Selecione opção</h1>
-<br>
-                        <a  id="inputEmailLoginFunc" class="button" href="loginfunc.html"> Entrar com Funcionário</a><br><br>
-                        <a id="inputSenhaLoginFunc"  class="button"  href="loginempresa.html">Entrar Empresa</a>
-                      
+                        <input type="email" id="inputEmailLoginFunc" class="campos campo-space-login" placeholder="E-mail"
+                            required>
+                        <input type="password" id="inputSenhaLoginFunc" class="campos" placeholder="Senha" required>
+                        <p id="forgot" class="forgot-password">Esqueci minha senha?</p>
+                        <button class="button" id="botao_log" onclick="verifyLogin()">Entrar</button>
+                        <button class="button" id="botao_log" onclick="verifyLogin2()">Entrar Empresa</button>
                     </div>
 
                     <!-- tela seleção cadastro -->
@@ -309,4 +310,3 @@
 </body>
 
 </html>
-

@@ -63,6 +63,27 @@ function autenticar(email, senha) {
   return database.executar(instrucao);
 }
 
+function mostrarChaveAcesso(id_empresa) {
+  console.log("ACESSEI A EMPRESA MODEL para buscar a chave de acesso, function mostrarChaveAcesso()", id_empresa);
+
+  var instrucao = `   
+  select chave_acesso from empresa where idEmpresa = ${id_empresa};	
+  `;
+
+  console.log("Executando a instrução SQL: \n" + instrucao);
+  return database.executar(instrucao);
+}
+
+// function mostrarFuncionarios(id_empresa) {
+//   console.log("ACESSEI A EMPRESA MODEL para buscar os funcionários, function mostrarFuncionarios()", id_empresa);
+
+//   var instrucao = `   
+//   select nome, email, cpf from funcionario where fkEmpresaFuncionario = ${id_empresa};	
+//   `;
+
+//   console.log("Executando a instrução SQL: \n" + instrucao);
+//   return database.executar(instrucao);
+// }
 
 module.exports = { 
   buscarPorCnpj, 
@@ -71,5 +92,7 @@ module.exports = {
   cadastrarEndereco, 
   cadastrarContato, 
   buscarPorChaveEmpresa,
-  autenticar
+  autenticar,
+  // mostrarFuncionarios
+  // mostrarChaveAcesso
 };

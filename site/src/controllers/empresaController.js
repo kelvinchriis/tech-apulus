@@ -144,11 +144,30 @@ function autenticar(req, res) {
   }
 }
 
+
+// function mostrarChaveAcesso(req, res) {
+//   var id_empresa = req.params.id_empresa;
+
+//   empresaModel.mostrarChaveAcesso(id_empresa).then((resposta) => {
+//       res.status(200).json(resposta);
+//   });
+// }
+
+// function mostrarFuncionarios(req, res) {
+//   var id_empresa = req.params.id_empresa;
+
+//   empresaModel.mostrarFuncionarios(id_empresa).then((resposta) => {
+//       res.status(200).json(resposta);
+//   });
+// }
+
 module.exports = {
   buscarPorCnpj,
   cadastrar,
   listar,
   cadastrarContato,
   cadastrarEndereco,
-  autenticar
+  autenticar,
+  // mostrarFuncionarios
+  // mostrarChaveAcesso
 };

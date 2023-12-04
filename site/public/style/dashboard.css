@@ -365,7 +365,6 @@ td {
 	flex-wrap: wrap;
 }
 
-/* Estilo do botão */
 .open-modal-btn {
 	padding: 10px 20px;
 	background-color: #463d37;
@@ -422,4 +421,3 @@ td {
   .close:hover {
 	color: #e74c3c;
   }
-  
