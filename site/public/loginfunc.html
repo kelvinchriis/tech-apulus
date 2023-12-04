@@ -20,7 +20,7 @@
             <img src="img/logo.png" width="250px" alt="hero image">
             <div style="display: flex; align-items: center;">
                 <li class="navbar-item">
-                    <a href="index.html" class="header-action-btn login-btn" data-nav-toggler>Home</a>
+                    <a href="login.html" class="header-action-btn login-btn" data-nav-toggler>Voltar</a>
                 </li>
 
             </div>
@@ -43,72 +43,20 @@
 
                 <!-- botão alterar login <-> cadastro e seu alinhamento -->
                 <div class="selector-field-position" id="selector_field_position">
-                    <div class="selector-field" id="selector_field" onclick="changeTela()">Cadastrar</div>
                 </div>
                 <h1 class="titulo" id="title">LOGIN</h1>
                 <div class="frame-campos">
 
                     <!-- tela login func -->
                     <div id="campos_login_funcionario">
-                        <h1>Selecione opção</h1>
-<br>
-                        <a  id="inputEmailLoginFunc" class="button" href="loginfunc.html"> Entrar com Funcionário</a><br><br>
-                        <a id="inputSenhaLoginFunc"  class="button"  href="loginempresa.html">Entrar Empresa</a>
-                      
-                    </div>
-
-                    <!-- tela seleção cadastro -->
-                    <div id="campos_cad" style="display: none;">
-                        <h1>Selecione opção</h1>
-                        <button class="button" id="botao_opcao_empresa" onclick="cadastroEmpresa()">Empresa</button>
-                        <button class="button" id="botao_opcao_funcionario"
-                            onclick="cadastroFuncionario()">Funcionário</button>
-                    </div>
-
-                    <!-- tela cadastro empresa -->
-                    <div id="campos_cadastro" style="display: none">
-                        <input type="text" id="inputEmpresa" class="campos campo-space-cadastro" placeholder="Empresa"
+                        <input type="email" id="inputEmailLoginFunc" class="campos campo-space-login" placeholder="E-mail"
                             required>
-                        <input type="text" id="inputCNPJ" class="campos campo-space-cadastro"
-                            placeholder="CNPJ (números)" required>
-                        <input type="email" id="inputEmailCadastro" class="campos campo-space-cadastro"
-                            placeholder="E-mail" required>
-                        <input type="password" id="inputSenhaCadastro" class="campos" placeholder="Senha" required><br>
-                        <button class="button" id="botao_cad" onclick="avancarCadEnd()" style="margin-top: 40px;">Avançar</button><br>
+                        <input type="password" id="inputSenhaLoginFunc" class="campos" placeholder="Senha" required>
+                        <p id="forgot" class="forgot-password">Esqueci minha senha?</p>
+                        <button class="button" id="botao_log" onclick="verifyLogin()">Entrar como Funcionário</button>
                     </div>
 
-                    <!-- tela endereço empresa-->
-                    <div id="campos_endereco" style="display: none; width: 100%;">
-                        <div class="inline_campos">
-                            <input oninput="cepapi()" id="inputCEP" class="campos" placeholder="CEP" required>
-                            <input type="text" id="inputLogradouro" class="campos campo-space-cadastro"
-                                placeholder="Logradouro">
-                        </div>
-                        <div class="inline_campos">
-                            <input id="inputNum" class="campos" placeholder="Número">
-                            <input type="text" id="inputBairro" class="campos campo-space-cadastro" placeholder="Bairro"
-                                required>
-                        </div>
-                        <div class="inline_campos">
-                            <input type="text" id="inputCidade" class="campos" placeholder="Cidade" required>
-                            <input type="text" id="inputEstado" class="campos" placeholder="Estado" required>
-                        </div><br>
-                        <button class="button" id="botao_end" onclick="avancarCadCont()">Avançar</button><br>
-                    </div>
-
-                    <!-- tela contato empresa-->
-                    <div id="campos_contato" style="display: none;">
-                        <input id="inputTelP" class="campos campo-space-cadastro" placeholder="Telefone Principal"
-                            required>
-                        <input id="inputTelS" class="campos campo-space-cadastro" placeholder="Telefone Secundário"
-                            required>
-                        <input type="email" id="inputEmailP" class="campos campo-space-cadastro"
-                            placeholder="E-mail Principal" required>
-                        <input type="email" id="inputEmailS" class="campos" placeholder="E-mail Secúdario" required><br>
-                        <button class="button" id="botao_finalizar_empresa"
-                            onclick="finalCadEmpresa()">Finalizar</button><br>
-                    </div>
-
+                    
                     <!-- barra status cadastro empresa -->
                     <div class="pointer" id="pointer" style="display: none;">
                         <div class="point" id="point1"></div>
@@ -116,30 +64,7 @@
                         <div class="point" id="point3"></div>
                     </div>
 
-                    <!-- tela cadastro funcionario -->
-                    <div id="campos_cadastro_funcionario" style="display: none">
-                        <input type="text" id="inputNome" class="campos campo-space-cadastro" style="margin-top: 30px;" placeholder="Nome"
-                            required>
-                        <input type="text" id="inputCPF" class="campos campo-space-cadastro" placeholder="CPF (números)"
-                            required>
-                        <input type="email" id="inputEmailCadastroFunc" class="campos campo-space-cadastro"
-                            placeholder="E-mail" required>
-                        <input type="password" id="inputSenhaCadastroFunc" class="campos"
-                            placeholder="Senha" required><br>
-                        <button class="button" id="botao_cad_funcionario" style="margin-top: 40px;" onclick="avancarChave()">Avançar</button><br>
-                    </div>
-
-                    <!-- tela chave funcionario -->
-                    <div id="campo_chave" style="display: none">
-                        <select name="" class="campos campo-space-cadastro" id="empresa_selecao"
-                            style="margin: 70px 0 80px 0;">
-                            <option selected>Selecione uma empresa</option>
-                        </select><br>
-                        <input type="password" id="inputChave" class="campos" placeholder="Chave de acesso"
-                            required><br>
-                        <button class="button" id="botao_finalizar_funcionario"
-                            onclick="finalCadFunc()">Finalizar</button><br>
-                    </div>
+                   
                 </div>
             </div>
         </div>
@@ -309,4 +234,3 @@
 </body>
 
 </html>
-
