@@ -132,11 +132,19 @@
         </section>
       </div>
       </div> <br> <br>  
+      <div class="mainGraficos">
 
-      <iframe width='560' height='580'
-      src='https://app.pipefy.com/public/form/5QxKRXLd?embedded=true'
-      frameborder='0'
-    ></iframe>
+<!-- Botão para abrir o modal -->
+<button id="openModalBtn" class="open-modal-btn login-btn">Relatar Problema</button>
+
+<!-- O modal -->
+<div id="myModal" class="modal" aria-hidden="true">
+  <div class="modal-content">
+    <span class="close" id="closeModalBtn" onclick="closeModal()">&times;</span>
+    <iframe width='560' height='580' src='https://app.pipefy.com/public/form/5QxKRXLd?embedded=true' frameborder='0'></iframe>
+  </div>
+</div>
+
 
       <!-- Para aparecer os gráficos anteriores, descomente a seção abaixo, até a linha 358 :) -->
 
@@ -1048,4 +1056,27 @@
     obterDados(lm35Temperatura, 'lm35/temperatura');
     // obterDados(chave, 'chave');
   }, 1000);
+
+  // Obtenha os elementos do DOM
+var modal = document.getElementById('myModal');
+var openModalBtn = document.getElementById('openModalBtn');
+var closeModalBtn = document.getElementById('closeModalBtn');
+
+// Quando o botão de abrir modal for clicado, exiba o modal
+openModalBtn.addEventListener('click', function() {
+    modal.style.display = 'block';
+});
+
+// Quando o botão de fechar modal for clicado, oculte o modal
+closeModalBtn.addEventListener('click', function() {
+    modal.style.display = 'none';
+});
+
+// Quando clicar fora do modal, feche o modal
+window.addEventListener('click', function(event) {
+    if (event.target == modal) {
+        modal.style.display = 'none';
+    }
+});
+
 </script>
