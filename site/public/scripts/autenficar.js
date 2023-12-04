@@ -24,30 +24,6 @@ function verifyLogin() {
     }
 }
 
-// function verifyLogin2() {
-//     var email_empresa = inputEmailLoginEmpresa.value
-//     var senha_empresa = inputSenhaLoginEmpresa.value
-//     inputEmailLoginFunc.placeholder = "E-mail"
-//     clearBorder()
-
-//     // Define uma expressão regular para validar endereços de e-mail
-//     var regex = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,9}$/;
-
-//     // Verifica se o email inserido corresponde à expressão regular
-//     if (email_empresa == "" || senha_empresa == "") {
-//         executarFuncTemporal(move, 8, 30)
-//         if (email_empresa == "") { inputEmailLogin.style.border = "2px solid #ffbf00" }
-//         else if (!regex.test(email_login)) {
-//             inputEmailLoginFunc.style.border = "2px solid red"
-//             inputEmailLoginFunc.placeholder = "E-mail inválido"
-//             inputEmailLoginFunc.value = ""
-//         }
-//         if (senha_empresa == "") { inputSenhaLoginFunc.style.border = "2px solid #ffbf00" }
-
-//     } else {
-//         autenticar(email_empresa, senha_empresa)
-//     }
-// }
 
 function balancar() {
     executarFuncTemporal(move, 8, 30)
@@ -98,61 +74,15 @@ function autenticar(email_login, senha_login) {
 }
 
 
-
-
-// function autenticarEmpresa(email_empresa, senha_empresa) {
-//     fetch("/empresa/autenticar", {
-//         method: "POST",
-//         headers: {
-//             "Content-Type": "application/json",
-//         },
-//         body: JSON.stringify({
-//             // crie um atributo que recebe o valor recuperado aqui
-//             // Agora vá para o arquivo routes/usuario.js
-//             emailServer: email_empresa,
-//             senhaServer: senha_empresa
-//         }),
-//     })
-//     .then(function (response) {
-//         if (!response.ok) {
-//             balancar()
-//             throw new Error('Erro ao carregar os dados');
-//             }
-//             return response.json();
-//         })
-//         .then(function (perfil) {
-//             console.log(perfil);
-
-//             if (perfil.length == 0) {
-//                 balancar()
-//             } else {
-//                 sessionStorage.ID_EMPRESA = perfil[0].idEmpresa
-//                 sessionStorage.EMAIL = perfil[0].email
-//                 sessionStorage.NOME = perfil[0].nome
-//                 sessionStorage.CNPJ = perfil[0].cnpj
-//                 sessionStorage.SENHA = perfil[0].senha
-//                 window.location = "dashboard.html" 
-//             }
-//         })
-//         .catch(function (error) {
-//             console.error('Erro:', error);
-//         });
-
-// }
-
 function verifyLogin2() {
 
     var emailVar = inputEmailLoginFunc.value;
     var senhaVar = inputSenhaLoginFunc.value;
 
-    // if (emailVar === '' || senhaVar === '') {
-    //     div_erro.innerHTML = `Preencha todos os campos!`
-    // }
-
     console.log("FORM LOGIN: ", emailVar);
     console.log("FORM SENHA: ", senhaVar);
 
-    fetch("/empresa/autenticar", {
+    fetch("/empresas/autenticar", {
         method: "POST",
         headers: {
             "Content-Type": "application/json"
@@ -174,22 +104,12 @@ function verifyLogin2() {
                 sessionStorage.NOME_USUARIO = json.nome;
                 sessionStorage.ID_USUARIO = json.id;
 
-                // setTimeout(function () {
-                //     window.location = "./dashboard.html";
-                // }, 1000);
+                setTimeout(function () {
+                    window.location = "./dashboard.html";
+                }, 1000);
             });
         }
 
-        // } else {
-
-        //     div_erro.innerHTML = `Insira um e-mail válido`
-
-        //     console.log("Houve um erro ao tentar realizar o login!");
-
-        //     resposta.text().then(texto => {
-        //         console.error(texto);
-        //     });
-        // }
 
     }).catch(function (erro) {
         console.log(erro);
