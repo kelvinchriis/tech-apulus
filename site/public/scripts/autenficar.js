@@ -1,6 +1,7 @@
 function verifyLogin() {
     var email_login = inputEmailLoginFunc.value
     var senha_login = inputSenhaLoginFunc.value
+
     inputEmailLoginFunc.placeholder = "E-mail"
     clearBorder()
 
@@ -22,6 +23,7 @@ function verifyLogin() {
         autenticar(email_login, senha_login)
     }
 }
+
 
 function balancar() {
     executarFuncTemporal(move, 8, 30)
@@ -69,4 +71,49 @@ function autenticar(email_login, senha_login) {
             console.error('Erro:', error);
         });
 
+}
+
+
+function verifyLogin2() {
+
+    var emailVar = inputEmailLoginFunc.value;
+    var senhaVar = inputSenhaLoginFunc.value;
+
+    console.log("FORM LOGIN: ", emailVar);
+    console.log("FORM SENHA: ", senhaVar);
+
+    fetch("/empresas/autenticar", {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json"
+        },
+        body: JSON.stringify({
+            emailServer: emailVar,
+            senhaServer: senhaVar
+        })
+    }).then(function (resposta) {
+        console.log("ESTOU NO THEN DO entrar()!")
+
+        if (resposta.ok) {
+            console.log(resposta);
+
+            resposta.json().then(json => {
+                console.log(json);
+                console.log(JSON.stringify(json));
+                sessionStorage.EMAIL_USUARIO = json.email;
+                sessionStorage.NOME_USUARIO = json.nome;
+                sessionStorage.ID_USUARIO = json.id;
+
+                setTimeout(function () {
+                    window.location = "./dashboard.html";
+                }, 1000);
+            });
+        }
+
+
+    }).catch(function (erro) {
+        console.log(erro);
+    })
+
+    return false;
 }

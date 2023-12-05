@@ -11,7 +11,6 @@ cnpj char(14) not null unique,
 chave_acesso int not null unique
 ) auto_increment = 100;
 
-
     select * from Empresa;
 
 create table Fazenda(
@@ -51,7 +50,7 @@ constraint fkEnderecoEmpresa foreign key (fkEnderecoEmpresa) references Empresa(
 constraint fkEnderocoFazenda foreign key (fkEnderocoFazenda) references Fazenda(idFazenda)) auto_increment = 100;
 
 
-    select * from Endereço;
+    select * from endereco;
 
 
 create table Contato(
@@ -103,7 +102,7 @@ idSensores int primary key auto_increment,
 status_sensores varchar(45),
 tipo varchar(45),
 fkArmazem int,
-constraint fkArm foreign key(fkArmazem) references Armazém(idArmazem)) auto_increment = 600;
+constraint fkArm foreign key(fkArmazem) references Armazem(idArmazem)) auto_increment = 600;
 
 select * from Armazém;
 

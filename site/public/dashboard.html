@@ -117,13 +117,31 @@
       <!-- Começo dos Gráficos -->
       <span id="name_user"></span>
       <div class="mainGraficos">
-        <h1>Visão Geral das Fazendas</h1>
-
-
-        <a id="btnAddGraf" class="login-btn">Adicionar Gráfico</a>
-        <div class="grafFazendas">
+        <h1>Visão Geral das Fazendas</h1> <br>
+        <div class="fazendas">
+          
         </div>
+
+        <div class="graficos">
+          <section class="grafic">
+            <canvas id="dht11Umidade"></canvas>
+        </section>
+
+        <section class="grafic">
+          <canvas id="lm35Temperatura"></canvas>
+        </section>
       </div>
+      </div> <br> <br>  
+      <div class="mainGraficos">
+      <button id="openModalBtn" class="open-modal-btn login-btn">Alguma dúvida?</button>
+      <div id="myModal" class="modal" aria-hidden="true">
+        <div class="modal-content">
+          <span class="close" id="closeModalBtn" onclick="closeModal()">&times;</span>
+      <iframe width='560' height='580'
+      src='https://app.pipefy.com/public/form/5QxKRXLd?embedded=true' frameborder='0'></iframe>
+    </div>
+  </div>
+</div>
 
       <!-- Para aparecer os gráficos anteriores, descomente a seção abaixo, até a linha 358 :) -->
 
@@ -917,199 +935,122 @@
   new window.VLibras.Widget('https://vlibras.gov.br/app');
 </script>
 
-<!-- Por enquanto o script debaixo está dando erro, pois não temos a parte do back dos armazéns ainda, mas quando criarmos, alguns ajustes e os gráficos podem aparecer, a base está no 'teste.js', então só substituir os dados mocados por reais do usuário, e aparentemente pronto :) -->
-
-<!-- <script>
-  let atualizarDados;
-
-  window.onload = exibirAquariosDoUsuario();
-
-  function exibirAquariosDoUsuario() {
-    var armazens = JSON.parse(sessionStorage.ARMAZENS);
-    armazens.forEach(item => {
-      document.getElementById("btnAddGraf").innerHTML += `
-            <button class="btn-chart" onclick="exibirArmazem(${item.id})" id="btnAddGraf${item.id}">${item.descricao}</button>
-            `
-
-      document.getElementById("graficos").innerHTML += `
-                <div id="grafico${item.id}" class="display-none">
-                    <h3 class="tituloGraficos">
-                        <span id="tituloAquario${item.id}">${item.descricao}</span>
-                    </h3>
-                    <div class="graph">
-                        <canvas id="myChartCanvas${item.id}"></canvas>
-                    </div>
-                    <div class="label-captura">
-                        <p id="avisoCaptura${item.id}" style="color: white"></p>
-                    </div>
-                </div>
-            `
-
-      obterDadosGrafico(item.id)
-    });
-
-    if (armazens.length > 0) {
-      exibirArmazem(armazens[0].id)
-    }
-  }
-
-  function exibirAquario(idAquario) {
-    let todosOsGraficos = JSON.parse(sessionStorage.AQUARIOS);
-
-    for (i = 0; i < todosOsGraficos.length; i++) {
-      // exibindo - ou não - o gráfico
-      if (todosOsGraficos[i].id != idAquario) {
-        let elementoAtual = document.getElementById(`grafico${todosOsGraficos[i].id}`)
-        if (elementoAtual.classList.contains("display-block")) {
-          elementoAtual.classList.remove("display-block")
-        }
-        elementoAtual.classList.add("display-none")
-
-        // alterando estilo do botão
-        let btnAtual = document.getElementById(`btnAquario${todosOsGraficos[i].id}`)
-        if (btnAtual.classList.contains("btn-pink")) {
-          btnAtual.classList.remove("btn-pink")
-        }
-        btnAtual.classList.add("btn-white")
-      }
-    }
-
-    let graficoExibir = document.getElementById(`grafico${idAquario}`)
-    graficoExibir.classList.remove("display-none")
-    graficoExibir.classList.add("display-block")
-
-    function obterDados() {
-      if (atualizarDados != undefined) {
-        clearTimeout(atualizarDados);
-      }
-
-      fetch(`/medidas/ultimas/${idAquario}`, { cache: 'no-store' }).then(function (response) {
-        if (response.ok) {
-          response.json().then(function (resposta) {
-            console.log(`Dados recebidos: ${JSON.stringfy(resposta)}`);
-            resposta.reverse();
-
-            plotarGraf(resposta, idAquario);
-          });
-        }
-
-        else {
-          console.error('Nenhum dado encontrado');
-        }
-      })
-
-        .catch(function (error) {
-          console.error(`Erros na obtenção dos Gráficos: ${error.message}`);
-        });
-    }
-
-    function plotarGraf(resposta, idAquario) {
-      console.log('Plotando os Gráficos...')
-
-      let labels = [];
-
-      let dados = {
-        labels: labels,
+<script>
+  var contextoDht11Umidade = document.getElementById('dht11Umidade').getContext('2d');
+  contextoDht11Umidade.canvas.width = 1000;
+  contextoDht11Umidade.canvas.height = 300;
+  var dht11Umidade = new Chart(
+    contextoDht11Umidade,
+    {
+      type: 'line',
+      data: {
         datasets: [{
-          labels: 'Umidade',
-          data: [],
-          fill: false,
-          borderColor: '#9c6b43',
-          tension: 0.1
-        },
-        {
-          label: 'Temperatura',
-          data: [],
-          fill: false,
-          borderColor: 'rgb(255, 0, 0)',
-          tension: 0.1
+          label: 'Umidade',
+          type: 'line',
+          borderColor: ['#45b3e7'],
+          backgroundColor: ['#89cff0']
         }]
-      };
+      },
+      options: {
+        scales: {
+          xAxes: [{
+            distribution: 'series',
+            ticks: {
+              beginAtZero: true
+            }
+          }],
+          yAxes: [{
+            scaleLabel: {
+              display: true,
+              labelString: 'Umidade'
+            },
+            ticks: {
+              beginAtZero: true
+            }
+          }]
+        },
+        animation: {
+          duration: 0
+        }
+      }
+    }
+  );
 
-      console.log('----------------------------------------------')
-      console.log('Estes dados foram recebidos pela funcao "obterDadosGrafico" e passados para "plotarGrafico":')
-      console.log(resposta)
+  var contextoLm35Temperatura = document.getElementById('lm35Temperatura').getContext('2d');
+  contextoLm35Temperatura.canvas.width = 1000;
+  contextoLm35Temperatura.canvas.height = 300;
+  var lm35Temperatura = new Chart(
+    contextoLm35Temperatura,
+    {
+      type: 'line',
+      data: {
+        datasets: [{
+          label: 'Temperatura',
+          type: 'line',
+          borderColor: ['#ffd902'],
+          backgroundColor: ['#ffe135']
+        }]
+      },
+      options: {
+        scales: {
+          xAxes: [{
+            distribution: 'series',
+            ticks: {
+              beginAtZero: true
+            }
+          }],
+          yAxes: [{
+            scaleLabel: {
+              display: true,
+              labelString: 'Temperatura'
+            },
+            ticks: {
+              beginAtZero: true
+            }
+          }]
+        },
+        animation: {
+          duration: 0
+        }
+      }
+    }
+  );
 
-      // Inserindo valores recebidos em estrutura para plotar o gráfico
-      for (i = 0; i < resposta.length; i++) {
-        var registro = resposta[i];
-        labels.push(registro.momento_grafico);
-        dados.datasets[0].data.push(registro.umidade);
-        dados.datasets[1].data.push(registro.temperatura);
+  var paginacao = {};
+  var tempo = {};
+  function obterDados(grafico, endpoint) {
+    var http = new XMLHttpRequest();
+    http.open('GET', 'http://localhost:3000/sensores/' + endpoint, false);
+    http.send(null);
+    var valores = JSON.parse(http.responseText);
+    if (paginacao[endpoint] == null) {
+      paginacao[endpoint] = 0;
+    }
+    if (tempo[endpoint] == null) {
+      tempo[endpoint] = 0;
+    }
+    // Exibir à partir do último elemento exibido anteriormente
+    var ultimaPaginacao = paginacao[endpoint];
+    paginacao[endpoint] = valores.length;
+    var valores = valores.slice(ultimaPaginacao);
+    valores.forEach((valor) => {
+      //Máximo de 60 itens exibidos no gráfico
+      if (grafico.data.labels.length == 10 && grafico.data.datasets[0].data.length == 10) {
+        grafico.data.labels.shift();
+        grafico.data.datasets[0].data.shift();
       }
 
-      console.log('----------------------------------------------')
-      console.log('O gráfico será plotado com os respectivos valores:')
-      console.log('Labels:')
-      console.log(labels)
-      console.log('Dados:')
-      console.log(dados.datasets)
-      console.log('----------------------------------------------')
-
-      // Criando estrutura para plotar gráfico - config
-      const config = {
-        type: 'line',
-        data: dados,
-      };
-
-      // Adicionando gráfico criado em div na tela
-      let myChart = new Chart(
-        document.getElementById(`myChartCanvas${idAquario}`),
-        config
-      );
-
-      setTimeout(() => atualizarGraf(idAquario, dados, myChart), 2000);
-    }
-
-    function atualizarGraf(idAquario, dados, myChart) {
-      fetch(`/medidas/tempo-real/${idAquario}`, { cache: 'no-store' }).then(function (response) {
-        if (response.ok) {
-          response.json().then(function (registrarNovo) {
-            obterdados(idAquario);
-            // alertar(novoRegistro, idAquario);
-            console.log(`Dados recebidos: ${JSON.stringify(novoRegistro)}`);
-            console.log(`Dados atuais do gráfico:`);
-            console.log(dados);
-
-            let avisoCaptura = document.getElementById(`avisoCaptura${idAquario}`)
-            avisoCaptura.innerHTML = ""
-
-
-            if (novoRegistro[0].momento_grafico == dados.labels[dados.labels.length - 1]) {
-              console.log("---------------------------------------------------------------")
-              console.log("Como não há dados novos para captura, o gráfico não atualizará.")
-              avisoCaptura.innerHTML = "<i class='fa-solid fa-triangle-exclamation'></i> Foi trazido o dado mais atual capturado pelo sensor. <br> Como não há dados novos a exibir, o gráfico não atualizará."
-              console.log("Horário do novo dado capturado:")
-              console.log(novoRegistro[0].momento_grafico)
-              console.log("Horário do último dado capturado:")
-              console.log(dados.labels[dados.labels.length - 1])
-              console.log("---------------------------------------------------------------")
-            } else {
-              // tirando e colocando valores no gráfico
-              dados.labels.shift(); // apagar o primeiro
-              dados.labels.push(novoRegistro[0].momento_grafico); // incluir um novo momento
-
-              dados.datasets[0].data.shift();  // apagar o primeiro de umidade
-              dados.datasets[0].data.push(novoRegistro[0].umidade); // incluir uma nova medida de umidade
-
-              dados.datasets[1].data.shift();  // apagar o primeiro de temperatura
-              dados.datasets[1].data.push(novoRegistro[0].temperatura); // incluir uma nova medida de temperatura
-
-              myChart.update();
-            }
-
-            // Altere aqui o valor em ms se quiser que o gráfico atualize mais rápido ou mais devagar
-            proximaAtualizacao = setTimeout(() => atualizarGraf(idAquario, dados, myChart), 2000);
-          });
-        } else {
-          console.error('Nenhum dado encontrado ou erro na API');
-          // Altere aqui o valor em ms se quiser que o gráfico atualize mais rápido ou mais devagar
-          proximaAtualizacao = setTimeout(() => atualizarGraf(idAquario, dados, myChart), 2000);
-        }
-      })
-        .catch(function (error) {
-          console.error(`Erro na obtenção dos dados p/ gráfico: ${error.message}`);
-        });
-    }
+      grafico.data.labels.push(tempo[endpoint]++);
+      grafico.data.datasets[0].data.push(parseFloat(valor));
+      grafico.update();
+    })
   }
-</script> -->
+
+  setInterval(() => {
+    obterDados(dht11Umidade, 'dht11/umidade');
+    // obterDados(dht11Temperatura, 'dht11/temperatura');
+    // obterDados(luminosidade, 'luminosidade');
+    obterDados(lm35Temperatura, 'lm35/temperatura');
+    // obterDados(chave, 'chave');
+  }, 1000);
+</script>

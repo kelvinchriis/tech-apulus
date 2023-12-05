@@ -1,65 +1,25 @@
-// // Base para criação de gráficos dinâmica, não funciona direito, mas tá caminhando >:)
-
-// const btnAdd = document.querySelector('#btnAddGraf'),
-//     telaFazendas = document.querySelector('.grafFazendas');
-
-// btnAdd.addEventListener('click', () => {
-
-//     telaFazendas.innerHTML += `<canvas id="myChartCanvas"></canvas>`
-
-//     let labels = [];
-
-//     let dados = {
-//         labels: labels,
-//         datasets: [{
-//             labels: 'Umidade',
-//             data: [23, 24, 28, 22, 24],
-//             // fill: false,
-//             borderColor: '#9c6b43',
-//             tension: 0.1
-//         },
-//         {
-//             label: 'Temperatura',
-//             data: [55, 57, 59, 65, 62],
-//             // fill: false,
-//             borderColor: 'rgb(255, 0, 0)',
-//             tension: 0.1
-//         }]
-//     };
-
-//     const config = {
-//         type: 'line',
-//         data: dados,
-//     };
-
-//     let myChart = new Chart(
-//         document.getElementById(`myChartCanvas`),
-//         config
-//     );
-// })
-
 const serialport = require('serialport');
 const express = require('express');
 const mysql = require('mysql2');
 
 const SERIAL_BAUD_RATE = 9600;
 const SERVIDOR_PORTA = 3000;
-const HABILITAR_OPERACAO_INSERIR = false;
+const HABILITAR_OPERACAO_INSERIR = true;
 
 const serial = async (
-    valoresDht11Umidade,
+    valoresLm35Temperatura,
+    valoresDht11Umidade
     // valoresDht11Temperatura,
     // valoresLuminosidade,
-    valoresLm35Temperatura
     // valoresChave
 ) => {
     const poolBancoDados = mysql.createPool(
         {
             host: 'localhost',
             port: 3306,
-            user: '', //Usuário do banco 
-            password: '', // Senha do banco
-            database: ''// Database do banco
+            user: 'root',
+            password: 'EDI40#mand',
+            database: 'TechApulus_sprint2_teste'
         }
     ).promise();
 
@@ -77,42 +37,37 @@ const serial = async (
     arduino.on('open', () => {
         console.log(`A leitura do arduino foi iniciada na porta ${portaArduino.path} utilizando Baud Rate de ${SERIAL_BAUD_RATE}`);
     });
-
     arduino.pipe(new serialport.ReadlineParser({ delimiter: '\r\n' })).on('data', async (data) => {
-        const valores = data.split(';');
-        const dht11Umidade = parseFloat(valores[0]);
-        // const dht11Temperatura = parseFloat(valores[1]);
-        // const luminosidade = parseFloat(valores[2]);
-        const lm35Temperatura = parseFloat(valores[1]);
-        // const chave = parseInt(valores[4]);
-
+        const valores = data.split(',');
+        const lm35Temperatura = parseFloat(valores[0]);
+        const dht11Umidade = parseFloat(valores[1]);
+        // const luminosidade = parseFloat(valores[3]);
+        // const dht11Temperatura = parseFloat(valores[4]);
+        // const chave = parseInt(valores[5]);
+        
+        valoresLm35Temperatura.push(lm35Temperatura);
         valoresDht11Umidade.push(dht11Umidade);
         // valoresDht11Temperatura.push(dht11Temperatura);
         // valoresLuminosidade.push(luminosidade);
-        valoresLm35Temperatura.push(lm35Temperatura);
         // valoresChave.push(chave);
 
         if (HABILITAR_OPERACAO_INSERIR) {
             await poolBancoDados.execute(
-                'INSERT INTO sensores (dht11_umidade, lm35_temperatura) VALUES (?, ?)',
-                // 'INSERT INTO sensores (dht11_umidade, dht11Temperatura, luminosidade, lm35_temperatura, chave) VALUES (?, ?, ?, ?, ?)',
-                [dht11Umidade, lm35Temperatura]
-                // [dht11Umidade, dht11Temperatura, luminosidade, lm35Temperatura, chave]
+                `INSERT INTO sensores (lm35_temperatura, dht11_umidade) VALUES (${lm35Temperatura}, ${dht11Umidade});`,
             );
         }
 
     });
-
     arduino.on('error', (mensagem) => {
         console.error(`Erro no arduino (Mensagem: ${mensagem}`)
     });
 }
 
 const servidor = (
-    valoresDht11Umidade,
+    valoresLm35Temperatura,
+    valoresDht11Umidade
     // valoresDht11Temperatura,
     // valoresLuminosidade,
-    valoresLm35Temperatura
     // valoresChave
 ) => {
     const app = express();
@@ -124,6 +79,9 @@ const servidor = (
     app.listen(SERVIDOR_PORTA, () => {
         console.log(`API executada com sucesso na porta ${SERVIDOR_PORTA}`);
     });
+    app.get('/sensores/lm35/temperatura', (_, response) => {
+        return response.json(valoresLm35Temperatura);
+    });
     app.get('/sensores/dht11/umidade', (_, response) => {
         return response.json(valoresDht11Umidade);
     });
@@ -133,32 +91,29 @@ const servidor = (
     // app.get('/sensores/luminosidade', (_, response) => {
     //     return response.json(valoresLuminosidade);
     // });
-    app.get('/sensores/lm35/temperatura', (_, response) => {
-        return response.json(valoresLm35Temperatura);
-    });
     // app.get('/sensores/chave', (_, response) => {
     //     return response.json(valoresChave);
     // });
 }
 
 (async () => {
+    const valoresLm35Temperatura = [];
     const valoresDht11Umidade = [];
     // const valoresDht11Temperatura = [];
     // const valoresLuminosidade = [];
-    const valoresLm35Temperatura = [];
     // const valoresChave = [];
     await serial(
-        valoresDht11Umidade,
+        valoresLm35Temperatura,
+        valoresDht11Umidade
         // valoresDht11Temperatura,
         // valoresLuminosidade,
-        valoresLm35Temperatura
         // valoresChave
     );
     servidor(
-        valoresDht11Umidade,
+        valoresLm35Temperatura,
+        valoresDht11Umidade
         // valoresDht11Temperatura,
         // valoresLuminosidade,
-        valoresLm35Temperatura
         // valoresChave
     );
 })();
