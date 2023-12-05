@@ -8,12 +8,13 @@
   <link rel="shortcut icon" href="img/logo.png" type="image/svg+xml">
   <link rel="stylesheet" href="style/dashboard.css">
   <link rel="stylesheet" href="style/style.css">
+  <link rel="stylesheet" href="./scripts/teste.js">
 
 
   <link href="https://fonts.googleapis.com/css2?family=Urbanist:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 </head>
 
-<body onload="alertas()">
+<body onload="alertas(), validarSessao(), limparSessao()">
   <div class="menu menu-perdas">
     <div class="button-menu" onclick="menuClick()">
       <div class="bar-menu"></div>
@@ -23,6 +24,8 @@
     <span class="content-items">
       <div class="blocoTextoMenu">
         <span class="textoMenu">Dashboard</span>
+        <h3>Olá, <span id="b_usuario" >usuário</span>!</h3>
+
         <a href="dashboard.html" class="dash"><ion-icon name="stats-chart" class="ionicons"
             style="color: rgb(63, 46, 34);"></ion-icon></a>
       </div>
