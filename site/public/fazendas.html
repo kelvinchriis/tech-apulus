@@ -1,0 +1,840 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Fazendas</title>
+  <link rel="shortcut icon" href="img/logo.png" type="image/svg+xml">
+  <link rel="stylesheet" href="style/dashboard.css">
+  <link rel="stylesheet" href="style/style.css">
+  <link rel="stylesheet" type="text/css" href="style/calculadora.css">
+  <link rel="stylesheet" type="text/css" href="style/relatorio.css">
+  <script src="scripts/login.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <script src="scripts/fazendas.js"></script>
+  <script src="scripts/armazens.js"></script>
+
+  <style>
+    body {
+      overflow-y: hidden;
+    }
+
+    .box-fazenda {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      width: 250px;
+      height: 250px;
+      margin: 10px;
+      border-radius: 20px;
+      cursor: pointer;
+      border: 1px solid black;
+    }
+
+    .box-armazens {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      width: 250px;
+      height: 250px;
+      margin: 10px;
+      border-radius: 20px;
+      cursor: pointer;
+      border: 1px solid black;
+    }
+
+    #graficos {
+      display: flex;
+      flex-direction: column;
+      margin: 0;
+      padding: 0;
+    }
+
+    .box-graficos {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      width: 250px;
+      height: 50px;
+      margin: 10px;
+      border-radius: 20px;
+      cursor: pointer;
+      border: 1px solid black;
+    }
+
+    .tela_fazendas {
+      display: flex;
+      justify-content: center;
+      /* flex-wrap: wrap; */
+      width: 100%;
+      height: 100%;
+    }
+
+    .h1-faz {
+      font-size: 30pt;
+    }
+
+    #alerta {
+      position: absolute;
+      right: 0px;
+      top: 10vh;
+    }
+
+    .mensagem-alarme {
+      background-color: rgb(206, 9, 9);
+      border-radius: 5px;
+      width: 300px;
+      height: 90px;
+      margin: 10px;
+      display: flex;
+      justify-content: space-evenly;
+      align-items: center;
+    }
+
+    .mediaQ {
+      background-color: #ff7043 !important;
+    }
+
+    .mediaF {
+      background-color: rgb(67, 214, 255) !important;
+    }
+
+    .minimo {
+      background-color: #2125ff !important;
+    }
+
+    .mensagem-alarme h3 {
+      font-size: 14px;
+      margin: 0;
+    }
+
+    .mensagem-alarme .informacao {
+      margin: 10px;
+      color: white;
+    }
+
+    .alarme-sino {
+      width: 48px;
+      height: 48px;
+      animation-name: bell;
+      animation-duration: 4s;
+      background-image: url('https://cdn-icons-png.flaticon.com/512/1157/1157000.png');
+      background-size: cover;
+      animation-iteration-count: infinite;
+    }
+
+    @keyframes bell {
+      0% {
+        transform: rotate(25deg)
+      }
+
+      25% {
+        transform: rotate(-25deg)
+      }
+
+      50% {
+        transform: rotate(25deg)
+      }
+
+      75% {
+        transform: rotate(-25deg)
+      }
+
+      100% {
+        transform: rotate(25deg)
+      }
+    }
+
+    .perigo-quente {
+      background-color: #ff7043;
+    }
+  </style>
+  <link href="https://fonts.googleapis.com/css2?family=Urbanist:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+</head>
+
+<body onload="listar_fazendas()">
+  <div class="menu menu-perdas">
+    <div class="button-menu" onclick="menuClick()">
+      <div class="bar-menu"></div>
+      <div class="bar-menu"></div>
+      <div class="bar-menu"></div>
+    </div>
+    <span class="content-items">
+      <div class="blocoTextoMenu">
+        <span class="textoMenu">Dashboard</span>
+        <a href="dashboard.html" class="dash"><ion-icon name="stats-chart" class="ionicons"></ion-icon></a>
+      </div>
+      <div class="blocoTextoMenu">
+        <span class="textoMenu" style="width: 75px; margin-right: 0;">Fazendas</span>
+        <a href="fazendas.html" class="dash" style="color: rgb(63, 46, 34);"><ion-icon name="home-outline"
+            class="ionicons"></ion-icon></a>
+      </div>
+      <div class="blocoTextoMenu">
+        <span class="textoMenu" style="width: 75px; margin-right: 0;">Sair</span>
+        <a href="login.html" class="dash"><ion-icon name="exit-outline" class="ionicons"></ion-icon></ion-icon></a>
+      </div>
+    </span>
+  </div>
+  <!-- botao nova fazenda -->
+  <div style="position: fixed; width: 94%; justify-content: right; height: 70px; display: flex; align-items: center;"
+    id="botao_faz">
+    <button id="calculate" class="botao" onclick="adicionarFazenda()">Adicionar fazenda</button>
+  </div>
+  <!-- botao novo armazen -->
+  <div style="position: fixed; width: 94%; justify-content: right; height: 70px; display: none; align-items: center;"
+    id="botao_armazen">
+    <button id="calculate" class="botao" onclick="voltar()">Voltar</button>
+    <!-- <button id="calculate" class="botao_ar" onclick="adicionarArmazem()" style="margin-left: 20px;">Adicionar
+      armazém</button> -->
+  </div>
+  <!-- botao voltar-->
+  <div style="display: none; position: fixed; width: 94%; justify-content: right; height: 70px; align-items: center;"
+    id="botao_voltar">
+    <button id="calculate" class="botao" onclick="voltar()">Voltar</button>
+  </div>
+  <!-- tela mostra fazendas empresa -->
+  <div style="width: 60%;" id="fazendas_empresa">
+    <div style="width: 100%; padding: 10px 0; text-align: center;">
+      <h2 class="h1-faz">Suas fazendas</h2>
+    </div>
+    <div class="tela_fazendas" id="fazendas">
+      <!-- aparece fazendas -->
+    </div>
+  </div>
+  <!-- tela armazens de uma fazenda -->
+  <div style="width: 80%; display: none;" id="armazens">
+    <div style="width: 100%; padding: 10px 0; text-align: center;">
+      <h2 class="h1-faz">Armazéns da fazenda </h2>
+    </div>
+    <div class="tela_fazendas" id="listar_armazens">
+      <!-- aparece armazens -->
+    </div>
+  </div>
+  <div style="width: 80%; display: none;" id="graficos">
+    <div style="width: 100%; padding: 10px 0; text-align: center;">
+      <h2 class="h1-faz">Gráficos do armazém </h2>
+    </div>
+    <div id="div_grafico" style="max-width: 900px; width: 900px; max-height: 450px; height: 450px; display: none;">
+    </div>
+    <div class="telaMetricas" id="div_metricas">
+      <div id="div_metricas_texto">
+      </div>
+    </div>
+  </div>
+  <!-- tela aguardo cadastro -->
+  <div class="box box-perdas" id="cadsatro_fazenda" style="flex-direction: column; align-items: center; display: none;">
+    <div class="form-box" style="display: none; padding: 30px 60px; " id="load">
+      <h2 class="h1 hero-title title-perdas">Adicionando fazenda</h2>
+      <form>
+        <img src="img/load.gif" alt="">
+      </form>
+    </div>
+    <!-- tela cadastro nova fazenda -->
+    <div class="form-box" style="padding: 30px 60px;" id="formulario">
+      <h2 class="h1 hero-title title-perdas">Adicionar fazenda</h2>
+      <form action="#">
+        <div class="input-group">
+          <label>Nome da fazenda:</label>
+          <div class="inline-fields">
+            <input style="font-size: 12pt;" type="text" id="input_nome">
+          </div>
+        </div>
+        <div class="input-group">
+          <label>Identificador:</label>
+          <div class="inline-fields">
+            <input style="font-size: 12pt;" placeholder="0000" type="number" id="input_identificador">
+          </div>
+        </div>
+        <div class="input-group">
+          <label>CEP:</label>
+          <div class="inline-fields">
+            <input oninput="cepapi()" placeholder="00000-000" style="font-size: 12pt;" type="text" id="inputCEP"
+              required>
+            <div class="inline-fields">
+              <div style="display: flex;">
+              </div>
+            </div>
+          </div>
+          <div class="input-group">
+            <label>Bairro:</label>
+            <div class="inline-fields">
+              <input style="font-size: 12pt;" type="text" id="inputBairro" required>
+              <div class="inline-fields">
+                <div style="display: flex;">
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="input-group">
+            <label>Cidade:</label>
+            <div class="inline-fields">
+              <input style="font-size: 12pt;" type="text" id="inputCidade" required>
+              <div class="inline-fields">
+                <div style="display: flex;">
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="input-group">
+            <label>Estado:</label>
+            <div class="inline-fields">
+              <input style="font-size: 12pt;" type="text" id="inputEstado" required>
+              <div class="inline-fields">
+                <div style="display: flex;">
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="input-group">
+          <div style="display: flex; width: 92%; justify-content: space-between;">
+            <label>Lougradouro</label>
+            <label>Número</label>
+          </div>
+          <div class="inline-fields" style="width: 100%; justify-content: space-between;">
+            <input style="font-size: 12pt; width: 70%;" type="text" id="inputLogradouro" required>
+            <input style="font-size: 12pt; width: 25%;" type="text" id="input_numero" required>
+          </div>
+        </div>
+        <div class="input-group">
+          <button id="calculate" class="botao" onclick="cadastrar_fazenda()">Adicionar</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <div class="box box-perdas" id="cadasatro_armazem"
+    style="flex-direction: column; align-items: center; display: none;">
+    <div class="form-box" style="display: none; padding: 30px 60px; " id="load_armazem">
+      <h2 class="h1 hero-title title-perdas">Adicionando armazém</h2>
+      <form>
+        <img src="img/load.gif" alt="">
+      </form>
+    </div>
+    <!-- tela cadastro novo armazem -->
+    <div class="form-box" style="padding: 30px 60px;" id="formulario_armazem">
+      <h2 class="h1 hero-title title-perdas">Adicionar armazém</h2>
+      <form>
+        <div class="input-group">
+          <label>Nome do armazém:</label>
+          <div class="inline-fields">
+            <input style="font-size: 12pt;" type="text" id="input_nome_ar">
+          </div>
+        </div>
+        <div class="input-group">
+          <label>Tamanho(M2):</label>
+          <div class="inline-fields">
+            <input style="font-size: 12pt;" type="text" id="input_tamanho">
+          </div>
+        </div>
+        <div class="input-group">
+          <button id="calculate" class="botao" onclick="cadastrar_armazem()">Adicionar</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- <a id="btnAbrirMetricas" class="login-btn">Ver Métricas</a> -->
+
+  <div id="alerta" style="display: none;">
+
+  </div>
+
+  <script type="text/javascript">
+
+    function cepapi() {
+      const cep = inputCEP.value;
+
+
+      const url = `https://viacep.com.br/ws/${cep}/json/`;
+
+      fetch(url)
+        .then(response => response.json())
+        .then(data => {
+          if (data.erro) {
+            return false
+          } else {
+            inputCidade.value = data.localidade
+            inputBairro.value = data.bairro
+            inputLogradouro.value = data.logradouro
+            inputEstado.value = data.uf
+          }
+        })
+        .catch(error => {
+          resultadoCEP.innerHTML = "Erro na consulta do CEP.";
+          console.error(error);
+        });
+    }
+
+  </script>
+</body>
+
+</html>
+<!-- <script type="text/javascript" src="scripts/dashboard.js"></script> -->
+<!-- 
+    - ionicon link
+  -->
+<script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+<script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
+<script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+<script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
+<!-- <script src="https://vlibras.gov.br/app/vlibras-plugin.js"></script> -->
+<!-- <script>
+  new window.VLibras.Widget('https://vlibras.gov.br/app');
+</script> -->
+<script>
+
+  div_grafico.innerHTML = `
+  <canvas style= "max-width: 900px; width: 900px; max-height: 450px; height: 450px; position: absolute; top: 20vh; left: 22vw; " id="canvas_grafico_101"></canvas>
+  `;
+
+  div_metricas_texto.innerHTML = `
+  <div>
+    <div class="metricas">
+      <table>
+        <thead>
+          <tr>
+            <th>Unidade de Medida</th>
+            <th style="color: blue;">Minimo</th>
+            <th style="color: dodgerblue;">Média</th>
+            <th style="color: limegreen;">Ideal</th>
+            <th style="color: limegreen;">Ideal</th>
+            <th style="color: orangered;">Média</th>
+            <th style="color: red;">Máxima</th>
+          </tr>
+        </thead>
+
+        <tbody>
+          <tr>
+            <th>Temperatura</th>
+            <td style="color: blue;">14°C</td>
+            <td style="color: dodgerblue;">17°C</td>
+            <td style="color: limegreen;">20°C</td>
+            <td style="color: limegreen;">23°C</td>
+            <td style="color: orangered;">24°C</td>
+            <td style="color: red;">26°C</td>
+          </tr>
+          <tr>
+            <th>Umidade</th>
+            <td style="color: blue;">55%</td>
+            <td style="color: dodgerblue;">58%</td>
+            <td style="color: limegreen;">60%</td>
+            <td style="color: limegreen;">65%</td>
+            <td style="color: orangered;">67%</td>
+            <td style="color: red;">69%</td>
+          </tr>
+        </tbody>
+      </table>
+    </div> <br>
+  </div>
+  `;
+
+
+  var contadorArmazem = 0;
+  var armazem1;
+  var armazem2;
+
+  var contadorFazenda = 0;
+  var fazenda1;
+  var fazenda2;
+
+  var posicao_tela = 0
+
+  let proximaAtualizacao;
+
+  // var fkArmazem;
+
+  function adicionarFazenda() {
+    posicao_tela = 1
+    fazendas_empresa.style.display = "none"
+    cadsatro_fazenda.style.display = "flex"
+    botao_faz.style.display = "none"
+    botao_voltar.style.display = "flex"
+  }
+
+  function adicionarArmazem() {
+    posicao_tela = 3
+    var botao = document.querySelector(".botao_ar")
+    cadasatro_armazem.style.display = "flex"
+    armazens.style.display = "none"
+    botao.style.display = "none"
+  }
+
+  function mostrar_armazens() {
+    posicao_tela = 4;
+    var botao = document.querySelector('botao');
+    graficos.style.display = 'flex';
+    armazens.style.display = "none"
+    // obterDadosGrafico();
+  }
+
+  function voltar() {
+    if (posicao_tela == 1) {
+      fazendas_empresa.style.display = "block"
+      cadsatro_fazenda.style.display = "none"
+      botao_faz.style.display = "flex"
+      botao_voltar.style.display = "none"
+      posicao_tela = 0
+    } else if (posicao_tela == 2) {
+      fazendas_empresa.style.display = "block"
+      armazens.style.display = "none"
+      botao_faz.style.display = "flex"
+      botao_armazen.style.display = "none"
+      posicao_tela = 0
+    } else if (posicao_tela == 3) {
+      var botao = document.querySelector(".botao_ar")
+      cadasatro_armazem.style.display = "none"
+      armazens.style.display = "block"
+      botao.style.display = "block"
+      posicao_tela = 2
+    } else if (posicao_tela == 4) {
+      var botao = document.querySelector('.botao_ar')
+      armazens.style.display = 'block'
+      graficos.style.display = 'none'
+      botao.style.display = 'none'
+      posicao_tela = 3
+      // plotarGrafico();
+    }
+  }
+
+  // window.onload = exibirArmazensDoUsuario();
+
+  var idSensores = [];
+
+  function buscarDados() {
+
+    fetch(`/armazens/buscarDados/101`, {
+      method: 'GET',
+      headers: {
+        'Content-Type': 'application/json',
+      }
+    })
+      .then(resposta => {
+        // if (resposta.status == 200) {
+        resposta.json().then(resposta => {
+
+          console.log(`Dados recebidos: ${JSON.stringify(resposta)}`);
+          console.log(resposta);
+
+          for (contador = 0; contador < resposta.length; contador++) {
+            // idSensores.push(resposta[0].idSensores);
+            idSensores.push(resposta[contador].idSensores);
+            // lm35_temperatura = resposta.lm35_temperatura;
+            // dht11_umidade = resposta.dht11_umidade;
+            // console.log(`console id sensores`, idSensores)
+
+
+            // plotarGrafico2(resposta)
+          }
+
+          // console.log(`Dados recebidos: ${JSON.stringify(resposta)}`);
+          div_grafico.style.display = "block";
+          plotarGrafico(resposta)
+
+          // alertar(resposta);
+        });
+        // } else {
+        //   console.error(`Nenhum dado encontrado para o id ou erro na API`);
+        // }
+      })
+      .catch(function (error) {
+        console.error(`Erro na obtenção dos dados do Armazem p/ gráfico: ${error.message}`);
+      });
+  }
+
+  var ultimaTemp = 0;
+
+  function atualizarGrafico(dados, myChart) {
+    fetch(`/armazens/buscarDados/101`, { cache: 'no-store' }).then(function (response) {
+      if (response.ok) {
+        response.json().then(function (novoRegistro) {
+
+          // buscarDados(id_armazem);
+          // alertar(novoRegistro, id_armazem);
+          console.log(`Dados recebidos: ${JSON.stringify(novoRegistro)}`);
+          console.log(`Dados atuais do gráfico:`);
+          console.log(dados);
+
+          // let avisoCaptura = document.getElementById(`avisoCaptura${id_armazem}`)
+          // avisoCaptura.innerHTML = ""
+          // console.log(novoRegistro)
+          // console.log(idSensores)
+          if (novoRegistro[novoRegistro.length - 1].idSensores == idSensores[idSensores.length - 1]) {
+            console.log("---------------------------------------------------------------")
+            console.log("Como não há dados novos para captura, o gráfico não atualizará.")
+            // avisoCaptura.innerHTML = "<i class='fa-solid fa-triangle-exclamation'></i> Foi trazido o dado mais atual capturado pelo sensor. <br> Como não há dados novos a exibir, o gráfico não atualizará."
+            // console.log("Horário do novo dado capturado:")
+            // console.log(novoRegistro[0].momento_grafico)
+            // console.log("Horário do último dado capturado:")
+            // console.log(dados.labels[dados.labels.length - 1])
+            console.log("---------------------------------------------------------------")
+          } else {
+            // tirando e colocando valores no gráfico
+            // dados.labels.shift(); // apagar o primeiro
+            // dados.labels.push(novoRegistro[0].momento_grafico); // incluir um novo momento
+            console.log(`datasets[0]`, dados);
+            // console.log(`datasets[1]`, dados.datasets[1].data);
+            dados.datasets[0].data.shift();  // apagar o primeiro de temperatura
+            dados.datasets[0].data.push(novoRegistro[0].lm35_temperatura); // incluir uma nova medida de temperatura
+
+            idSensores.shift();
+            idSensores.push(novoRegistro[0].idSensores)
+
+            dados.datasets[1].data.shift();  // apagar o primeiro de umidade
+            dados.datasets[1].data.push(novoRegistro[0].dht11_umidade); // incluir uma nova medida de umidade
+
+            myChart.update();
+
+
+            ultimaTemp = myChart.data.datasets[0].data[myChart.data.datasets[0].data.length - 1];
+
+            alerta.style.display = "block";
+
+            if (ultimaTemp >= 26) {
+              alerta.innerHTML = ` <div class="mensagem-alarme">
+      <div class="informacao"> 
+          <h3>A temperatura no ${armazem1} está fora do ideal!</h3>
+          <small>Temperatura muito alta. Em ${ultimaTemp}°C</small>   
+      </div>
+      <div class="alarme-sino"></div>
+  </div>`;
+              // alerta.style.display = "block";
+            } else if (ultimaTemp >= 24 && ultimaTemp < 26) {
+              alerta.innerHTML = ` <div class="mensagem-alarme mediaQ">
+      <div class="informacao"> 
+          <h3>A temperatura no ${armazem1} está fora do ideal!</h3>
+          <small>Temperatura está acima do ideal. Em ${ultimaTemp}°C</small>   
+      </div>
+      <div class="alarme-sino"></div>
+  </div>`;
+              // alerta.style.display = "block";
+            } else if (ultimaTemp <= 17 && ultimaTemp > 14) {
+              alerta.innerHTML = ` <div class="mensagem-alarme mediaF">
+      <div class="informacao"> 
+          <h3>A temperatura no ${armazem1} está fora do ideal!</h3>
+          <small>Temperatura está abaixo do ideal. Em ${ultimaTemp}°C</small>   
+      </div>
+      <div class="alarme-sino"></div>
+  </div>`;
+
+              // alerta.style.display = "block";
+            } else if (ultimaTemp <= 14) {
+              alerta.innerHTML = ` <div class="mensagem-alarme minimo">
+      <div class="informacao"> 
+          <h3>A temperatura no ${armazem1} está fora do ideal!</h3>
+          <small>Temperatura está muito baixa. Em ${ultimaTemp}°C</small>   
+      </div>
+      <div class="alarme-sino"></div>
+  </div>`;
+
+              // alerta.style.display = "block";
+            } else {
+              alerta.style.display = "none";
+            }
+
+          }
+
+          // Altere aqui o valor em ms se quiser que o gráfico atualize mais rápido ou mais devagar
+          proximaAtualizacao = setTimeout(() => atualizarGrafico(dados, myChart), 5000);
+        });
+      } else {
+        console.error('encontrado ou erro na API');
+        // Altere aqui o valor em ms se quiser que o gráfico atualize mais rápido ou mais devagar
+        proximaAtualizacao = setTimeout(() => atualizarGrafico(dados, myChart), 5000);
+      }
+    })
+      .catch(function (error) {
+        console.error(`Erro na obtenção dos dados p/ gráfico: ${error.message}`);
+      });
+
+  }
+
+  function plotarGrafico(resposta) {
+
+    console.log('iniciando plotagem do gráfico...');
+
+    // Criando estrutura para plotar gráfico - labels
+    let labels = [`30 segundos atrás`, `25 segundos atrás`, `20 segundos atrás`, `15 segundos atrás`, `10 segundos atrás`, `5 segundos atrás`, `Atual`];
+
+    // Criando estrutura para plotar gráfico - dados
+    let dados = {
+  labels: labels,
+  datasets: [
+    {
+      label: 'Temperatura',
+      data: [],
+      fill: false,
+      backgroundColor: 'rgb(49, 132, 53)',
+      borderColor: 'rgb(49, 132, 53)',
+      tension: 0.3
+    },
+    {
+      label: 'Umidade',
+      data: [],
+      fill: false,
+      backgroundColor: 'rgb(182, 109, 215)',
+      borderColor: 'rgb(182, 109, 215)',
+      tension: 0.3
+    }
+  ]
+};
+
+// Agora você pode usar dados e opcoes ao criar o gráfico usando Chart.js
+
+
+    console.log('----------------------------------------------')
+    console.log('Estes dados foram recebidos pela funcao "obterDadosGrafico" e passados para "plotarGrafico":')
+    console.log(resposta)
+
+    // Inserindo valores recebidos em estrutura para plotar o gráfico
+    for (i = 0; i < resposta.length; i++) {
+      var registro = resposta[i];
+      // labels.push();
+      dados.datasets[0].data.push(registro.lm35_temperatura);
+      dados.datasets[1].data.push(registro.dht11_umidade);
+    }
+
+    console.log('----------------------------------------------')
+    console.log('O gráfico será plotado com os respectivos valores:')
+    console.log('Labels:')
+    console.log(labels)
+    console.log('Dados:')
+    console.log(dados.datasets)
+    console.log('----------------------------------------------')
+
+    // Criando estrutura para plotar gráfico - config
+    const config = {
+      type: 'line',
+      data: dados,
+    };
+
+    // Adicionando gráfico criado em div na tela
+    let myChart = new Chart(
+      document.getElementById(`canvas_grafico_101`),
+      config
+    );
+    setTimeout(() => atualizarGrafico(dados, myChart), 5000);
+  }
+
+  // function plotarGrafico2(resposta) {
+  //   console.log('iniciando plotagem do gráfico...');
+
+  //   // Criando estrutura para plotar gráfico - labels
+  //   let labelsUmid = [];
+
+  //   // Criando estrutura para plotar gráfico - dados
+  //   let dados = {
+  //     labels: labelsUmid,
+  //     datasets: [{
+  //       label: 'Umidade',
+  //       data: [],
+  //       fill: false,
+  //       borderColor: 'rgb(199, 52, 52)',
+  //       tension: 0.1
+  //     }]
+  //     // {
+  //     //   label: 'Umidade',
+  //     //   data: [],
+  //     //   fill: false,
+  //     //   borderColor: 'rgb(199, 52, 52)',
+  //     //   tension: 0.1
+  //     // }    
+  //   };
+
+  //   console.log('----------------------------------------------')
+  //   console.log('Estes dados foram recebidos pela funcao "obterDadosGrafico" e passados para "plotarGrafico":')
+  //   console.log(resposta)
+
+  //   // Inserindo valores recebidos em estrutura para plotar o gráfico
+  //   for (i = 0; i < resposta.length; i++) {
+  //     var registro = resposta[i];
+  //     labels.push(`Umidade`);
+  //     dados.datasets[0].data.push(registro.dht11_umidade);
+  //     // dados.datasets[1].data.push(registro.umidade);
+  //   }
+
+  //   console.log('----------------------------------------------')
+  //   console.log('O gráfico será plotado com os respectivos valores:')
+  //   console.log('Labels:')
+  //   console.log(labels)
+  //   console.log('Dados:')
+  //   console.log(dados.datasets)
+  //   console.log('----------------------------------------------')
+
+  //   // Criando estrutura para plotar gráfico - config
+  //   const configUmid = {
+  //     type: 'line',
+  //     data: dados,
+  //   };
+
+  //   // Adicionando gráfico criado em div na tela
+  //   var myChartUmid = new Chart(
+  //     document.getElementById(`canvas_grafico_umid`),
+  //     configUmid
+  //   );
+  //   // setTimeout(() => atualizarGrafico(id_armazem, dados, myChart), 2000);
+  // }
+
+  // function obterDadosGrafico(id_armazem) {
+
+  //   // alterarTitulo(id_armazem)
+
+  //   if (proximaAtualizacao != undefined) {
+  //     clearTimeout(proximaAtualizacao);
+  //   }
+
+  //   fetch(`/sensores/ultimos/${id_armazem}`, { cache: 'no-store' }).then(function (response) {
+  //     if (response.ok) {
+  //       response.json().then(function (resposta) {
+  //         console.log(`Dados recebidos: ${JSON.stringify(resposta)}`);
+  //         resposta.reverse();
+
+  //         plotarGrafico(resposta, id_armazem);
+
+  //       });
+  //     } else {
+  //       console.error('Nenhum dado encontrado ou erro na API');
+  //     }
+  //   })
+  //     .catch(function (error) {
+  //       console.error(`Erro na obtenção dos dados p/ gráfico: ${error.message}`);
+  //     });
+  // }
+
+  // function buscarArmazemPorFazenda() {
+  //   fetch(`/armazens/buscarArmazemPorFazenda/${id_fazenda}`, {
+  //     method: 'GET',
+  //     headers: {
+  //       'Content-Type': 'application/json',
+  //     }
+  //   })
+  //     .then(resposta => {
+  //       if (resposta.status == 200) {
+  //         resposta.json().then(resposta => {
+
+  //           console.log(`Dados recebidos: ${JSON.stringify(resposta)}`);
+
+  //           alertar(resposta);
+  //         });
+  //       } else {
+  //         console.error(`Nenhum dado encontrado para o id ${armazem.fkArmazem} ou erro na API`);
+  //       }
+  //     })
+  //     .catch(function (error) {
+  //       console.error(`Erro na obtenção dos dados do Armazem p/ gráfico: ${error.message}`);
+  //     });
+  // }
+
+  function selectArmazem() {
+    buscarDados();
+    // exibirArmazensDoUsuario();
+    // alterarTitulo();
+    // exibirArmazem();
+    // atualizarGrafico();
+    // plotarGrafico();
+    // obterDadosGrafico();
+    // buscarArmazemPorFazenda();
+  }
+
+</script>

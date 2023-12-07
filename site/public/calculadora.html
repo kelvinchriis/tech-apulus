@@ -1,0 +1,316 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Simulador financeiro</title>
+    <link rel="stylesheet" href="style/calculadora.css">
+    <link rel="stylesheet" href="style/style.css">
+</head>
+
+<body>
+
+    <header class="header meu-cabecalho" data-header>
+        <div class="container">
+            <img src="img/logo.png" width="300px" height="200px" alt="hero image">
+            <div style="display: flex; align-items: center;">
+              <li class="navbar-item">
+                <a href="index.html" class="navbar-link" data-nav-toggler>Home</a>
+              </li>
+    
+              <a href="login.html" class="header-action-btn login-btn">Cadastro/Login</a>
+            </div>
+        </div>
+      </header>
+      <br><br><br><br><br><br><br>
+      <div vw class="enabled">
+        <div vw-access-button class="active"></div>
+        <div vw-plugin-wrapper>
+          <div class="vw-plugin-top-wrapper"></div>
+        </div>
+      </div>
+
+      <div class="box">
+        <div class="form-box">
+            <h2  class="h1 hero-title">Simulador Financeiro</h2>
+            <form action="#">
+                <div class="input-group">
+                    <label>Digite a quantidade de sacas em média que você produz por safra:</label>
+                    <div class="inline-fields">
+                      <input id="input_qntSacas" required>
+                      <div class="inline-fields">
+                      <button onclick="aumentarQ()" class="button-calc">+</button>
+                      <button onclick="diminuirQ()" class="button-calc">-</button>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="input-group">
+                    <label>Digite o valor de venda de cada saca:</label>
+                    <div style="display: flex;">
+                      <input id="input_valor_saca" required>
+                      <div style="display: flex;">
+                        <button onclick="aumentarV()" class="button-calc">+</button>
+                        <button onclick="diminuirV()" class="button-calc">-</button>
+                      </div>
+                    </div>
+                </div>
+
+                
+            </form>
+            <div class="input-group">
+                <button id="calculate" class="botao" onclick="calcular()">SIMULAR LUCRO</button>
+            </div>
+          </div>
+        <div class="img-box"> <div class="form-box">
+          <h2  class="h1 hero-title">Resultado:</h2>
+          <h4 class="result"><div id="div_calculadora">
+           Você, atualmente está perdendo cerca de 0% da sua produção. Equivalente a: <h2>R$ 0,00</h2>
+           <br>Com o serviço de controle de temperatura e umidade você terá como lucro total: <h2>R$ 0,00</h2>
+        </div></h4><br> 
+        </div> 
+      </div>
+    </div>
+
+      <br>
+      <div class="box">
+        <div class="form-box">
+        <h1 class="h2 hero-title">Entre em contato com a TechApulus agora mesmo!</h1>
+        <a href="login.html" class="header-action-btn login-btn">Cadastro/Login</a>
+
+      </div>
+    </div>
+  <br>
+  <br>
+
+  <footer class="footer">
+    <div class="container">
+
+      <div class="footer-top">
+
+        <div class="footer-brand">
+
+          <a href="#" class="logo">TechApulus</a>
+
+          <p class="section-text">
+            A TechApulus é líder em soluções de monitoramento para armazéns de café, garantindo qualidade por meio de monitoramento de temperatura e umidade em tempo real.
+          <ul class="social-list">
+
+            <li>
+              <a href="#" class="social-link">
+                <ion-icon name="logo-facebook"></ion-icon>
+              </a>
+            </li>
+
+            <li>
+              <a href="#" class="social-link">
+                <ion-icon name="logo-twitter"></ion-icon>
+              </a>
+            </li>
+
+            <li>
+              <a href="#" class="social-link">
+                <ion-icon name="logo-linkedin"></ion-icon>
+              </a>
+            </li>
+
+            <li>
+              <a href="#" class="social-link">
+                <ion-icon name="logo-pinterest"></ion-icon>
+              </a>
+            </li>
+
+          </ul>
+
+        </div>
+
+        <ul class="footer-list">
+
+          <li>
+            <p class="logo">Explorar</p>
+          </li>
+
+          <li>
+            <a href="index.html#about" class="footer-link">
+              <ion-icon name="chevron-forward" aria-hidden="true"></ion-icon>
+
+              <span class="span">Sobre nós</span>
+            </a>
+          </li>
+
+          <li>
+            <a href="index.html" class="footer-link">
+              <ion-icon name="chevron-forward" aria-hidden="true"></ion-icon>
+
+              <span class="span">Informações</span>
+            </a>
+          </li>
+
+          <li>
+            <a href="index.html#courses" class="footer-link">
+              <ion-icon name="chevron-forward" aria-hidden="true"></ion-icon>
+
+              <span class="span">Serviços</span>
+            </a>
+          </li>
+
+          
+
+        </ul>
+
+        <ul class="footer-list">
+
+          <li>
+            <p class="logo">Funcionalidades</p>
+          </li>
+
+          <li>
+            <a href="login.html" class="footer-link">
+              <ion-icon name="chevron-forward" aria-hidden="true"></ion-icon>
+              <span class="span">Cadastro</span>
+              </a>
+          </li>
+
+          <li>
+            <a href="#" class="footer-link">
+              <ion-icon name="chevron-forward" aria-hidden="true"></ion-icon>
+
+              <span class="span">Em contrução...</span>
+            </a>
+          </li>
+
+        </ul>
+
+        <ul class="footer-list">
+
+          <li>
+            <p class="logo">Informações de Contato</p>
+          </li>
+
+          <li class="footer-item">
+            <ion-icon name="location-outline" aria-hidden="true"></ion-icon>
+
+            <address class="footer-link">
+              SPTECH.
+            </address>
+          </li>
+
+          <li class="footer-item">
+            <ion-icon name="call" aria-hidden="true"></ion-icon>
+
+            <a href="tel:+13647657839" class="footer-link">(55) 11-4002-8922</a>
+          </li>
+
+          <li class="footer-item">
+            <ion-icon name="mail-outline" aria-hidden="true"></ion-icon>
+
+            <a href="mailto:contact@eduhome.com" class="footer-link">TechApulus@sptech.school</a>
+          </li>
+
+        </ul>
+
+      </div>
+
+      <div class="footer-bottom">
+        <p class="copyright">
+           <a href="#" class="copyright-link">TechApulus</a>
+        </p>
+      </div>
+
+    </div>
+  </footer>
+  
+
+
+
+
+  <!-- 
+    - #BACK TO TOP
+  -->
+
+  <a href="#top" class="back-top-btn" aria-label="Back to top" data-back-top-btn>
+    <ion-icon name="arrow-up"></ion-icon>
+  </a>
+
+
+
+
+
+  <!-- 
+    - custom js link
+  -->
+  <script src="./assets/js/scriptHome.js" defer></script>
+
+  <!-- 
+    - ionicon link
+  -->
+  <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+  <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
+
+</body>
+
+</html>
+
+<script>
+    var qntSacas = 0;
+    function calcular() {
+        qntSacas = Number(input_qntSacas.value);
+        var valorSaca = Number(input_valor_saca.value);
+
+        var vendaTotal = valorSaca * qntSacas;
+
+        var totalGraos = qntSacas * 600000;
+        var perdaGraos = totalGraos * 0.15;
+
+        var sacasPerdidas = perdaGraos / 600000;
+        var valorSacasPerdidas = sacasPerdidas * valorSaca;
+
+        var perdaMenor = totalGraos * 0.93;
+        var sacasTechApulus = perdaMenor / 600000;
+
+        var lucro = sacasTechApulus * valorSaca;
+
+        div_calculadora.innerHTML = `
+           <br>Você, atualmente está perdendo cerca de 15% da sua produção. Equivalente a <h2>R$${valorSacasPerdidas.toLocaleString('pt-BR')}</h2>
+           <br><br>Com o serviço de controle de temperatura e umidade você terá como lucro total: <h2>R$${lucro.toLocaleString('pt-BR')}</h2>
+           <br><br>Entre em contato com a TechApulus agora mesmo, pelos nossos canais. 
+        `;
+    }
+    var valorSacaAumentar = 0;
+    input_qntSacas.value = 0;
+    input_valor_saca.value = 0;
+    function aumentarQ() {
+      valorSacaAumentar = input_qntSacas.value;
+      valorSacaAumentar++;
+      input_qntSacas.value = valorSacaAumentar;
+    }
+    function diminuirQ() {
+      qntSacasAumentar = input_qntSacas.value;
+      qntSacasAumentar--;
+      if (qntSacasAumentar >= 0) {
+        input_qntSacas.value = qntSacasAumentar;
+
+      }
+    }
+    function aumentarV() {
+      valorSacaAumentar = input_valor_saca.value;
+      valorSacaAumentar++;
+      input_valor_saca.value = valorSacaAumentar;
+
+    }
+    function diminuirV() {
+      valorSacaAumentar = input_valor_saca.value;
+      valorSacaAumentar--;
+      if (valorSacaAumentar >= 0) {
+        input_valor_saca.value = valorSacaAumentar;
+      }
+      
+    }
+</script>
+<script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+<script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
+<script src="https://vlibras.gov.br/app/vlibras-plugin.js"></script>
+<script>
+  new window.VLibras.Widget('https://vlibras.gov.br/app');
+</script>

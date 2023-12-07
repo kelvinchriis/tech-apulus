@@ -1,0 +1,1011 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Dashboard</title>
+  <link rel="shortcut icon" href="img/logo.png" type="image/svg+xml">
+  <link rel="stylesheet" href="style/dashboard.css">
+  <link rel="stylesheet" href="style/style.css">
+
+
+  <link href="https://fonts.googleapis.com/css2?family=Urbanist:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+</head>
+
+<body onload="alertas()">
+  <div class="menu menu-perdas">
+    <div class="button-menu" onclick="menuClick()">
+      <div class="bar-menu"></div>
+      <div class="bar-menu"></div>
+      <div class="bar-menu"></div>
+    </div>
+    <span class="content-items">
+      <div class="blocoTextoMenu">
+        <span class="textoMenu">Dashboard</span>
+        <a href="dashboard.html" class="dash"><ion-icon name="stats-chart" class="ionicons"
+            style="color: rgb(63, 46, 34);"></ion-icon></a>
+      </div>
+      <div class="blocoTextoMenu">
+        <span class="textoMenu" style="width: 75px; margin-right: 0;">Fazendas</span>
+        <a href="fazendas.html" class="dash"><ion-icon name="home-outline" class="ionicons"></ion-icon></a>
+      </div>
+      <div class="blocoTextoMenu">
+        <span class="textoMenu" style="width: 75px; margin-right: 0;">Sair</span>
+        <a href="login.html" class="dash"><ion-icon name="exit-outline" class="ionicons"></ion-icon></ion-icon></a>
+      </div>
+    </span>
+  </div>
+  <br> <br> <br>
+
+  <div vw class="enabled">
+    <div vw-access-button class="active"></div>
+    <div vw-plugin-wrapper>
+      <div class="vw-plugin-top-wrapper"></div>
+    </div>
+  </div>
+
+  <!-- <div class="content-dash">
+    <div>
+      <div class="alertas">
+        <h1>Situações dos Armazéns</h1>
+        <div class="alertasArmazens">
+          <div id="cardAlertaTemp" class="cardAlertaTemp">
+            <div id="msgAlertaTemp" class="msgAlerta msgAlertaTemp"></div>
+          </div>
+
+          <div id="cardAlertaUmid" class="cardAlertaUmid">
+            <div id="msgAlertaUmid" class="msgAlerta msgAlertaUmid"></div>
+          </div>
+        </div> -->
+
+        <!-- <a id="btnAbrirMetricas" class="login-btn">Ver Métricas</a> -->
+
+        <!-- <div class="telaMetricas">
+          <h1>Métricas</h1>
+          <div class="metricas">
+            <table>
+              <thead>
+                <tr>
+                  <th>Unidade de Medida</th>
+                  <th style="color: blue;">Minimo</th>
+                  <th style="color: dodgerblue;">Média</th>
+                  <th style="color: limegreen;">Ideal</th>
+                  <th style="color: limegreen;">Ideal</th>
+                  <th style="color: orangered;">Média</th>
+                  <th style="color: red;">Máxima</th>
+                </tr>
+              </thead>
+
+              <tbody>
+                <tr>
+                  <th>Temperatura</th>
+                  <td style="color: blue;">14°C</td>
+                  <td style="color: dodgerblue;">17°C</td>
+                  <td style="color: limegreen;">20°C</td>
+                  <td style="color: limegreen;">23°C</td>
+                  <td style="color: orangered;">24°C</td>
+                  <td style="color: red;">26°C</td>
+                </tr>
+                <tr>
+                  <th>Umidade</th>
+                  <td style="color: blue;">55%</td>
+                  <td style="color: dodgerblue;">58%</td>
+                  <td style="color: limegreen;">60%</td>
+                  <td style="color: limegreen;">65%</td>
+                  <td style="color: orangered;">67%</td>
+                  <td style="color: red;">69%</td>
+                </tr>
+              </tbody>
+            </table>
+          </div> <br>
+          <a id="btnFecharMetricas" class="login-btn">Fechar</a>
+        </div> -->
+
+      </div>
+
+      <br> <br>
+
+      <!-- Começo dos Gráficos -->
+      <!-- <span id="name_user"></span>
+      <div class="mainGraficos">
+        <h1>Visão Geral das Fazendas</h1> <br>
+        <div class="fazendas">
+          
+        </div>
+
+        <div class="graficos">
+          <section class="grafic">
+            <canvas id="dht11Umidade"></canvas>
+        </section>
+
+        <section class="grafic">
+          <canvas id="lm35Temperatura"></canvas>
+        </section>
+      </div>
+      </div> -->
+
+      <div class="mainGraficos">
+        <!-- <button id="openModalBtn" class="open-modal-btn login-btn">Alguma dúvida?</button> -->
+        <div id="myModal" class="modal" aria-hidden="true">
+          <div class="modal-content">
+            <!-- <span class="close" id="closeModalBtn" onclick="closeModal()">&times;</span> -->
+        <iframe width='560' height='580'
+        src='https://app.pipefy.com/public/form/5QxKRXLd?embedded=true' frameborder='0'></iframe>
+      </div>
+    <!-- </div> -->
+  <!-- </div> -->
+
+      <!-- Para aparecer os gráficos anteriores, descomente a seção abaixo, até a linha 358 :) -->
+
+      <!-- <span class="tituloGraficos"><b style="width: 60%; margin: 0 0 0 24%;">Visão Geral da Temperatura por
+          Armazém</b></span>
+      <div class="grafics">
+        <div class="grafic">
+          <canvas id="temperaturaARM1"></canvas> <br>
+          <a class="login-btn" id="btnArm1" onclick="document.getElementById('arm1').style.display='block'">Ver
+            Detalhes</a>
+
+        </div>
+        <div class="grafic">
+          <canvas id="temperaturaARM2"></canvas> <br>
+          <a class="login-btn" onclick="document.getElementById('arm2').style.display='block'">Ver
+            Detalhes</a>
+        </div>
+        <div class="grafic">
+          <canvas id="temperaturaARM3"></canvas> <br>
+          <a class="login-btn" onclick="document.getElementById('arm3').style.display='block'">Ver
+            Detalhes</a>
+        </div>
+      </div>
+      <div class="grafics">
+        <div class="grafic">
+          <canvas id="temperaturaARM4"></canvas> <br>
+          <a class="login-btn" onclick="document.getElementById('arm4').style.display='block'">Ver
+            Detalhes</a>
+        </div>
+        <div class="visãoGeral">
+          <a><ion-icon name="eye" class="ionicons"></ion-icon></a>
+          <span>Status Geral dos Armazéns:</span>
+          <a><ion-icon name="eye" class="ionicons"></ion-icon></a> <br>
+          <span>
+            Temperatura <span style="color: orange;">acima da Média</span> <br>
+            Mais atenção recomendada!
+          </span>
+        </div>
+        <div class="grafic">
+          <canvas id="temperaturaARM5"></canvas> <br>
+          <a class="login-btn" onclick="document.getElementById('arm5').style.display='block'">Ver
+            Detalhes</a>
+        </div>
+      </div>
+      <br><br><br>
+    </div>
+
+    <div class="armazensDetalhes">
+      <div id="arm1" class="armazem">
+        <h1>Visão Geral do Armazém 1:</h1>
+        <div class="cardz">
+          <div class="cardIndividual">
+            Temperatura Mínima: <br>
+            22
+          </div>
+          <div class="cardIndividual">
+            Temperatura Adequada: <br>
+            27
+          </div>
+          <div class="cardIndividual">
+            Temperatura Máxima: <br>
+            33
+          </div>
+        </div>
+        <div class="grafics">
+          <div class="grafic">
+            <canvas id="temperaturaARM1dt"></canvas>
+          </div> <br>
+          <div class="grafic" style="margin-left: 30%;">
+            <canvas id="umidadeARM1dt"></canvas>
+          </div>
+          <br>
+        </div> <br>
+        <a onclick="document.getElementById('arm1').style.display='none'" class="login-btn">Voltar</a>
+        <div class="avisoArmazem">
+          <a><ion-icon name="eye" class="ionicons"></ion-icon></a>
+          <span>Status do Armazém:</span>
+          <a><ion-icon name="eye" class="ionicons"></ion-icon></a> <br>
+          <span>
+            Temperatura <span style="color: orange;">acima da Média</span> <br>
+            Mais atenção recomendada!
+          </span>
+        </div>
+      </div>
+
+      <div id="arm2" class="armazem">
+        <h1>Visão Geral do Armazém 2:</h1>
+        <div class="cardz">
+          <div class="cardIndividual">
+            Temperatura Mínima: <br>
+            23
+          </div>
+          <div class="cardIndividual">
+            Temperatura Adequada: <br>
+            26
+          </div>
+          <div class="cardIndividual">
+            Temperatura Máxima: <br>
+            31
+          </div>
+        </div>
+        <div class="grafics">
+          <div class="grafic">
+            <canvas id="temperaturaARM2dt"></canvas>
+          </div>
+          <div class="grafic">
+            <canvas id="umidadeARM2dt"></canvas>
+          </div>
+        </div>
+        <br>
+        <a onclick="document.getElementById('arm2').style.display='none'" class="login-btn">Voltar</a>
+        <div class="avisoArmazem">
+          <a><ion-icon name="warning" class="ionicons"></ion-icon></a>
+          <span>Status do Armazém:</span>
+          <a><ion-icon name="warning" class="ionicons"></ion-icon></a> <br>
+          <span>
+            Temperatura <span style="color: red;">CRÍTICA</span>!!<br>
+            Requer ação imediata!!
+          </span>
+        </div>
+      </div>
+
+      <div id="arm3" class="armazem">
+        <h1>Visão Geral do Armazém 3:</h1>
+        <div class="cardz">
+          <div class="cardIndividual">
+            Temperatura Mínima: <br>
+            24
+          </div>
+          <div class="cardIndividual">
+            Temperatura Adequada: <br>
+            26
+          </div>
+          <div class="cardIndividual">
+            Temperatura Máxima: <br>
+            34
+          </div>
+        </div>
+        <div class="grafics">
+          <div class="grafic">
+            <canvas id="temperaturaARM3dt"></canvas>
+          </div>
+          <div class="grafic">
+            <canvas id="umidadeARM3dt"></canvas>
+          </div>
+        </div>
+        <br>
+        <a onclick="document.getElementById('arm3').style.display='none'" class="login-btn">Voltar</a>
+        <div class="avisoArmazem">
+          <a><ion-icon name="eye" class="ionicons"></ion-icon></a>
+          <span>Status do Armazém:</span>
+          <a><ion-icon name="eye" class="ionicons"></ion-icon></a> <br>
+          <span>
+            Temperatura <span style="color: orange;">acima da Média</span> <br>
+            Mais atenção recomendada!
+          </span>
+        </div>
+      </div>
+
+      <div id="arm4" class="armazem">
+        <h1>Visão Geral do Armazém 4:</h1>
+        <div class="cardz">
+          <div class="cardIndividual">
+            Temperatura Mínima: <br>
+            21
+          </div>
+          <div class="cardIndividual">
+            Temperatura Adequada: <br>
+            26
+          </div>
+          <div class="cardIndividual">
+            Temperatura Máxima: <br>
+            32
+          </div>
+        </div>
+        <div class="grafics">
+          <div class="grafic">
+            <canvas id="temperaturaARM4dt"></canvas>
+          </div>
+          <div class="grafic">
+            <canvas id="umidadeARM4dt"></canvas>
+          </div>
+        </div>
+        <br>
+        <a onclick="document.getElementById('arm4').style.display='none'" class="login-btn">Voltar</a>
+        <div class="avisoArmazem">
+          <a><ion-icon name="sparkles" class="ionicons"></ion-icon></a>
+          <span>Status do Armazém:</span>
+          <a><ion-icon name="sparkles" class="ionicons"></ion-icon></a> <br>
+          <span>
+            Temperatura <span style="color: lime;">Aceitável</span> <br>
+            Grãos estáveis!
+          </span>
+        </div>
+      </div>
+
+      <div id="arm5" class="armazem">
+        <h1>Visão Geral do Armazém 5:</h1>
+        <div class="cardz">
+          <div class="cardIndividual">
+            Temperatura Mínima: <br>
+            25
+          </div>
+          <div class="cardIndividual">
+            Temperatura Adequada: <br>
+            28
+          </div>
+          <div class="cardIndividual">
+            Temperatura Máxima: <br>
+            33
+          </div>
+        </div>
+        <div class="grafics">
+          <div class="grafic">
+            <canvas id="temperaturaARM5dt"></canvas>
+          </div>
+          <div class="grafic">
+            <canvas id="umidadeARM5dt"></canvas>
+          </div>
+        </div>
+        <br>
+        <a onclick="document.getElementById('arm5').style.display='none'" class="login-btn">Voltar</a>
+        <div class="avisoArmazem">
+          <a><ion-icon name="eye" class="ionicons"></ion-icon></a>
+          <span>Status do Armazém:</span>
+          <a><ion-icon name="eye" class="ionicons"></ion-icon></a> <br>
+          <span>
+            Temperatura <span style="color: blue;">Abaixo do Adequado</span> <br>
+            Requer mais atenção!
+          </span>
+        </div>
+      </div> -->
+
+      <!-- Fim dos Gráficos -->
+
+      <br> <br> <br>
+
+      <!-- Começo Script -->
+
+      <!-- Script anterior dos gráficos, descomente até a linha 896 para aparecer os dados :) -->
+
+      <!-- <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+      <span class="graficosGerais">
+
+        <script>
+          const armazens = document.getElementById('armazens');
+
+          const temperaturaARM1 = document.getElementById('temperaturaARM1');
+
+          new Chart(temperaturaARM1, {
+            type: 'line',
+            data: {
+              labels: ['12:00', '12:07', '12:14', '12:21', '12:28', '12:35'],
+              datasets: [{
+                label: 'Variação de temperatura Armazém 1',
+                data: [28, 26, 29, 30, 31, 30],
+                borderWidth: 3,
+                backgroundColor: '#9c6b43',
+                borderColor: '#9c6b43',
+                color: 'white'
+              }]
+            },
+            options: {
+              scales: {
+                y: {
+                  beginAtZero: true
+                }
+              }
+            },
+            options: {
+              scales: {
+                y: {
+                  beginAtZero: true,
+                  plugins: {
+                    title: {
+                      display: true,
+                      text: 'Custom Chart Title',
+                      font: {
+                        //fontSize: '30pt'
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          });
+
+          const temperaturaARM2 = document.getElementById('temperaturaARM2');
+
+          new Chart(temperaturaARM2, {
+            type: 'line',
+            data: {
+              labels: ['12:00', '12:07', '12:14', '12:21', '12:28', '12:35'],
+              datasets: [{
+                label: 'Variação de temperatura Armazém 2',
+                data: [34, 30, 29, 28, 31, 32],
+                borderWidth: 3,
+                backgroundColor: '#9c6b43',
+                borderColor: '#9c6b43',
+                color: 'white'
+              }]
+            },
+            options: {
+              scales: {
+                y: {
+                  beginAtZero: true
+                }
+              }
+            },
+            options: {
+              scales: {
+                y: {
+                  beginAtZero: true,
+                  plugins: {
+                    title: {
+                      display: true,
+                      text: 'Custom Chart Title',
+                      font: {
+                        //fontSize: '30pt'
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          });
+
+          const temperaturaARM3 = document.getElementById('temperaturaARM3');
+
+          new Chart(temperaturaARM3, {
+            type: 'line',
+            data: {
+              labels: ['12:00', '12:07', '12:14', '12:21', '12:28', '12:35'],
+              datasets: [{
+                label: 'Variação de temperatura Armazém 3',
+                data: [29, 30, 30, 31, 32, 32],
+                borderWidth: 3,
+                backgroundColor: '#9c6b43',
+                borderColor: '#9c6b43',
+                color: 'white'
+              }]
+            },
+            options: {
+              scales: {
+                y: {
+                  beginAtZero: true
+                }
+              }
+            },
+            options: {
+              scales: {
+                y: {
+                  beginAtZero: true,
+                  plugins: {
+                    title: {
+                      display: true,
+                      text: 'Custom Chart Title',
+                      font: {
+                        //fontSize: '30pt'
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          });
+          const temperaturaARM4 = document.getElementById('temperaturaARM4');
+
+          new Chart(temperaturaARM4, {
+            type: 'line',
+            data: {
+              labels: ['12:00', '12:07', '12:14', '12:21', '12:28', '12:35'],
+              datasets: [{
+                label: 'Variação de temperatura Armazém 4',
+                data: [24, 25, 24, 26, 25, 27],
+                borderWidth: 3,
+                backgroundColor: '#9c6b43',
+                borderColor: '#9c6b43',
+                color: 'white'
+              }]
+            },
+            options: {
+              scales: {
+                y: {
+                  beginAtZero: true
+                }
+              }
+            },
+            options: {
+              scales: {
+                y: {
+                  beginAtZero: true,
+                  plugins: {
+                    title: {
+                      display: true,
+                      text: 'Custom Chart Title',
+                      font: {
+                        //fontSize: '30pt'
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          });
+          const temperaturaARM5 = document.getElementById('temperaturaARM5');
+
+          new Chart(temperaturaARM5, {
+            type: 'line',
+            data: {
+              labels: ['12:00', '12:07', '12:14', '12:21', '12:28', '12:35'],
+              datasets: [{
+                label: 'Variação de temperatura Armazém 5',
+                data: [20, 22, 24, 25, 26, 24],
+                borderWidth: 3,
+                backgroundColor: '#9c6b43',
+                borderColor: '#9c6b43',
+                color: 'white'
+              }]
+            },
+            options: {
+              scales: {
+                y: {
+                  beginAtZero: true
+                }
+              }
+            },
+            options: {
+              scales: {
+                y: {
+                  beginAtZero: true,
+                  plugins: {
+                    title: {
+                      display: true,
+                      text: 'Custom Chart Title',
+                      font: {
+                        //fontSize: '30pt'
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          });
+
+        </script>
+      </span>
+
+      <span class="graficosDetalhados">
+        <script>
+          const temperaturaARM1dt = document.getElementById('temperaturaARM1dt');
+
+          new Chart(temperaturaARM1dt, {
+            type: 'line',
+            data: {
+              labels: ['12:00', '12:07', '12:14', '12:21', '12:28', '12:35'],
+              datasets: [{
+                label: 'Variação de temperatura Armazém 1',
+                data: [28, 26, 29, 30, 31, 30],
+                borderWidth: 3,
+                backgroundColor: '#9c6b43',
+                borderColor: '#9c6b43',
+                color: 'white'
+              }]
+            },
+            options: {
+              scales: {
+                y: {
+                  beginAtZero: true
+                }
+              }
+            },
+            options: {
+              scales: {
+                y: {
+                  beginAtZero: true,
+                  plugins: {
+                    title: {
+                      display: true,
+                      text: 'Custom Chart Title',
+                      font: {
+                        //fontSize: '30pt'
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          });
+
+          const umidadeARM1dt = document.getElementById('umidadeARM1dt');
+
+          new Chart(umidadeARM1dt, {
+            type: 'line',
+            data: {
+              labels: ['12:00', '12:07', '12:14', '12:21', '12:28', '12:35'],
+              datasets: [{
+                label: 'Variação de umidade Armazém 1',
+                data: [58, 59, 60, 60, 58, 61],
+                borderWidth: 3,
+                backgroundColor: '#9c6b43',
+                borderColor: '#9c6b43',
+                color: 'white'
+              }]
+            },
+            options: {
+              scales: {
+                y: {
+                  beginAtZero: true
+                }
+              }
+            }
+          });
+
+          const temperaturaARM2dt = document.getElementById('temperaturaARM2dt');
+
+          new Chart(temperaturaARM2dt, {
+            type: 'line',
+            data: {
+              labels: ['12:00', '12:07', '12:14', '12:21', '12:28', '12:35'],
+              datasets: [{
+                label: 'Variação de temperatura Armazém 2',
+                data: [34, 30, 29, 28, 31, 32],
+                borderWidth: 3,
+                backgroundColor: '#9c6b43',
+                borderColor: '#9c6b43',
+                color: 'white'
+              }]
+            },
+            options: {
+              scales: {
+                y: {
+                  beginAtZero: true
+                }
+              }
+            },
+            options: {
+              scales: {
+                y: {
+                  beginAtZero: true,
+                  plugins: {
+                    title: {
+                      display: true,
+                      text: 'Custom Chart Title',
+                      font: {
+                        //fontSize: '30pt'
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          });
+
+          const umidadeARM2dt = document.getElementById('umidadeARM2dt');
+
+          new Chart(umidadeARM2dt, {
+            type: 'line',
+            data: {
+              labels: ['12:00', '12:07', '12:14', '12:21', '12:28', '12:35'],
+              datasets: [{
+                label: 'Variação de umidade Armazém 2',
+                data: [60, 56, 58, 58, 60, 63],
+                borderWidth: 3,
+                backgroundColor: '#9c6b43',
+                borderColor: '#9c6b43',
+                color: 'white'
+              }]
+            },
+            options: {
+              scales: {
+                y: {
+                  beginAtZero: true
+                }
+              }
+            }
+          });
+
+          const temperaturaARM3dt = document.getElementById('temperaturaARM3dt');
+
+          new Chart(temperaturaARM3dt, {
+            type: 'line',
+            data: {
+              labels: ['12:00', '12:07', '12:14', '12:21', '12:28', '12:35'],
+              datasets: [{
+                label: 'Variação de temperatura Armazém 3',
+                data: [29, 30, 30, 31, 32, 32],
+                borderWidth: 3,
+                backgroundColor: '#9c6b43',
+                borderColor: '#9c6b43',
+                color: 'white'
+              }]
+            },
+            options: {
+              scales: {
+                y: {
+                  beginAtZero: true
+                }
+              }
+            },
+            options: {
+              scales: {
+                y: {
+                  beginAtZero: true,
+                  plugins: {
+                    title: {
+                      display: true,
+                      text: 'Custom Chart Title',
+                      font: {
+                        //fontSize: '30pt'
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          });
+
+          const umidadeARM3dt = document.getElementById('umidadeARM3dt');
+
+          new Chart(umidadeARM3dt, {
+            type: 'line',
+            data: {
+              labels: ['12:00', '12:07', '12:14', '12:21', '12:28', '12:35'],
+              datasets: [{
+                label: 'Variação de umidade Armazém 4',
+                data: [58, 59, 60, 60, 58, 61],
+                borderWidth: 3,
+                backgroundColor: '#9c6b43',
+                borderColor: '#9c6b43',
+                color: 'white'
+              }]
+            },
+            options: {
+              scales: {
+                y: {
+                  beginAtZero: true
+                }
+              }
+            }
+          });
+
+          const temperaturaARM4dt = document.getElementById('temperaturaARM4dt');
+
+          new Chart(temperaturaARM4dt, {
+            type: 'line',
+            data: {
+              labels: ['12:00', '12:07', '12:14', '12:21', '12:28', '12:35'],
+              datasets: [{
+                label: 'Variação de temperatura Armazém 4',
+                data: [24, 25, 24, 26, 25, 27],
+                borderWidth: 3,
+                backgroundColor: '#9c6b43',
+                borderColor: '#9c6b43',
+                color: 'white'
+              }]
+            },
+            options: {
+              scales: {
+                y: {
+                  beginAtZero: true
+                }
+              }
+            },
+            options: {
+              scales: {
+                y: {
+                  beginAtZero: true,
+                  plugins: {
+                    title: {
+                      display: true,
+                      text: 'Custom Chart Title',
+                      font: {
+                        //fontSize: '30pt'
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          });
+
+          const umidadeARM4dt = document.getElementById('umidadeARM4dt');
+
+          new Chart(umidadeARM4dt, {
+            type: 'line',
+            data: {
+              labels: ['12:00', '12:07', '12:14', '12:21', '12:28', '12:35'],
+              datasets: [{
+                label: 'Variação de umidade Armazém 4',
+                data: [58, 59, 60, 60, 58, 61],
+                borderWidth: 3,
+                backgroundColor: '#9c6b43',
+                borderColor: '#9c6b43',
+                color: 'white'
+              }]
+            },
+            options: {
+              scales: {
+                y: {
+                  beginAtZero: true
+                }
+              }
+            }
+          });
+
+          const temperaturaARM5dt = document.getElementById('temperaturaARM5dt');
+
+          new Chart(temperaturaARM5dt, {
+            type: 'line',
+            data: {
+              labels: ['12:00', '12:07', '12:14', '12:21', '12:28', '12:35'],
+              datasets: [{
+                label: 'Variação de temperatura Armazém 5',
+                data: [20, 22, 24, 25, 26, 24],
+                borderWidth: 3,
+                backgroundColor: '#9c6b43',
+                borderColor: '#9c6b43',
+                color: 'white'
+              }]
+            },
+            options: {
+              scales: {
+                y: {
+                  beginAtZero: true
+                }
+              }
+            },
+            options: {
+              scales: {
+                y: {
+                  beginAtZero: true,
+                  plugins: {
+                    title: {
+                      display: true,
+                      text: 'Custom Chart Title',
+                      font: {
+                        //fontSize: '30pt'
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          });
+
+          const umidadeARM5dt = document.getElementById('umidadeARM5dt');
+
+          new Chart(umidadeARM5dt, {
+            type: 'line',
+            data: {
+              labels: ['12:00', '12:07', '12:14', '12:21', '12:28', '12:35'],
+              datasets: [{
+                label: 'Variação de umidade Armazém 5',
+                data: [58, 59, 60, 60, 58, 61],
+                borderWidth: 3,
+                backgroundColor: '#9c6b43',
+                borderColor: '#9c6b43',
+                color: 'white'
+              }]
+            },
+            options: {
+              scales: {
+                y: {
+                  beginAtZero: true
+                }
+              }
+            }
+          });
+        </script> -->
+
+      <!-- Fim Script -->
+      </span>
+    </div>
+  </div>
+</body>
+
+</html>
+<script type="text/javascript" src="scripts/dashboard.js"></script>
+<script src="./scripts/teste.js"> </script>
+<!-- 
+    - ionicon link
+  -->
+<script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+<script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
+<script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+<script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script src="https://vlibras.gov.br/app/vlibras-plugin.js"></script>
+<script>
+  new window.VLibras.Widget('https://vlibras.gov.br/app');
+</script>
+
+<script>
+  var contextoDht11Umidade = document.getElementById('dht11Umidade').getContext('2d');
+  contextoDht11Umidade.canvas.width = 1000;
+  contextoDht11Umidade.canvas.height = 300;
+  var dht11Umidade = new Chart(
+    contextoDht11Umidade,
+    {
+      type: 'line',
+      data: {
+        datasets: [{
+          label: 'Umidade',
+          type: 'line',
+          borderColor: ['#45b3e7'],
+          backgroundColor: ['#89cff0']
+        }]
+      },
+      options: {
+        scales: {
+          xAxes: [{
+            distribution: 'series',
+            ticks: {
+              beginAtZero: true
+            }
+          }],
+          yAxes: [{
+            scaleLabel: {
+              display: true,
+              labelString: 'Umidade'
+            },
+            ticks: {
+              beginAtZero: true
+            }
+          }]
+        },
+        animation: {
+          duration: 0
+        }
+      }
+    }
+  );
+
+  var contextoLm35Temperatura = document.getElementById('lm35Temperatura').getContext('2d');
+  contextoLm35Temperatura.canvas.width = 1000;
+  contextoLm35Temperatura.canvas.height = 300;
+  var lm35Temperatura = new Chart(
+    contextoLm35Temperatura,
+    {
+      type: 'line',
+      data: {
+        datasets: [{
+          label: 'Temperatura',
+          type: 'line',
+          borderColor: ['#ffd902'],
+          backgroundColor: ['#ffe135']
+        }]
+      },
+      options: {
+        scales: {
+          xAxes: [{
+            distribution: 'series',
+            ticks: {
+              beginAtZero: true
+            }
+          }],
+          yAxes: [{
+            scaleLabel: {
+              display: true,
+              labelString: 'Temperatura'
+            },
+            ticks: {
+              beginAtZero: true
+            }
+          }]
+        },
+        animation: {
+          duration: 0
+        }
+      }
+    }
+  );
+</script>

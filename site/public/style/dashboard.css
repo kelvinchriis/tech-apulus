@@ -1,0 +1,368 @@
+:root {
+	--ff-urbanist: 'Urbanist', sans-serif;
+}
+
+::-webkit-scrollbar {
+	width: 14px;
+}
+
+::-webkit-scrollbar-track {
+	background-color: 9c6b43;
+}
+
+::-webkit-scrollbar-thumb {
+	background-color: #9c6b43;
+}
+
+body {
+	/* overflow: hidden; */
+	display: flex;
+	justify-content: center;
+	font-family: var(--ff-urbanist);
+	margin: 0;
+	background-color: rgb(250, 226, 196);
+	height: 1000px;
+}
+
+.header {
+	width: 100%;
+	height: 50px;
+	padding-left: 55px;
+	background-color: #9c6b43;
+}
+
+.mid-header {
+	width: 100%;
+	height: 100px;
+	padding-left: 55px;
+	background-color: #9c6b43;
+}
+
+.content-dash {
+	width: 100%;
+	padding-left: 55px;
+}
+
+.tituloGraficos {
+	display: flex;
+	text-justify: inherit;
+	font-size: 35px;
+}
+
+.visãoGeral {
+	margin: auto;
+	padding: 10px;
+	border-radius: 25px;
+	border: solid;
+	border-color: rgb(158, 104, 59);
+	text-align: center;
+	text-justify: inherit;
+	font-size: 23px;
+}
+
+.grafics {
+	display: flex;
+	justify-self: center;
+	width: 95%;
+	margin: 5% 0 0 3%;
+	justify-content: space-between;
+}
+
+.grafic {
+	width: 32%;
+	padding: 20px;
+	background-color: rgba(158, 103, 59, 0.2);
+	border-radius: 20px;
+	justify-content: space-between;
+
+}
+
+.grafPizza {
+	display: flex;
+	width: 40%;
+	padding: 50px;
+	margin: 5% 0 0 33%;
+	justify-content: space-between;
+}
+
+.armazem {
+	display: none;
+	position: fixed;
+	z-index: 1;
+	left: 0;
+	top: 0;
+	width: 75%;
+	overflow: auto;
+	margin: 5% 0 0 10%;
+	padding: 20px;
+	border: solid;
+	border-color: #9c6b43;
+	border-radius: 25px;
+	background-color: #ffd5b3;
+	box-shadow: 0 5px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 10px 1000px rgba(0, 0, 0, 0.491);
+	animation-name: deslizar;
+	animation-duration: 0.4s
+}
+
+.cardz {
+	text-align: center;
+	padding: 10px;
+	color: #9c6b43;
+	display: flex;
+	justify-content: space-around;
+}
+
+.cardIndividual {
+	padding: 5px;
+	text-align: center;
+	width: 16%;
+	border-radius: 25px;
+	border: solid;
+	border-color: #9c6b43;
+}
+
+.avisoArmazem {
+	text-justify: inherit;
+	font-size: large;
+	margin: -15% 0 0 25.5%;
+	position: fixed;
+	text-align: center;
+	z-index: 1;
+}
+
+.menu {
+	position: relative;
+	display: inline-block;
+	cursor: pointer;
+	display: flex;
+	flex-direction: column;
+	align-items: end;
+	width: 55px;
+	height: 100%;
+	position: fixed;
+	background-color: #9c6b43;
+	transition: 0.1s;
+	overflow: hidden;
+	margin-left: -96%;
+}
+
+.menu-active {
+	width: 250px;
+}
+
+.button-menu {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	flex-direction: column;
+	width: 55px;
+	height: 50px;
+	cursor: pointer;
+	background-color: rgba(0, 0, 0, 0.2);
+	transition: 0.1s;
+}
+
+.bar-menu {
+	width: 27px;
+	height: 5px;
+	background-color: #fae2c4;
+	border-radius: 20px;
+	margin: 2px 0 2px 0;
+}
+
+.content-items {
+	position: absolute;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	margin-right: 7px;
+	width: 80px;
+	margin-top: 40px;
+	transition: 0.4;
+}
+
+.ionicons {
+	width: 42px;
+	height: 30px;
+}
+
+.dash {
+	height: 25px;
+	margin: 20px 9px 0 5px;
+	border-radius: 7px;
+	cursor: pointer;
+}
+
+.textoMenu {
+	color: white;
+	display: flex;
+	align-items: center;
+	height: 100%;
+	margin-top: 30px;
+}
+
+.blocoTextoMenu {
+	display: flex;
+	align-items: center;
+	height: 50px;
+	justify-content: right;
+	width: 175px;
+}
+
+.content-dash .grafics .grafic3 {
+	flex-flow: column wrap;
+}
+
+.dash {
+	color: #463d37;
+	align-items: center;
+	flex: 1;
+	--ionicon-stroke-width: 50px;
+	width: 40px;
+}
+
+.alertasArmazens {
+	display: flex;
+	justify-content: space-around;
+	flex-direction: row;
+	gap: 15px;
+}
+
+.alertas {
+	flex-direction: column;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+
+.cardAlertaTemp {
+	border: solid 5px #463d37;
+	border-radius: 25px;
+	background: #9c6b43;
+	font-size: 2rem;
+	color: #fff;
+	padding: 30px;
+	width: 35%;
+	height: auto;
+}
+
+.cardAlertaUmid {
+	border: solid 5px #463d37;
+	border-radius: 25px;
+	background: #9c6b43;
+	font-size: 2rem;
+	color: #fff;
+	padding: 30px;
+	width: 35%;
+	height: autox;
+}
+
+.telaMetricas {
+	border: 3px solid rgb(156, 106, 66);
+	border-radius: 10px;
+	justify-content: center;
+	align-items: center;
+	display: flex;
+	position: absolute;
+	flex-direction: column;
+	/* padding: 5px; */
+	top: 50vh;
+	background: #ffd5b3;
+	/* box-shadow: 0 5px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 10px 1000px rgba(0, 0, 0, 0.491); */
+	margin-top: 15%;
+	margin-left: 20%;
+	/* animation: deslizar 0.25s; */
+}
+
+.metricas {
+	justify-content: center;
+	display: flex;
+	/* flex-direction: column; */
+}
+
+table,
+th,
+td {
+	text-align: center;
+	border: 3px solid rgb(158, 103, 59);
+	font-size: 20px
+}
+
+th,
+td {
+	padding: 3px;
+}
+
+@keyframes deslizar {
+	from {
+		top: -300px;
+		opacity: 0
+	}
+
+	to {
+		top: 0;
+		opacity: 1
+	}
+}
+
+.piscarBlue {
+	animation: blinkBlue 1s steps(1, end) infinite;
+	transition: 0.25s;
+}
+
+.piscarRed {
+	animation: blinkRed 1s steps(1, end) infinite;
+	transition: 0.25s;
+}
+
+@keyframes blinkBlue {
+	0% {
+		box-shadow: 0 0 15px blue;
+	}
+
+	50% {
+		box-shadow: 0 0 0 blue;
+	}
+
+	100% {
+		box-shadow: 0 0 15px blue;
+	}
+}
+
+@keyframes blinkRed {
+	0% {
+		box-shadow: 0 0 15px red;
+	}
+
+	50% {
+		box-shadow: 0 0 0 red;
+	}
+
+	100% {
+		box-shadow: 0 0 15px red;
+	}
+}
+
+.mainGraficos {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	flex-direction: column;
+}
+
+.graficos {
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+	justify-content: space-evenly;
+	width: 100%;
+	/* height: 80vh; */
+}
+
+.grafFazendas {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	flex-wrap: wrap;
+}

@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Relatórios</title>
+  <link rel="shortcut icon" href="img/logo.png" type="image/svg+xml">
+  <link rel="stylesheet" href="style/dashboard.css">
+  <link rel="stylesheet" href="style/style.css">
+  <link rel="stylesheet" type="text/css" href="style/calculadora.css">
+  <link rel="stylesheet" type="text/css" href="style/relatorio.css">
+
+
+  <link href="https://fonts.googleapis.com/css2?family=Urbanist:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+</head>
+
+<body>
+  <div class="menu menu-perdas">
+    <div class="button-menu" onclick="menuClick()">
+      <div class="bar-menu"></div>
+      <div class="bar-menu"></div>
+      <div class="bar-menu"></div>
+    </div>
+    <span class="content-items">
+      <div class="blocoTextoMenu">
+        <span class="textoMenu">Dashboard</span>
+        <a href="dashboard.html" class="dash"><ion-icon name="stats-chart" class="ionicons""></ion-icon></a>
+      </div>
+      <div class="blocoTextoMenu">
+        <span class="textoMenu" style="width: 75px; margin-right: 0;">Perdas</span>
+        <a href="relatorio.html" class="dash" style="margin-left: 5px; color: rgb(63, 46, 34);"><ion-icon name="document-outline" class="ionicons"></ion-icon></a>
+      </div>
+      <div class="blocoTextoMenu">
+        <span class="textoMenu" style="width: 75px; margin-right: 0;">Fazendas</span>
+        <a href="fazendas.html" class="dash"><ion-icon name="home-outline" class="ionicons"></ion-icon></a>
+      </div>
+      <div class="blocoTextoMenu">
+        <span class="textoMenu" style="width: 75px; margin-right: 0;">Perfil</span>
+        <a href="telaUsuario.html" class="dash"><ion-icon name="person-circle-outline" class="ionicons"></ion-icon></a>
+      </div>
+      <div class="blocoTextoMenu">
+        <span class="textoMenu" style="width: 75px; margin-right: 0;">Sair</span>
+        <a href="login.html" class="dash"><ion-icon name="exit-outline" class="ionicons"></ion-icon></ion-icon></a>
+      </div>
+    </span>
+  </div>
+  <div class="box box-perdas">
+        <div class="form-box" style="padding: 30px 60px;">
+            <h2  class="h1 hero-title title-perdas">Relatório de perdas</h2>
+            <form action="#">
+                <div style="width: 100%; display: flex; justify-content: space-between;">
+                  <div style="margin-bottom: 8px;">
+                    <label for="opcoes" style="font-family: 'Urbanist', sans-serif;">Fazenda:</label>
+                    <select id="opcoes" name="opcoes">
+                        <option value="opcao1">Fazenda 1</option>
+                        <option value="opcao2">Fazenda 2</option>
+                        <option value="opcao3">Fazenda 3</option>
+                    </select>
+                  </div>
+                  <div style="margin-bottom: 8px;">
+                    <label for="opcoes" style="font-family: 'Urbanist', sans-serif;">Armazém:</label>
+                    <select id="opcoes" name="opcoes">
+                        <option value="opcao1">Armazém 1</option>
+                        <option value="opcao2">Armazém 2</option>
+                        <option value="opcao3">Armazém 3</option>
+                    </select>
+                  </div>
+                </div>
+                <div class="input-group">
+                    <label>Quantidade de perda por sacas:</label>
+                    <div class="inline-fields">
+                      <input style="font-size: 12pt;"  type="text" id="input_qntSacas" required>
+                      <div class="inline-fields">
+                    </div>
+                  </div>
+                </div>
+                <div style="display: flex;">
+                  <div class="input-group">
+                      <label>Data início:</label>
+                      <div style="display: flex;">
+                        <input style="width: 95%; font-size: 12pt; color: rgba(0, 0, 0, 0.5);" type="date" id="dataInicio" name="dataInicio">
+                        <div style="display: flex;">
+                        </div>
+                      </div>
+                  </div>
+
+                  <div class="input-group">
+                      <label>Data fim:</label>
+                      <div style="display: flex;">
+                        <input style="width: 95%; font-size: 12pt; color: rgba(0, 0, 0, 0.5);" type="date" id="dataFim" name="dataFim">
+                        <div style="display: flex;">
+                        </div>
+                      </div>
+                  </div>
+                </div>
+
+                <div class="input-group">
+                    <button id="calculate" class="botao" onclick="calcular()">Enviar</button>
+                </div>
+            </form>
+        </div>
+        </div> 
+      </div>
+    </div>
+</body>
+
+</html>
+<script type="text/javascript" src="scripts/dashboard.js"></script>
+<!-- 
+    - ionicon link
+  -->
+<script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+<script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
+<script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+<script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
+<script src="https://vlibras.gov.br/app/vlibras-plugin.js"></script>
+<script>
+  new window.VLibras.Widget('https://vlibras.gov.br/app');
+</script>

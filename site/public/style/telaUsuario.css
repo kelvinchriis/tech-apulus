@@ -1,0 +1,56 @@
+body {
+    overflow-x: hidden;
+}
+
+.main h1{
+    margin-top: 2%;
+    display: flex;
+    justify-content : center;
+}
+
+.headerUser {
+    justify-content: space-evenly;
+    /* overflow-x: hidden; */
+    display: flex;
+    margin-left: -21%;
+    z-index: 4;
+    width: 148%;
+    height: 18vh;
+    background-color: #382e27f1;
+    font-size: 2.5rem;
+    color: white;
+}
+
+.headerUser p{
+    margin: 2% 5%;
+}
+
+.metricas{
+    margin-top: 5%;
+    justify-content: center;
+    display: flex;
+    flex-direction: row;
+}
+
+table, th, td {
+    text-align: center;
+    border: 3px solid rgb(158, 103, 59);
+    font-size: 20px
+}
+
+th, td {
+    padding: 3px;
+}
+
+.graficosGerais {
+    font-size: 30px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+}
+
+.graficos {
+    background-color: rgba(158, 103, 59, 0.2);
+	border-radius: 20px;
+	justify-content: space-between;
+}
