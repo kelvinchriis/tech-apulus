@@ -99,7 +99,7 @@ insert into Relatório values
     select * from Relatório;
 
 create table sensores(
-      idSensores int primary key auto_increment,
+    idSensores int primary key auto_increment,
     lm35_temperatura double,
     dht11_umidade double,
     fkArmazem int,
@@ -107,6 +107,30 @@ constraint fkArm foreign key(fkArmazem) references Armazem(idArmazem)
 )auto_increment = 600;
 
 select * from sensores;
+select * from empresa;
+insert into sensores values
+	(null, '20.0', '60', 100),
+    (null, '22.5', '60', 100),
+    (null, '24', '58', 100),
+    (null, '24.5', '58', 100),
+    (null, '24.8', '59', 100),
+    (null, '25.0', '60', 100),
+    (null, '25.2', '61', '100'),
+    (null, '26.0', '61', 100);
+    
+select idSensores,
+        lm35_temperatura as temperatura, 
+        dht11_umidade as umidade,
+                        fkArmazem 
+                        from sensores where fkArmazem = 100 
+                    order by idSensores;
+                    
+select lm35_temperatura as temperatura, dht11_umidade as umidade, fkArmazem
+	from sensores
+		where fkArmazem = 100;
+        
+select * from sensores join Armazem on idArmazem = fkArmazem where fkArmazem = 100; 
+                    
 -- create table Sensores(
 -- idSensores int primary key auto_increment,
 -- status_sensores varchar(45),
@@ -140,6 +164,8 @@ insert into Sensores values
     -- (null, 'Ativado', 'DHT11', 408);
    
 select * from Sensores;
+
+select * from armazem;
 
 -- create table Registros(
 -- idRegistros int primary key auto_increment,
