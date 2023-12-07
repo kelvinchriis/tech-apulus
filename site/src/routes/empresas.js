@@ -27,6 +27,8 @@ router.post("/autenticar", function (req, res) {
   empresaController.autenticar(req, res);
 });
 
+
+
 // router.get("/mostrarChaveAcesso/:id_empresa", function (req, res) {
 //   empresaController.mostrarChaveAcesso(req, res);
 // });

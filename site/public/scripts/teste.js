@@ -1,60 +1,32 @@
-// // Base para criação de gráficos dinâmica, não funciona direito, mas tá caminhando >:)
-
-// const btnAdd = document.querySelector('#btnAddGraf'),
-//     telaFazendas = document.querySelector('.grafFazendas');
-
-// btnAdd.addEventListener('click', () => {
-
-//     telaFazendas.innerHTML += `<canvas id="myChartCanvas"></canvas>`
-
-//     let labels = [];
-
-//     let dados = {
-//         labels: labels,
-//         datasets: [{
-//             labels: 'Umidade',
-//             data: [23, 24, 28, 22, 24],
-//             // fill: false,
-//             borderColor: '#9c6b43',
-//             tension: 0.1
-//         },
-//         {
-//             label: 'Temperatura',
-//             data: [55, 57, 59, 65, 62],
-//             // fill: false,
-//             borderColor: 'rgb(255, 0, 0)',
-//             tension: 0.1
-//         }]
-//     };
-
-//     const config = {
-//         type: 'line',
-//         data: dados,
-//     };
-
-//     let myChart = new Chart(
-//         document.getElementById(`myChartCanvas`),
-//         config
-//     );
-// })
 // sessão
 function validarSessao() {
-    var email = sessionStorage.EMAIL_USUARIO;
-    var nome = sessionStorage.NOME_USUARIO;
+    var email = sessionStorage.EMAIL,
+     nome = sessionStorage.NOME,
+     empresa = sessionStorage.EMPRESA,
+     empresaEmail = sessionStorage.EMAIL_USUARIO;
+     
 
     var b_usuario = document.getElementById("b_usuario");
+    var b_email = document.getElementById("b_email");
+    var b_nomeEmpresa = document.getElementById("b_nomeEmpresa");
+    var b_emailEmpresa = document.getElementById("b_emailEmpresa");
 
-    if (email != null && nome != null) {
-        b_usuario.innerHTML = email;
+
+    if (email != null && nome != null || empresaEmail != null && empresa !=  null) {
+        b_usuario.innerHTML = nome;
+        b_email.innerHTML = email;
+        b_nomeEmpresa.innerHTML = empresa;
+        b_emailEmpresa.innerHTML = empresaEmail;
+
     } else {
-        window.location = "login.html";
+        window.location = "../login.html";
     }
 }
 
 
 function limparSessao() {
     sessionStorage.clear();
-    window.location = "login.html";
+    window.location = "../login.html";
 }
 
 const serialport = require('serialport');
@@ -181,4 +153,3 @@ const servidor = (
         // valoresChave
     );
 })();
-

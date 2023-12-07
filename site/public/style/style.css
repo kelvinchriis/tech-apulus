@@ -587,6 +587,7 @@
       font-weight: var(--fw-700);
       transition: var(--transition-1);
       border-radius: 20px;
+      
     }
     
     .login-btn:is(:hover, :focus) { background-color: var(--cultured-2); }
