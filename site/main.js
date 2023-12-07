@@ -18,7 +18,7 @@ const serial = async (
             host: 'localhost',
             port: 3306,
             user: 'root',
-            password: 'daviguti',
+            password: 'Kodol@te2403',
             database: 'TechApulus_sprint2_teste'
         }
     ).promise();

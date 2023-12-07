@@ -129,7 +129,7 @@ body {
 }
 
 .menu {
-	position: relative;
+	position: fixed;
 	display: inline-block;
 	cursor: pointer;
 	display: flex;

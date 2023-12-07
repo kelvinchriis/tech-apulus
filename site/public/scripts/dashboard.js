@@ -3,9 +3,9 @@ var status_menu = 0,
 	items_menu = document.querySelector(".content-items"),
 	botao_menu = document.querySelector(".button-menu");
 
-const telaMetricas = document.querySelector('.telaMetricas'),
-	btnAbrir = document.querySelector('#btnAbrirMetricas'),
-	btnFechar = document.querySelector('#btnFecharMetricas');
+// const telaMetricas = document.querySelector('.telaMetricas'),
+// 	btnAbrir = document.querySelector('#btnAbrirMetricas'),
+// 	btnFechar = document.querySelector('#btnFecharMetricas');
 
 function menuClick() {
 	if (status_menu == 0) {
@@ -96,13 +96,13 @@ function alertas() {
 	}
 }
 
-btnAbrir.addEventListener('click', () => {
-	telaMetricas.style.display = 'flex';
-});
+// btnAbrir.addEventListener('click', () => {
+// 	telaMetricas.style.display = 'flex';
+// });
 
-btnFechar.addEventListener('click', () => {
-	telaMetricas.style.display = 'none';
-});
+// btnFechar.addEventListener('click', () => {
+// 	telaMetricas.style.display = 'none';
+// });
 
 // Obtenha os elementos do DOM
 var modal = document.getElementById('myModal');
