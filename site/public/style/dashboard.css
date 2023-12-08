@@ -366,3 +366,156 @@ td {
 	justify-content: center;
 	flex-wrap: wrap;
 }
+
+.open-modal-btn {
+	padding: 10px 20px;
+	background-color: #463d37;
+	color: #fff;
+	border: none;
+	border-radius: 5px;
+	cursor: pointer;
+	font-size: 16px;
+}
+
+.open-modal-btn:hover {
+	background-color: #b48157;
+}
+
+/* Estilo do modal */
+.modal {
+	display: none;
+	position: fixed;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	background-color: rgba(0, 0, 0, 0.7);
+	z-index: 9999;
+}
+
+/* Conteúdo do modal */
+.modal-content {
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+	background-color: #ffffff;
+	padding: 20px;
+	border-radius: 10px;
+	max-width: 80%;
+	max-height: 80%;
+	overflow: auto;
+	box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+}
+
+/* Botão para fechar o modal */
+.close {
+	position: absolute;
+	top: 10px;
+	right: 10px;
+	font-size: 24px;
+	font-weight: bold;
+	color: #333;
+	cursor: pointer;
+	transition: color 0.3s ease;
+}
+
+.close:hover {
+	color: #e74c3c;
+}
+
+.perfil {
+	background-color: #b48157;
+	height: 450px;
+	width: 800px;
+	border-radius: 10px;
+	align-items: center;
+	text-align: center;
+	display: flex;
+	justify-content: center;
+	flex-direction: column;
+	border: 5px solid #ffd5b38e;
+}
+
+.duvida {
+	background-color: #b48157;
+	height: 300px;
+	width: 800px;
+	border-radius: 10px;
+	align-items: center;
+	text-align: center;
+	display: flex;
+	justify-content: center;
+	flex-direction: column;
+}
+
+.inPerf {
+	background-color: #ffd5b3;
+	height: auto;
+	width: 300px;
+	border-radius: 10px;
+	display: flex;
+
+}
+
+.aboutPerf {
+	position: relative;
+	width: auto;
+	height: auto;
+	text-align: start;
+	padding: 20px;
+
+}
+
+.mostrar {
+	font-size: medium;
+}
+
+.cardsPerfi {
+	/* display: inline-block; */
+	background-color: #ffd5b38e;
+	text-align: center;
+	justify-content: center;
+	margin-right: auto;
+	width: auto;
+	height: 180px;
+	align-items: center;
+	border-radius: 10px;
+
+}
+
+.cardsPerfi2 {
+	border: 5px solid #ffd5b38e;
+	width: 250px;
+	height: 250px;
+	margin-left: auto;
+	border-radius: 10px;
+	background-image: url(../img/perfil.gif);
+	background-size: cover;
+}
+
+
+.content2 {
+	display: flex;
+	flex-direction: row;
+	justify-content: space-between;
+	gap: 80px;
+	position: fixed;
+}
+
+.perfil h2 {
+	text-align: center;
+	position: fixed;
+	margin-top: -450px;
+	padding-left: 9%;
+}
+
+.perfigif {
+	height: 250px;
+	width: auto;
+}
+
+#openModalBtn {
+	margin-top: 25px;
+	position: fixed;
+}

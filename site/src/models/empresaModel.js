@@ -1,17 +1,5 @@
 var database = require("../database/config");
 
-function autenticarEmpresa(email, senha) {
-  console.log("ACESSEI O USUARIO MODEL \n \n\t\t >> Se aqui der erro de 'Error: connect ECONNREFUSED',\n \t\t >> verifique suas credenciais de acesso ao banco\n \t\t >> e se o servidor de seu BD está rodando corretamente. \n\n function entrar(): ", email, senha)
-  var instrucao = `
-      select idEmpresa, email, senha, cnpj, chave_acesso, empresa 
-                  where email = "${email}" and senha = "${senha}";
-  `;
-  console.log("Executando a instrução SQL: \n" + instrucao);
-  return database.executar(instrucao);
-}
-
-
-
 // cadastro dados empresa
 function cadastrar(nome, email, senha, cnpj, chave_acesso) {
     var instrucao = `
@@ -21,8 +9,6 @@ function cadastrar(nome, email, senha, cnpj, chave_acesso) {
   console.log("Executando a instrução SQL: \n" + instrucao);
   return database.executar(instrucao);
 }
-
-
 
 // listar empresas no select do cadastro do funcionario
 function listar() {
@@ -59,12 +45,13 @@ function cadastrarContato(telefonP, telefoneS, emailP, emailS, fkEmpresa) {
 }
 
 // buscar chave de acesso da empresa para cadastrar funcionario
-function buscarPorChaveEmpresa(id_empresa) {
-  var instrucao = `select chave_acesso from Empresa where idEmpresa = '${id_empresa}'`;
+// function buscarPorChaveEmpresa(id_empresa) {
+//   var instrucao = `select chave_acesso from Empresa where idEmpresa = '${id_empresa}'`;
 
-  console.log("Executando a instrução SQL: \n" + instrucao);
-  return database.executar(instrucao);
-}
+//   console.log("Executando a instrução SQL: \n" + instrucao);
+//   return database.executar(instrucao);
+// }
+
 
 function autenticar(email, senha) {
   console.log("ACESSEI O USUARIO MODEL \n \n\t\t >> Se aqui der erro de 'Error: connect ECONNREFUSED',\n \t\t >> verifique suas credenciais de acesso ao banco\n \t\t >> e se o servidor de seu BD está rodando corretamente. \n\n function entrar(): ", email, senha)
@@ -76,12 +63,34 @@ function autenticar(email, senha) {
   return database.executar(instrucao);
 }
 
+function mostrarChaveAcesso(id_empresa) {
+  console.log("ACESSEI A EMPRESA MODEL para buscar a chave de acesso, function mostrarChaveAcesso()", id_empresa);
+
+  var instrucao = `select chave_acesso from empresa where idEmpresa = ${id_empresa};`;
+
+  console.log("Executando a instrução SQL: \n" + instrucao);
+  return database.executar(instrucao);
+}
+
+// function mostrarFuncionarios(id_empresa) {
+//   console.log("ACESSEI A EMPRESA MODEL para buscar os funcionários, function mostrarFuncionarios()", id_empresa);
+
+//   var instrucao = `   
+//   select nome, email, cpf from funcionario where fkEmpresaFuncionario = ${id_empresa};	
+//   `;
+
+//   console.log("Executando a instrução SQL: \n" + instrucao);
+//   return database.executar(instrucao);
+// }
+
 module.exports = { 
   buscarPorCnpj, 
   cadastrar, 
   listar, 
   cadastrarEndereco, 
   cadastrarContato, 
-  buscarPorChaveEmpresa, 
-  autenticar
+  // buscarPorChaveEmpresa,
+  autenticar,
+  mostrarChaveAcesso,
+  // mostrarFuncionarios
 };

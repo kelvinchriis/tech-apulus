@@ -32,7 +32,7 @@ function balancar() {
 }
 
 function autenticar(email_login, senha_login) {
-    fetch("/funcionarios/autenticar", {
+    fetch("/empresas/autenticar", {
         method: "POST",
         headers: {
             "Content-Type": "application/json",
@@ -53,7 +53,6 @@ function autenticar(email_login, senha_login) {
         })
         .then(function (perfil) {
             console.log(perfil);
-
             if (perfil.length == 0) {
                 balancar()
             } else {
@@ -64,7 +63,8 @@ function autenticar(email_login, senha_login) {
                 sessionStorage.ID_EMPRESA = perfil[0].idEmpresa
                 sessionStorage.EMPRESA = perfil[0].empresa
                 sessionStorage.SENHA = perfil[0].senha
-                window.location = "fazendas.html" 
+                sessionStorage.CHAVE_USUARIO = perfil[0].chave_acesso
+                window.location = "dashboard.html" 
             }
         })
         .catch(function (error) {
@@ -100,12 +100,15 @@ function verifyLogin2() {
             resposta.json().then(json => {
                 console.log(json);
                 console.log(JSON.stringify(json));
+                // sessionStorage.NOME = json.nome
                 sessionStorage.EMAIL_USUARIO = json.email;
                 sessionStorage.NOME_USUARIO = json.nome;
+                // sessionStorage.EMPRESA = json.empresa;
                 sessionStorage.ID_USUARIO = json.id;
+                sessionStorage.CHAVE_USUARIO = json.chave;
 
                 setTimeout(function () {
-                    window.location = "./fazendas.html";
+                    window.location = "./dashboard.html";
                 }, 1000);
             });
         }
