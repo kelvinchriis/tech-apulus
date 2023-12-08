@@ -32,7 +32,7 @@ function balancar() {
 }
 
 function autenticar(email_login, senha_login) {
-    fetch("/empresas/autenticar", {
+    fetch("/funcionarios/autenticar", {
         method: "POST",
         headers: {
             "Content-Type": "application/json",
@@ -108,7 +108,7 @@ function verifyLogin2() {
                 sessionStorage.CHAVE_USUARIO = json.chave;
 
                 setTimeout(function () {
-                    window.location = "./dashboard.html";
+                    window.location = "./dashboard2.html";
                 }, 1000);
             });
         }

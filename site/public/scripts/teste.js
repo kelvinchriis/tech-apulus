@@ -1,11 +1,10 @@
 // sessão
 function validarSessao() {
-    var email = sessionStorage.EMAIL,
-        nome = sessionStorage.NOME,
+    var nome = sessionStorage.NOME,
+        email = sessionStorage.EMAIL,
         empresa = sessionStorage.EMPRESA,
         empresaEmail = sessionStorage.EMAIL_USUARIO,
         chave = sessionStorage.CHAVE_USUARIO;
-
 
     var b_usuario = document.getElementById("b_usuario");
     var b_email = document.getElementById("b_email");
@@ -15,11 +14,11 @@ function validarSessao() {
 
 
     if (email != null && nome != null || empresaEmail != null && empresa != null) {
+        b_nomeEmpresa.innerHTML = empresa;
+        b_chaveAcesso.innerHTML = chave;
         b_usuario.innerHTML = nome;
         b_email.innerHTML = email;
-        b_nomeEmpresa.innerHTML = empresa;
         b_emailEmpresa.innerHTML = empresaEmail;
-        b_chaveAcesso.innerHTML = chave;
 
     } else {
         window.location = "../login.html";
@@ -52,7 +51,7 @@ const serial = async (
             host: 'localhost',
             port: 3306,
             user: 'root',
-            password: 'Kodol@te2403',
+            password: '#Vanuza23',
             database: 'TechApulus_sprint2_teste'
         }
     ).promise();

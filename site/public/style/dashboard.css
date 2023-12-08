@@ -22,6 +22,7 @@ body {
 	margin: 0;
 	background-color: rgb(250, 226, 196);
 	height: 1000px;
+	overflow: hidden;
 }
 
 .header {
@@ -435,6 +436,7 @@ td {
 	justify-content: center;
 	flex-direction: column;
 	border: 5px solid #ffd5b38e;
+	margin-top: -250px;
 }
 
 .duvida {
