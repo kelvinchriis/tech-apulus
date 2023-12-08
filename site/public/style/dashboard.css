@@ -11,7 +11,7 @@
 }
 
 ::-webkit-scrollbar-thumb {
-	background-color: #9c6b43;
+	background-color: rgb(158, 103, 59);
 }
 
 body {
@@ -22,21 +22,20 @@ body {
 	margin: 0;
 	background-color: rgb(250, 226, 196);
 	height: 1000px;
-	overflow: hidden;
 }
 
 .header {
 	width: 100%;
 	height: 50px;
 	padding-left: 55px;
-	background-color: #9c6b43;
+	background-color: rgb(158, 103, 59);
 }
 
 .mid-header {
 	width: 100%;
 	height: 100px;
 	padding-left: 55px;
-	background-color: #9c6b43;
+	background-color: rgb(158, 103, 59);
 }
 
 .content-dash {
@@ -97,7 +96,7 @@ body {
 	margin: 5% 0 0 10%;
 	padding: 20px;
 	border: solid;
-	border-color: #9c6b43;
+	border-color: rgb(158, 103, 59);
 	border-radius: 25px;
 	background-color: #ffd5b3;
 	box-shadow: 0 5px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 10px 1000px rgba(0, 0, 0, 0.491);
@@ -108,7 +107,7 @@ body {
 .cardz {
 	text-align: center;
 	padding: 10px;
-	color: #9c6b43;
+	color: rgb(158, 103, 59);
 	display: flex;
 	justify-content: space-around;
 }
@@ -119,7 +118,7 @@ body {
 	width: 16%;
 	border-radius: 25px;
 	border: solid;
-	border-color: #9c6b43;
+	border-color: rgb(158, 103, 59);
 }
 
 .avisoArmazem {
@@ -141,7 +140,7 @@ body {
 	width: 55px;
 	height: 100%;
 	position: fixed;
-	background-color: #9c6b43;
+	background-color: rgb(158, 103, 59);
 	transition: 0.1s;
 	overflow: hidden;
 	margin-left: -96%;
@@ -240,7 +239,7 @@ body {
 .cardAlertaTemp {
 	border: solid 5px #463d37;
 	border-radius: 25px;
-	background: #9c6b43;
+	background: rgb(158, 103, 59);
 	font-size: 2rem;
 	color: #fff;
 	padding: 30px;
@@ -251,7 +250,7 @@ body {
 .cardAlertaUmid {
 	border: solid 5px #463d37;
 	border-radius: 25px;
-	background: #9c6b43;
+	background: rgb(158, 103, 59);
 	font-size: 2rem;
 	color: #fff;
 	padding: 30px;
@@ -379,7 +378,7 @@ td {
 }
 
 .open-modal-btn:hover {
-	background-color: #b48157;
+	background-color: rgb(158, 103, 59);
 }
 
 /* Estilo do modal */
@@ -426,7 +425,7 @@ td {
 }
 
 .perfil {
-	background-color: #b48157;
+	background-color: rgb(158, 103, 59);
 	height: 450px;
 	width: 800px;
 	border-radius: 10px;
@@ -435,12 +434,12 @@ td {
 	display: flex;
 	justify-content: center;
 	flex-direction: column;
-	border: 5px solid #ffd5b38e;
-	margin-top: -250px;
+	border: 5px solid #382e27f1;
+	margin-top: -300px;
 }
 
 .duvida {
-	background-color: #b48157;
+	background-color: rgb(158, 103, 59);
 	height: 300px;
 	width: 800px;
 	border-radius: 10px;
@@ -452,11 +451,13 @@ td {
 }
 
 .inPerf {
-	background-color: #ffd5b3;
+	background-color: #382e27f1;
 	height: auto;
 	width: 300px;
 	border-radius: 10px;
 	display: flex;
+	color: #ffd5b3;
+	border: 5px solid #382e27f1;
 
 }
 
@@ -466,7 +467,7 @@ td {
 	height: auto;
 	text-align: start;
 	padding: 20px;
-
+	color: #ffd5b3;
 }
 
 .mostrar {
@@ -475,19 +476,19 @@ td {
 
 .cardsPerfi {
 	/* display: inline-block; */
-	background-color: #ffd5b38e;
+	background-color: #382e27f1;
 	text-align: center;
 	justify-content: center;
 	margin-right: auto;
 	width: auto;
-	height: 180px;
+	height: 125px;
 	align-items: center;
 	border-radius: 10px;
 
 }
 
 .cardsPerfi2 {
-	border: 5px solid #ffd5b38e;
+	border: 5px solid #382e27f1;
 	width: 250px;
 	height: 250px;
 	margin-left: auto;

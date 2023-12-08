@@ -2,22 +2,39 @@
 function validarSessao() {
     var nome = sessionStorage.NOME,
         email = sessionStorage.EMAIL,
-        empresa = sessionStorage.EMPRESA,
-        empresaEmail = sessionStorage.EMAIL_USUARIO,
-        chave = sessionStorage.CHAVE_USUARIO;
+        empresa = sessionStorage.EMPRESA
 
     var b_usuario = document.getElementById("b_usuario");
     var b_email = document.getElementById("b_email");
+    var b_nomeEmpresa = document.getElementById("b_nomeEmpresa");
+
+
+    if (email != null && nome != null && empresa != null) {
+        b_nomeEmpresa.innerHTML = empresa;
+        b_usuario.innerHTML = nome;
+        b_email.innerHTML = email;
+
+    } else {
+        window.location = "../login.html";
+    }
+}
+
+
+
+function validarSessao2() {
+    var empresa = sessionStorage.EMPRESA,
+        empresaEmail = sessionStorage.EMAIL_USUARIO,
+        chave = sessionStorage.CHAVE_USUARIO;
+
+
     var b_nomeEmpresa = document.getElementById("b_nomeEmpresa");
     var b_emailEmpresa = document.getElementById("b_emailEmpresa");
     var b_chaveAcesso = document.getElementById("b_chaveAcesso");
 
 
-    if (email != null && nome != null || empresaEmail != null && empresa != null) {
+    if (empresaEmail != null && empresa != null) {
         b_nomeEmpresa.innerHTML = empresa;
         b_chaveAcesso.innerHTML = chave;
-        b_usuario.innerHTML = nome;
-        b_email.innerHTML = email;
         b_emailEmpresa.innerHTML = empresaEmail;
 
     } else {
@@ -51,7 +68,7 @@ const serial = async (
             host: 'localhost',
             port: 3306,
             user: 'root',
-            password: '#Vanuza23',
+            password: 'daviguti',
             database: 'TechApulus_sprint2_teste'
         }
     ).promise();
