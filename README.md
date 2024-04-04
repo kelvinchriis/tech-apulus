@@ -1,54 +1,57 @@
 # TechApulus
 
-TechApulus é uma solução inovadora projetada para revolucionar a gestão de armazenamento de grãos de café, utilizando tecnologia de ponta em IoT para monitorar condições de armazenamento e reduzir perdas.
+## Visão Geral do Projeto
+TechApulus é uma empresa inovadora focada em revolucionar o armazenamento de grãos de café através de soluções de IoT. Utilizando sensores de temperatura e umidade, juntamente com a tecnologia Arduino para a transmissão de dados, nosso objetivo é minimizar as perdas durante o armazenamento dos grãos, fornecendo alertas em tempo real aos gestores do armazém. Nosso site institucional permite aos clientes realizar simulações e, após o cadastro, acessar uma dashboard detalhada com informações e KPIs dos seus armazéns, facilitando a gestão e monitoramento de diversas localidades.
 
-## Índice
+## Funcionalidades Principais
 
-- [Sobre o Projeto](#sobre-o-projeto)
-- [Funcionalidades](#funcionalidades)
-- [Tecnologias Utilizadas](#tecnologias-utilizadas)
-- [Começando](#começando)
-  - [Pré-requisitos](#pré-requisitos)
-  - [Instalação](#instalação)
-- [Uso](#uso)
-- [Contribuição](#contribuição)
-- [Licença](#licença)
-- [Contato](#contato)
-
-## Sobre o Projeto
-
-O TechApulus visa mitigar as perdas no armazenamento de grãos de café através de um sistema avançado de monitoramento IoT. Com sensores de temperatura e umidade, juntamente com a tecnologia Arduino para transmissão de dados, oferecemos um meio eficaz para os gestores de armazéns manterem o controle sobre as condições de armazenamento.
-
-![TechApulus Dashboard](url_para_uma_imagem_da_dashboard)
-
-## Funcionalidades
-
-- **Monitoramento em Tempo Real**: Sensores de temperatura e umidade para coleta de dados ambientais.
-- **Alertas Automáticos**: Notificações para gestores sobre condições adversas no armazenamento.
-- **Dashboard Personalizada**: Visão geral do estado de vários armazéns e fazendas em uma única interface.
-- **Gerenciamento de Fazendas e Armazéns**: Capacidade de adicionar e gerenciar locais de armazenamento.
+- **Cadastro e Login de Usuário:** Acesso a uma plataforma personalizada para gerenciamento de armazéns e fazendas.
+- **Monitoramento IoT:** Utilização de sensores de temperatura e umidade para coletar dados vitais, garantindo a integridade dos grãos de café.
+- **Alertas Automáticos:** Notificações em tempo real para gestores sobre condições adversas, permitindo ação rápida para evitar perdas.
+- **Dashboard Personalizada:** Uma visão integrada de todos os armazéns, com dados e KPIs relevantes para uma gestão eficaz.
+- **Gestão de Fazendas e Armazéns:** Facilidade para adicionar e monitorar novas localidades, centralizando o controle em uma única plataforma.
 
 ## Tecnologias Utilizadas
 
-- **Frontend**: HTML, CSS, JavaScript
-- **Backend**: Node.js, Arduino
-- **Banco de Dados**: MySQL
-- **Ferramentas de Projeto**: Trello para gerenciamento de tarefas, metodologia Scrum.
+### Frontend
+- **HTML e CSS:** Para a criação de um site institucional responsivo e atrativo.
+- **JavaScript:** Adicionando interatividade ao site, permitindo uma experiência de usuário fluida e personalizada.
 
-## Começando
+### Backend
+- **Node.js:** Utilizado para desenvolver APIs robustas que lidam com a coleta de dados dos sensores e a interação com o banco de dados.
+- **Arduino:** Programação dos dispositivos IoT para a coleta e transmissão de dados ambientais em tempo real.
 
-### Pré-requisitos
+### Banco de Dados
+- **MySQL:** Armazenamento de todas as informações dos usuários, armazéns, fazendas, e dados coletados pelos sensores.
 
-Antes de iniciar, certifique-se de ter instalado:
-- Node.js
-- MySQL
-- Arduino IDE
+### Ferramentas de Projeto
+- **Trello:** Para a organização e gerenciamento das tarefas do grupo de desenvolvimento.
+- **Metodologia Scrum:** Adotada para facilitar o desenvolvimento ágil e iterativo do projeto.
+
+## Como usar
+
+### Pré-Requisitos
+- Ter o Node.js e o MySQL instalados.
+- Ter um ambiente de desenvolvimento para o Arduino configurado.
 
 ### Instalação
+1. Clone o repositório para a sua máquina local.
+2. Instale as dependências do projeto executando `npm install` no diretório raiz.
+3. Configure o banco de dados MySQL utilizando o script fornecido.
+4. Defina as variáveis de ambiente necessárias para a conexão com o banco de dados e outras configurações essenciais.
+5. Carregue o sketch do Arduino nos dispositivos que serão utilizados para a coleta de dados.
+6. Inicie o servidor Node.js com `npm start` e acesse o site através do endereço fornecido.
 
-1. Clone o repositório
-   ```sh
-   git clone https://github.com/seu-usuario/TechApulus.git
+### Uso
+Após a instalação e configuração, os usuários podem realizar simulações no site institucional, cadastrar-se para acessar a dashboard, adicionar novas fazendas e armazéns, e monitorar as condições de armazenamento em tempo real.
+
+## Licença
+Este projeto está licenciado sob a Licença MIT - veja o arquivo LICENSE.md para detalhes.
+
+## Contato
+- **Organização:** TechApulus
+- **E-mail:** contato@techapulus.io
+- **GitHub:** https://github.com/TechApulus
 
 
 # TechApulus
